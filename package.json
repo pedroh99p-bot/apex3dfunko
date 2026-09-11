@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node scripts/dev-server.js",
     "test": "node --test tests/foundation.test.js tests/production.test.js",
-    "test:smoke": "node tests/smoke.js && node tests/mvp-smoke.js",
+    "test:smoke": "node tests/smoke.js && node tests/mvp-smoke.js && node tests/visual-smoke.js",
     "build": "node scripts/build-staging.js"
   }
 }
