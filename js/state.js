@@ -9,7 +9,7 @@ export function createOrderState(product = 'individual') {
         id: `figure-${i + 1}`, eyes: 'ojos_standard', mouth: 'sin_boca', glasses: false,
         accessories: 0, logos: 0, specialAccessories: [], fields: {},
       })),
-      pet: { eyes: 'estandar', fields: {} }, pets: [],
+      pet: { eyes: 'estandar', accessories: 0, logos: 0, specialAccessories: [], fields: {} }, pets: [],
       minis: { quantity: 0, size: 4, fields: {} },
       box: { type: 'caja_standard', dedication: false, fields: {} },
       extras: [], fields: {},

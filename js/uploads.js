@@ -1,5 +1,14 @@
 import { uploadPolicy } from '../config/uploads.js';
 
+// Recibo em memória criado somente depois de validar o File. Metadados inventados
+// ou pertencentes a outra seleção não são prova de um anexo disponível.
+const receipts = new Map();
+export function isValidatedUpload(upload) {
+  const receipt = receipts.get(upload?.id);
+  return Boolean(receipt && receipt.name === upload.name && receipt.type === upload.type && receipt.size === upload.size
+    && receipt.itemId === upload.owner?.itemId && receipt.field === upload.owner?.field);
+}
+
 async function validSignature(file) {
   const b = new Uint8Array(await file.slice(0, 12).arrayBuffer());
   const ascii = (start, length) => String.fromCharCode(...b.slice(start, start + length));
@@ -35,6 +44,7 @@ export class UploadStore {
     const added = incoming.map(file => {
       const entry = { id: crypto.randomUUID(), owner: { ...owner }, name: file.name, type: file.type, size: file.size, file, previewUrl: URL.createObjectURL(file) };
       this.#entries.set(entry.id, entry);
+      receipts.set(entry.id, { name: file.name, type: file.type, size: file.size, ...owner });
       return entry.id;
     });
     return added;
@@ -45,6 +55,7 @@ export class UploadStore {
     const entry = this.#entries.get(id);
     if (entry) URL.revokeObjectURL(entry.previewUrl);
     this.#entries.delete(id);
+    receipts.delete(id);
   }
   clear() { this.#revision++; this.list().forEach(e => this.remove(e.id)); }
 }
