@@ -1,3 +1,5 @@
+> Correção visual: sete imagens recuperadas do baseline, locais e marcadas ORIGIN_REVIEW_REQUIRED. A composição do hero/cards/exemplos substituiu os placeholders. Zero dependências remotas em runtime; veja VISUAL-RESTORATION.md.
+
 # Dependências do frontend Apex3D V0.5
 
 Este relatório substitui, para a entrada comercial, a situação visual descrita nos inventários históricos das etapas 1–3.

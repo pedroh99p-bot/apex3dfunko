@@ -34,4 +34,4 @@ Fotos permanecem em memória com validação e recibos internos por pessoa/pet/a
 - V0.5: branch feat/apex-frontend-v05.
 - Origin: https://github.com/pedroh99p-bot/apex3dpersonalizados.
 
-Os inventários TECHNICAL-MAP, USER-FLOW, PRICING, LOCAL-REIMPLEMENTATION, DEPENDENCY-CLASSIFICATION e APEX-MVP-CONTRACT documentam fases anteriores. As decisões comerciais V0.5 prevalecem sobre regras e preços herdados. Nenhum asset proprietário do concorrente integra o frontend comercial.
+Os inventários TECHNICAL-MAP, USER-FLOW, PRICING, LOCAL-REIMPLEMENTATION, DEPENDENCY-CLASSIFICATION e APEX-MVP-CONTRACT documentam fases anteriores. As decisões comerciais V0.5 prevalecem sobre regras e preços herdados. A correção visual recupera sete imagens do baseline para staging, por solicitação do proprietário; estão locais e marcadas ORIGIN_REVIEW_REQUIRED. Consulte docs/VISUAL-RESTORATION.md.

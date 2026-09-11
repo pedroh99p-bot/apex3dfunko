@@ -1,3 +1,19 @@
+# Correção seletiva de imagens da V0.5
+
+Mantida a branch feat/apex-frontend-v05. Hero agora mostra quatro slides reais do baseline, com autoplay de 5,5 s, fade de 400 ms, pausa ao passar o mouse e ao receber foco, pausa explícita, setas, dots, teclado e swipe horizontal. Autoplay é suspenso fora da tela/aba e inicia pausado com prefers-reduced-motion. Área quadrada reservada evita saltos; imagens em object-fit contain, sem corte. Em mobile, copy e CTA antecedem o carrossel.
+
+Os cards Apex mantêm preços, descrição e seleção; somente sua mídia foi restaurada por módulo de apresentação separado. Família é uma composição de três pessoas a partir dos assets de Casal + Individual, pois não existia asset próprio no baseline. A seção de exemplos reaproveita referências visuais recuperadas, sem atribuir os trabalhos à Apex.
+
+Assets: 7 arquivos WebP intactos, 181.944 bytes no total; locais, todos ORIGIN_REVIEW_REQUIRED antes da produção definitiva. Nenhum JS/CSS/fonte remota foi reintroduzido. [Inventário completo](VISUAL-RESTORATION.md). Uma variante opcional de 600 px retornou HTTP 522; o original de 1024 px funciona e foi preservado.
+
+Pricing, configurador, state, uploads, validation e orderDraft não foram modificados. Os 23 testes do núcleo e os 35 cenários anteriores foram mantidos; a nova suíte visual cobre o carrossel, toque real, movimento reduzido, imagens e screenshots em 1440/390 px. Artefatos temporários em test-results, ignorados pelo Git.
+
+Resultado da correção: npm test = 23 aprovados; npm run test:smoke = 47 aprovados (13 + 22 + 12); npm run build aprovado. Seis screenshots de hero/produtos/configurador em 1440/390 px inspecionadas, mais vistas de topo. Sem exceções JS, requisições externas ou chamadas transacionais. Arquivos funcionais e index original idênticos à versão anterior, verificados por Git diff/hash.
+
+A documentação abaixo descreve a primeira entrega V0.5; as menções a placeholders nas seções hero/produtos/exemplos são superadas por esta correção.
+
+---
+
 # Apex3D — frontend comercial V0.5
 
 ## Direção e escopo

@@ -1,3 +1,25 @@
+# Correção visual seletiva — estado atual
+
+Sete assets do baseline foram recuperados localmente para staging por solicitação explícita do proprietário. Todos estão marcados **ORIGIN_REVIEW_REQUIRED**. Consulte [VISUAL-RESTORATION](VISUAL-RESTORATION.md) para URLs exatas, hashes, tamanhos, usos e classificação RESTORE / KEEP REMOVED / REPLACE LATER de cada URL inventariada.
+
+Hero: quatro comparações foto/modelo/miniatura, sem edição dos arquivos. Cards: Individual, Casal e Pet originais; Família usa composição HTML/CSS de Casal + Individual. Exemplos: três comparações reutilizadas, identificadas como referências e não como trabalhos Apex. A logo Apex não mudou. Não foram restaurados logos, badges ou scripts concorrentes. Nenhuma dependência remota em runtime.
+
+As descrições abaixo sobre placeholders e ausência de assets recuperados registram a fase anterior à correção e são superadas por esta seção.
+
+## Assets recuperados para staging
+
+| Arquivo local | Origem | Situação |
+| --- | --- | --- |
+| assets/examples/pet.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-1.webp | ORIGIN_REVIEW_REQUIRED |
+| assets/products/casal.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-parejas.webp | ORIGIN_REVIEW_REQUIRED |
+| assets/products/pet.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-mascota.webp | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/casal.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-1.webp | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/individual-futebol.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-1.webp | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/individual-profissao.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2-1024x1024.webp | ORIGIN_REVIEW_REQUIRED |
+| assets/products/individual.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-individual-male-1.webp | ORIGIN_REVIEW_REQUIRED |
+
+---
+
 # Assets atuais Apex3D V0.5
 
 - assets/brand/apex-logo.webp: logo fornecida e autorizada pelo proprietário no briefing. Download direto, sem edição; 1536 × 1024. Navbar, footer e OpenGraph.
