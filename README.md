@@ -13,6 +13,10 @@ A entrada comercial é **dev.html**. O **index.html da raiz é um snapshot hist�
 
 Node.js é suficiente para executar e gerar o site. Para os testes de navegador, disponibilize Playwright e Edge. O runner aceita APEX_PLAYWRIGHT_PATH apontando ao módulo playwright/index.mjs e APEX_BROWSER para selecionar outro canal Chromium instalado.
 
+### Deploy na Vercel
+
+O arquivo vercel.json define o projeto como estático, executa **npm run build** e publica **dist**. Não use public como Output Directory. Mantenha Root Directory na raiz deste repositório e faça o deploy de um commit que contenha essa configuração, na branch feat/apex-frontend-v05. Os cabeçalhos de homologação também estão configurados para a Vercel.
+
 ## Contrato atual
 
 Consulte [APEX-FRONTEND-V05](docs/APEX-FRONTEND-V05.md) para identidade, oferta, preços de homologação, limites e resultado dos testes; [dependências atuais](docs/APEX-DEPENDENCIES.md) e [procedência dos assets](docs/ASSET-MAP.md).
