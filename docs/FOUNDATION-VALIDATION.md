@@ -1,5 +1,7 @@
 # Validação da fundação — 11/09/2026
 
+Registro histórico da etapa 2. A etapa 3 mantém as referências de preço, mas a finalização agora bloqueia configuração incompleta e exige revisão. Resultados atuais: **17 testes do núcleo/produção e 21 cenários de navegador** (11 de fundação + 10 do MVP) aprovados, zero exceções JS e zero tentativas transacionais nos fluxos monitorados. Ver APEX-MVP-CONTRACT.md. A antiga lacuna de validação de produção foi resolvida conforme o contrato MVP; itens LATER/REMOVE não são requisitos pendentes de paridade.
+
 ## Executar
 
 Ambiente validado: Windows, Node.js 24.15.0, Playwright já disponível no runtime local e Microsoft Edge headless. Aplicação e testes do núcleo não precisam de instalação de dependências.

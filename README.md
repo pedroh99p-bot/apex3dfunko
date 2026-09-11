@@ -1,10 +1,10 @@
 # Apex3D — auditoria e preparação da base
 
-Etapas 1 (auditoria) e 2 (fundação local) concluídas em 11/09/2026. O `index.html` original permanece preservado **byte a byte**. Não houve redesign, troca de marca, alteração da oferta ou integração de pagamento.
+Etapas 1 (auditoria), 2 (fundação local) e 3 (motor do MVP) concluídas em 11/09/2026. O `index.html` original permanece preservado **byte a byte**. Não houve redesign, troca de marca, alteração de preços ou integração de pagamento.
 
 A branch `refactor/apex-foundation` contém uma entrada de desenvolvimento em `dev.html`, módulos vanilla próprios em `js/`, configuração pública em `config/`, CSS de suporte em `css/`, servidor estático em `scripts/` e testes em `tests/`. As pastas `assets/brand`, `products`, `examples`, `backgrounds` e `ui` estão reservadas, sem assets de terceiros copiados.
 
-A finalização local produz somente um rascunho para inspeção segura. Não há envio de imagens, POST, checkout externo ou backend de pedidos. A aparência ainda usa CSS, fontes, imagens e markup herdados. Os módulos próprios não usam JavaScript remoto da MiFunko.
+A finalização local valida a configuração para produção, abre a revisão e produz somente um `orderDraft` para inspeção segura. Data necessária e fotos por pessoa/pet são obrigatórias. Não há envio de imagens, POST, checkout externo ou backend de pedidos. A aparência ainda usa CSS, fontes, imagens e markup herdados. O fluxo completo passa com a rede externa bloqueada; não usa JavaScript remoto da MiFunko.
 
 ## Baseline recuperável
 
@@ -37,6 +37,7 @@ git worktree add --detach ../apex3d-baseline baseline-original-2026-09-11
 | [LOCAL-REIMPLEMENTATION](docs/LOCAL-REIMPLEMENTATION.md) | Contratos, estado e matriz de comportamentos locais/pendentes |
 | [DEPENDENCY-CLASSIFICATION](docs/DEPENDENCY-CLASSIFICATION.md) | Classificação A–E das 110 declarações e serviços externos |
 | [FOUNDATION-VALIDATION](docs/FOUNDATION-VALIDATION.md) | Execução e resultados dos testes da etapa 2 |
+| [APEX-MVP-CONTRACT](docs/APEX-MVP-CONTRACT.md) | Fluxo, regras, validação, revisão e limites do MVP da etapa 3 |
 
 Inventários auxiliares: [assets por URL](docs/ASSET-INVENTORY.md), [SVGs inline](docs/INLINE-ASSETS.md), [campos](docs/FORM-FIELDS.md), [atributos de preço](docs/PRICE-ATTRIBUTES.md), [scripts e CSS](docs/RESOURCE-INVENTORY.md). Os manifestos em `docs/evidence/` registram hashes e resultados, sem copiar código remoto ou valores de credenciais.
 
@@ -52,4 +53,4 @@ Abrir `http://127.0.0.1:4173/`. Essa entrada lê o original como template inerte
 
 `npm test` executa a validação do núcleo com o test runner nativo. `npm run test:smoke` requer Playwright e um navegador instalado; veja FOUNDATION-VALIDATION para configurar. Evidências efêmeras ficam em `test-results/`, fora do Git.
 
-A próxima etapa deve completar as pendências da matriz e substituir os materiais/serviços remotos por recursos próprios aprovados antes da migração comercial. Nome, logo, WhatsApp e domínio estão preparados em config/brand.js; a aplicação visual dessa configuração permanece para o rebranding autorizado. A oferta continua herdada em EUR.
+Na etapa 3, as pendências foram classificadas KEEP/SIMPLIFY/LATER/REMOVE antes da implementação. Todos os KEEP/SIMPLIFY do contrato MVP têm solução local. Carrinho WooCommerce foi removido do fluxo; editor avançado, persistência, backend e pagamento ficam fora do MVP. A próxima etapa recomendada é homologar o contrato de fabricação e substituir os materiais visuais remotos durante o rebranding autorizado. A oferta continua herdada em EUR.

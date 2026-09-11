@@ -1,6 +1,6 @@
 # Reimplementação local Apex — etapas 2 e 3
 
-Branch: `refactor/apex-foundation`. Baseline: `baseline-original-2026-09-11`. O `index.html` não foi editado. Esta etapa estabelece a fundação local e uma entrada de desenvolvimento; não declara paridade integral com a loja original.
+Branch: `refactor/apex-foundation`. Baseline: `baseline-original-2026-09-11`. O `index.html` não foi editado. A etapa 2 estabeleceu a fundação; a etapa 3 implementou o contrato próprio do MVP em APEX-MVP-CONTRACT.md. Paridade integral não é objetivo.
 
 ## Fontes e separação
 
@@ -53,13 +53,13 @@ Os Files e URLs Blob existem somente no UploadStore. O estado contém metadados.
 
 `buildOrder(state)` retorna `schemaVersion`, `mode: development`, `status: draft`, `customer: null`, `items`, `uploads`, `pricing`, `shipping` e `notes`. Cada item referencia seus IDs de upload. A caneca com imagem própria exige seu arquivo; com esboço referencia `main-1`. Foto preparada para uma caneca não adicionada não entra no pedido normalizado.
 
-`validateOrder` faz validação estrutural/de preço, associação dos arquivos e imagem requerida do upsell. “Outro” sem preço documentado bloqueia a montagem em vez de receber um preço inventado. **Não é validação completa para fabricação**: rascunhos incompletos de rosto/roupa/caixa/data são admitidos. O botão original gera apenas esse rascunho; a faixa dev e o diálogo identificam o modo. O formulário usa validação local própria de rascunho, não validação nativa de produção.
+`validateOrder`/`buildOrder` continuam como serialização da fundação. A geração atual usa **validateOrderForProduction → revisão → createOrderDraft**, com validação de fabricação conforme o contrato MVP, fotos válidas por owner, data obrigatória e detecção de preço/estado inconsistente. Não é mais possível gerar um rascunho pela interface com campos obrigatórios incompletos. Erros estruturados levam aos campos. O pedido continua local, sem viabilidade de prazo/frete confirmada por servidor.
 
-`safeOrderSummary` omite arquivos, URLs Blob, nomes de arquivos, textos livres, detalhes da personalização e informações do cliente. A inspeção aparece no diálogo, via textContent, sem console de dados do usuário. `window.apexDevelopment.inspect()` fornece somente essa cópia segura. Eventos `apex:state-changed`, `apex:product-changed`, `apex:uploads-changed` e `apex:order-preview` divulgam apenas tipo, total e contagem de imagens.
+`safeOrderSummary` omite arquivos, URLs Blob, nomes de arquivos, textos livres, detalhes da personalização e informações do cliente. A inspeção aparece no diálogo, via textContent, sem console de dados do usuário. `window.apexDevelopment.inspect()` fornece somente essa cópia segura do estado comercial; `validate()` retorna erros e `inspectDraft()` expõe somente a inspeção segura do rascunho validado atual, ou null. Eventos `apex:state-changed`, `apex:product-changed`, `apex:uploads-changed` e `apex:order-preview` divulgam apenas tipo, total e contagem de imagens.
 
 ## Decisões do MVP — registradas antes da implementação da etapa 3
 
-KEEP mantém o comportamento necessário; SIMPLIFY substitui pelo contrato menor abaixo; LATER adia; REMOVE elimina a reprodução do legado. As decisões se aplicam à entrada dev, preservando index.html. O estado de implementação da etapa 2 está registrado na coluna Status; a conclusão da etapa 3 será registrada ao final.
+KEEP mantém o comportamento necessário; SIMPLIFY substitui pelo contrato menor abaixo; LATER adia; REMOVE elimina a reprodução do legado. As decisões se aplicam à entrada dev, preservando index.html. A coluna Status reflete o resultado atual da etapa 3. A matriz anterior continua recuperável no commit f2405f9.
 
 - Validação de produção: KEEP, com erros estruturados, fotos por figura/pet e revisão obrigatória.
 - Calendário: SIMPLIFY para data necessária obrigatória, hoje ou futuro, sem plugin/bloqueio de dias da semana e sem reajuste automático de preço.
@@ -84,29 +84,29 @@ Os nomes nesta tabela descrevem comportamentos próprios; não são cópias das 
 | Quantidades de acessórios/logótipos | IMPLEMENTADA LOCALMENTE | KEEP | [data-mf-accessories-quantity-option], [data-mf-logos-quantity-option] | 0–5 por categoria/figura; campos próprios, foto e preço central |
 | Seleção dos 35 especiais e anexos adicionais | IMPLEMENTADA LOCALMENTE | KEEP | mf_special_accessories[], [data-mf-accessory-extras-panel] | Slugs, painel correspondente, upload com owner; preço do catálogo |
 | Filtros, busca e editor avançado dos especiais | PENDENTE | LATER | Catálogo e anexos especiais | Catálogo básico funciona; paridade de filtros/editor ainda não implementada |
-| “Outro” com orçamento | PENDENTE | LATER | mf_special_other, texto/fotos | Dados locais possíveis; montagem bloqueada enquanto não houver preço definido |
+| “Outro” com orçamento | PENDENTE | LATER | mf_special_other, texto/fotos | LATER: opção fora de preço documentado oculta no laboratório; API rejeita se injetada no estado. |
 | Tamanho humano/pet principal | IMPLEMENTADA LOCALMENTE | KEEP | mf_size_option / mf_pet_size_option | 6/10/15/20 cm; multiplicador por figura, tabela pet independente |
 | Pets adicionais | IMPLEMENTADA LOCALMENTE | KEEP | mf_pets_option, .pet-type, .pet-size, foto por slot | 0–3 pets, tipo/tamanho/fotos associados, tabela 4/6/10 cm |
-| Catálogo de raças e dependências espécie/raça | PENDENTE | SIMPLIFY | mf_pet_breed, mf_pet_N_breed | Seletores herdados ainda sem popular todas as raças; detalhes/foto ficam disponíveis |
+| Catálogo de raças e dependências espécie/raça | IMPLEMENTADA LOCALMENTE | SIMPLIFY | mf_pet_breed, mf_pet_N_breed | Texto opcional para raça principal/adicional, sem catálogo externo. |
 | Minis: quantidade, tamanho, descrição/foto | IMPLEMENTADA LOCALMENTE | KEEP | mf_mini_option, mf_mini_size_option, [data-mf-mini-units] | Campos genéricos por mini; quantidade e tamanho precificados |
-| Minis: seletores específicos de rosto/roupa do legado | PENDENTE | SIMPLIFY | Campos dinâmicos de mini | Paridade desses subcampos ainda não existe; não confundir descrição genérica com configuração completa |
+| Minis: seletores específicos de rosto/roupa do legado | IMPLEMENTADA LOCALMENTE | SIMPLIFY | Campos dinâmicos de mini | SIMPLIFY: descrição de aparência/roupa e foto obrigatória por mini; sem seletores complexos. |
 | Bases e adicionais | IMPLEMENTADA LOCALMENTE | KEEP | mf_extra_option[], mf_extra_text_data | Seleção e preço; bases pagas mutuamente exclusivas pela interface |
 | Caixa e dedicatória | IMPLEMENTADA LOCALMENTE | KEEP | mf_box_option, campos e upload da caixa | Preço por tamanho, dupla para casal, sem caixa a 20 cm, texto/foto associados |
-| Prazo e data nativa | IMPLEMENTADA LOCALMENTE | KEEP | mf_shipping_option, mf_shipping_date, flexibilidade | Urgência e mínimo de dias no campo nativo; notas no estado |
-| Calendário comercial completo | PENDENTE | SIMPLIFY | Dias da semana, datas e dependências comerciais | Ainda falta bloqueio original de sábado/domingo/segunda e validação completa da data |
+| Prazo e data nativa | IMPLEMENTADA LOCALMENTE | KEEP | mf_shipping_option, mf_shipping_date, flexibilidade | Prazo explicitamente selecionado; data necessária no estado/resumo. Data não reajusta preço nem urgência. |
+| Calendário comercial completo | IMPLEMENTADA LOCALMENTE | SIMPLIFY | Dias da semana, datas e dependências comerciais | SIMPLIFY: date nativo obrigatório, hoje/futuro, regras futuras em config/mvp.js; sem bloquear dias da semana. |
 | Cálculo e resumo | IMPLEMENTADA LOCALMENTE | KEEP | calculatePrice(orderState), [data-mf-summary-price], hero, barra e breakdown | Centavos EUR, decomposição, subtotal por quantidade e caneca separada |
 | Validação estrutural do rascunho | IMPLEMENTADA LOCALMENTE | KEEP | validateOrder / buildOrder | Erros explícitos para preço/quantidade/owner inválidos e foto ausente da caneca |
-| Validação completa de produção e modal de lembretes | PENDENTE | KEEP | Campos obrigatórios por passo | Falta paridade de foto/cabelo/pele/roupa/caixa/data, foco e mensagens por passo |
+| Validação completa de produção e modal de lembretes | IMPLEMENTADA LOCALMENTE | KEEP | Campos obrigatórios por passo | validateOrderForProduction, erros estruturados, foco por campo e bloqueio; sem reproduzir modal de upsell/lembretes legado. |
 | Seleção múltipla, preview e remoção de imagens | IMPLEMENTADA LOCALMENTE | KEEP | change file, multiple original, botão remover | Blob/File em memória, UUID, owner, revogação de URL |
 | Validação real dos arquivos | IMPLEMENTADA LOCALMENTE | KEEP | config/uploads.js | Bytes, allowlist MIME, assinatura e decodificação no navegador; erros sem expor conteúdo |
 | Arrastar/soltar, cortar, desenhar, desfazer/refazer | PENDENTE | LATER | Editor e drop targets herdados | Não há editor local nesta etapa; seleção funciona pelo seletor de arquivos |
 | Upsell com imagem própria/esboço | IMPLEMENTADA LOCALMENTE | KEEP | Modal existente, radios e arquivo | Item gift-1 + upload explícito ou referência ao item principal; sem GET add-to-cart |
 | Várias canecas/editar/remover item de carrinho | PENDENTE | LATER | Drawer e ações por item | Fundação contempla uma caneca por rascunho; repetição de adicionar atualiza esse adicional |
-| Construção/inspeção de pedido | IMPLEMENTADA LOCALMENTE | KEEP | submit local / barra fixa | Objeto normalizado e diálogo seguro, sem transação |
-| Carrinho persistente e restaurar configuração | PENDENTE | REMOVE | Drawer/session restore | Nenhuma API ou sessão da MiFunko; rascunho apenas em memória |
+| Construção/inspeção de pedido | IMPLEMENTADA LOCALMENTE | KEEP | submit local / barra fixa | createOrderDraft após revisão e validação; confirmação visual e inspeção técnica recolhida, sem transação. |
+| Carrinho persistente e restaurar configuração | NÃO NECESSÁRIA PARA APEX | REMOVE | Drawer/session restore | REMOVE: drawer/controles/sessão WooCommerce fora do fluxo. Persistência própria futura é LATER. |
 | Header mobile, galeria e FAQ | IMPLEMENTADA LOCALMENTE | KEEP | Click/teclado, thumbs/setas, faq-toggle | Interações vanilla preservando markup/classes |
-| Carrosséis secundários, contadores, abas informativas e vídeo | PENDENTE | SIMPLIFY | Reviews, social proof, info tabs, vídeo | Conteúdo estático preservado; vídeo externo inativo |
-| Barra fixa: comportamento completo de scroll | PENDENTE | SIMPLIFY | Scroll/intersection, etapa ativa | Totais e botão conectados; paridade completa da aparição da barra ainda não certificada |
+| Carrosséis secundários, contadores, abas informativas e vídeo | IMPLEMENTADA LOCALMENTE | SIMPLIFY | Reviews, social proof, info tabs, vídeo | SIMPLIFY: conteúdo estático, controles de carrosséis/vídeo inativos retirados; animação/player são LATER. |
+| Barra fixa: comportamento completo de scroll | IMPLEMENTADA LOCALMENTE | SIMPLIFY | Scroll/intersection, etapa ativa | SIMPLIFY: botão direciona à revisão local; resumo é acesso primário, sem recriar regras de scroll do legado. |
 | Eventos mf:* para plugins antigos | NÃO NECESSÁRIA PARA APEX | REMOVE | Contratos legados | Eventos locais apex:* bastam nesta entrada sem plugins |
 | AJAX WooCommerce, nonces e validação por contador HTML | NÃO NECESSÁRIA PARA APEX | REMOVE | POST/admin-ajax/HTML remoto | Não reutilizar esse protocolo no backend próprio futuro |
 | jQuery/React embarcados por WP | NÃO NECESSÁRIA PARA APEX | REMOVE | Dependências de plugins | Nenhum módulo local precisa deles |
@@ -129,4 +129,8 @@ Não foram adicionados segredos, cookies, sessões, arquivos pessoais ou credenc
 
 ## Testes e evidências
 
-Consulte FOUNDATION-VALIDATION.md. DEPENDENCY-CLASSIFICATION.md classifica as 110 declarações externas e os serviços/carregadores transitivos. Os screenshots e dados efêmeros de testes ficam em test-results (ignorado no Git). Essa matriz explicita as lacunas; o resultado é fundação revisável para a próxima etapa, não substituição integral do sistema remoto.
+Consulte FOUNDATION-VALIDATION.md. DEPENDENCY-CLASSIFICATION.md classifica as 110 declarações externas e os serviços/carregadores transitivos. Os screenshots e dados efêmeros de testes ficam em test-results (ignorado no Git). O contrato atual é APEX-MVP-CONTRACT.md. O fluxo obrigatório passa sem rede externa; as opções LATER/REMOVE não bloqueiam o MVP. Aparência remota será substituída no rebranding.
+
+## Resultado da etapa 3
+
+Todos os comportamentos KEEP/SIMPLIFY do contrato MVP têm implementação local. Não resta dependência funcional de product-personalized.js no fluxo de produto → configuração/fotos → data → preço → revisão → orderDraft. Editor avançado não foi reconstruído; previews usam o arquivo original. O index original e a identidade visual permanecem preservados.
