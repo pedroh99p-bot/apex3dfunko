@@ -1,0 +1,473 @@
+{
+  "consulted": "2026-09-11",
+  "resources": [
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/variables.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 883,
+      "file": "variables.css",
+      "sha256": "0596eb8164d7ed67bed828ef72d2b214f238d3b5bf018548c1cfef9bf4b2c7bb",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/header.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 11535,
+      "file": "header.css",
+      "sha256": "9e5c169983f03aae6ef80c83f334c3bbbfae1c1d95dc59be2ad9cdf07ae603b1",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/footer.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 5572,
+      "file": "footer.css",
+      "sha256": "fcc9c29029eed5f38649aea8b2733fa24106817b1c161220032c19e363a4a6ac",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/styles.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 15829,
+      "file": "styles.css",
+      "sha256": "b557ca9ea0eee2faa9fb7c9d90897158eaaff216c41e8916b41c96f4529e821a",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/product-personalized.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 163466,
+      "file": "product-personalized.css",
+      "sha256": "06989443f33773c581af6224ebf87a73b5a48b669c4771b401c94d40f212cd8a",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/extra-step/extra-step.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 8350,
+      "file": "extra-step.css",
+      "sha256": "44bdbaacdfd062c0e02a7830a4432ac8c14330084ce728a35eca9398f533ca7a",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/mini-step/mini-step.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 7667,
+      "file": "mini-step.css",
+      "sha256": "1cbb461e11f0ffdd5137e062c82e8428b55e27c072e6681d64af40086f8ca17f",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/pet-groups-tech/pet-groups-tech.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 663,
+      "file": "pet-groups-tech.css",
+      "sha256": "dcffb0eeef93030a9f5aa34aa6afdbe12fcd310cee57b00026ed82a8383de0ba",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/step-nav/step-nav.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 2010,
+      "file": "step-nav.css",
+      "sha256": "33c87f4dfda0c6f90bc853bf13d1f859a200e4cc29b658413221c37a0c593ad2",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/summary-card/summary-card.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 8576,
+      "file": "summary-card.css",
+      "sha256": "a39b7708e7d7bfded307f63b9ebe444289e8102b9b18ef1438673189dafd3bff",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/type-selector/type-selector.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 4387,
+      "file": "type-selector.css",
+      "sha256": "fcd066263696f8e7ee2200ab98cfc7894fe9fb35ec79a25dc5012927092b5c10",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/b2b-cta/b2b-cta.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 3214,
+      "file": "b2b-cta.css",
+      "sha256": "548108e8401f8825963872cad98b2a9870389efc566a2328531e8bf8f29632ce",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/cart-drawer/cart-drawer.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 10915,
+      "file": "cart-drawer.css",
+      "sha256": "f033c2d8f55eb16c1ee6da39a87b9d2b4219416d0fc9415c806ab462e2590bb9",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/delivery-section/delivery-section.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 11343,
+      "file": "delivery-section.css",
+      "sha256": "8369dd4c21e1c38de05b4fe261a95504ab893778cb751a7bce593450356a62fe",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/faq-section/faq-section.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 747,
+      "file": "faq-section.css",
+      "sha256": "a48fc644ff89364874a2b736e136017c1edeac3a74eb70ec77b1204788b78738",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/fixed-cart-bar/fixed-cart-bar.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 5647,
+      "file": "fixed-cart-bar.css",
+      "sha256": "6fb7bc219b1828ac98e9eddda94c67d3fc71f180f917fee3e7d7afa67de1a936",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/gift-upsell/gift-upsell.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 17016,
+      "file": "gift-upsell.css",
+      "sha256": "c7627e0cbf5d89e292460556b784db0beb561f2639d0dd0a27e1904028b0625c",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/image-annotator/image-annotator.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 3925,
+      "file": "image-annotator.css",
+      "sha256": "7b81d0b1b2fc936ad7ca2ae4ee9af5e089b6ada13812dc3d17d831ee9e70a52b",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/info-tabs/info-tabs.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 6551,
+      "file": "info-tabs.css",
+      "sha256": "b3576bb19bf277c333867a0b95d56f7886be56427f5a493e0f5daa7cecd4f92d",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/presupuesto-hero/presupuesto-hero.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 9573,
+      "file": "presupuesto-hero.css",
+      "sha256": "dffc7668df5199afdd55dd3f78e5e0d01776eca034c58f56577b8dc458500516",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/product-hero/product-hero.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 11605,
+      "file": "product-hero.css",
+      "sha256": "6beff36dff800e8934c7cb1b62043a77c4467cd2258ca412d5de7b892805f42a",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/reviews-mini-slider/reviews-mini-slider.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 3832,
+      "file": "reviews-mini-slider.css",
+      "sha256": "7d8d5f5d2bf7e7a0857c4c49693f65b40c29e2b28b3d6ec037e10d3edaa02e00",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/reviews-proof/reviews-proof.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 1289,
+      "file": "reviews-proof.css",
+      "sha256": "3c3cf4f3bb4dabf2001b49549f80892de40d5ae8f1cec0eede05d3e8c325157d",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/reviews-slider/reviews-slider.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 10883,
+      "file": "reviews-slider.css",
+      "sha256": "d5650689735f6e406bff3a24727d1f1e87933e00f9190542380b9073260c693e",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/sales-features/sales-features.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 1265,
+      "file": "sales-features.css",
+      "sha256": "c0619275e9163eece44c221268f5eb31390433145d6c127669348b536fc28daa",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/sales-video/sales-video.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 1630,
+      "file": "sales-video.css",
+      "sha256": "fefb7340590b131697a90ea9e490a5a108b89fd5ec9d15ea656e820503d35264",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/showcase-gallery/showcase-gallery.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 3071,
+      "file": "showcase-gallery.css",
+      "sha256": "8b74f708d4a586cc65edd39b5d2f21ffbd18a695ed798acf75cb6a563ecb5cf9",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/sketch-cta/sketch-cta.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 3075,
+      "file": "sketch-cta.css",
+      "sha256": "d8677d0b85a0a22ae2cdbbff8db098190ebed9f810a252d31c790797d5e37e11",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/social-proof/social-proof.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 2895,
+      "file": "social-proof.css",
+      "sha256": "cfae98125405abc4086c440f0e071087c9bb3b25a2022277c1076adc320aaeeb",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/trust-section/trust-section.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 3699,
+      "file": "trust-section.css",
+      "sha256": "4cca10e88d62331ec81ebe22af4111f107f65ae2b6a6e82c06ad71539c4ef8a0",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/video-modal/video-modal.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 1125,
+      "file": "video-modal.css",
+      "sha256": "ca4eb0d89bff47f81e1bb89128ae85b1bd30610a40cb67238c549642ae528e0c",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/whatsapp-cta/whatsapp-cta.css?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 1843,
+      "file": "whatsapp-cta.css",
+      "sha256": "c2ed9a372c293d820b873bb5f6fdeede20144896dda121047ba4fc354a5232de",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/js/main.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 2769,
+      "file": "main.js",
+      "sha256": "63eb7e3abf60e35362122ac1017a96deda11d2dcdcdb9a81484561f6de638b7f",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/js/footer.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 39,
+      "file": "footer.js",
+      "sha256": "e446af83163f1c18bf3dcf2d6ddc95d921a9114dfe49293000cf9215d7c25b8c",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/js/product-personalized.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 398768,
+      "file": "product-personalized.js",
+      "sha256": "028c210294baad09ab4a4a1a399fcc8be596d872f4b0c258f54e988764151b87",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/js/visitor-tracking.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 9378,
+      "file": "visitor-tracking.js",
+      "sha256": "a4b0d1e5e9ba78006d88950c6cf4aef81661ed07ddb1e6a9320656ccdfea21a2",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/step-nav/step-nav.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 10019,
+      "file": "step-nav.js",
+      "sha256": "2def186fcc8ea74f195565920a295115cea9a6876f20ecdf9924d13fa472ab06",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/cart-drawer/cart-drawer.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 15350,
+      "file": "cart-drawer.js",
+      "sha256": "15d0620671425e6ace2430d6410c9aef8f39563691bba1ba703c08598ad35199",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/gift-upsell/gift-upsell.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 11644,
+      "file": "gift-upsell.js",
+      "sha256": "f34ef65dd0e0097123b07415b967acb510e5389824f3c5cf7be27f51a031e0ed",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/image-annotator/image-annotator.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 14240,
+      "file": "image-annotator.js",
+      "sha256": "c1705ad82586f5c3b2659423154b39e5f69b9baf0303401e38fbdec2ab4df1af",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/presupuesto-hero/presupuesto-hero.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 556,
+      "file": "presupuesto-hero.js",
+      "sha256": "e26f3659760eb78076a4b6fb76eff4a5fa86162bf717214c48a102d202ecc765",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/product-hero/product-hero.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 11213,
+      "file": "product-hero.js",
+      "sha256": "416d69f358bce83b077f613e9568bb206851c9ecf5d649fc74f37350bf85e715",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/reviews-mini-slider/reviews-mini-slider.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 2005,
+      "file": "reviews-mini-slider.js",
+      "sha256": "c1802e6e33faa29c0deebbf8553224bbb48b74bff54cb8f78add3aefe03f4337",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/reviews-slider/reviews-slider.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 3450,
+      "file": "reviews-slider.js",
+      "sha256": "cd345b5f69d9bc2642a5cf549956d36236ad65f7addba96214ff9df903786222",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/social-proof/social-proof.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 2085,
+      "file": "social-proof.js",
+      "sha256": "660707f80185e65d235fc5703a3d54b909d0dc2b0af24510df2048caf58c0e90",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/video-modal/video-modal.js?ver=3.6.36.1788504072",
+      "status": 200,
+      "bytes": 2038,
+      "file": "video-modal.js",
+      "sha256": "f826572466290318a253e57ad70ab4223212a2b70e9f70fe875505c7d5e0041d",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/plugins/redsyspur/./pages/assets/css/jquery-ui.min.css?ver=1.14.1",
+      "file": "external-0.css",
+      "status": 200,
+      "bytes": 31421,
+      "sha256": "fe1c0320c89cb4704d42c6ea437f9e849cbc9a49f7cda2e20b9d0594de3efa25",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/plugins/woocommerce-paypal-payments/assets/ppcp-button-css-gateway.css?ver=4.1.2",
+      "file": "external-1.css",
+      "status": 200,
+      "bytes": 1232,
+      "sha256": "8444c5b134086bf549bd385917ae0590114e9e7f2af61e0816927d9ba2082910",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap",
+      "file": "external-2.css",
+      "status": 200,
+      "bytes": 2096,
+      "sha256": "501b07c1621110ebea23febeaae481a6972e2179362348f90a254c95c8ef5608",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://fonts.googleapis.com/icon?family=Material+Icons",
+      "file": "external-3.css",
+      "status": 200,
+      "bytes": 475,
+      "sha256": "07bd90fa08501eef587462beb0d267aef595c95292e002a30c5cd5a20b4af211",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/plugins/gdpr-cookie-compliance/dist/styles/gdpr-main.css?ver=5.1.0",
+      "file": "external-4.css",
+      "status": 200,
+      "bytes": 88483,
+      "sha256": "83b5663fd2638d52bf54d0a2ad6b5f5164c36865ae2466d5bfd4d3f4c8be5121",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    },
+    {
+      "url": "https://mifunko.com/personalizacion/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-10.8.1",
+      "file": "external-5.css",
+      "status": 200,
+      "bytes": 14006,
+      "sha256": "45173f1550e57be245f3ed3b0f6fde7962e27901d5a04adf9342e546500bed49",
+      "origin": "MiFunko/terceiros; consultado apenas para auditoria",
+      "license": "Não fornecida; não incorporado ao aplicativo"
+    }
+  ]
+}
