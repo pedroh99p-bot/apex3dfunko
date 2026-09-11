@@ -1,7 +1,9 @@
 import { startConfigurator } from './ui.js';
 import { startHeroCarousel } from './carousel.js';
+import { restoreProductImagery } from './product-imagery.js';
 try {
   startConfigurator();
+  restoreProductImagery();
   startHeroCarousel();
   document.documentElement.dataset.apexReady = 'true';
 } catch {

@@ -8,7 +8,7 @@ export function startHeroCarousel() {
   const play = root.querySelector('[data-carousel-play]');
   const status = root.querySelector('.carousel-status');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  let index = 0, playing = !motion.matches, hovering = false, visible = true, timer, pointer;
+  let index = 0, playing = !motion.matches, hovering = false, visible = true, timer, pointer, playbackIntent;
   function schedule() {
     clearTimeout(timer);
     if (playing && !hovering && visible && !document.hidden) timer = setTimeout(() => show(index + 1), 5500);
@@ -38,7 +38,9 @@ export function startHeroCarousel() {
   root.querySelector('[data-carousel-prev]').addEventListener('click', () => move(-1));
   root.querySelector('[data-carousel-next]').addEventListener('click', () => move(1));
   dots.forEach((dot, i) => dot.addEventListener('click', () => { pause(); show(i); }));
-  play.addEventListener('click', () => { playing = !playing; updatePlayback(); });
+  play.addEventListener('pointerdown', () => { playbackIntent = !playing; });
+  play.addEventListener('pointercancel', () => { playbackIntent = undefined; });
+  play.addEventListener('click', () => { playing = playbackIntent ?? !playing; playbackIntent = undefined; updatePlayback(); });
   root.addEventListener('focusin', event => {
     // Focusing any control stops autoplay; the play button can explicitly restart it.
     if (!root.contains(event.relatedTarget)) pause();

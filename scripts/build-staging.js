@@ -10,10 +10,11 @@ await mkdir(output);
 // Explicit public files; never the historical index, docs or credentials.
 const publicFiles = [
   'js/main.js','js/ui.js','js/state.js','js/pricing.js','js/uploads.js','js/date.js','js/validation.js','js/order.js','js/review.js',
-  'js/carousel.js',
+  'js/carousel.js','js/product-imagery.js',
   'css/tokens.css','css/apex.css',
   'config/brand.js','config/products.js','config/pricing.js','config/uploads.js','config/mvp.js',
   'assets/brand/apex-logo.webp',
+  'assets/products/individual.webp','assets/products/casal.webp','assets/products/pet.webp',
   'assets/examples/individual-futebol.webp','assets/examples/individual-profissao.webp','assets/examples/casal.webp','assets/examples/pet.webp',
 ];
 for (const file of publicFiles) {
