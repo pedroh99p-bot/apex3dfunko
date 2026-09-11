@@ -1,45 +1,63 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createOrderState } from '../js/state.js';
-import { calculatePrice } from '../js/pricing.js';
+import { createOrderState, createFigure } from '../js/state.js';
+import { calculatePrice, formatMoney } from '../js/pricing.js';
 import { UploadStore } from '../js/uploads.js';
-import { buildOrder, safeOrderSummary } from '../js/order.js';
-
-test('cenários observados no baseline: tipo, tamanho e caixa', () => {
-  for (const [type, size, box, expected] of [
-    ['individual', 6, 'caja_standard', 5900], ['individual', 10, 'caja_standard', 7900],
-    ['pareja', 15, 'caja_doble', 21900], ['pareja', 20, 'caja_standard', 23900],
-    ['mascota', 10, 'caja_standard', 7900], ['boda', 6, 'caja_standard', 11900],
-  ]) {
-    const state = createOrderState(type); state.size = size; state.customizations.box.type = box;
-    assert.equal(calculatePrice(state).unitTotalCents, expected);
-  }
+import { pricing } from '../config/pricing.js';
+for (const [product, expected] of [['individual',19700],['pet',15700],['casal',34700],['familia',47700]]) {
+  test('oferta BRL: ' + product, () => {
+    const price = calculatePrice(createOrderState(product));
+    assert.equal(price.totalCents, expected); assert.equal(price.currency, 'BRL');
+    assert.match(formatMoney(expected), /R\$/); assert.equal(price.freightCents, null);
+  });
+}
+test('pessoas adicionais preservam contagem e preço por pessoa', () => {
+  const state = createOrderState('familia'); state.customizations.additionalPeople = 2;
+  state.customizations.figures.push(createFigure(3), createFigure(4));
+  assert.equal(calculatePrice(state).totalCents, 73700);
+  state.customizations.figures.pop(); assert.throws(() => calculatePrice(state));
+  const pet = createOrderState('pet'); pet.customizations.additionalPeople = 1; assert.throws(() => calculatePrice(pet));
 });
-test('regras documentadas: figuras independentes, três minis, animais e urgência', () => {
-  const state = createOrderState('pareja');
-  state.customizations.figures[1].eyes = 'ojos_verdes';
-  state.customizations.figures[1].specialAccessories = ['guitarra-8'];
-  state.customizations.minis = { quantity: 3, size: 6 };
-  state.customizations.pets = [{ size: 4 }, { size: 6 }, { size: 10 }];
-  state.shipping.option = 'envio_express';
-  assert.equal(calculatePrice(state).unitTotalCents, 43500);
-  state.quantity = 2; state.gift.enabled = true;
-  assert.equal(calculatePrice(state).totalCents, 89000);
+test('cada upsell usa a tabela central em centavos', () => {
+  const cases = [
+    [s => s.customizations.pets.push({ type: 'Cão', size: 4, fields: {} }), 7900],
+    [s => s.customizations.figures[0].accessories = 1, 1900],
+    [s => s.customizations.figures[0].logos = 1, 3900],
+    [s => s.customizations.extras = ['base-com-nome'], 1900],
+    [s => s.customizations.extras = ['base-com-nome-data'], 2900],
+    [s => s.customizations.box.type = 'caja_personalizada', 3900],
+    [s => s.customizations.figures[0].specialAccessories = ['detalhado'], 3900],
+  ];
+  for (const [set, delta] of cases) { const s = createOrderState(); set(s); assert.equal(calculatePrice(s).totalCents, 19700 + delta); }
 });
-test('falha explícita para preço ou quantidade desconhecidos', () => {
-  const state = createOrderState(); state.quantity = -1;
-  assert.throws(() => calculatePrice(state)); state.quantity = 1;
-  state.size = 99; assert.throws(() => calculatePrice(state));
-  state.size = 20; state.customizations.box.type = 'caja_doble';
-  assert.throws(() => calculatePrice(state));
+test('combinação de adicionais, quantidade e total sem floats', () => {
+  const s = createOrderState(); const c = s.customizations;
+  c.additionalPeople = 1; c.figures.push(createFigure(1));
+  c.pets = [{ type: 'Cão', size: 4, fields: {} }];
+  c.figures[0].accessories = 1; c.figures[0].logos = 1; c.figures[0].specialAccessories = ['detalhado'];
+  c.extras = ['base-com-nome-data']; c.box.type = 'caja_personalizada';
+  assert.equal(calculatePrice(s).totalCents, 57100);
+  s.quantity = 2; assert.equal(calculatePrice(s).totalCents, 114200);
+  assert.equal(pricing.status, 'homologation');
+});
+test('opções sem preço aprovado e valores arbitrários são rejeitados', () => {
+  for (const change of [
+    s => s.quantity = -1, s => s.quantity = 1.5, s => s.size = 10,
+    s => s.gift.enabled = true, s => s.customizations.minis.quantity = 1,
+    s => s.customizations.figures[0].specialAccessories = ['inventado'],
+    s => s.customizations.figures[0].accessories = -1,
+    s => s.shipping.option = 'envio_express',
+  ]) { const s = createOrderState(); change(s); assert.throws(() => calculatePrice(s)); }
+  const s = createOrderState(); s.price = 1; assert.equal(calculatePrice(s).totalCents, 19700);
 });
 const png = new Uint8Array([137,80,78,71,13,10,26,10]);
 test('upload: MIME, assinatura, bytes, homônimos, substituição e remoção', async () => {
-  const store = new UploadStore({ maxBytes: 8, mimeTypes: ['image/png'], maxFilesPerField: null });
+  const store = new UploadStore({ maxBytes: 8, mimeTypes: ['image/png'], maxFilesPerField: 2 });
   const owner = { itemId: 'main-1', field: 'figure-1.face' };
   const good = new File([png], 'mesmo.png', { type: 'image/png' });
   await store.add(owner, [good, good], { multiple: true });
   assert.equal(store.list().length, 2); assert.notEqual(store.list()[0].id, store.list()[1].id);
+  await assert.rejects(store.add(owner, [good], { multiple: true }), /Limite/);
   await assert.rejects(store.add(owner, [new File([png, 'x'], 'grande.png', { type: 'image/png' })]), /MB/);
   await assert.rejects(store.add(owner, [new File(['html'], 'falso.png', { type: 'image/png' })]), /conteúdo/);
   await assert.rejects(store.add(owner, [new File(['x'], 'x.svg', { type: 'image/svg+xml' })]), /Tipo/);
@@ -48,15 +66,8 @@ test('upload: MIME, assinatura, bytes, homônimos, substituição e remoção', 
   await store.add(owner, [good]); assert.equal(store.list().length, 1);
   assert.equal(store.metadata()[0].file, undefined); store.clear(); assert.equal(store.list().length, 0);
 });
-test('pedido normalizado associa upsell; inspeção não contém texto ou arquivos pessoais', () => {
-  const state = createOrderState(); state.gift = { enabled: true, imageSource: 'upload', text: 'texto privado' };
-  assert.throws(() => buildOrder(state), /imagem da caneca/);
-  state.uploads = [{ id: 'img-1', owner: { itemId: 'gift-1', field: 'image' }, name: 'nome privado.png', type: 'image/png', size: 8 }];
-  state.notes = 'observações privadas';
-  const order = buildOrder(state);
-  assert.deepEqual(order.items[1].uploads, ['img-1']);
-  assert.equal(order.pricing.totalCents, 7900);
-  const safe = JSON.stringify(safeOrderSummary(order));
-  assert.doesNotMatch(safe, /privad|base64|previewUrl/);
-  state.gift.enabled = false; assert.equal(buildOrder(state).uploads.length, 0);
+test('upload pendente é cancelado em troca de composição', async () => {
+  const store = new UploadStore(), file = new File([png], 'referencia.png', { type: 'image/png' });
+  const pending = store.add({ itemId: 'main-1', field: 'foto' }, [file]);
+  store.cancelPending(); await pending; assert.equal(store.list().length, 0);
 });

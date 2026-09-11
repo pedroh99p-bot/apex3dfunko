@@ -1,174 +1,113 @@
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
-import { mkdir, writeFile } from 'node:fs/promises';
-import { pathToFileURL } from 'node:url';
-const { chromium } = await import(process.env.APEX_PLAYWRIGHT_PATH ? pathToFileURL(process.env.APEX_PLAYWRIGHT_PATH).href : 'playwright');
-const origin = 'http://127.0.0.1:4175';
-const server = spawn(process.execPath, ['scripts/dev-server.js'], { env: { ...process.env, PORT: '4175' }, stdio: 'ignore', windowsHide: true });
-let browser;
-const errors = [], unsafe = [], results = [];
-try {
-  for (let i = 0; i < 50; i++) {
-    try { if ((await fetch(origin)).ok) break; } catch {}
-    await new Promise(resolve => setTimeout(resolve, 100));
+import { suite } from './browser-helpers.js';
+await suite('mvp-smoke', 4175, async ({ page, run, open, field, inspect, total, upload, fixture, complete, review, generate, extras }) => {
+  await run('Configuração incompleta bloqueia revisão e permite focar o erro', async () => {
+    await page.locator('.review-button').click();
+    assert.equal(await page.locator('#order-review').evaluate(n => n.open), false);
+    assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
+    await page.locator('#validation-errors button').first().click();
+    assert.equal(await page.evaluate(() => document.activeElement.type), 'file');
+  });
+  for (const product of ['individual','pet','casal','familia']) {
+    await run('Fluxo válido até orderDraft em BRL: ' + product, async () => {
+      await complete(product); await review();
+      assert.match(await page.locator('#review-content').innerText(), /R\$/);
+      assert.doesNotMatch(await page.locator('#review-content').innerText(), /mf_|€|schemaVersion/);
+      assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
+      await generate();
+      assert.match(await page.locator('#order-confirmation').innerText(), /Nenhum pedido foi enviado/);
+    });
   }
-  browser = await chromium.launch({ channel: process.env.APEX_BROWSER || 'msedge', headless: true });
-  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } }); page.setDefaultTimeout(12000);
-  page.on('pageerror', error => errors.push(error.message));
-  const png = Buffer.from(await page.evaluate(() => {
-    const canvas = document.createElement('canvas'); canvas.width = canvas.height = 2;
-    canvas.getContext('2d').fillRect(0, 0, 2, 2); return canvas.toDataURL().split(',')[1];
-  }), 'base64');
-  const payload = { name: 'referencia-sintetica.png', mimeType: 'image/png', buffer: png };
-  const guard = async (route, offline = false) => {
-    const req = route.request(), url = new URL(req.url());
-    if (req.method() !== 'GET' || (req.resourceType() === 'script' && url.origin !== origin) || /add-to-cart|admin-ajax|checkout|finalizar-compra/.test(url.href)) {
-      unsafe.push({ method: req.method(), type: req.resourceType() }); return route.abort();
-    }
-    return offline && url.origin !== origin ? route.abort() : route.continue();
-  };
-  await page.route('**/*', route => guard(route));
-  async function run(name, task) { await task(); results.push({ name, passed: true }); console.log(`PASS MVP ${name}`); }
-  const open = async (page, selector) => { const el = page.locator(selector); if (await el.getAttribute('aria-expanded') !== 'true') await el.click(); };
-  const select = async (page, name, value) => { const input = page.locator(`[name="${name}"][value="${value}"]`); await input.locator('xpath=..').click(); assert.equal(await input.isChecked(), true); };
-  const chooseDate = async (page, offset = 30) => {
-    const date = await page.evaluate(offset => { const d = new Date(); d.setDate(d.getDate() + offset); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }, offset);
-    await page.locator('[data-mf-shipping-date]').fill(date); return date;
-  };
-  const fillHuman = async (page, i = 1) => {
-    const prefix = i === 1 ? 'mf_' : 'mf_partner_2_';
-    await open(page, `[data-apex-figure="${i - 1}"] [data-mf-face-toggle]`);
-    await select(page, `${prefix}face_option`, 'negro');
-    await page.locator(`[name="${prefix}face_photo_upload[]"]`).setInputFiles(payload);
-    await page.waitForFunction(i => window.apexDevelopment.inspect().uploads.some(u => u.owner.field === `figure-${i}.mf_face_photo_upload[]`), i);
-    await open(page, `[data-apex-figure="${i - 1}"] [data-mf-skin-toggle]`);
-    await select(page, `${prefix}skin_tones_option`, 'estandard');
-    await open(page, `[data-apex-figure="${i - 1}"] [data-mf-outfit-toggle]`);
-    await page.locator(`[name="${prefix}outfit_detail_text"]`).fill('Camiseta lisa e calça azul');
-  };
-  await run('pedido inválido bloqueado com erros e navegação para o campo', async () => {
-    await page.goto(origin); await page.waitForSelector('html[data-apex-ready]');
-    assert.equal(await page.locator('[data-mf-cart-drawer],[data-mf-open-cart-drawer]').count(), 0);
-    await page.locator('.single_add_to_cart_button').click();
-    await page.locator('[data-error-code="PHOTO_REQUIRED"]').first().waitFor();
+  await run('Data passada bloqueia; hoje não acrescenta urgência', async () => {
+    await complete(); await page.locator('#needed-date').fill('2000-01-01');
+    await page.locator('.review-button').click(); assert.match(await page.locator('#validation-errors').innerText(), /passado/);
+    await total(19700);
+    await page.locator('#needed-date').fill(await page.locator('#needed-date').getAttribute('min'));
+    assert.equal((await page.evaluate(() => window.apexDevelopment.validate())).valid, true);
+  });
+  await run('Roupa e pose personalizadas exigem descrição e aceitam foto opcional', async () => {
+    await field('figure-1.outfit').selectOption('custom'); await field('figure-1.pose').selectOption('custom');
+    await page.locator('.review-button').click(); assert.match(await page.locator('#validation-errors').innerText(), /roupa personalizada/);
+    await field('figure-1.outfit.description').fill('Jaqueta vermelha'); await field('figure-1.pose.description').fill('Segurando um livro');
+    await upload('figure-1.mf_outfit_photo_upload[]'); await review();
+    assert.match(await page.locator('#review-content').innerText(), /Jaqueta vermelha/);
+    await page.getByRole('button', { name: 'Editar criação', exact: true }).click();
+    await field('figure-1.outfit').selectOption('reference');
+    assert.equal((await inspect()).uploads.length, 1);
+  });
+  await run('Seleção inválida bloqueia sem perder foto válida; descarte recupera', async () => {
+    await field('figure-1.mf_face_photo_upload[]').setInputFiles({ name: 'x.svg', mimeType: 'image/svg+xml', buffer: Buffer.from('<svg/>') });
+    await page.getByRole('button', { name: 'Descartar seleção inválida' }).waitFor();
+    assert.equal((await inspect()).uploads.length, 1);
+    await page.locator('.review-button').click(); assert.match(await page.locator('#validation-errors').innerText(), /Tipo inválido/);
+    await page.getByRole('button', { name: 'Descartar seleção inválida' }).click();
+    assert.equal((await page.evaluate(() => window.apexDevelopment.validate())).valid, true);
+  });
+  await run('PNG danificado rejeitado pelo decodificador real', async () => {
+    await field('figure-1.mf_face_photo_upload[]').setInputFiles({ name: 'x.png', mimeType: 'image/png', buffer: fixture.subarray(0, 16) });
+    await page.getByRole('button', { name: 'Descartar seleção inválida' }).waitFor();
+    assert.match(await page.locator('.file-error').innerText(), /danificada/);
+    await page.getByRole('button', { name: 'Descartar seleção inválida' }).click();
+  });
+  await run('Homônimos têm recibos próprios, remoção não afeta outras fotos', async () => {
+    await upload('figure-1.mf_face_photo_upload[]');
+    const images = (await inspect()).uploads; assert.equal(images.length, 2); assert.notEqual(images[0].id, images[1].id);
+    await page.getByRole('button', { name: 'Remover foto de Fotos da pessoa 1', exact: true }).first().click();
+    assert.equal((await inspect()).uploads.length, 1);
+  });
+  await run('Combinação: pessoa, pet, acessórios, objeto, base e caixa', async () => {
+    await complete(); await extras();
+    await field('figures').selectOption('1'); await upload('figure-2.mf_face_photo_upload[]');
+    await field('mf_pets_option').selectOption('1'); await field('mf_pet_1_type').selectOption('Cão'); await upload('mf_pet_1_photo[]');
+    await field('figure-1.accessories').selectOption('1'); await field('figure-1.mf_accessory_detail_1').fill('Livro');
+    await field('figure-1.logos').selectOption('1'); await field('figure-1.mf_logo_detail_1').fill('Capacete detalhado');
+    await page.getByLabel('Objeto detalhado · +R$').first().check();
+    await field('figure-1.object_detalhado').fill('Instrumento musical');
+    await field('mf_extra_option[]').selectOption('base-com-nome-data'); await field('mf_extra_text_data').fill('Ana'); await field('baseDate').fill('2020-01-01');
+    await field('mf_box_option').selectOption('caja_personalizada'); await field('mf_box_character_name').fill('Memórias');
+    await total(57100); await review(); await generate();
+    const result = await page.evaluate(() => window.apexDevelopment.inspectDraft());
+    assert.equal(result.pricing.totalCents, 57100); assert.equal(result.uploads.length, 3);
+    assert.deepEqual(result.uploads.map(u => u.owner.field), ['figure-1.mf_face_photo_upload[]','figure-2.mf_face_photo_upload[]','mf_pet_1_photo[]']);
+  });
+  for (const width of [1440,1024,768,430,390,360]) {
+    await run('Upsells e revisão responsivos em ' + width + 'px', async () => {
+      if (await page.locator('#order-confirmation').evaluate(n => n.open)) await page.locator('#close-confirmation').click();
+      await page.setViewportSize({ width, height: 1000 });
+      await page.locator('#upsells').scrollIntoViewIfNeeded();
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      await page.screenshot({ path: 'test-results/apex-upsells-' + width + '.png' });
+      await review();
+      assert.ok(await page.locator('#order-review').evaluate(n => n.scrollWidth <= n.clientWidth));
+      assert.equal(await page.evaluate(() => document.activeElement.id), 'review-title');
+      await page.screenshot({ path: 'test-results/apex-review-' + width + '.png' });
+      await page.keyboard.press('Escape');
+    });
+  }
+  await run('Remover adicionais limpa fotos incompatíveis e invalida draft', async () => {
+    await field('figures').selectOption('0'); await field('mf_pets_option').selectOption('0');
+    assert.equal((await inspect()).uploads.length, 1); assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
+  });
+  await run('Trocar produto limpa configuração, data, notas e todos os anexos', async () => {
+    await page.locator('#notes').fill('Uma observação');
+    await page.locator('[data-product="pet"]').click();
+    assert.equal((await inspect()).uploads.length, 0); await total(15700);
+    assert.equal(await page.locator('#notes').inputValue(), ''); assert.equal(await page.locator('#needed-date').inputValue(), '');
+  });
+  await run('Alteração durante revisão bloqueia geração até revisar novamente', async () => {
+    await complete(); await review();
+    await page.evaluate(() => {
+      const notes = document.querySelector('#notes'); notes.value = 'Mudou';
+      notes.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    await page.getByRole('button', { name: 'Gerar pedido de teste', exact: true }).click();
+    assert.match(await page.locator('#validation-errors').innerText(), /configuração mudou/);
     assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
-    await page.locator('[data-error-code="HAIR_REQUIRED"]').click();
-    assert.equal(await page.locator('[data-mf-face-body]').isVisible(), true);
   });
-  await run('configuração válida, preço e data necessária sem reajuste automático', async () => {
-    await fillHuman(page); const before = await page.evaluate(() => window.apexDevelopment.inspect().pricing.totalCents);
-    await chooseDate(page, -1); assert.equal(await page.locator('#apex-date-error').isVisible(), true);
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('[data-error-code="DATE_PAST"]').waitFor();
-    const date = await chooseDate(page, 0);
-    assert.match(await page.locator('[data-apex-date-summary]').textContent(), new RegExp(date.split('-').reverse().join('/')));
-    assert.equal(await page.evaluate(() => window.apexDevelopment.inspect().pricing.totalCents), before);
-    assert.equal(await page.evaluate(() => window.apexDevelopment.validate().valid), true);
+  await run('Conteúdo do usuário permanece texto na revisão', async () => {
+    await page.locator('#notes').fill('<img src=x onerror=alert(1)>');
+    await review(); assert.equal(await page.locator('#review-content img[src=x]').count(), 0);
+    assert.match(await page.locator('#review-content').innerText(), /<img src=x/);
+    await page.keyboard.press('Escape');
   });
-  await run('revisão clara antes de gerar, confirmação e inspeção segura', async () => {
-    await page.locator('[name="mf_instructions_text"]').fill('Observação sintética do teste');
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('#apex-order-review[open]').waitFor();
-    const text = await page.locator('#apex-order-review').innerText();
-    assert.match(text, /Camiseta lisa/); assert.match(text, /Observação sintética/); assert.match(text, /Fotos anexadas/);
-    assert.doesNotMatch(text, /mf_|figure-1|schemaVersion/);
-    assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
-    await page.locator('[data-apex-generate]').click(); await page.locator('#apex-order-preview[open]').waitFor();
-    const draft = await page.evaluate(() => window.apexDevelopment.inspectDraft());
-    assert.equal(draft.productionValidation, 'passed'); assert.equal(draft.pricing.totalCents, 5900);
-    assert.doesNotMatch(JSON.stringify(draft), /Observação sintética|referencia-sintetica|base64|previewUrl/);
-    await page.locator('#apex-order-preview button').click();
-  });
-  await run('alteração invalida o rascunho e exige nova revisão', async () => {
-    await page.locator('[name="mf_instructions_text"]').fill('Nova observação');
-    assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('#apex-order-review[open]').waitFor();
-    // Simula alteração assíncrona após a revisão: o botão não pode gerar conteúdo não revisado.
-    await page.evaluate(() => { const input = document.querySelector('[name="mf_instructions_text"]'); input.value = 'Alterado após revisão'; input.dispatchEvent(new Event('input', { bubbles: true })); });
-    await page.locator('[data-apex-generate]').click(); await page.locator('[data-error-code="REVIEW_STALE"]').waitFor();
-    assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
-  });
-  await run('arquivo inválido é rejeitado e pode ser descartado sem travar o fluxo', async () => {
-    await open(page, '[data-mf-face-toggle]');
-    await page.locator('#mf-face-photo-upload').setInputFiles({ name: 'falso.png', mimeType: 'image/png', buffer: Buffer.from('texto') });
-    await page.locator('[data-apex-discard-upload-error]').waitFor();
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('[data-error-code="UPLOAD_INVALID"]').waitFor();
-    await page.locator('[data-apex-discard-upload-error]').click();
-    assert.equal(await page.evaluate(() => window.apexDevelopment.validate().valid), true);
-  });
-  await run('caneca com foto própria no rascunho validado', async () => {
-    await page.locator('[data-mf-gift-upsell-open]').click(); await select(page, 'mf_gift_upsell_image_source', 'upload');
-    await page.locator('[data-mf-gift-upsell-modal-submit]').click(); await page.locator('[data-mf-gift-upsell-modal-error]').waitFor();
-    await page.locator('.mf-gift-upsell-modal__upload-input').setInputFiles(payload);
-    await page.locator('[data-mf-gift-upsell-modal] .apex-upload-list img').waitFor();
-    await page.locator('[data-mf-gift-upsell-modal-submit]').click();
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('#apex-order-review[open]').waitFor();
-    await page.locator('[data-apex-generate]').click();
-    const draft = await page.evaluate(() => window.apexDevelopment.inspectDraft());
-    assert.equal(draft.items.length, 2); assert.equal(draft.pricing.totalCents, 7900);
-    assert.equal(draft.uploads.find(u => u.id === draft.items[1].uploadIds[0]).owner.itemId, 'gift-1');
-    await page.locator('#apex-order-preview button').click(); await page.locator('[data-apex-remove-gift]').click();
-    assert.equal(await page.evaluate(() => window.apexDevelopment.inspect().items.length), 1);
-  });
-  await run('casal com fotos separadas e revisão responsiva', async () => {
-    await page.locator('[data-type-value="pareja"]').click(); await fillHuman(page, 1);
-    const before = await page.evaluate(() => window.apexDevelopment.validate());
-    assert.ok(before.errors.some(e => e.field === 'figure-2.mf_face_photo_upload[]'));
-    await fillHuman(page, 2); await chooseDate(page);
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('#apex-order-review[open]').waitFor();
-    await mkdir('test-results', { recursive: true });
-    for (const width of [1440, 768, 390]) {
-      await page.setViewportSize({ width, height: 900 });
-      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
-      assert.equal(await page.locator('#apex-order-review').evaluate(el => el.scrollWidth <= el.clientWidth + 1), true);
-      await page.screenshot({ path: `test-results/mvp-review-${width}.png` });
-    }
-    await page.locator('[data-apex-generate]').click(); assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft().items[0].uploadIds.length), 2);
-    await page.locator('#apex-order-preview button').click();
-  });
-  await run('pet principal: espécie, raça livre e foto obrigatória', async () => {
-    await page.locator('[data-type-value="mascota"]').click();
-    await select(page, 'mf_pet_type', 'cao'); await page.locator('[name="mf_pet_breed"]').fill('Raça de teste');
-    await page.locator('[name="mf_pet_photo[]"]').setInputFiles(payload);
-    await page.waitForFunction(() => window.apexDevelopment.inspect().uploads.length === 1); await chooseDate(page);
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('#apex-order-review[open]').waitFor();
-    assert.match(await page.locator('#apex-order-review').innerText(), /Raça de teste/);
-    await page.locator('[data-apex-generate]').click(); assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft().productionValidation), 'passed');
-  });
-  await run('pedido válido completo com toda a rede externa bloqueada', async () => {
-    const offline = await browser.newPage({ viewport: { width: 390, height: 844 } }); offline.on('pageerror', error => errors.push(error.message));
-    await offline.route('**/*', route => guard(route, true));
-    await offline.goto(origin); await offline.waitForSelector('html[data-apex-ready]');
-    await fillHuman(offline); await chooseDate(offline);
-    await offline.locator('.single_add_to_cart_button').click(); await offline.locator('#apex-order-review[open]').waitFor();
-    await offline.locator('[data-apex-generate]').click(); assert.equal(await offline.evaluate(() => window.apexDevelopment.inspectDraft().productionValidation), 'passed');
-    await offline.close();
-  });
-  await run('adicionais completos: acessório, mini, animal e caixa personalizada', async () => {
-    await page.locator('#apex-order-preview button').click();
-    await page.setViewportSize({ width: 1440, height: 1000 });
-    await page.locator('[data-type-value="individual"]').click(); await fillHuman(page);
-    await open(page, '[data-mf-option-toggle]'); await page.locator('[data-mf-accessories-quantity-option="1"]').click();
-    await page.locator('[name="mf_accessory_detail_1"]').fill('Livro azul');
-    await open(page, '[data-mf-mini-toggle]'); await select(page, 'mf_mini_option', '1-unidade');
-    await page.locator('[name="mf_mini_unit_detail_1"]').fill('Mini com roupa igual à referência');
-    await page.locator('[name="mf_mini_unit_upload_1"]').setInputFiles(payload);
-    await open(page, '[data-mf-pets-toggle]'); await select(page, 'mf_pets_option', 'una_mascota');
-    await page.locator('[data-mf-pets-group="1"] [data-pet-type="Cão"]').click();
-    await page.locator('[name="mf_pet_1_breed"]').fill('Raça livre');
-    await page.locator('[name="mf_pet_1_photo[]"]').setInputFiles(payload);
-    await page.waitForFunction(() => window.apexDevelopment.inspect().uploads.length === 3);
-    await select(page, 'mf_box_option', 'caja_personalizada');
-    await page.locator('[name="mf_box_character_name"]').fill('Personagem');
-    await page.locator('[name="mf_box_collection_name"]').fill('Coleção');
-    await page.locator('[name="mf_box_number"]').fill('12');
-    await page.locator('[name="mf_box_color_custom"]').fill('#00aaff');
-    await chooseDate(page);
-    assert.equal(await page.evaluate(() => window.apexDevelopment.validate().valid), true, JSON.stringify(await page.evaluate(() => window.apexDevelopment.validate())));
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('#apex-order-review[open]').waitFor();
-    assert.match(await page.locator('#apex-order-review').innerText(), /Livro azul/);
-    await page.locator('[data-apex-generate]').click();
-    assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft().pricing.totalCents), 14300);
-  });
-  assert.deepEqual(errors, []); assert.deepEqual(unsafe, []);
-  await writeFile('test-results/mvp-smoke.json', JSON.stringify({ results, javascriptErrors: errors.length, unsafeRequests: unsafe.length }, null, 2));
-  console.log(`${results.length} cenários MVP aprovados; zero POST/checkout/JS remoto.`);
-} finally { await browser?.close(); server.kill(); }
+});
