@@ -50,6 +50,7 @@ export class UploadStore {
     return added;
   }
   list() { return Array.from(this.#entries.values()); }
+  cancelPending() { this.#revision++; }
   metadata() { return this.list().map(({ file, previewUrl, ...metadata }) => structuredClone(metadata)); }
   remove(id) {
     const entry = this.#entries.get(id);

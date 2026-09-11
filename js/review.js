@@ -1,71 +1,69 @@
 import { products } from '../config/products.js';
-import { brand } from '../config/brand.js';
-import { pricing } from '../config/pricing.js';
+import { specialObjectCategories } from '../config/pricing.js';
+import { mvpRules } from '../config/mvp.js';
+import { calculatePrice, formatMoney } from './pricing.js';
 import { displayDate } from './date.js';
-
-const currency = cents => new Intl.NumberFormat(brand.locale, { style: 'currency', currency: pricing.currency }).format(cents / 100);
-export function renderOrderReview(container, state, { labelFor, onEdit, onGenerate }) {
+const node = (tag, text, className) => {
+  const element = document.createElement(tag);
+  if (text !== undefined) element.textContent = text;
+  if (className) element.className = className;
+  return element;
+};
+export function renderOrderReview(container, state, { uploads = [], onEdit, onGenerate }) {
   container.replaceChildren();
-  const title = document.createElement('h2'); title.textContent = 'Revise seu pedido'; title.tabIndex = -1; title.setAttribute('autofocus', '');
-  const dl = document.createElement('dl');
-  const row = (title, value) => {
-    const dt = document.createElement('dt'); dt.textContent = title;
-    const dd = document.createElement('dd'); dd.textContent = value || 'Não informado'; dl.append(dt, dd);
-  };
-  const c = state.customizations;
-  row('Produto', products[state.product]?.label);
-  row('Tamanho', `${state.size} cm`); row('Quantidade', String(state.quantity));
-  row('Pessoas e animais', `${c.figures.length} pessoa(s), ${c.pets.length + (state.product === 'mascota' ? 1 : 0)} animal(is), ${c.minis.quantity} mini(s)`);
-  const showAccessories = (f, prefix) => {
-    const descriptions = [];
-    for (const [key, stem, label] of [['accessories', 'accessory', 'Acessório'], ['logos', 'logo', 'Logótipo']]) {
-      for (let i = 1; i <= (f[key] || 0); i++) descriptions.push(`${label} ${i}: ${f.fields[`mf_${stem}_detail_${i}`] || 'conforme foto'}`);
+  const header = node('div', undefined, 'review-heading'), title = node('h2', 'Revise sua criação');
+  title.id = 'review-title'; title.tabIndex = -1;
+  const close = node('button', '×', 'close-review'); close.type = 'button'; close.setAttribute('aria-label', 'Fechar revisão'); close.addEventListener('click', onEdit);
+  header.append(title, close); container.append(node('p', 'DO SEU JEITO, EM CADA DETALHE', 'eyebrow'), header);
+  const section = (title, rows, photos = []) => {
+    const block = node('section', undefined, 'review-section'), dl = node('dl');
+    block.append(node('h3', title), dl);
+    for (const [label, value] of rows) { dl.append(node('dt', label), node('dd', String(value))); }
+    if (photos.length) {
+      const gallery = node('div', undefined, 'review-photos');
+      for (const photo of photos) {
+        const img = node('img'); img.src = photo.previewUrl; img.alt = 'Referência para ' + title; gallery.append(img);
+      }
+      block.append(gallery);
     }
-    (f.specialAccessories || []).forEach(slug => descriptions.push(labelFor('mf_special_accessories[]', slug)));
-    row(`Acessórios · ${prefix}`, descriptions.join('\n') || 'Nenhum');
-    for (const [name, value] of Object.entries(f.fields)) {
-      if (name.startsWith('mf_special_accessory_extra_text') && value) row(`Texto do acessório · ${prefix}`, value);
-    }
+    container.append(block);
   };
+  const photos = field => uploads.filter(u => u.owner.itemId === 'main-1' && u.owner.field === field);
+  const c = state.customizations, product = products[state.product], price = calculatePrice(state);
+  const total = node('div', undefined, 'total-row'); total.append(node('span', 'Total estimado'), node('strong', formatMoney(price.totalCents))); container.append(total);
+  section('Sua miniatura', [['Produto', product.label + ' · ' + state.size + ' cm'], ['Composição', product.kind === 'pet' ? 'Pet principal' : c.figures.length + ' pessoa(s), incluindo ' + c.additionalPeople + ' adicional(is)'], ['Fotos anexadas', state.uploads.length]]);
   c.figures.forEach((f, i) => {
-    const fields = f.fields;
-    row(`Pessoa ${i + 1}`, [
-      `Cabelo: ${labelFor('mf_face_option', fields.mf_face_option)}`,
-      fields.mf_face_option === 'otro' ? `Cor do cabelo: ${fields.mf_face_custom_color}` : '',
-      `Pele: ${labelFor('mf_skin_tones_option', fields.mf_skin_tones_option)}`,
-      `Olhos: ${labelFor('mf_eyes_option', f.eyes)}`, `Boca: ${labelFor('mf_mouth_option', f.mouth)}`,
-      `Óculos: ${f.glasses ? 'Sim' : 'Não'}`, `Detalhes: ${fields.mf_face_detail_text || 'Conforme foto'}`,
-      `Roupa: ${fields.mf_outfit_detail_text || 'Conforme foto'}`,
-      ...['top', 'bottom', 'shoes'].filter(key => fields[`mf_outfit_color_${key}`]).map(key => `${({top:'Cor superior',bottom:'Cor inferior',shoes:'Calçado'})[key]}: ${fields[`mf_outfit_color_${key}`]}`),
-    ].filter(Boolean).join('\n'));
-    showAccessories(f, `pessoa ${i + 1}`);
+    const reference = photos(f.id + '.mf_face_photo_upload[]');
+    section('Pessoa ' + (i + 1), [
+      ['Aparência', 'Baseada nas fotos de referência'],
+      ['Fotos', reference.length + ' referência(s)'],
+      ['Roupa', f.outfit.mode === 'reference' ? 'Igual à foto' : f.outfit.description],
+      ['Pose', f.pose.mode === 'reference' ? 'Baseada na referência' : f.pose.description],
+    ], [...reference, ...photos(f.id + '.mf_outfit_photo_upload[]')]);
   });
-  if (state.product === 'mascota') {
-    row('Animal principal', [labelFor('mf_pet_type', c.pet.fields.mf_pet_type), c.pet.fields.mf_pet_breed, `Olhos: ${labelFor('mf_pet_eyes', c.pet.eyes)}`, c.pet.eyes === 'otro' ? c.pet.fields.mf_pet_eyes_custom_color : '', c.pet.fields.mf_pet_detail, c.pet.fields.mf_pet_eyes_detail].filter(Boolean).join('\n'));
-    showAccessories(c.pet, 'animal principal');
-  }
-  c.pets.forEach((pet, i) => row(`Animal adicional ${i + 1}`, `${pet.type} · ${pet.size} cm${pet.fields[`mf_pet_${i + 1}_breed`] ? ` · ${pet.fields[`mf_pet_${i + 1}_breed`]}` : ''}`));
-  for (let i = 1; i <= c.minis.quantity; i++) row(`Mini ${i}`, `${c.minis.size} cm · ${c.minis.fields[`mf_mini_unit_detail_${i}`] || ''}`);
-  row('Caixa', labelFor('mf_box_option', c.box.type));
+  if (product.kind === 'pet') section('Seu pet', [['Tipo', mvpRules.additionalPetTypes[mvpRules.petTypes.indexOf(c.pet.fields.mf_pet_type)]], ['Pose e detalhes', c.pet.fields.details || 'Baseados na referência']], photos('mf_pet_photo[]'));
+  c.pets.forEach((pet, i) => section('Pet adicional ' + (i + 1), [['Tipo', pet.type], ['Tamanho', pet.size + ' cm'], ['Detalhes', pet.fields.details || 'Baseados na referência']], photos('mf_pet_' + (i + 1) + '_photo[]')));
+  (product.kind === 'pet' ? [c.pet] : c.figures).forEach((f, i) => {
+    const prefix = 'figure-' + (i + 1), target = product.kind === 'pet' ? 'pet' : 'pessoa ' + (i + 1);
+    for (const [key, stem, label] of [['accessories', 'accessory', 'Acessório simples'], ['logos', 'logo', 'Acessório detalhado']]) {
+      for (let n = 1; n <= f[key]; n++) section(label + ' ' + n + ' · ' + target, [['Descrição', f.fields['mf_' + stem + '_detail_' + n] || 'Conforme foto']], photos(prefix + '.mf_' + stem + '_upload_' + n));
+    }
+    for (const id of f.specialAccessories) section(specialObjectCategories[id].label + ' · ' + target, [['Descrição', f.fields['object_' + id] || 'Conforme foto']], photos(prefix + '.mf_special_accessory_extra_photo_' + id));
+  });
+  const bases = { 'base-com-nome': 'Nome na base', 'base-com-nome-data': 'Nome + data na base' };
+  const packRows = [['Base', bases[c.extras[0]] || 'Sem gravação'], ['Caixa', c.box.type === 'caja_standard' ? 'Embalagem padrão' : 'Personalizada']];
+  if (c.extras.length) packRows.push(['Nome na base', c.fields.mf_extra_text_data]);
+  if (c.extras.includes('base-com-nome-data')) packRows.push(['Data na base', displayDate(c.fields.baseDate)]);
   if (c.box.type !== 'caja_standard') {
-    row('Personalização da caixa', [c.box.fields.mf_box_character_name, c.box.fields.mf_box_collection_name, c.box.fields.mf_box_number,
-      labelFor('mf_box_color', c.box.fields.mf_box_color), c.box.fields.mf_box_color_custom].filter(Boolean).join(' · '));
-    if (c.box.dedication) row('Dedicatória', c.box.fields.mf_box_dedication_text || 'Conforme imagem anexada');
+    packRows.push(['Nome na caixa', c.box.fields.mf_box_character_name]);
+    if (c.box.dedication) packRows.push(['Dedicatória', c.box.fields.mf_box_dedication_text]);
   }
-  row('Base e adicionais', c.extras.map(s => labelFor('mf_extra_option[]', s)).join(', ') || 'Nenhum');
-  if (c.fields.mf_extra_text_data) row('Texto da base', c.fields.mf_extra_text_data);
-  if (state.gift.enabled) row('Caneca', `${state.gift.imageSource === 'upload' ? 'Imagem própria anexada' : 'Esboço da figura'}${state.gift.text ? ` · ${state.gift.text}` : ''}`);
-  row('Fotos anexadas', String(state.uploads.length));
-  row('Quando você precisa receber?', displayDate(state.shipping.date));
-  row('Prazo selecionado', labelFor('mf_shipping_option', state.shipping.option));
-  row('Observações', state.notes || 'Nenhuma');
-  row('Preço unitário da configuração', currency(state.pricing.unitTotalCents));
-  if (state.gift.enabled) row('Caneca adicional', currency(state.pricing.giftTotalCents));
-  row('Subtotal do pedido', currency(state.pricing.totalCents));
-  const notice = document.createElement('p'); notice.className = 'apex-review-notice';
-  notice.textContent = 'A data informada é uma necessidade, não uma confirmação de entrega. Frete final não calculado. Gerar o rascunho não envia o pedido e não realiza pagamento.';
-  const actions = document.createElement('div'); actions.className = 'apex-review-actions';
-  const edit = document.createElement('button'); edit.type = 'button'; edit.textContent = 'Voltar e editar'; edit.addEventListener('click', onEdit);
-  const generate = document.createElement('button'); generate.type = 'button'; generate.dataset.apexGenerate = ''; generate.textContent = 'Gerar rascunho do pedido'; generate.addEventListener('click', onGenerate);
-  actions.append(edit, generate); container.append(title, dl, notice, actions);
+  section('Base e embalagem', packRows);
+  section('Últimos detalhes', [['Data desejada', displayDate(state.shipping.date)], ['Observações', state.notes || 'Nenhuma observação']]);
+  const base = price.lines.find(l => l.code === 'base').cents;
+  section('Valores de homologação', [['Preço base', formatMoney(base)], ...price.lines.filter(l => l.code !== 'base').map(l => [l.label, formatMoney(l.cents)]), ['Adicionais', formatMoney(price.unitTotalCents - base)], ['Total estimado', formatMoney(price.totalCents)], ['Frete', 'A confirmar']]);
+  container.append(node('p', 'Confirmaremos a disponibilidade da data após o pedido. Você aprova o modelo antes da produção. Nesta homologação, gerar o pedido de teste não envia dados nem realiza pagamento.', 'review-warning'));
+  const actions = node('div', undefined, 'review-actions'), edit = node('button', 'Editar criação', 'button secondary'), generate = node('button', 'Gerar pedido de teste', 'button');
+  edit.type = generate.type = 'button'; edit.addEventListener('click', onEdit); generate.addEventListener('click', onGenerate);
+  actions.append(edit, generate); container.append(actions);
 }
