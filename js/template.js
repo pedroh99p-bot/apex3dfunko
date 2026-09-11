@@ -16,6 +16,9 @@ export async function mountTemplate() {
     }
   });
   source.querySelectorAll('input[name="gtmkit_product_data"]').forEach(node => node.remove());
+  // REMOVE no MVP: não deixar portas de mini-cart/checkout/edição de sessão no laboratório.
+  source.querySelectorAll('[data-mf-cart-drawer], [data-mf-open-cart-drawer], [data-mf-added-drawer], .mf-header__cart-count').forEach(node => node.remove());
+  source.querySelectorAll('[data-mf-video-modal], [data-mf-video-open], [data-mf-reviews-next], [data-mf-reviews-prev], [data-mf-mini-prev], [data-mf-mini-next], [data-mf-mini-bullets], [data-mf-accessories-more]').forEach(node => node.remove());
   source.querySelectorAll('img[src=""]').forEach(node => node.removeAttribute('src'));
   source.querySelectorAll('form').forEach(form => { form.removeAttribute('method'); form.removeAttribute('enctype'); });
   document.title = source.title;
@@ -39,9 +42,13 @@ export async function mountTemplate() {
   banner.append(status);
   const dialog = document.createElement('dialog'); dialog.id = 'apex-order-preview';
   const close = document.createElement('button'); close.type = 'button'; close.textContent = 'Fechar'; close.addEventListener('click', () => dialog.close());
-  const title = document.createElement('h2'); title.textContent = 'Rascunho local — inspeção segura';
-  const note = document.createElement('p'); note.textContent = 'Sem envio. Frete final e validação de produção ainda pendentes. Textos livres e nomes de arquivos omitidos.';
-  const pre = document.createElement('pre'); dialog.append(close, title, note, pre); document.body.append(dialog);
+  const title = document.createElement('h2'); title.textContent = 'Rascunho do pedido montado';
+  const note = document.createElement('p'); note.textContent = 'Sem envio e sem pagamento. Textos livres e nomes de arquivos omitidos nesta inspeção de desenvolvimento.';
+  const pre = document.createElement('pre');
+  const details = document.createElement('details'), summary = document.createElement('summary'); summary.textContent = 'Inspeção de desenvolvimento'; details.append(summary, pre);
+  dialog.append(close, title, note, details); document.body.append(dialog);
+  const review = document.createElement('dialog'); review.id = 'apex-order-review';
+  review.setAttribute('aria-label', 'Revisão do pedido'); document.body.append(review);
   await Promise.all(stylesReady);
   await document.fonts.ready;
 }

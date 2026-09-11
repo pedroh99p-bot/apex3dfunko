@@ -91,12 +91,10 @@ try {
     assert.equal(order.items[1].id, 'gift-1'); assert.equal(order.uploads[0].owner.itemId, 'gift-1');
     assert.deepEqual(order.items[1].uploadIds, [order.uploads[0].id]); assert.deepEqual(order.items[0].uploadIds, []);
   });
-  await run('finalização gera apenas representação segura local', async () => {
-    await page.locator('.single_add_to_cart_button').click(); await page.locator('#apex-order-preview[open]').waitFor();
-    const text = await page.locator('#apex-order-preview pre').textContent();
-    const order = JSON.parse(text); assert.equal(order.mode, 'development'); assert.equal(order.status, 'draft');
-    assert.doesNotMatch(text, /caneca\.png|data:image|base64|previewUrl/);
-    await page.locator('#apex-order-preview button').click();
+  await run('configuração incompleta não gera rascunho no MVP', async () => {
+    await page.locator('.single_add_to_cart_button').click(); await page.locator('#apex-validation-errors').waitFor();
+    assert.equal(await page.locator('#apex-order-preview').isVisible(), false);
+    assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
   });
   await run('troca de produto limpa anexos e opções anteriores', async () => {
     await page.locator('[data-type-value="pareja"]').click(); const order = await inspect();

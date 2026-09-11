@@ -4,7 +4,9 @@ import { pricing } from '../config/pricing.js';
 import { createOrderState } from './state.js';
 import { calculatePrice } from './pricing.js';
 import { UploadStore } from './uploads.js';
-import { buildOrder, safeOrderSummary } from './order.js';
+import { buildOrder, safeOrderSummary, createOrderDraft, validateOrderForProduction } from './order.js';
+import { minimumDesiredDate, displayDate, validateDesiredDate } from './date.js';
+import { renderOrderReview } from './review.js';
 
 const q = (selector, root = document) => root.querySelector(selector);
 const qa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -26,15 +28,21 @@ const fieldOwner = el => ({ itemId: el.closest('[data-mf-gift-upsell-modal]') ? 
 
 export function startConfigurator() {
   let state = createOrderState();
+  let orderDraft = null;
+  let revision = 0;
+  let reviewedRevision = -1;
+  let pendingUploads = 0;
+  const uploadFailures = new Map();
   const store = new UploadStore();
   const sectionTemplate = q('[data-mf-extra-options-section]').cloneNode(true);
   const form = q('form.cart');
-  form.noValidate = true; // A finalização desta etapa valida um rascunho, não uma ficha de produção.
+  form.noValidate = true; // Erros estruturados e foco local são responsabilidade da validação Apex.
   const status = message => { const node = q('#apex-status'); node.textContent = message; node.hidden = !message; };
   const emit = name => document.dispatchEvent(new CustomEvent(name, { detail: { product: state.product, totalCents: state.pricing?.totalCents, uploadCount: state.uploads.length } }));
 
   function setupProduct(type) {
-    store.clear(); state = createOrderState(type);
+    store.clear(); state = createOrderState(type); orderDraft = null; uploadFailures.clear();
+    q('#apex-order-review').close(); q('#apex-order-preview').close();
     form.remove();
     q('[data-mf-extra-options-section]').replaceWith(sectionTemplate.cloneNode(true));
     q('[data-mf-summary-form]').append(form); form.reset();
@@ -91,12 +99,40 @@ export function startConfigurator() {
     const giftFile = q('.mf-gift-upsell-modal__upload-input'); giftFile.name = 'gift_image';
     q('.mf-gift-upsell-modal__input').name = 'gift_text';
     qa('.pet-type,.pet-size').forEach(el => { el.setAttribute('role', 'button'); el.tabIndex = 0; });
-    const date = q('[data-mf-shipping-date]'); date.classList.add('apex-native-date');
+    setupMvpControls();
     initializeUploads(); sync(); gallery();
     const first = ordered.find(el => el.matches('article'));
     if (first) openStep(first, true);
     const url = new URL(location.href); url.searchParams.set('tipo', type); history.replaceState(null, '', url);
     status(''); emit('apex:product-changed');
+  }
+
+  function setupMvpControls() {
+    q('.single_add_to_cart_button').textContent = 'Revisar pedido';
+    setText('.mf-fixed-cart-bar__button-full,.mf-fixed-cart-bar__button-short', 'Revisar pedido');
+    const errors = document.createElement('div'); errors.id = 'apex-validation-errors'; errors.role = 'alert'; errors.tabIndex = -1; errors.hidden = true;
+    q('[data-mf-summary-form]').prepend(errors);
+    const date = q('[data-mf-shipping-date]');
+    date.classList.add('apex-native-date'); date.removeAttribute('aria-hidden'); date.removeAttribute('tabindex'); date.lang = 'pt-BR'; date.required = true;
+    q('label[for="mf-shipping-date-native"]').textContent = 'Quando você precisa receber?';
+    q('[data-mf-shipping-date-trigger]').replaceChildren(date);
+    setText('[data-mf-shipping-date-hint]', 'Informe a data desejada. A disponibilidade será confirmada posteriormente.');
+    const dateError = document.createElement('p'); dateError.id = 'apex-date-error'; dateError.role = 'alert'; dateError.hidden = true; date.after(dateError); date.setAttribute('aria-describedby', dateError.id);
+    q('.mf-product-delivery-date__lead')?.remove();
+    const dateSummary = document.createElement('p'); dateSummary.dataset.apexDateSummary = ''; q('[data-mf-summary-price]').parentElement.after(dateSummary);
+    // SIMPLIFY: raça opcional em texto, sem base externa ou seletores vazios.
+    qa('[data-mf-pet-breed-select], [data-mf-pet-breed]').forEach(select => {
+      const input = document.createElement('input'); input.type = 'text'; input.name = select.name; input.id = select.id;
+      input.placeholder = 'Raça (opcional)'; input.setAttribute('aria-label', 'Raça (opcional)'); input.className = 'apex-breed'; select.replaceWith(input);
+      input.parentElement.hidden = false; input.parentElement.style.display = '';
+      const section = input.closest('.raza-section'); if (section) section.style.display = '';
+      input.parentElement.querySelector('.raza-dropdown__trigger')?.remove();
+    });
+    qa('[data-mf-special-other-card], [data-mf-special-other-panel]').forEach(node => { node.hidden = true; qa('input,textarea', node).forEach(input => { input.disabled = true; }); });
+    qa('[data-mf-special-accessories-grid]').forEach(node => node.classList.remove('is-collapsed'));
+    q('[data-mf-box-custom-radio]').value = 'custom';
+    const removeGift = document.createElement('button'); removeGift.type = 'button'; removeGift.dataset.apexRemoveGift = ''; removeGift.textContent = 'Remover caneca do pedido'; removeGift.hidden = true;
+    q('[data-mf-gift-upsell-open]').after(removeGift);
   }
 
   function openStep(step, open) {
@@ -149,11 +185,12 @@ export function startConfigurator() {
     return output;
   }
   function sync() {
+    revision++; orderDraft = null;
     state.quantity = Number(read('quantity', form, 1));
     state.size = cm(read(state.product === 'mascota' ? 'mf_pet_size_option' : 'mf_size_option'), 6);
     const c = state.customizations;
     const petCount = { sin_mascota: 0, una_mascota: 1, dos_mascotas: 2, tres_mascotas: 3 }[read('mf_pets_option')] || 0;
-    c.pets = Array.from({ length: petCount }, (_, i) => ({ size: cm(read(`mf_pet_${i + 1}_size`), 4), fields: fields(q(`[data-mf-pets-group="${i + 1}"]`)) }));
+    c.pets = Array.from({ length: petCount }, (_, i) => ({ type: read(`mf_pet_${i + 1}_type`), size: cm(read(`mf_pet_${i + 1}_size`), 4), fields: fields(q(`[data-mf-pets-group="${i + 1}"]`)) }));
     qa('[data-mf-pets-group]').forEach(el => { el.hidden = Number(el.dataset.mfPetsGroup) > petCount; });
     for (let i = 0; i < (c.figures.length || 1); i++) {
       const f = c.figures[i] || c.pet;
@@ -161,6 +198,7 @@ export function startConfigurator() {
       const data = Object.assign({}, ...roots.map(root => fields(root)));
       const prefix = i ? 'mf_partner_2_' : 'mf_';
       f.fields = data;
+      if (data.mf_face_option !== 'otro') delete f.fields.mf_face_custom_color;
       f.eyes = c.figures.length ? data.mf_eyes_option || 'ojos_standard' : read('mf_pet_eyes', document, 'estandar');
       f.mouth = data.mf_mouth_option || 'sin_boca'; f.glasses = Boolean(data.mf_face_glasses_enabled);
       f.accessories = Number(read(prefix + 'accessories_quantity') || 0);
@@ -168,6 +206,7 @@ export function startConfigurator() {
       f.specialAccessories = checked(prefix + 'special_accessories[]');
     }
     c.pet.fields = { ...c.pet.fields, ...fields(q('[data-mf-pet-step="pet_type"]')), ...fields(q('[data-mf-pet-step="pet_eyes"]')) };
+    if (c.pet.eyes !== 'otro') delete c.pet.fields.mf_pet_eyes_custom_color;
     c.minis.quantity = cm(read('mf_mini_option'), 0); c.minis.size = cm(read('mf_mini_size_option'), 4);
     c.minis.fields = fields(q('[data-mf-mini-step]'));
     c.extras = checked('mf_extra_option[]');
@@ -177,6 +216,8 @@ export function startConfigurator() {
     }
     c.box.dedication = c.box.type !== 'caja_standard' && Boolean(read('mf_box_dedication_enabled'));
     c.box.fields = c.box.type === 'caja_standard' ? {} : fields(q('[data-mf-box-step]'));
+    if (c.box.fields.mf_box_color !== 'custom') delete c.box.fields.mf_box_color_custom;
+    if (!c.box.dedication) delete c.box.fields.mf_box_dedication_text;
     c.fields = fields(q('[data-mf-extra-step]'));
     state.shipping = { option: read('mf_shipping_option', document, 'envio_estandard'), date: read('mf_shipping_date'), flexible: Boolean(read('mf_shipping_flexible_date')) };
     state.notes = read('mf_instructions_text');
@@ -185,7 +226,12 @@ export function startConfigurator() {
     // Arquivos de opções retiradas não podem escapar como anexos órfãos do pedido.
     const activeOwners = qa('input[type="file"]').filter(input => !input.disabled).map(fieldOwner);
     store.list().filter(entry => !activeOwners.some(owner => owner.itemId === entry.owner.itemId && owner.field === entry.owner.field)).forEach(entry => store.remove(entry.id));
-    state.uploads = store.metadata();
+    state.uploads = store.metadata().filter(u => u.owner.itemId !== 'gift-1' || (state.gift.enabled && state.gift.imageSource === 'upload'));
+    q('[data-apex-remove-gift]').hidden = !state.gift.enabled;
+    setText('[data-apex-date-summary]', `Data necessária: ${displayDate(state.shipping.date)}`);
+    const dateError = validateDesiredDate(state.shipping.date);
+    q('#apex-date-error').hidden = !state.shipping.date || !dateError;
+    q('#apex-date-error').textContent = dateError?.message || '';
     try {
       state.pricing = calculatePrice(state);
       setText('[data-mf-summary-price],[data-mf-fixed-bar-price],[data-mf-fixed-bar-price-lead],.mf-product-sales__price ins .amount', money(state.pricing.unitTotalCents));
@@ -206,6 +252,7 @@ export function startConfigurator() {
     q('[data-mf-box-size-notice]').hidden = state.size !== 20;
     q('[data-mf-mini-size-section]').hidden = !c.minis.quantity;
     q('[data-mf-pet-type-extra]').hidden = !read('mf_pet_type');
+    q('[data-mf-pet-eyes-custom-selector]').hidden = c.pet.eyes !== 'otro';
     qa('[data-mf-pets-group]').forEach(slot => {
       qa('input[type="file"]', slot).forEach(input => { input.disabled = slot.hidden; });
     });
@@ -218,7 +265,7 @@ export function startConfigurator() {
       const custom = q('[data-mf-face-custom-selector]', root);
       if (custom) custom.hidden = !q('[data-mf-face-option-input]:checked', root)?.matches('[data-face-custom-color="true"]');
       const other = q('[data-mf-special-other-panel]', root);
-      if (other) { other.hidden = !q('[data-mf-special-other-input]', root).checked; qa('input,textarea', other).forEach(input => { input.disabled = other.hidden; }); }
+      if (other) { other.hidden = true; qa('input,textarea', other).forEach(input => { input.disabled = true; }); }
     });
     q('[data-mf-box-customization]').hidden = !paid;
     qa('[data-mf-box-customization-field]').forEach(el => { el.disabled = !paid; });
@@ -237,8 +284,14 @@ export function startConfigurator() {
     });
     // Os campos nativos de data permanecem acessíveis, sem recriar calendário de terceiros.
     const date = q('[data-mf-shipping-date]');
-    const earliest = new Date(); earliest.setDate(earliest.getDate() + pricing.shippingDays[state.shipping.option]);
-    date.min = `${earliest.getFullYear()}-${String(earliest.getMonth() + 1).padStart(2, '0')}-${String(earliest.getDate()).padStart(2, '0')}`;
+    date.min = minimumDesiredDate();
+    qa('[data-mf-accessories-details],[data-mf-logos-details]').forEach(panel => { panel.hidden = !panel.querySelector('[data-apex-unit]'); });
+    qa('.mf-custom-color-selector').forEach(panel => {
+      const input = q('input[type="color"]', panel); if (!input) return;
+      panel.style.setProperty('--mf-custom-color', input.value);
+      const code = q('.mf-custom-color-selector__code', panel); if (code) code.textContent = input.value.toUpperCase();
+    });
+    setText('[data-mf-box-color-code]', read('mf_box_color_custom').toUpperCase());
   }
 
   function dynamicFields(container, count, base, label) {
@@ -253,22 +306,73 @@ export function startConfigurator() {
       const block = document.createElement('div'); block.className = 'apex-field'; block.dataset.apexUnit = String(i);
       const title = document.createElement('label'); title.textContent = `${label} ${i}`;
       const detail = document.createElement('textarea'); detail.name = `${prefix}${base}_detail_${i}`; detail.rows = 2; title.append(detail);
-      const fileLabel = document.createElement('label'); fileLabel.textContent = 'Imagem (opcional)';
+      const fileLabel = document.createElement('label'); fileLabel.textContent = base === 'mini_unit' ? 'Foto de referência (obrigatória)' : 'Imagem (opcional)';
       const file = document.createElement('input'); file.type = 'file'; file.accept = 'image/jpeg,image/png,image/webp,image/gif'; file.name = `${prefix}${base}_upload_${i}`; fileLabel.append(file);
       block.append(title, fileLabel); container.append(block);
     }
     initializeUploads();
   }
 
+  function focusField(field) {
+    const match = field.match(/^figure-(\d+)\.(.+)$/);
+    const name = match ? (match[1] === '2' ? match[2].replace(/^mf_/, 'mf_partner_2_') : match[2]) : field;
+    let input = byName(name)[0];
+    const pet = name.match(/^mf_pet_(\d+)_(type|size)$/);
+    if (pet) input = q(`[data-mf-pets-group="${pet[1]}"] .pet-${pet[2]}`);
+    if (field === 'size') input = byName(state.product === 'mascota' ? 'mf_pet_size_option' : 'mf_size_option')[0];
+    if (!input) { q('#apex-validation-errors').focus(); return; }
+    const step = input.closest('article'); if (step) openStep(step, true);
+    if (input.closest('[data-mf-gift-upsell-modal]')) q('[data-mf-gift-upsell-open]').click();
+    input.setAttribute('aria-invalid', 'true'); input.scrollIntoView({ behavior: 'smooth', block: 'center' }); input.focus({ preventScroll: true });
+  }
+  function productionValidation() {
+    const result = validateOrderForProduction(state);
+    if (pendingUploads) result.errors.push({ field: 'uploads', code: 'UPLOAD_PENDING', message: 'Aguarde a validação das imagens.' });
+    for (const [key, failure] of uploadFailures) {
+      const input = qa('[data-apex-upload]').find(el => el.dataset.apexUpload === key);
+      if (input?.isConnected && !input.disabled) result.errors.push(failure);
+    }
+    result.valid = !result.errors.length; return result;
+  }
+  function showErrors(errors) {
+    const box = q('#apex-validation-errors'); box.replaceChildren(); box.hidden = !errors.length;
+    qa('[aria-invalid="true"]').forEach(el => el.removeAttribute('aria-invalid'));
+    if (!errors.length) return;
+    const title = document.createElement('p'); title.textContent = 'Revise os campos abaixo antes de gerar o pedido:'; box.append(title);
+    const list = document.createElement('ul');
+    for (const error of errors) {
+      const li = document.createElement('li'), button = document.createElement('button'); button.type = 'button'; button.textContent = error.message; button.dataset.errorCode = error.code;
+      button.addEventListener('click', () => focusField(error.field)); li.append(button); list.append(li);
+    }
+    box.append(list); box.scrollIntoView({ block: 'center' }); box.focus({ preventScroll: true });
+  }
+  function labelFor(name, value) {
+    if (!value) return 'Não informado';
+    const input = byName(name).find(el => el.value === value);
+    const fromData = input && Object.entries(input.dataset).find(([key]) => key.endsWith('Label'))?.[1];
+    const label = input?.closest('label');
+    return fromData || (label && q('[class$="__title"],[class$="__label"]', label)?.textContent.trim()) || (name === 'mf_box_color' ? value : 'Opção selecionada');
+  }
+  function generateDraft() {
+    // Não faz sync: qualquer alteração desde a revisão invalida o snapshot.
+    const validation = productionValidation();
+    if (reviewedRevision !== revision) validation.errors.push({ field: 'order', code: 'REVIEW_STALE', message: 'A configuração mudou. Revise o pedido novamente.' });
+    if (validation.errors.length) { q('#apex-order-review').close(); showErrors(validation.errors); return; }
+    const result = createOrderDraft(state);
+    if (!result.valid) { q('#apex-order-review').close(); showErrors(result.errors); return; }
+    orderDraft = result.orderDraft;
+    q('#apex-order-review').close();
+    q('#apex-order-preview pre').textContent = JSON.stringify(safeOrderSummary(orderDraft), null, 2);
+    q('#apex-order-preview').showModal(); status('Rascunho do pedido montado. Nenhum envio ou pagamento foi realizado.'); emit('apex:order-preview');
+  }
   function finalize() {
     sync();
-    try {
-      const order = buildOrder(state);
-      const safe = safeOrderSummary(order);
-      q('#apex-order-preview pre').textContent = JSON.stringify(safe, null, 2);
-      q('#apex-order-preview').showModal(); status('Rascunho gerado localmente. Nenhum pedido foi enviado.');
-      emit('apex:order-preview');
-    } catch (error) { status(error.message); q('#apex-status').scrollIntoView({ block: 'center' }); }
+    const validation = productionValidation(); showErrors(validation.errors);
+    if (!validation.valid) return;
+    reviewedRevision = revision;
+    renderOrderReview(q('#apex-order-review'), state, { labelFor, onEdit: () => q('#apex-order-review').close(), onGenerate: generateDraft });
+    q('#apex-order-review').showModal();
+    q('#apex-order-review h2').focus({ preventScroll: true }); q('#apex-order-review').scrollTop = 0;
   }
 
   document.addEventListener('submit', event => { event.preventDefault(); event.stopImmediatePropagation(); finalize(); }, true);
@@ -293,9 +397,18 @@ export function startConfigurator() {
       const body = q('[data-mf-outfit-colors-body]', el.parentElement); body.hidden = !body.hidden;
       qa('input', body).forEach(input => { input.disabled = body.hidden; }); el.setAttribute('aria-expanded', String(!body.hidden)); sync();
     }
+    else if (el.matches('[data-mf-custom-color-reset]')) {
+      const input = q('input[type="color"]', el.closest('.mf-custom-color-selector')); input.value = input.dataset.mfCustomColorDefault; sync();
+    }
     else if (el.matches('[data-mf-box-to-delivery]')) q('.mf-product-delivery').scrollIntoView({ behavior: 'smooth' });
     else if (el.matches('[data-apex-toggle]')) openStep(el.closest('article'), el.getAttribute('aria-expanded') !== 'true');
     else if (el.matches('[data-mf-fixed-bar-button]')) finalize();
+    else if (el.matches('[data-apex-remove-gift]')) {
+      state.gift.enabled = false; store.list().filter(e => e.owner.itemId === 'gift-1').forEach(e => store.remove(e.id)); sync();
+    }
+    else if (el.matches('[data-apex-discard-upload-error]')) {
+      uploadFailures.delete(el.dataset.apexDiscardUploadError); el.parentElement.hidden = true;
+    }
     else if (el.matches('[data-apex-remove-upload]')) { event.preventDefault(); store.remove(el.dataset.apexRemoveUpload); sync(); emit('apex:uploads-changed'); }
     else if (el.matches('[data-mf-breakdown-toggle]')) { const body = q('[data-mf-price-breakdown]'); body.hidden = !body.hidden; el.setAttribute('aria-expanded', String(!body.hidden)); }
     else if (el.matches('[data-mf-faq-toggle]')) { const article = el.closest('article'); const body = q('[data-mf-faq-body]', article); const open = el.getAttribute('aria-expanded') !== 'true'; body.hidden = !open; article.classList.toggle('is-open', open); el.setAttribute('aria-expanded', String(open)); }
@@ -314,7 +427,7 @@ export function startConfigurator() {
       dynamicFields(q(`[data-mf-${key}-fields]`, root), count, key === 'accessories' ? 'accessory' : 'logo', key === 'accessories' ? 'Acessório' : 'Logótipo'); sync();
     } else if (el.matches('.pet-type,.pet-size')) {
       const slot = el.closest('[data-mf-pets-group]'); const kind = el.matches('.pet-type') ? 'type' : 'size';
-      q(`[data-mf-pet-${kind}-hidden]`, slot).value = el.getAttribute(kind === 'type' ? 'data-pet-type' : 'data-size');
+      q(`[data-mf-pet-${kind}-hidden="${slot.dataset.mfPetsGroup}"]`).value = el.getAttribute(kind === 'type' ? 'data-pet-type' : 'data-size');
       qa(`.pet-${kind}`, slot).forEach(button => { button.classList.toggle('is-selected', button === el); button.setAttribute('aria-pressed', String(button === el)); });
       qa('.tamano-section,.foto-section', slot).forEach(section => { section.style.display = ''; }); sync();
     } else if (el.matches('[data-mf-gift-upsell-open]')) {
@@ -325,7 +438,7 @@ export function startConfigurator() {
     } else if (el.matches('[data-mf-gift-upsell-close]')) { q('[data-mf-gift-upsell-modal]').hidden = true; }
     else if (el.matches('[data-mf-gift-upsell-modal-submit]')) {
       sync(); const error = q('[data-mf-gift-upsell-modal-error]');
-      if (state.gift.imageSource === 'upload' && !state.uploads.some(u => u.owner.itemId === 'gift-1')) { error.hidden = false; error.textContent = 'Adicione uma imagem válida para a caneca.'; return; }
+      if (state.gift.imageSource === 'upload' && !store.metadata().some(u => u.owner.itemId === 'gift-1')) { error.hidden = false; error.textContent = 'Adicione uma imagem válida para a caneca.'; return; }
       error.hidden = true; state.gift.enabled = true; q('[data-mf-gift-upsell-modal]').hidden = true; sync(); status('Caneca adicionada ao rascunho local.');
     }
   });
@@ -338,11 +451,18 @@ export function startConfigurator() {
     const input = event.target;
     if (input.type === 'file') {
       const files = Array.from(input.files); const owner = fieldOwner(input); input.value = '';
+      pendingUploads++;
       uploadQueue = uploadQueue.then(async () => {
-        if (!input.isConnected) return;
-        const error = document.getElementById(input.getAttribute('aria-describedby'));
-        try { await store.add(owner, files, { multiple: input.multiple }); error.hidden = true; sync(); emit('apex:uploads-changed'); }
-        catch (failure) { error.hidden = false; error.textContent = failure.message; }
+        try {
+          if (!input.isConnected || input.disabled) return;
+          const error = document.getElementById(input.getAttribute('aria-describedby'));
+          try { await store.add(owner, files, { multiple: input.multiple }); uploadFailures.delete(input.dataset.apexUpload); error.hidden = true; sync(); emit('apex:uploads-changed'); }
+          catch (failure) {
+            error.hidden = false; error.textContent = failure.message;
+            const discard = document.createElement('button'); discard.type = 'button'; discard.dataset.apexDiscardUploadError = input.dataset.apexUpload; discard.textContent = 'Descartar seleção inválida'; error.append(' ', discard);
+            uploadFailures.set(input.dataset.apexUpload, { field: owner.field, code: 'UPLOAD_INVALID', message: failure.message });
+          }
+        } finally { pendingUploads--; }
       });
       return;
     }
@@ -350,9 +470,12 @@ export function startConfigurator() {
     if (input.name === 'mf_extra_option[]' && input.checked && input.value.startsWith('base-')) byName(input.name).filter(el => el !== input && el.value.startsWith('base-') && !el.disabled).forEach(el => { el.checked = false; });
     sync();
   });
-  document.addEventListener('input', event => { if (event.target.matches('input:not([type=file]),textarea,select')) sync(); });
+  document.addEventListener('input', event => {
+    if (event.target.matches('[data-mf-box-color-picker]')) q('[data-mf-box-custom-radio]').checked = true;
+    if (event.target.matches('input:not([type=file]),textarea,select')) sync();
+  });
   window.addEventListener('pagehide', () => store.clear());
   // Somente cópias da representação segura; não expõe File, textos ou mutação do estado.
-  window.apexDevelopment = Object.freeze({ inspect: () => safeOrderSummary(buildOrder(state)) });
+  window.apexDevelopment = Object.freeze({ inspect: () => safeOrderSummary(buildOrder(state)), validate: () => productionValidation(), inspectDraft: () => orderDraft ? safeOrderSummary(orderDraft) : null });
   setupProduct(Object.hasOwn(products, new URL(location.href).searchParams.get('tipo')) ? new URL(location.href).searchParams.get('tipo') : 'individual');
 }

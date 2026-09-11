@@ -57,6 +57,7 @@ export function validateOrderForProduction(state, options = {}) {
     if (!mvpRules.skin.includes(f.fields.mf_skin_tones_option)) add(`${prefix}.mf_skin_tones_option`, 'SKIN_REQUIRED', `Escolha o tom de pele da pessoa ${i + 1}.`);
     if (f.fields.mf_face_option === 'otro' && !/^#[\da-f]{6}$/i.test(f.fields.mf_face_custom_color || '')) add(`${prefix}.mf_face_custom_color`, 'COLOR_REQUIRED', 'Escolha a cor personalizada do cabelo.');
     if (!own(pricing.eyes, f.eyes) || !own(pricing.mouth, f.mouth) || typeof f.glasses !== 'boolean') add(prefix, 'FACE_CONFIGURATION', `Confira olhos, boca e óculos da pessoa ${i + 1}.`);
+    if ((f.fields.mf_eyes_option && f.fields.mf_eyes_option !== f.eyes) || (f.fields.mf_mouth_option && f.fields.mf_mouth_option !== f.mouth)) add(prefix, 'FACE_INCONSISTENT', 'As características da pessoa estão inconsistentes. Revise a seleção.');
     requiredPhoto(`${prefix}.mf_face_photo_upload[]`, `da pessoa ${i + 1}`);
     allow(`${prefix}.mf_outfit_photo_upload[]`);
     if (!filled(f.fields.mf_outfit_detail_text) && !photo(`${prefix}.mf_outfit_photo_upload[]`)) add(`${prefix}.mf_outfit_detail_text`, 'OUTFIT_REQUIRED', `Descreva ou envie uma foto da roupa da pessoa ${i + 1}.`);
@@ -67,6 +68,7 @@ export function validateOrderForProduction(state, options = {}) {
     if (!mvpRules.petTypes.includes(c.pet.fields.mf_pet_type)) add('mf_pet_type', 'PET_TYPE_REQUIRED', 'Escolha o tipo do animal principal.');
     requiredPhoto('mf_pet_photo[]', 'do animal principal'); allow('mf_pet_eyes_photo[]');
     if (!own(pricing.petEyes, c.pet.eyes)) add('mf_pet_eyes', 'PET_EYES_REQUIRED', 'Escolha os olhos do animal.');
+    if (c.pet.eyes === 'otro' && !/^#[\da-f]{6}$/i.test(c.pet.fields.mf_pet_eyes_custom_color || '')) add('mf_pet_eyes_custom_color', 'COLOR_REQUIRED', 'Escolha a cor dos olhos do animal.');
     checkAccessories(c.pet, 'figure-1');
   }
   c.pets.forEach((pet, i) => {
@@ -85,6 +87,8 @@ export function validateOrderForProduction(state, options = {}) {
   if (b.type !== 'caja_standard') {
     for (const [field, label] of [['mf_box_character_name', 'o nome da caixa'], ['mf_box_collection_name', 'o nome da coleção'], ['mf_box_color', 'a cor da caixa']]) if (!filled(b.fields[field])) add(field, 'BOX_DETAIL', `Informe ${label}.`);
     if (!/^\d{1,4}$/.test(b.fields.mf_box_number || '')) add('mf_box_number', 'BOX_NUMBER', 'Informe um número de caixa de até quatro dígitos.');
+    const boxColor = b.fields.mf_box_color === 'custom' ? b.fields.mf_box_color_custom : b.fields.mf_box_color;
+    if (!/^#[\da-f]{6}$/i.test(boxColor || '')) add('mf_box_color', 'COLOR_REQUIRED', 'Escolha uma cor válida para a caixa.');
   }
   if (typeof b.dedication !== 'boolean' || (b.dedication && b.type === 'caja_standard')) add('mf_box_dedication_enabled', 'DEDICATION_INCONSISTENT', 'A dedicatória exige uma caixa personalizada.');
   if (b.dedication) {
