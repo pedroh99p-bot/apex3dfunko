@@ -10,9 +10,11 @@ await mkdir(output);
 // Explicit public files; never the historical index, docs or credentials.
 const publicFiles = [
   'js/main.js','js/ui.js','js/state.js','js/pricing.js','js/uploads.js','js/date.js','js/validation.js','js/order.js','js/review.js',
+  'js/carousel.js',
   'css/tokens.css','css/apex.css',
   'config/brand.js','config/products.js','config/pricing.js','config/uploads.js','config/mvp.js',
   'assets/brand/apex-logo.webp',
+  'assets/examples/individual-futebol.webp','assets/examples/individual-profissao.webp','assets/examples/casal.webp','assets/examples/pet.webp',
 ];
 for (const file of publicFiles) {
   const target = resolve(output, file); await mkdir(dirname(target), { recursive: true }); await cp(resolve(root, file), target);

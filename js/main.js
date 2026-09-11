@@ -1,6 +1,8 @@
 import { startConfigurator } from './ui.js';
+import { startHeroCarousel } from './carousel.js';
 try {
   startConfigurator();
+  startHeroCarousel();
   document.documentElement.dataset.apexReady = 'true';
 } catch {
   const message = document.createElement('p');

@@ -38,16 +38,36 @@
       <a class="button" href="#personalize">Criar minha miniatura <span aria-hidden="true">↗</span></a>
       <p class="approval"><span aria-hidden="true">✓</span> Você aprova o modelo antes da produção.</p>
     </div>
-    <div class="hero-art" aria-label="Representação ilustrativa do processo: foto, modelo e miniatura">
-      <div class="art-top"><span>DO SEU MUNDO PARA O 3D</span><span>APEX / 01</span></div>
-      <div class="process-visual">
-        <div class="reference-card"><div class="portrait"><span class="figure"></span></div><span>01 / SUA FOTO</span></div>
-        <span class="process-arrow" aria-hidden="true">↗</span>
-        <div class="model-card"><div class="model-grid"><span class="figure"></span></div><span>02 / SEU MODELO</span></div>
-        <div class="miniature-scene"><span class="figure"></span><span class="pedestal"></span><span class="miniature-tag">03 / SUA MINIATURA</span></div>
+    <section class="hero-carousel" aria-roledescription="carrossel" aria-label="Da foto à miniatura personalizada">
+      <p class="carousel-narrative">Foto real <span aria-hidden="true">→</span> Modelo <span aria-hidden="true">→</span> Miniatura</p>
+      <div class="carousel-stage">
+        <figure class="carousel-slide is-active" role="group" aria-roledescription="slide" aria-label="1 de 4 · Individual">
+          <img src="/assets/examples/individual-futebol.webp" width="600" height="600" alt="Foto de uma pessoa com uniforme de futebol, modelo e miniatura correspondente" fetchpriority="high" decoding="async" draggable="false">
+        </figure>
+        <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 de 4 · Profissão" aria-hidden="true" inert>
+          <img src="/assets/examples/individual-profissao.webp" width="1024" height="1024" alt="Foto de uma profissional com uniforme lilás e sua transformação em miniatura" loading="lazy" decoding="async" draggable="false">
+        </figure>
+        <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 de 4 · Casal" aria-hidden="true" inert>
+          <img src="/assets/examples/casal.webp" width="600" height="600" alt="Foto de um casal, modelo de referência e duas miniaturas personalizadas" loading="lazy" decoding="async" draggable="false">
+        </figure>
+        <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 de 4 · Pet" aria-hidden="true" inert>
+          <img src="/assets/examples/pet.webp" width="600" height="600" alt="Foto de um cachorro e sua transformação em modelo e miniatura" loading="lazy" decoding="async" draggable="false">
+        </figure>
       </div>
-      <div class="art-bottom"><span>UM JEITO NOVO DE GUARDAR O QUE IMPORTA.</span><span>Ilustração de processo.<br>Não representa produto final.</span></div>
-    </div>
+      <div class="carousel-controls">
+        <button type="button" data-carousel-prev aria-label="Imagem anterior">←</button>
+        <div class="carousel-dots" aria-label="Escolher imagem">
+          <button type="button" data-carousel-dot="0" aria-label="Ver imagem 1: Individual" aria-current="true"></button>
+          <button type="button" data-carousel-dot="1" aria-label="Ver imagem 2: Profissão" aria-current="false"></button>
+          <button type="button" data-carousel-dot="2" aria-label="Ver imagem 3: Casal" aria-current="false"></button>
+          <button type="button" data-carousel-dot="3" aria-label="Ver imagem 4: Pet" aria-current="false"></button>
+        </div>
+        <button type="button" data-carousel-next aria-label="Próxima imagem">→</button>
+        <button type="button" data-carousel-play aria-label="Pausar carrossel">Ⅱ</button>
+      </div>
+      <p class="carousel-status" aria-live="off">1 de 4 · Individual</p>
+      <p class="carousel-note">Referências visuais de personalização para esta prévia.</p>
+    </section>
   </section>
   <div class="trust-strip container"><span>Uma criação só sua</span><span>Aprovação antes de produzir</span><span>Pessoas, histórias e pets</span></div>
   <section class="section container" id="como-funciona">
