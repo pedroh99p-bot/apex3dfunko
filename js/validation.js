@@ -2,7 +2,7 @@ import { products } from '../config/products.js';
 import { pricing } from '../config/pricing.js';
 import { uploadPolicy } from '../config/uploads.js';
 import { mvpRules } from '../config/mvp.js';
-import { calculatePrice } from './pricing.js';
+import { calculatePrice, expectedFigureCount } from './pricing.js';
 import { validateDesiredDate } from './date.js';
 import { isValidatedUpload } from './uploads.js';
 
@@ -26,7 +26,8 @@ export function validateOrderForProduction(state, options = {}) {
   const product = products[state.product];
   if (!Number.isSafeInteger(state.quantity) || state.quantity < 1) add('quantity', 'QUANTITY_INVALID', 'Informe uma quantidade inteira maior que zero.');
   if (!product || !own(product.kind === 'pet' ? pricing.petSize : pricing.humanSize, state.size) || typeof state.size !== 'number') add('size', 'SIZE_REQUIRED', 'Escolha um tamanho válido.');
-  if (product && c.figures.length !== product.figures) add('figures', 'FIGURE_COUNT', 'A quantidade de pessoas não corresponde ao produto.');
+  try { if (c.figures.length !== expectedFigureCount(state)) throw new Error(); }
+  catch { add('figures', 'FIGURE_COUNT', 'A quantidade de pessoas não corresponde ao produto e aos adicionais.'); }
   if (!own(pricing.additionalPets, c.pets.length)) add('mf_pets_option', 'PET_COUNT', 'Selecione de zero a três animais adicionais.');
   if (!Number.isInteger(c.minis.quantity) || !own(pricing.minis, c.minis.quantity) || !own(pricing.miniSize, c.minis.size)) add('mf_mini_option', 'MINI_CONFIGURATION', 'Confira a quantidade e o tamanho das minis.');
   const uploads = state.uploads;
@@ -37,7 +38,7 @@ export function validateOrderForProduction(state, options = {}) {
   const requiredPhoto = (field, label) => { allow(field); if (!photo(field)) add(field, 'PHOTO_REQUIRED', `Envie pelo menos uma foto de referência ${label}.`); };
   const checkAccessories = (f, prefix) => {
     if (!Array.isArray(f.specialAccessories) || !record(f.fields)) { add(prefix, 'STATE_INVALID', 'Confira os acessórios selecionados.'); return; }
-    for (const [key, stem, label] of [['accessories', 'accessory', 'acessório'], ['logos', 'logo', 'logótipo']]) {
+    for (const [key, stem, label] of [['accessories', 'accessory', 'acessório simples'], ['logos', 'logo', 'acessório detalhado']]) {
       const count = f[key] ?? 0;
       if (!Number.isInteger(count) || count < 0 || count > pricing.maxAccessories) { add(prefix, 'ACCESSORY_COUNT', 'Quantidade de acessórios inválida.'); continue; }
       for (let n = 1; n <= count; n++) {
@@ -46,21 +47,25 @@ export function validateOrderForProduction(state, options = {}) {
       }
     }
     if (new Set(f.specialAccessories).size !== f.specialAccessories.length) add(prefix, 'DUPLICATE_OPTION', 'Há acessórios duplicados na configuração.');
-    for (const slug of f.specialAccessories) if (own(pricing.specialAccessories, slug)) allow(`${prefix}.mf_special_accessory_extra_photo_${slug}`);
+    for (const slug of f.specialAccessories) if (own(pricing.specialAccessories, slug)) {
+      const field = `${prefix}.mf_special_accessory_extra_photo_${slug}`; allow(field);
+      if (!filled(f.fields[`object_${slug}`]) && !photo(field)) add(`${prefix}.object_${slug}`, 'OBJECT_DETAIL', 'Descreva ou envie uma referência do objeto especial.');
+    }
     if (f.fields.mf_special_other) add(prefix, 'OPTION_UNAVAILABLE', 'Orçamentos de acessórios fora do catálogo ficam para uma próxima etapa.');
   };
   c.figures.forEach((f, i) => {
     const prefix = `figure-${i + 1}`;
     if (!record(f) || !record(f.fields)) { add(prefix, 'STATE_INVALID', 'Confira os dados de cada pessoa.'); return; }
     if (f.id !== prefix) add(prefix, 'FIGURE_ID', 'A identificação das pessoas está inconsistente.');
-    if (!mvpRules.hair.includes(f.fields.mf_face_option)) add(`${prefix}.mf_face_option`, 'HAIR_REQUIRED', `Escolha o cabelo da pessoa ${i + 1}.`);
-    if (!mvpRules.skin.includes(f.fields.mf_skin_tones_option)) add(`${prefix}.mf_skin_tones_option`, 'SKIN_REQUIRED', `Escolha o tom de pele da pessoa ${i + 1}.`);
-    if (f.fields.mf_face_option === 'otro' && !/^#[\da-f]{6}$/i.test(f.fields.mf_face_custom_color || '')) add(`${prefix}.mf_face_custom_color`, 'COLOR_REQUIRED', 'Escolha a cor personalizada do cabelo.');
+    if (f.referenceMode !== 'photo') add(prefix, 'REFERENCE_REQUIRED', 'A foto deve ser a referência visual da pessoa.');
+    for (const [key, label] of [['outfit', 'roupa'], ['pose', 'pose']]) {
+      if (!record(f[key]) || !['reference', 'custom'].includes(f[key].mode)) add(`${prefix}.${key}`, 'PERSONALIZATION_REQUIRED', `Confira a ${label} da pessoa ${i + 1}.`);
+      else if (f[key].mode === 'custom' && !filled(f[key].description)) add(`${prefix}.${key}.description`, 'PERSONALIZATION_DETAIL', `Descreva a ${label} personalizada da pessoa ${i + 1}.`);
+    }
     if (!own(pricing.eyes, f.eyes) || !own(pricing.mouth, f.mouth) || typeof f.glasses !== 'boolean') add(prefix, 'FACE_CONFIGURATION', `Confira olhos, boca e óculos da pessoa ${i + 1}.`);
     if ((f.fields.mf_eyes_option && f.fields.mf_eyes_option !== f.eyes) || (f.fields.mf_mouth_option && f.fields.mf_mouth_option !== f.mouth)) add(prefix, 'FACE_INCONSISTENT', 'As características da pessoa estão inconsistentes. Revise a seleção.');
     requiredPhoto(`${prefix}.mf_face_photo_upload[]`, `da pessoa ${i + 1}`);
-    allow(`${prefix}.mf_outfit_photo_upload[]`);
-    if (!filled(f.fields.mf_outfit_detail_text) && !photo(`${prefix}.mf_outfit_photo_upload[]`)) add(`${prefix}.mf_outfit_detail_text`, 'OUTFIT_REQUIRED', `Descreva ou envie uma foto da roupa da pessoa ${i + 1}.`);
+    if (f.outfit?.mode === 'custom') allow(`${prefix}.mf_outfit_photo_upload[]`);
     if (f.glasses) allow(`${prefix}.mf_face_glasses_upload`);
     checkAccessories(f, prefix);
   });
@@ -83,12 +88,8 @@ export function validateOrderForProduction(state, options = {}) {
   }
   const b = c.box;
   if (!own(pricing.box, b.type)) add('mf_box_option', 'BOX_REQUIRED', 'Escolha uma opção de caixa.');
-  if ((state.size === 20 && b.type !== 'caja_standard') || (c.figures.length === 2 && b.type === 'caja_personalizada')) add('mf_box_option', 'BOX_INCOMPATIBLE', 'A caixa escolhida não é compatível com este produto/tamanho.');
   if (b.type !== 'caja_standard') {
-    for (const [field, label] of [['mf_box_character_name', 'o nome da caixa'], ['mf_box_collection_name', 'o nome da coleção'], ['mf_box_color', 'a cor da caixa']]) if (!filled(b.fields[field])) add(field, 'BOX_DETAIL', `Informe ${label}.`);
-    if (!/^\d{1,4}$/.test(b.fields.mf_box_number || '')) add('mf_box_number', 'BOX_NUMBER', 'Informe um número de caixa de até quatro dígitos.');
-    const boxColor = b.fields.mf_box_color === 'custom' ? b.fields.mf_box_color_custom : b.fields.mf_box_color;
-    if (!/^#[\da-f]{6}$/i.test(boxColor || '')) add('mf_box_color', 'COLOR_REQUIRED', 'Escolha uma cor válida para a caixa.');
+    if (!filled(b.fields.mf_box_character_name)) add('mf_box_character_name', 'BOX_DETAIL', 'Informe o nome da caixa personalizada.');
   }
   if (typeof b.dedication !== 'boolean' || (b.dedication && b.type === 'caja_standard')) add('mf_box_dedication_enabled', 'DEDICATION_INCONSISTENT', 'A dedicatória exige uma caixa personalizada.');
   if (b.dedication) {
@@ -97,10 +98,12 @@ export function validateOrderForProduction(state, options = {}) {
   }
   if (new Set(c.extras).size !== c.extras.length || c.extras.filter(s => typeof s === 'string' && s.startsWith('base-') && pricing.extras[s] > 0).length > 1) add('mf_extra_option[]', 'EXTRAS_INCONSISTENT', 'Escolha somente uma base personalizada.');
   if (c.extras.some(s => ['base-com-nome', 'base-com-nome-data'].includes(s)) && !filled(c.fields.mf_extra_text_data)) add('mf_extra_text_data', 'BASE_TEXT_REQUIRED', 'Informe o texto da base personalizada.');
+  if (c.extras.includes('base-com-nome-data') && validateDesiredDate(c.fields.baseDate, { now: new Date(1900, 0, 1) })) add('baseDate', 'BASE_DATE_REQUIRED', 'Informe uma data válida para gravar na base.');
   if (!own(pricing.shipping, state.shipping.option)) add('mf_shipping_option', 'SHIPPING_REQUIRED', 'Escolha uma opção de prazo.');
   const dateError = validateDesiredDate(state.shipping.date, options);
   if (dateError) add('mf_shipping_date', dateError.code, dateError.message);
   if (typeof state.gift.enabled !== 'boolean' || !['sketch', 'upload'].includes(state.gift.imageSource)) add('gift', 'GIFT_INVALID', 'Confira a personalização da caneca.');
+  if (state.gift.enabled) add('gift', 'OPTION_UNAVAILABLE', 'A caneca ainda não está disponível nesta oferta.');
   if (state.gift.enabled && state.gift.imageSource === 'upload') {
     allowed.add('gift-1:gift_image');
     if (!validUploads.some(u => u.owner.itemId === 'gift-1' && u.owner.field === 'gift_image')) add('gift_image', 'GIFT_PHOTO_REQUIRED', 'Envie a imagem da caneca ou escolha o esboço.');
