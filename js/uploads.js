@@ -23,6 +23,10 @@ export class UploadStore {
       if (!this.policy.mimeTypes.includes(file.type)) throw new Error('Tipo inválido. Use JPEG, PNG, WebP ou GIF.');
       if (!file.size || file.size > this.policy.maxBytes) throw new Error(`A imagem deve ter entre 1 byte e ${this.policy.maxBytes / 1_000_000} MB.`);
       if (!await validSignature(file)) throw new Error('O conteúdo do arquivo não corresponde ao tipo de imagem.');
+      if (typeof createImageBitmap === 'function') {
+        try { const bitmap = await createImageBitmap(file); bitmap.close(); }
+        catch { throw new Error('A imagem está danificada ou não pode ser aberta.'); }
+      }
     }
     if (revision !== this.#revision) return []; // Seleção cancelada por troca de produto.
     const existing = this.list().filter(e => e.owner.itemId === owner.itemId && e.owner.field === owner.field);
