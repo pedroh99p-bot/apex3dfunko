@@ -1,6 +1,10 @@
 # Apex3D — auditoria e preparação da base
 
-Etapa 1 concluída em 11/09/2026. O `index.html` original foi preservado **byte a byte**. Não houve redesign, troca de marca, alterações de preços, checkout, dependências ou extração de código de produção.
+Etapas 1 (auditoria) e 2 (fundação local) concluídas em 11/09/2026. O `index.html` original permanece preservado **byte a byte**. Não houve redesign, troca de marca, alteração da oferta ou integração de pagamento.
+
+A branch `refactor/apex-foundation` contém uma entrada de desenvolvimento em `dev.html`, módulos vanilla próprios em `js/`, configuração pública em `config/`, CSS de suporte em `css/`, servidor estático em `scripts/` e testes em `tests/`. As pastas `assets/brand`, `products`, `examples`, `backgrounds` e `ui` estão reservadas, sem assets de terceiros copiados.
+
+A finalização local produz somente um rascunho para inspeção segura. Não há envio de imagens, POST, checkout externo ou backend de pedidos. A aparência ainda usa CSS, fontes, imagens e markup herdados. Os módulos próprios não usam JavaScript remoto da MiFunko.
 
 ## Baseline recuperável
 
@@ -30,17 +34,22 @@ git worktree add --detach ../apex3d-baseline baseline-original-2026-09-11
 | [ASSET-MAP](docs/ASSET-MAP.md) | Quantidades, origem, licença e organização futura dos assets |
 | [MIGRATION-PLAN](docs/MIGRATION-PLAN.md) | Sequência de extrações e estrutura vanilla proposta |
 | [VALIDATION](docs/VALIDATION.md) | Verificações, smoke tests, falhas originais e limitações |
+| [LOCAL-REIMPLEMENTATION](docs/LOCAL-REIMPLEMENTATION.md) | Contratos, estado e matriz de comportamentos locais/pendentes |
+| [DEPENDENCY-CLASSIFICATION](docs/DEPENDENCY-CLASSIFICATION.md) | Classificação A–E das 110 declarações e serviços externos |
+| [FOUNDATION-VALIDATION](docs/FOUNDATION-VALIDATION.md) | Execução e resultados dos testes da etapa 2 |
 
 Inventários auxiliares: [assets por URL](docs/ASSET-INVENTORY.md), [SVGs inline](docs/INLINE-ASSETS.md), [campos](docs/FORM-FIELDS.md), [atributos de preço](docs/PRICE-ATTRIBUTES.md), [scripts e CSS](docs/RESOURCE-INVENTORY.md). Os manifestos em `docs/evidence/` registram hashes e resultados, sem copiar código remoto ou valores de credenciais.
 
 ## Uso local
 
-Sem build ou instalação de pacotes. Se Python estiver disponível:
+Com Node.js, sem build ou instalação de pacotes para executar a aplicação:
 
 ```powershell
-python -m http.server 8000 --bind 127.0.0.1
+npm run dev
 ```
 
-Abrir `http://127.0.0.1:8000/`. Esse servidor serve arquivos, mas **não processa pedidos**. A página original ainda carrega integrações e links da MiFunko; os testes desta auditoria usaram bloqueio de analytics, pagamentos e chamadas transacionais no navegador. Consulte VALIDATION antes de reproduzi-los.
+Abrir `http://127.0.0.1:4173/`. Essa entrada lê o original como template inerte e executa os módulos locais. `/index.html` redireciona para a mesma entrada. Use esse comando para a etapa 2: servir o original em outro servidor genérico reativa os scripts e links legados. Nenhum fluxo da etapa 2 depende de abrir diretamente o snapshot original.
 
-A próxima etapa deve resolver titularidade das dependências e contrato de backend antes de uma migração comercial. A identidade Apex3D e o tema preto/grafite/vermelho estão apenas propostos em MIGRATION-PLAN.
+`npm test` executa a validação do núcleo com o test runner nativo. `npm run test:smoke` requer Playwright e um navegador instalado; veja FOUNDATION-VALIDATION para configurar. Evidências efêmeras ficam em `test-results/`, fora do Git.
+
+A próxima etapa deve completar as pendências da matriz e substituir os materiais/serviços remotos por recursos próprios aprovados antes da migração comercial. Nome, logo, WhatsApp e domínio estão preparados em config/brand.js; a aplicação visual dessa configuração permanece para o rebranding autorizado. A oferta continua herdada em EUR.

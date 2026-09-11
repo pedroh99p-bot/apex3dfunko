@@ -1,0 +1,120 @@
+# Reimplementação local Apex — etapa 2
+
+Branch: `refactor/apex-foundation`. Baseline: `baseline-original-2026-09-11`. O `index.html` não foi editado. Esta etapa estabelece a fundação local e uma entrada de desenvolvimento; não declara paridade integral com a loja original.
+
+## Fontes e separação
+
+Fontes primárias: TECHNICAL-MAP, USER-FLOW, PRICING, UPLOAD-AUDIT, INTEGRATIONS, MIGRATION-PLAN, FORM-FIELDS e PRICE-ATTRIBUTES. Os trechos do HTML foram consultados por seletores/linhas desses mapas. Nenhum código de `product-personalized.js` ou outro JS proprietário remoto foi copiado, baixado ou executado nesta etapa. O catálogo de preços foi transcrito dos fatos documentados em PRICE-ATTRIBUTES.
+
+`npm run dev` serve `/` como `dev.html`. `js/template.js` lê o HTML original como texto local, monta somente markup/estilos e descarta scripts, handlers inline, iframes, pixels noscript e configurações transacionais da cópia em memória. O arquivo original e suas declarações continuam no baseline. `/index.html` redireciona para a entrada dev; `/legacy-template` é servido como `text/plain` com `nosniff`. Não publicar essa rota ou o snapshot original como produto final.
+
+O servidor de desenvolvimento aceita GET/HEAD e expõe apenas a entrada e pastas públicas autorizadas. CSP permite scripts/conexões locais, estilos/fontes/imagens visuais herdados, bloqueando forms, frames e scripts remotos. Links externos ficam inativos na cópia montada. O servidor não é um backend de pedidos e só escuta em `127.0.0.1`.
+
+## Módulos e contratos
+
+| Arquivo | Entrada | Saída/responsabilidade |
+| --- | --- | --- |
+| config/brand.js | Configuração pública editável | Nome/contato/domínio herdados, locale e reserva para logo próprio; não aplica troca automática da marca no template nesta etapa |
+| config/products.js | IDs locais de produto | Quatro tipos, quantidade de figuras e produto adicional; sem acoplamento a IDs WooCommerce |
+| config/pricing.js | Tabelas documentadas | Todos os preços usados pela função local, centavos EUR, 35 especiais, tamanhos, caixas, minis e urgências |
+| config/endpoints.js | Modo de desenvolvimento | Template local, origens visuais; order/upload/checkout/payment nulos |
+| config/uploads.js | Política temporária | 10 MB decimais por arquivo, MIME permitidos e máximo opcional por campo |
+| js/state.js | ID do produto | Objeto previsível, novo a cada troca de produto |
+| js/pricing.js | orderState | Linhas, preço unitário, subtotal principal, adicional e total do rascunho |
+| js/uploads.js | owner + File[] + multiple | Identificadores, previews Blob, metadados e erros; nenhum envio |
+| js/order.js | orderState | Pedido normalizado e representação segura para inspeção |
+| js/ui.js | Eventos DOM | Adaptação dos seletores existentes ao estado local e atualização da interface |
+| js/template.js / main.js | Template local | Inicialização sem execução de JavaScript legado |
+
+Não há React, Next, bundler ou dependência de WordPress nos módulos. As classes/atributos `mf-*` permanecem como adaptador do HTML atual. Em rebranding posterior, conectar os pontos visuais de marca/logo/textos à configuração sem alterar a lógica de estado/pricing. Os preços estáticos das legendas herdadas continuam no template; o cálculo e os totais dinâmicos já usam exclusivamente config/pricing.js. A sincronização de todas as legendas comerciais será necessária antes de mudar a oferta.
+
+## Estado e pedido
+
+```js
+{
+  version: 1,
+  product: 'individual', quantity: 1, size: 6,
+  customizations: {
+    figures: [{ id: 'figure-1', eyes, mouth, glasses,
+      accessories, logos, specialAccessories, fields }],
+    pet: { eyes, fields }, pets: [{ size, fields }],
+    minis: { quantity, size, fields },
+    box: { type, dedication, fields }, extras: [], fields: {}
+  },
+  uploads: [{ id, owner: { itemId, field }, name, type, size }],
+  shipping: { option, date, flexible },
+  gift: { enabled, imageSource, text }, pricing, notes
+}
+```
+
+`main-1` é o item configurado; `gift-1` é a caneca. Campos por figura têm owner `figure-1.<campo>` ou `figure-2.<campo>`. Os campos exclusivos do pet/minis/caixa usam seu nome específico. No produto mascota, o bloco de acessórios de índice zero representa o pet principal, não uma figura humana cobrada. O nome do arquivo não é identidade: dois homônimos têm IDs diferentes.
+
+Os Files e URLs Blob existem somente no UploadStore. O estado contém metadados. Trocar produto limpa opções, rascunho de upsell e arquivos, revogando URLs. Remover um arquivo, reduzir quantidades dinâmicas ou desativar a personalização elimina os anexos correspondentes. Seleções assíncronas de produto anterior são descartadas. Recarregar/fechar a página perde o rascunho; não há localStorage, sessão WooCommerce, IndexedDB ou persistência.
+
+`buildOrder(state)` retorna `schemaVersion`, `mode: development`, `status: draft`, `customer: null`, `items`, `uploads`, `pricing`, `shipping` e `notes`. Cada item referencia seus IDs de upload. A caneca com imagem própria exige seu arquivo; com esboço referencia `main-1`. Foto preparada para uma caneca não adicionada não entra no pedido normalizado.
+
+`validateOrder` faz validação estrutural/de preço, associação dos arquivos e imagem requerida do upsell. “Outro” sem preço documentado bloqueia a montagem em vez de receber um preço inventado. **Não é validação completa para fabricação**: rascunhos incompletos de rosto/roupa/caixa/data são admitidos. O botão original gera apenas esse rascunho; a faixa dev e o diálogo identificam o modo. O formulário usa validação local própria de rascunho, não validação nativa de produção.
+
+`safeOrderSummary` omite arquivos, URLs Blob, nomes de arquivos, textos livres, detalhes da personalização e informações do cliente. A inspeção aparece no diálogo, via textContent, sem console de dados do usuário. `window.apexDevelopment.inspect()` fornece somente essa cópia segura. Eventos `apex:state-changed`, `apex:product-changed`, `apex:uploads-changed` e `apex:order-preview` divulgam apenas tipo, total e contagem de imagens.
+
+## Matriz de responsabilidades
+
+Os nomes nesta tabela descrevem comportamentos próprios; não são cópias das funções remotas.
+
+| Comportamento / função necessária | Status | Inputs / eventos / seletores | Outputs, estado e dependências |
+| --- | --- | --- | --- |
+| Inicialização isolada | IMPLEMENTADA LOCALMENTE | dev.html → main.js → template.js | Markup herdado, somente módulos locais, pronto em html[data-apex-ready] |
+| Seleção/reset de produto | IMPLEMENTADA LOCALMENTE | click [data-mf-funko-type-option], data-type-value, ?tipo | Novo orderState, galeria filtrada, preço base, anexos limpos |
+| Layout humano/pet e segunda figura | IMPLEMENTADA LOCALMENTE | [data-mf-*-step], produto | Ordem dos blocos; names mf_partner_2_ e IDs únicos para segunda figura |
+| Abrir passos e seguir | IMPLEMENTADA LOCALMENTE | [data-apex-toggle], [data-mf-step-nav-button] | hidden, is-open, aria-expanded e navegação local; não valida fabricação |
+| Características e detalhes por figura | IMPLEMENTADA LOCALMENTE | input/change, mf_face_option, mf_eyes_option, mf_mouth_option, pele, cores e texto | fields por figura; extras de olhos/boca/óculos; cabelo/pele sem acréscimo |
+| Campos condicionais de óculos/cabelo/roupa | IMPLEMENTADA LOCALMENTE | Toggles locais, [data-mf-face-glasses-panel], [data-mf-outfit-colors-body] | Visibilidade e desativação de campos |
+| Quantidades de acessórios/logótipos | IMPLEMENTADA LOCALMENTE | [data-mf-accessories-quantity-option], [data-mf-logos-quantity-option] | 0–5 por categoria/figura; campos próprios, foto e preço central |
+| Seleção dos 35 especiais e anexos adicionais | IMPLEMENTADA LOCALMENTE | mf_special_accessories[], [data-mf-accessory-extras-panel] | Slugs, painel correspondente, upload com owner; preço do catálogo |
+| Filtros, busca e editor avançado dos especiais | PENDENTE | Catálogo e anexos especiais | Catálogo básico funciona; paridade de filtros/editor ainda não implementada |
+| “Outro” com orçamento | PENDENTE | mf_special_other, texto/fotos | Dados locais possíveis; montagem bloqueada enquanto não houver preço definido |
+| Tamanho humano/pet principal | IMPLEMENTADA LOCALMENTE | mf_size_option / mf_pet_size_option | 6/10/15/20 cm; multiplicador por figura, tabela pet independente |
+| Pets adicionais | IMPLEMENTADA LOCALMENTE | mf_pets_option, .pet-type, .pet-size, foto por slot | 0–3 pets, tipo/tamanho/fotos associados, tabela 4/6/10 cm |
+| Catálogo de raças e dependências espécie/raça | PENDENTE | mf_pet_breed, mf_pet_N_breed | Seletores herdados ainda sem popular todas as raças; detalhes/foto ficam disponíveis |
+| Minis: quantidade, tamanho, descrição/foto | IMPLEMENTADA LOCALMENTE | mf_mini_option, mf_mini_size_option, [data-mf-mini-units] | Campos genéricos por mini; quantidade e tamanho precificados |
+| Minis: seletores específicos de rosto/roupa do legado | PENDENTE | Campos dinâmicos de mini | Paridade desses subcampos ainda não existe; não confundir descrição genérica com configuração completa |
+| Bases e adicionais | IMPLEMENTADA LOCALMENTE | mf_extra_option[], mf_extra_text_data | Seleção e preço; bases pagas mutuamente exclusivas pela interface |
+| Caixa e dedicatória | IMPLEMENTADA LOCALMENTE | mf_box_option, campos e upload da caixa | Preço por tamanho, dupla para casal, sem caixa a 20 cm, texto/foto associados |
+| Prazo e data nativa | IMPLEMENTADA LOCALMENTE | mf_shipping_option, mf_shipping_date, flexibilidade | Urgência e mínimo de dias no campo nativo; notas no estado |
+| Calendário comercial completo | PENDENTE | Dias da semana, datas e dependências comerciais | Ainda falta bloqueio original de sábado/domingo/segunda e validação completa da data |
+| Cálculo e resumo | IMPLEMENTADA LOCALMENTE | calculatePrice(orderState), [data-mf-summary-price], hero, barra e breakdown | Centavos EUR, decomposição, subtotal por quantidade e caneca separada |
+| Validação estrutural do rascunho | IMPLEMENTADA LOCALMENTE | validateOrder / buildOrder | Erros explícitos para preço/quantidade/owner inválidos e foto ausente da caneca |
+| Validação completa de produção e modal de lembretes | PENDENTE | Campos obrigatórios por passo | Falta paridade de foto/cabelo/pele/roupa/caixa/data, foco e mensagens por passo |
+| Seleção múltipla, preview e remoção de imagens | IMPLEMENTADA LOCALMENTE | change file, multiple original, botão remover | Blob/File em memória, UUID, owner, revogação de URL |
+| Validação real dos arquivos | IMPLEMENTADA LOCALMENTE | config/uploads.js | Bytes, allowlist MIME, assinatura e decodificação no navegador; erros sem expor conteúdo |
+| Arrastar/soltar, cortar, desenhar, desfazer/refazer | PENDENTE | Editor e drop targets herdados | Não há editor local nesta etapa; seleção funciona pelo seletor de arquivos |
+| Upsell com imagem própria/esboço | IMPLEMENTADA LOCALMENTE | Modal existente, radios e arquivo | Item gift-1 + upload explícito ou referência ao item principal; sem GET add-to-cart |
+| Várias canecas/editar/remover item de carrinho | PENDENTE | Drawer e ações por item | Fundação contempla uma caneca por rascunho; repetição de adicionar atualiza esse adicional |
+| Construção/inspeção de pedido | IMPLEMENTADA LOCALMENTE | submit local / barra fixa | Objeto normalizado e diálogo seguro, sem transação |
+| Carrinho persistente e restaurar configuração | PENDENTE | Drawer/session restore | Nenhuma API ou sessão da MiFunko; rascunho apenas em memória |
+| Header mobile, galeria e FAQ | IMPLEMENTADA LOCALMENTE | Click/teclado, thumbs/setas, faq-toggle | Interações vanilla preservando markup/classes |
+| Carrosséis secundários, contadores, abas informativas e vídeo | PENDENTE | Reviews, social proof, info tabs, vídeo | Conteúdo estático preservado; vídeo externo inativo |
+| Barra fixa: comportamento completo de scroll | PENDENTE | Scroll/intersection, etapa ativa | Totais e botão conectados; paridade completa da aparição da barra ainda não certificada |
+| Eventos mf:* para plugins antigos | NÃO NECESSÁRIA PARA APEX | Contratos legados | Eventos locais apex:* bastam nesta entrada sem plugins |
+| AJAX WooCommerce, nonces e validação por contador HTML | NÃO NECESSÁRIA PARA APEX | POST/admin-ajax/HTML remoto | Não reutilizar esse protocolo no backend próprio futuro |
+| jQuery/React embarcados por WP | NÃO NECESSÁRIA PARA APEX | Dependências de plugins | Nenhum módulo local precisa deles |
+| Tracking/contas e consentimento da MiFunko | NÃO NECESSÁRIA PARA APEX | Cookies, pixels e beacons da operação original | Nenhum carregamento nesta prévia; eventual analytics próprio é outra etapa |
+| Checkout, frete real e pagamento Apex | PENDENTE | Endpoints próprios futuros | Fora do escopo desta etapa; nada implementado ou acionado |
+
+## Pricing preservado e limites
+
+Config central em centavos, sem números monetários no adaptador. Os cenários observados aprovados são: individual 6 cm €59; individual 10 cm €79; casal 15 cm + caixa dupla €219; casal 20 cm sem caixa €239; pet 10 cm €79; casamento 6 cm €119. Testes adicionais cobrem olhos por segunda figura, especiais, três minis (€116), tamanhos adicionais, animais e urgência.
+
+O resumo/hero continuam mostrando o preço unitário configurado. O detalhamento e o objeto distinguem preço unitário, quantidade, subtotal e caneca (€20, item separado). `freightCents: null` e `finalCheckout: false`: não se inventou frete por endereço, impostos ou desconto. O texto promocional estático original não foi reescrito; suas divergências já constam em PRICING. A tabela de frete grátis herdada está registrada, mas não é promessa de cálculo final.
+
+## Uploads e segurança
+
+10 MB significa 10.000.000 bytes por arquivo nesta etapa. JPEG, PNG, WebP e GIF são aceitos; SVG, HEIC e demais MIME não implementados recebem erro explícito. Isso restringe de forma deliberada o antigo accept=image/*, que não validava conteúdo. A extensão sozinha não é aceita como prova de tipo. No navegador, a decodificação também precisa funcionar. O teste Node verifica bytes/assinatura; o smoke verifica preview decodificado.
+
+O modo multiple original é respeitado; campo simples substitui o anexo apenas após validar o novo arquivo. Um lote inválido não elimina anexos anteriores. Não havia limite global de quantidade documentado; maxFilesPerField permanece null, configurável, sem inventar restrição comercial. Cada erro aparece junto ao campo. Os previews não usam Base64; a pequena fixture Base64 do teste é apenas uma imagem sintética de 1 pixel gerada no próprio navegador.
+
+Não foram adicionados segredos, cookies, sessões, arquivos pessoais ou credenciais. O snapshot original contém configurações públicas herdadas já identificadas na auditoria; elas não foram regravadas em novos arquivos ou reutilizadas. Não houve push, deploy, pedido, checkout ou envio de mensagem.
+
+## Testes e evidências
+
+Consulte FOUNDATION-VALIDATION.md. DEPENDENCY-CLASSIFICATION.md classifica as 110 declarações externas e os serviços/carregadores transitivos. Os screenshots e dados efêmeros de testes ficam em test-results (ignorado no Git). Essa matriz explicita as lacunas; o resultado é fundação revisável para a próxima etapa, não substituição integral do sistema remoto.
