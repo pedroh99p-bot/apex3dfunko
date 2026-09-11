@@ -1,4 +1,4 @@
-# Reimplementação local Apex — etapa 2
+# Reimplementação local Apex — etapas 2 e 3
 
 Branch: `refactor/apex-foundation`. Baseline: `baseline-original-2026-09-11`. O `index.html` não foi editado. Esta etapa estabelece a fundação local e uma entrada de desenvolvimento; não declara paridade integral com a loja original.
 
@@ -57,49 +57,61 @@ Os Files e URLs Blob existem somente no UploadStore. O estado contém metadados.
 
 `safeOrderSummary` omite arquivos, URLs Blob, nomes de arquivos, textos livres, detalhes da personalização e informações do cliente. A inspeção aparece no diálogo, via textContent, sem console de dados do usuário. `window.apexDevelopment.inspect()` fornece somente essa cópia segura. Eventos `apex:state-changed`, `apex:product-changed`, `apex:uploads-changed` e `apex:order-preview` divulgam apenas tipo, total e contagem de imagens.
 
+## Decisões do MVP — registradas antes da implementação da etapa 3
+
+KEEP mantém o comportamento necessário; SIMPLIFY substitui pelo contrato menor abaixo; LATER adia; REMOVE elimina a reprodução do legado. As decisões se aplicam à entrada dev, preservando index.html. O estado de implementação da etapa 2 está registrado na coluna Status; a conclusão da etapa 3 será registrada ao final.
+
+- Validação de produção: KEEP, com erros estruturados, fotos por figura/pet e revisão obrigatória.
+- Calendário: SIMPLIFY para data necessária obrigatória, hoje ou futuro, sem plugin/bloqueio de dias da semana e sem reajuste automático de preço.
+- Raças: SIMPLIFY para texto opcional. Minis: SIMPLIFY para descrição e foto por mini.
+- Editor: manter preview/remoção (KEEP); rotação, crop/zoom, reset de edição, desenho e drag-and-drop (LATER). Nenhuma transformação silenciosa do original.
+- Prova social: SIMPLIFY como conteúdo estático; player de vídeo e animações (LATER). Barra fixa: SIMPLIFY para acesso à revisão, sem reproduzir todo o comportamento de scroll.
+- Carrinho, drawer, edição e sessões WooCommerce: REMOVE. Múltiplos itens/canecas e persistência própria: LATER. Uma caneca opcional continua no mesmo pedido, com imagem corretamente associada.
+- Orçamento sem preço, filtros avançados, checkout/pagamento/backend: LATER.
+
 ## Matriz de responsabilidades
 
 Os nomes nesta tabela descrevem comportamentos próprios; não são cópias das funções remotas.
 
-| Comportamento / função necessária | Status | Inputs / eventos / seletores | Outputs, estado e dependências |
-| --- | --- | --- | --- |
-| Inicialização isolada | IMPLEMENTADA LOCALMENTE | dev.html → main.js → template.js | Markup herdado, somente módulos locais, pronto em html[data-apex-ready] |
-| Seleção/reset de produto | IMPLEMENTADA LOCALMENTE | click [data-mf-funko-type-option], data-type-value, ?tipo | Novo orderState, galeria filtrada, preço base, anexos limpos |
-| Layout humano/pet e segunda figura | IMPLEMENTADA LOCALMENTE | [data-mf-*-step], produto | Ordem dos blocos; names mf_partner_2_ e IDs únicos para segunda figura |
-| Abrir passos e seguir | IMPLEMENTADA LOCALMENTE | [data-apex-toggle], [data-mf-step-nav-button] | hidden, is-open, aria-expanded e navegação local; não valida fabricação |
-| Características e detalhes por figura | IMPLEMENTADA LOCALMENTE | input/change, mf_face_option, mf_eyes_option, mf_mouth_option, pele, cores e texto | fields por figura; extras de olhos/boca/óculos; cabelo/pele sem acréscimo |
-| Campos condicionais de óculos/cabelo/roupa | IMPLEMENTADA LOCALMENTE | Toggles locais, [data-mf-face-glasses-panel], [data-mf-outfit-colors-body] | Visibilidade e desativação de campos |
-| Quantidades de acessórios/logótipos | IMPLEMENTADA LOCALMENTE | [data-mf-accessories-quantity-option], [data-mf-logos-quantity-option] | 0–5 por categoria/figura; campos próprios, foto e preço central |
-| Seleção dos 35 especiais e anexos adicionais | IMPLEMENTADA LOCALMENTE | mf_special_accessories[], [data-mf-accessory-extras-panel] | Slugs, painel correspondente, upload com owner; preço do catálogo |
-| Filtros, busca e editor avançado dos especiais | PENDENTE | Catálogo e anexos especiais | Catálogo básico funciona; paridade de filtros/editor ainda não implementada |
-| “Outro” com orçamento | PENDENTE | mf_special_other, texto/fotos | Dados locais possíveis; montagem bloqueada enquanto não houver preço definido |
-| Tamanho humano/pet principal | IMPLEMENTADA LOCALMENTE | mf_size_option / mf_pet_size_option | 6/10/15/20 cm; multiplicador por figura, tabela pet independente |
-| Pets adicionais | IMPLEMENTADA LOCALMENTE | mf_pets_option, .pet-type, .pet-size, foto por slot | 0–3 pets, tipo/tamanho/fotos associados, tabela 4/6/10 cm |
-| Catálogo de raças e dependências espécie/raça | PENDENTE | mf_pet_breed, mf_pet_N_breed | Seletores herdados ainda sem popular todas as raças; detalhes/foto ficam disponíveis |
-| Minis: quantidade, tamanho, descrição/foto | IMPLEMENTADA LOCALMENTE | mf_mini_option, mf_mini_size_option, [data-mf-mini-units] | Campos genéricos por mini; quantidade e tamanho precificados |
-| Minis: seletores específicos de rosto/roupa do legado | PENDENTE | Campos dinâmicos de mini | Paridade desses subcampos ainda não existe; não confundir descrição genérica com configuração completa |
-| Bases e adicionais | IMPLEMENTADA LOCALMENTE | mf_extra_option[], mf_extra_text_data | Seleção e preço; bases pagas mutuamente exclusivas pela interface |
-| Caixa e dedicatória | IMPLEMENTADA LOCALMENTE | mf_box_option, campos e upload da caixa | Preço por tamanho, dupla para casal, sem caixa a 20 cm, texto/foto associados |
-| Prazo e data nativa | IMPLEMENTADA LOCALMENTE | mf_shipping_option, mf_shipping_date, flexibilidade | Urgência e mínimo de dias no campo nativo; notas no estado |
-| Calendário comercial completo | PENDENTE | Dias da semana, datas e dependências comerciais | Ainda falta bloqueio original de sábado/domingo/segunda e validação completa da data |
-| Cálculo e resumo | IMPLEMENTADA LOCALMENTE | calculatePrice(orderState), [data-mf-summary-price], hero, barra e breakdown | Centavos EUR, decomposição, subtotal por quantidade e caneca separada |
-| Validação estrutural do rascunho | IMPLEMENTADA LOCALMENTE | validateOrder / buildOrder | Erros explícitos para preço/quantidade/owner inválidos e foto ausente da caneca |
-| Validação completa de produção e modal de lembretes | PENDENTE | Campos obrigatórios por passo | Falta paridade de foto/cabelo/pele/roupa/caixa/data, foco e mensagens por passo |
-| Seleção múltipla, preview e remoção de imagens | IMPLEMENTADA LOCALMENTE | change file, multiple original, botão remover | Blob/File em memória, UUID, owner, revogação de URL |
-| Validação real dos arquivos | IMPLEMENTADA LOCALMENTE | config/uploads.js | Bytes, allowlist MIME, assinatura e decodificação no navegador; erros sem expor conteúdo |
-| Arrastar/soltar, cortar, desenhar, desfazer/refazer | PENDENTE | Editor e drop targets herdados | Não há editor local nesta etapa; seleção funciona pelo seletor de arquivos |
-| Upsell com imagem própria/esboço | IMPLEMENTADA LOCALMENTE | Modal existente, radios e arquivo | Item gift-1 + upload explícito ou referência ao item principal; sem GET add-to-cart |
-| Várias canecas/editar/remover item de carrinho | PENDENTE | Drawer e ações por item | Fundação contempla uma caneca por rascunho; repetição de adicionar atualiza esse adicional |
-| Construção/inspeção de pedido | IMPLEMENTADA LOCALMENTE | submit local / barra fixa | Objeto normalizado e diálogo seguro, sem transação |
-| Carrinho persistente e restaurar configuração | PENDENTE | Drawer/session restore | Nenhuma API ou sessão da MiFunko; rascunho apenas em memória |
-| Header mobile, galeria e FAQ | IMPLEMENTADA LOCALMENTE | Click/teclado, thumbs/setas, faq-toggle | Interações vanilla preservando markup/classes |
-| Carrosséis secundários, contadores, abas informativas e vídeo | PENDENTE | Reviews, social proof, info tabs, vídeo | Conteúdo estático preservado; vídeo externo inativo |
-| Barra fixa: comportamento completo de scroll | PENDENTE | Scroll/intersection, etapa ativa | Totais e botão conectados; paridade completa da aparição da barra ainda não certificada |
-| Eventos mf:* para plugins antigos | NÃO NECESSÁRIA PARA APEX | Contratos legados | Eventos locais apex:* bastam nesta entrada sem plugins |
-| AJAX WooCommerce, nonces e validação por contador HTML | NÃO NECESSÁRIA PARA APEX | POST/admin-ajax/HTML remoto | Não reutilizar esse protocolo no backend próprio futuro |
-| jQuery/React embarcados por WP | NÃO NECESSÁRIA PARA APEX | Dependências de plugins | Nenhum módulo local precisa deles |
-| Tracking/contas e consentimento da MiFunko | NÃO NECESSÁRIA PARA APEX | Cookies, pixels e beacons da operação original | Nenhum carregamento nesta prévia; eventual analytics próprio é outra etapa |
-| Checkout, frete real e pagamento Apex | PENDENTE | Endpoints próprios futuros | Fora do escopo desta etapa; nada implementado ou acionado |
+| Comportamento / função necessária | Status | Decisão MVP | Inputs / eventos / seletores | Outputs, estado e dependências |
+| --- | --- | --- | --- | --- |
+| Inicialização isolada | IMPLEMENTADA LOCALMENTE | KEEP | dev.html → main.js → template.js | Markup herdado, somente módulos locais, pronto em html[data-apex-ready] |
+| Seleção/reset de produto | IMPLEMENTADA LOCALMENTE | KEEP | click [data-mf-funko-type-option], data-type-value, ?tipo | Novo orderState, galeria filtrada, preço base, anexos limpos |
+| Layout humano/pet e segunda figura | IMPLEMENTADA LOCALMENTE | KEEP | [data-mf-*-step], produto | Ordem dos blocos; names mf_partner_2_ e IDs únicos para segunda figura |
+| Abrir passos e seguir | IMPLEMENTADA LOCALMENTE | KEEP | [data-apex-toggle], [data-mf-step-nav-button] | hidden, is-open, aria-expanded e navegação local; não valida fabricação |
+| Características e detalhes por figura | IMPLEMENTADA LOCALMENTE | KEEP | input/change, mf_face_option, mf_eyes_option, mf_mouth_option, pele, cores e texto | fields por figura; extras de olhos/boca/óculos; cabelo/pele sem acréscimo |
+| Campos condicionais de óculos/cabelo/roupa | IMPLEMENTADA LOCALMENTE | KEEP | Toggles locais, [data-mf-face-glasses-panel], [data-mf-outfit-colors-body] | Visibilidade e desativação de campos |
+| Quantidades de acessórios/logótipos | IMPLEMENTADA LOCALMENTE | KEEP | [data-mf-accessories-quantity-option], [data-mf-logos-quantity-option] | 0–5 por categoria/figura; campos próprios, foto e preço central |
+| Seleção dos 35 especiais e anexos adicionais | IMPLEMENTADA LOCALMENTE | KEEP | mf_special_accessories[], [data-mf-accessory-extras-panel] | Slugs, painel correspondente, upload com owner; preço do catálogo |
+| Filtros, busca e editor avançado dos especiais | PENDENTE | LATER | Catálogo e anexos especiais | Catálogo básico funciona; paridade de filtros/editor ainda não implementada |
+| “Outro” com orçamento | PENDENTE | LATER | mf_special_other, texto/fotos | Dados locais possíveis; montagem bloqueada enquanto não houver preço definido |
+| Tamanho humano/pet principal | IMPLEMENTADA LOCALMENTE | KEEP | mf_size_option / mf_pet_size_option | 6/10/15/20 cm; multiplicador por figura, tabela pet independente |
+| Pets adicionais | IMPLEMENTADA LOCALMENTE | KEEP | mf_pets_option, .pet-type, .pet-size, foto por slot | 0–3 pets, tipo/tamanho/fotos associados, tabela 4/6/10 cm |
+| Catálogo de raças e dependências espécie/raça | PENDENTE | SIMPLIFY | mf_pet_breed, mf_pet_N_breed | Seletores herdados ainda sem popular todas as raças; detalhes/foto ficam disponíveis |
+| Minis: quantidade, tamanho, descrição/foto | IMPLEMENTADA LOCALMENTE | KEEP | mf_mini_option, mf_mini_size_option, [data-mf-mini-units] | Campos genéricos por mini; quantidade e tamanho precificados |
+| Minis: seletores específicos de rosto/roupa do legado | PENDENTE | SIMPLIFY | Campos dinâmicos de mini | Paridade desses subcampos ainda não existe; não confundir descrição genérica com configuração completa |
+| Bases e adicionais | IMPLEMENTADA LOCALMENTE | KEEP | mf_extra_option[], mf_extra_text_data | Seleção e preço; bases pagas mutuamente exclusivas pela interface |
+| Caixa e dedicatória | IMPLEMENTADA LOCALMENTE | KEEP | mf_box_option, campos e upload da caixa | Preço por tamanho, dupla para casal, sem caixa a 20 cm, texto/foto associados |
+| Prazo e data nativa | IMPLEMENTADA LOCALMENTE | KEEP | mf_shipping_option, mf_shipping_date, flexibilidade | Urgência e mínimo de dias no campo nativo; notas no estado |
+| Calendário comercial completo | PENDENTE | SIMPLIFY | Dias da semana, datas e dependências comerciais | Ainda falta bloqueio original de sábado/domingo/segunda e validação completa da data |
+| Cálculo e resumo | IMPLEMENTADA LOCALMENTE | KEEP | calculatePrice(orderState), [data-mf-summary-price], hero, barra e breakdown | Centavos EUR, decomposição, subtotal por quantidade e caneca separada |
+| Validação estrutural do rascunho | IMPLEMENTADA LOCALMENTE | KEEP | validateOrder / buildOrder | Erros explícitos para preço/quantidade/owner inválidos e foto ausente da caneca |
+| Validação completa de produção e modal de lembretes | PENDENTE | KEEP | Campos obrigatórios por passo | Falta paridade de foto/cabelo/pele/roupa/caixa/data, foco e mensagens por passo |
+| Seleção múltipla, preview e remoção de imagens | IMPLEMENTADA LOCALMENTE | KEEP | change file, multiple original, botão remover | Blob/File em memória, UUID, owner, revogação de URL |
+| Validação real dos arquivos | IMPLEMENTADA LOCALMENTE | KEEP | config/uploads.js | Bytes, allowlist MIME, assinatura e decodificação no navegador; erros sem expor conteúdo |
+| Arrastar/soltar, cortar, desenhar, desfazer/refazer | PENDENTE | LATER | Editor e drop targets herdados | Não há editor local nesta etapa; seleção funciona pelo seletor de arquivos |
+| Upsell com imagem própria/esboço | IMPLEMENTADA LOCALMENTE | KEEP | Modal existente, radios e arquivo | Item gift-1 + upload explícito ou referência ao item principal; sem GET add-to-cart |
+| Várias canecas/editar/remover item de carrinho | PENDENTE | LATER | Drawer e ações por item | Fundação contempla uma caneca por rascunho; repetição de adicionar atualiza esse adicional |
+| Construção/inspeção de pedido | IMPLEMENTADA LOCALMENTE | KEEP | submit local / barra fixa | Objeto normalizado e diálogo seguro, sem transação |
+| Carrinho persistente e restaurar configuração | PENDENTE | REMOVE | Drawer/session restore | Nenhuma API ou sessão da MiFunko; rascunho apenas em memória |
+| Header mobile, galeria e FAQ | IMPLEMENTADA LOCALMENTE | KEEP | Click/teclado, thumbs/setas, faq-toggle | Interações vanilla preservando markup/classes |
+| Carrosséis secundários, contadores, abas informativas e vídeo | PENDENTE | SIMPLIFY | Reviews, social proof, info tabs, vídeo | Conteúdo estático preservado; vídeo externo inativo |
+| Barra fixa: comportamento completo de scroll | PENDENTE | SIMPLIFY | Scroll/intersection, etapa ativa | Totais e botão conectados; paridade completa da aparição da barra ainda não certificada |
+| Eventos mf:* para plugins antigos | NÃO NECESSÁRIA PARA APEX | REMOVE | Contratos legados | Eventos locais apex:* bastam nesta entrada sem plugins |
+| AJAX WooCommerce, nonces e validação por contador HTML | NÃO NECESSÁRIA PARA APEX | REMOVE | POST/admin-ajax/HTML remoto | Não reutilizar esse protocolo no backend próprio futuro |
+| jQuery/React embarcados por WP | NÃO NECESSÁRIA PARA APEX | REMOVE | Dependências de plugins | Nenhum módulo local precisa deles |
+| Tracking/contas e consentimento da MiFunko | NÃO NECESSÁRIA PARA APEX | REMOVE | Cookies, pixels e beacons da operação original | Nenhum carregamento nesta prévia; eventual analytics próprio é outra etapa |
+| Checkout, frete real e pagamento Apex | PENDENTE | LATER | Endpoints próprios futuros | Fora do escopo desta etapa; nada implementado ou acionado |
 
 ## Pricing preservado e limites
 
