@@ -14,7 +14,7 @@ export function validateOrder(state) {
   const errors = [];
   try { calculatePrice(state); } catch (error) { errors.push(error.message); }
   if (state.gift.enabled && state.gift.imageSource === 'upload' && !state.uploads.some(u => u.owner.itemId === 'gift-1')) errors.push('Adicione a imagem da caneca ou escolha o esboço.');
-  if (state.customizations.fields.mf_special_other || state.customizations.figures.some(f => f.fields.mf_special_other) || state.customizations.pet.fields.mf_special_other) errors.push('O acessório “Outro” precisa de orçamento; preço ainda não definido no baseline.');
+  if (state.customizations.fields.mf_special_other || state.customizations.figures.some(f => f.fields.mf_special_other) || state.customizations.pet.fields.mf_special_other) errors.push('O acessório “Outro” precisa de orçamento; preço ainda não aprovado na oferta.');
   const ownerIds = new Set(['main-1', 'gift-1']);
   for (const upload of state.uploads) if (!ownerIds.has(upload.owner.itemId) || !upload.owner.field) errors.push('Imagem sem associação válida.');
   return errors;
@@ -30,7 +30,7 @@ export function buildOrder(state) {
   if (state.gift.enabled) items.push({ id: 'gift-1', productId: giftProduct.id, quantity: 1,
     customizations: { imageSource: state.gift.imageSource, sourceItemId: state.gift.imageSource === 'sketch' ? 'main-1' : null, text: state.gift.text },
     uploads: uploads.filter(u => u.owner.itemId === 'gift-1').map(u => u.id), pricing: { unitCents: price.giftTotalCents, totalCents: price.giftTotalCents } });
-  return { schemaVersion: 1, mode: 'development', status: 'draft', customer: null, items,
+  return { schemaVersion: 2, mode: 'homologation', status: 'draft', customer: null, items,
     uploads: structuredClone(uploads), pricing: price, shipping: { ...state.shipping }, notes: state.notes };
 }
 // Representação permitida para inspeção: sem nomes de arquivos, textos livres ou dados pessoais.

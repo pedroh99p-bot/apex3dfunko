@@ -1,11 +1,22 @@
-import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, writeFile, rm, realpath } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-const root = new URL('../', import.meta.url), output = new URL('../dist/', import.meta.url);
-await mkdir(output, { recursive: true });
-// Explicit public allowlist; the historical index, docs, uploads and credentials never enter dist.
-for (const dir of ['js', 'css', 'config', 'assets']) {
-  await cp(new URL(dir, root), new URL(dir, output), { recursive: true });
+import { resolve, dirname } from 'node:path';
+const root = await realpath(fileURLToPath(new URL('../', import.meta.url)));
+const output = resolve(root, 'dist');
+const actual = await realpath(output).catch(error => { if (error.code === 'ENOENT') return output; throw error; });
+if (dirname(actual) !== root || actual !== output) throw new Error('Destino de build fora do workspace.');
+await rm(output, { recursive: true, force: true });
+await mkdir(output);
+// Explicit public files; never the historical index, docs or credentials.
+const publicFiles = [
+  'js/main.js','js/ui.js','js/state.js','js/pricing.js','js/uploads.js','js/date.js','js/validation.js','js/order.js','js/review.js',
+  'css/tokens.css','css/apex.css',
+  'config/brand.js','config/products.js','config/pricing.js','config/uploads.js','config/mvp.js',
+  'assets/brand/apex-logo.webp',
+];
+for (const file of publicFiles) {
+  const target = resolve(output, file); await mkdir(dirname(target), { recursive: true }); await cp(resolve(root, file), target);
 }
-await writeFile(new URL('index.html', output), await readFile(new URL('dev.html', root)));
-await writeFile(new URL('_headers', output), "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n  X-Frame-Options: DENY\n  X-Robots-Tag: noindex, nofollow\n");
-console.log('Staging estático: ' + fileURLToPath(output));
+await writeFile(resolve(output, 'index.html'), await readFile(resolve(root, 'dev.html')));
+await writeFile(resolve(output, '_headers'), "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n  X-Frame-Options: DENY\n  X-Robots-Tag: noindex, nofollow\n");
+console.log('Staging estático: ' + output);
