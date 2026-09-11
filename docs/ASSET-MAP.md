@@ -1,3 +1,16 @@
+# Assets atuais Apex3D V0.5
+
+- assets/brand/apex-logo.webp: logo fornecida e autorizada pelo proprietário no briefing. Download direto, sem edição; 1536 × 1024. Navbar, footer e OpenGraph.
+- Origem: https://res.cloudinary.com/dhbrxzt5a/image/upload/v1786751962/ChatGPT_Image_Aug_14_2026_08_39_25_PM_1_yz9ejr.webp.
+- SHA-256: d246a1f9b06a8b5d6d850c093acbcf13f1db2a3c070910cddb1c7dd30a1f7260.
+- Hero e cards: placeholders vetoriais simples feitos em CSS local próprio (css/apex.css), identificados como ilustrações; não fotografias nem produtos entregues.
+- Exemplos: slots HTML/CSS locais aguardam material Apex autorizado. Nenhum asset proprietário MiFunko foi baixado ou reutilizado na página comercial.
+- Fontes: sistema operacional. Favicon adiado. Nenhum recurso visual externo necessário em runtime.
+
+O inventário abaixo é histórico, relativo ao snapshot original preservado, e não descreve os assets ativos da V0.5.
+
+---
+
 # Mapa de assets e procedência
 
 ## Escopo e quantidade

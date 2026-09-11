@@ -1,3 +1,5 @@
+> Documento histórico das etapas 1–3. Para a versão comercial atual, consulte [APEX-FRONTEND-V05](APEX-FRONTEND-V05.md) e [APEX-DEPENDENCIES](APEX-DEPENDENCIES.md). Preços e regras herdados abaixo não são a oferta V0.5.
+
 # Contrato do MVP Apex — etapa 3
 
 O MVP é um configurador local de um pedido personalizado por fluxo. A interface de trabalho é `dev.html`, servida por `npm run dev`. Não há carrinho WooCommerce, transação, autenticação, backend, pagamento ou envio externo. O `index.html` original permanece intacto.

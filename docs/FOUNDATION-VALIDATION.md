@@ -1,3 +1,5 @@
+> Documento histórico das etapas 1–3. Para a versão comercial atual, consulte [APEX-FRONTEND-V05](APEX-FRONTEND-V05.md) e [APEX-DEPENDENCIES](APEX-DEPENDENCIES.md). Preços e regras herdados abaixo não são a oferta V0.5.
+
 # Validação da fundação — 11/09/2026
 
 Registro histórico da etapa 2. A etapa 3 mantém as referências de preço, mas a finalização agora bloqueia configuração incompleta e exige revisão. Resultados atuais: **17 testes do núcleo/produção e 21 cenários de navegador** (11 de fundação + 10 do MVP) aprovados, zero exceções JS e zero tentativas transacionais nos fluxos monitorados. Ver APEX-MVP-CONTRACT.md. A antiga lacuna de validação de produção foi resolvida conforme o contrato MVP; itens LATER/REMOVE não são requisitos pendentes de paridade.

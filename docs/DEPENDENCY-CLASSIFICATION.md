@@ -1,3 +1,5 @@
+> Documento histórico das etapas 1–3. Para a versão comercial atual, consulte [APEX-FRONTEND-V05](APEX-FRONTEND-V05.md) e [APEX-DEPENDENCIES](APEX-DEPENDENCIES.md). Preços e regras herdados abaixo não são a oferta V0.5.
+
 # Classificação das dependências — etapas 2 e 3
 
 Fonte primária: RESOURCE-INVENTORY.md e INTEGRATIONS.md da auditoria. Nenhum JavaScript remoto foi copiado ou consultado nesta etapa. O index original permanece intacto. A classificação é uma proposta para a migração, não uma remoção em massa.

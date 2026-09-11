@@ -1,3 +1,5 @@
+> Documento histórico das etapas 1–3. Para a versão comercial atual, consulte [APEX-FRONTEND-V05](APEX-FRONTEND-V05.md) e [APEX-DEPENDENCIES](APEX-DEPENDENCIES.md). Preços e regras herdados abaixo não são a oferta V0.5.
+
 # Reimplementação local Apex — etapas 2 e 3
 
 Branch: `refactor/apex-foundation`. Baseline: `baseline-original-2026-09-11`. O `index.html` não foi editado. A etapa 2 estabeleceu a fundação; a etapa 3 implementou o contrato próprio do MVP em APEX-MVP-CONTRACT.md. Paridade integral não é objetivo.
