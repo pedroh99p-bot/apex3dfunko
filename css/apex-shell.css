@@ -1,6 +1,10 @@
 /* Original layout lives in css/original. Apex overrides only branding, connected
    form states, accessible dialogs and verified responsive defects. */
-:root { --apex-action: #c51e3c; --apex-action-hover: #a5102e; }
+:root { --apex-action: #c51e3c; --apex-action-hover: #a5102e; --color-primary-contrast: #a5102e; }
+.mf-product-sales__price .price, .mf-product-sales__price .amount { background: none !important; -webkit-text-fill-color: var(--apex-action) !important; color: var(--apex-action) !important; }
+.mf-product-b2b__button, .mf-footer__cta-btn { color: #fff !important; }
+.mf-product-sketch__badge { background: #ffe2ea !important; color: #a5102e !important; }
+.mf-reviews-mini-slide__star-icon { stroke: var(--apex-action); }
 [hidden], .apex-hidden { display: none !important; }
 .mf-cart-drawer[hidden], .mf-cart-drawer.apex-hidden { display: none !important; }
 .mf-added-drawer[hidden] { display: none !important; }
@@ -12,8 +16,19 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; }
 button:disabled, input:disabled, select:disabled { cursor: not-allowed; }
 :focus-visible { outline: 3px solid var(--apex-action); outline-offset: 4px; }
-.mf-header .custom-logo, .mf-footer .custom-logo { width: 116px; height: 62px; object-fit: contain; }
-.mf-header .custom-logo-link, .mf-footer .custom-logo-link { background: #251f1b; border-radius: 10px; padding: 0 9px; }
+.mf-header .custom-logo { width: 192px; height: 90px; max-height: none; object-fit: cover; }
+.mf-footer .custom-logo { width: 280px; height: 132px; max-height: none; max-width: 100%; object-fit: cover; }
+.mf-header .custom-logo-link, .mf-footer .custom-logo-link { background: #090204; border-radius: 10px; padding: 0; overflow: hidden; }
+.mf-header { border-top-color: var(--apex-action); }
+.mf-footer__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mf-footer__brand { grid-column: 1 / -1; justify-self: center; max-width: 480px; text-align: center; }
+.mf-footer__social, .mf-footer__actions { justify-content: center; }
+img { -webkit-touch-callout: none; -webkit-user-drag: none; user-select: none; }
+@media (max-width: 767px) {
+  .mf-header .custom-logo { width: 156px; height: 74px; }
+  .mf-header .mf-lang { display: none; }
+  .mf-footer__grid { grid-template-columns: 1fr; }
+}
 .mf-product-config__cta { background: var(--apex-action) !important; color: #fff !important; }
 .mf-product-config__cta:hover { background: var(--apex-action-hover) !important; }
 .mf-product-sales__price .price .amount { white-space: nowrap; }

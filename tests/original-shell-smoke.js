@@ -60,10 +60,10 @@ await suite('original-shell-smoke', 4176, async ({ page, run, open, field, inspe
     assert.match(await page.locator('#review-content').innerText(), /Data flexível\s+Sim/); await total(10000); await generate();
     await page.locator('#close-confirmation').click();
   });
-  await run('Minis, caneca, caixa dupla e prazos não homologados ficam indisponíveis', async () => {
+  await run('Caixa dupla removida; minis, caneca e prazos não homologados ficam indisponíveis', async () => {
     assert.equal(await page.locator('[data-mf-mini-step] input:enabled').count(), 0);
     assert.equal(await page.locator('[data-mf-gift-upsell-open]').isDisabled(), true);
-    assert.equal(await page.locator('input[value=caja_doble]').isDisabled(), true);
+    assert.equal(await page.locator('input[value=caja_doble]').count(), 0);
     assert.equal(await page.locator('input[name=mf_shipping_option]:enabled').count(), 1);
   });
   await run('Drawer original revisa e descarta apenas a criação local', async () => {

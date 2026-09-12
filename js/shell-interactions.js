@@ -1,6 +1,13 @@
 import { q, all, el, show, accordion, reveal } from './shell-dom.js';
 
 export function startShellInteractions() {
+  // Discourage casual image saving without blocking text selection, uploads,
+  // keyboard shortcuts, gallery navigation or accessible image controls.
+  for (const eventName of ['contextmenu', 'dragstart']) {
+    document.addEventListener(eventName, event => {
+      if (event.target instanceof Element && event.target.closest('img, picture')) event.preventDefault();
+    });
+  }
   function slider(root, slideSelector, previous, next, bulletSelector) {
     const slides = all(slideSelector, root), bullets = bulletSelector ? all(bulletSelector, root) : [];
     if (!slides.length) return;

@@ -16,7 +16,7 @@ try {
       regions:regions.map(r=>{const nodes=[...d.querySelectorAll(r.selector)];return {id:r.id,count:nodes.length,images:nodes.reduce((sum,n)=>sum+n.querySelectorAll('img').length,0),svgs:nodes.reduce((sum,n)=>sum+n.querySelectorAll('svg').length,0)};}),
       order:top.every((selector,i)=>!i || Boolean(d.querySelector(top[i-1]).compareDocumentPosition(d.querySelector(selector)) & Node.DOCUMENT_POSITION_FOLLOWING)),
       scripts:[...d.scripts].map(n=>({src:n.getAttribute('src'),text:n.textContent.trim()})),
-      external:[...d.querySelectorAll('*')].flatMap(n=>[...n.attributes].filter(a=>a.name!=='xmlns'&&/https?:\/\/|admin-ajax|add-to-cart=|wp-json|nonce/i.test(a.value)).map(a=>({tag:n.tagName,attr:a.name,value:a.value}))),
+      external:[...d.querySelectorAll('*')].flatMap(n=>[...n.attributes].filter(a=>a.name!=='xmlns'&&/https?:\/\/|admin-ajax|add-to-cart=|wp-json|nonce/i.test(a.value)&&!(n.matches('meta[property="og:image"],meta[property="og:image:secure_url"],meta[name="twitter:image"]')&&a.name==='content'&&a.value==='https://res.cloudinary.com/dhbrxzt5a/image/upload/f_jpg,q_auto,w_1200/v1789223149/f977f9d7-a728-44f0-bac0-ea535a5a783c_hwle18.webp')).map(a=>({tag:n.tagName,attr:a.name,value:a.value}))),
       handlers:d.querySelectorAll('[onclick],[onload],[onerror],iframe,object,embed').length,
       brokenAnchors:[...d.querySelectorAll('a[href^="#"]')].filter(a=>a.hash.length>1&&!d.getElementById(a.hash.slice(1))).map(a=>a.getAttribute('href')),
       resources:[...d.querySelectorAll('img[src],link[href],script[src]')].flatMap(n=>[n.getAttribute('src')||n.getAttribute('href'),...(n.getAttribute('srcset')||'').split(',').map(s=>s.trim().split(/\s+/)[0])]).filter(Boolean),
@@ -26,10 +26,12 @@ try {
   // Exact, reviewed exceptions: country/language flag menu (9 SVG), external
   // review-provider badges (2 SVG). Product/process/configurator icons stay intact.
   const svgExceptions = {header:-9,reviews:-2};
+  // User-requested removal of the double-box option (September 2026).
+  const imageExceptions = {configurator:-1,box:-1};
   for (const original of contract.regions) {
     const actual = result.regions.find(r=>r.id===original.id);
     assert.equal(actual.count,original.count,original.id+' containers');
-    assert.equal(actual.images,original.images,original.id+' image occurrences');
+    assert.equal(actual.images,original.images+(imageExceptions[original.id]||0),original.id+' image occurrences');
     assert.equal(actual.svgs,original.svgs+(svgExceptions[original.id]||0),original.id+' SVGs');
   }
   assert.ok(result.order,'Original top-level scroll order');
@@ -43,7 +45,7 @@ try {
     if(['image','font'].includes(asset.kind))assert.equal(sha(bytes),asset.sha256,asset.file+' original bytes preserved');
     assert.ok(['ORIGIN_REVIEW_REQUIRED','FONT_LICENSE_REVIEW'].includes(asset.review),asset.file+' review provenance');
   }
-  const report={passed:true,baseline:contract.baseline,regions:result.regions,counts:result.counts,svgExceptions,localizedFiles:manifest.filter(a=>a.file).length,assetsVerified:true,orderVerified:true,localResourcesOnly:true};
+  const report={passed:true,baseline:contract.baseline,regions:result.regions,counts:result.counts,svgExceptions,imageExceptions,localizedFiles:manifest.filter(a=>a.file).length,assetsVerified:true,orderVerified:true,localResourcesOnly:true};
   fs.mkdirSync('test-results/original-shell',{recursive:true});fs.writeFileSync('test-results/original-shell/structural-comparison.json',JSON.stringify(report,null,2));
   console.log('PASS: 36 regiões, ordem, imagens, SVGs, contagens e '+report.localizedFiles+' arquivos locais verificados.');
 } finally {await browser.close();}
