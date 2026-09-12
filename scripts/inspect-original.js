@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import {chromium} from 'file:///C:/Users/pedro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+import { chromium } from '../tests/playwright-runtime.js';
 const browser=await chromium.launch({channel:'msedge',headless:true});
 try{const page=await browser.newPage();const html=fs.readFileSync('index.html','utf8');
 const data=await page.evaluate(html=>{

@@ -1,5 +1,5 @@
 import fs from 'node:fs';import {originalRegions} from './original-selectors.js';
-import {chromium} from 'file:///C:/Users/pedro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+import { chromium } from '../tests/playwright-runtime.js';
 const browser=await chromium.launch({channel:'msedge',headless:true});try{const page=await browser.newPage();const contract=await page.evaluate(({html,regions})=>{const doc=new DOMParser().parseFromString(html,'text/html');return regions.map(([id,selector,purpose])=>{const nodes=[...doc.querySelectorAll(selector)];return{id,selector,purpose,count:nodes.length,heading:nodes[0]?.querySelector('h1,h2,h3,[class$="__title"]')?.textContent.trim().replace(/\s+/g,' ')||'',images:nodes.reduce((n,x)=>n+x.querySelectorAll('img').length,0),svgs:nodes.reduce((n,x)=>n+x.querySelectorAll('svg').length,0)};});},{html:fs.readFileSync('index.html','utf8'),regions:originalRegions});
 console.log(JSON.stringify(contract.filter(x=>!x.count)));
 fs.writeFileSync('docs/evidence/original-shell-structure.json',JSON.stringify({baseline:'175babe2df4ffa416f6feae680019600689c72a7',regions:contract},null,2));
