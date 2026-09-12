@@ -68,3 +68,9 @@ Aparência segue fotos: não tornar cabelo/pele/olhos/boca campos obrigatórios.
 Preços e tamanhos seguem configuração central em BRL, com PRICING_REVIEW_REQUIRED quando provisórios. Ajustes de copy removem prazo, desconto, avaliações, números, garantias e contatos da marca de origem. Logo Apex local. A mídia herdada é ORIGIN_REVIEW_REQUIRED; não bloqueia staging, conforme instrução do proprietário.
 
 O teste scripts/compare-original-shell.js comparará esta estrutura e os assets finais; exceções deverão ter justificativa específica. A versão original será renderizada para comparação com scripts transacionais bloqueados, sem executar seu motor.
+
+## Resultado da implementação V1
+
+A comparação final passa para as 36 regiões e para todas as contagens de imagens. Os únicos deltas de SVG são header -9 (bandeiras/menu de idiomas) e depoimentos -2 (marcas dos provedores de avaliação). Foram preservados 23 slides + 23 thumbnails, quatro cards de produto, 35 objetos de catálogo, nove cards de processo, 22 imagens de trabalhos, quatro reviews curtos, quatro cards de reviews e sete FAQs. O motor Apex instancia os templates de pessoa por composição; alternativas ficam em template inerte.
+
+A geometria de hero, processo e galeria é igual à original em 390/1440 px, conforme [evidência](evidence/original-shell-geometry.json). Exceções funcionais, testes e pendências estão em [APEX-ORIGINAL-SHELL-V1.md](APEX-ORIGINAL-SHELL-V1.md).
