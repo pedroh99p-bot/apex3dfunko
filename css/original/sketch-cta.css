@@ -1,0 +1,147 @@
+﻿
+/** START SKETCH CTA **/
+
+.mf-product-sketch {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: none;
+    margin-top: 18px;
+    padding: 18px 14px 18px 16px;
+    overflow: hidden;
+    border: 1px solid #f3d486;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: none;
+}
+
+.mf-product-sketch::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 120px;
+    width: 90px;
+    background: rgba(255, 255, 255, 0.54);
+    transform: skewX(-18deg);
+    pointer-events: none;
+}
+
+.mf-product-sketch__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #fff0b8;
+    color: var(--color-primary-contrast);
+}
+
+.mf-product-sketch__content {
+    position: relative;
+    min-width: 0;
+}
+
+.mf-product-sketch__action {
+    position: relative;
+    display: grid;
+    justify-items: end;
+    gap: 8px;
+}
+
+.mf-product-sketch__badge {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.mf-product-sketch__title {
+    max-width: 280px;
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.15;
+    /* Reparte el título en dos líneas equilibradas (antes lo hacía el <h2>; al pasarlo a
+       <div> perdió ese reparto y caía en 3 líneas). */
+    text-wrap: balance;
+}
+
+.mf-product-sketch__text {
+    margin: 6px 0 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.mf-product-sketch__button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 18px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: #050505;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .mf-product-sketch {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+        gap: 8px 12px;
+        padding: 16px 14px;
+    }
+
+    .mf-product-sketch::before {
+        display: none;
+    }
+
+    .mf-product-sketch__content {
+        grid-column: 2;
+    }
+
+    .mf-product-sketch__title {
+        max-width: none;
+        padding-right: 64px;
+    }
+
+    .mf-product-sketch__action {
+        grid-column: 1 / -1;
+        justify-items: stretch;
+        margin-top: 6px;
+    }
+
+    .mf-product-sketch__badge {
+        position: absolute;
+        top: 16px;
+        right: 14px;
+    }
+
+    .mf-product-sketch__button {
+        width: 100%;
+        min-height: 48px;
+        white-space: normal;
+    }
+}
+
+/** END SKETCH CTA **/

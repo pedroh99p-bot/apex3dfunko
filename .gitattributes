@@ -1,0 +1,10 @@
+*.js text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+dev.html text eol=lf
+css/apex-shell.css text eol=lf
+css/shell-inline.css text eol=lf
+# Preserve the captured source and original media/style bytes across checkouts.
+index.html -text
+css/original/** -text
+assets/** -text

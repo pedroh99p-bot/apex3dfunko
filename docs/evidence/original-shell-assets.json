@@ -1,0 +1,2822 @@
+[
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/variables.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0596eb8164d7ed67bed828ef72d2b214f238d3b5bf018548c1cfef9bf4b2c7bb",
+    "bytes": 883,
+    "file": "css/original/variables.css",
+    "localizedSha256": "0596eb8164d7ed67bed828ef72d2b214f238d3b5bf018548c1cfef9bf4b2c7bb"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/header.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "07f8e3c8aec7ef8386457bc985c228f671a60cc58bad129d962e7a1b93e49f7e",
+    "bytes": 11538,
+    "file": "css/original/header.css",
+    "localizedSha256": "07f8e3c8aec7ef8386457bc985c228f671a60cc58bad129d962e7a1b93e49f7e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/footer.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "fcc9c29029eed5f38649aea8b2733fa24106817b1c161220032c19e363a4a6ac",
+    "bytes": 5572,
+    "file": "css/original/footer.css",
+    "localizedSha256": "fcc9c29029eed5f38649aea8b2733fa24106817b1c161220032c19e363a4a6ac"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/styles.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b557ca9ea0eee2faa9fb7c9d90897158eaaff216c41e8916b41c96f4529e821a",
+    "bytes": 15829,
+    "file": "css/original/styles.css",
+    "localizedSha256": "b557ca9ea0eee2faa9fb7c9d90897158eaaff216c41e8916b41c96f4529e821a"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/css/product-personalized.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f596ace5c3c60ba4029d35f52e3e4b3f67d2384076d55b35e5392d4041e2a627",
+    "bytes": 163469,
+    "file": "css/original/product-personalized.css",
+    "localizedSha256": "f596ace5c3c60ba4029d35f52e3e4b3f67d2384076d55b35e5392d4041e2a627"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/extra-step/extra-step.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "44bdbaacdfd062c0e02a7830a4432ac8c14330084ce728a35eca9398f533ca7a",
+    "bytes": 8350,
+    "file": "css/original/extra-step.css",
+    "localizedSha256": "44bdbaacdfd062c0e02a7830a4432ac8c14330084ce728a35eca9398f533ca7a"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/mini-step/mini-step.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8c9e1e239150ab90d411a22597aa79e3e75d5f2f6282f5bc501162313a5c64b8",
+    "bytes": 7670,
+    "file": "css/original/mini-step.css",
+    "localizedSha256": "8c9e1e239150ab90d411a22597aa79e3e75d5f2f6282f5bc501162313a5c64b8"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/pet-groups-tech/pet-groups-tech.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "80e34cb9480b4d79e2824f1e680b3850338af8d27650bd5a84ce3110c00dd9d1",
+    "bytes": 666,
+    "file": "css/original/pet-groups-tech.css",
+    "localizedSha256": "80e34cb9480b4d79e2824f1e680b3850338af8d27650bd5a84ce3110c00dd9d1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/step-nav/step-nav.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "33c87f4dfda0c6f90bc853bf13d1f859a200e4cc29b658413221c37a0c593ad2",
+    "bytes": 2010,
+    "file": "css/original/step-nav.css",
+    "localizedSha256": "33c87f4dfda0c6f90bc853bf13d1f859a200e4cc29b658413221c37a0c593ad2"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/summary-card/summary-card.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b7c928d1c19334da00b924cd34941165d558f0e32186d641a8e89d434019d754",
+    "bytes": 8579,
+    "file": "css/original/summary-card.css",
+    "localizedSha256": "b7c928d1c19334da00b924cd34941165d558f0e32186d641a8e89d434019d754"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/personalizer/type-selector/type-selector.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "fcd066263696f8e7ee2200ab98cfc7894fe9fb35ec79a25dc5012927092b5c10",
+    "bytes": 4387,
+    "file": "css/original/type-selector.css",
+    "localizedSha256": "fcd066263696f8e7ee2200ab98cfc7894fe9fb35ec79a25dc5012927092b5c10"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/b2b-cta/b2b-cta.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "548108e8401f8825963872cad98b2a9870389efc566a2328531e8bf8f29632ce",
+    "bytes": 3214,
+    "file": "css/original/b2b-cta.css",
+    "localizedSha256": "548108e8401f8825963872cad98b2a9870389efc566a2328531e8bf8f29632ce"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/cart-drawer/cart-drawer.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f033c2d8f55eb16c1ee6da39a87b9d2b4219416d0fc9415c806ab462e2590bb9",
+    "bytes": 10915,
+    "file": "css/original/cart-drawer.css",
+    "localizedSha256": "f033c2d8f55eb16c1ee6da39a87b9d2b4219416d0fc9415c806ab462e2590bb9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/delivery-section/delivery-section.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "52736d369027d3b6d3cdd09be0faf32544c63fd6f72d25d24258676f15f68435",
+    "bytes": 11346,
+    "file": "css/original/delivery-section.css",
+    "localizedSha256": "52736d369027d3b6d3cdd09be0faf32544c63fd6f72d25d24258676f15f68435"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/faq-section/faq-section.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "a48fc644ff89364874a2b736e136017c1edeac3a74eb70ec77b1204788b78738",
+    "bytes": 747,
+    "file": "css/original/faq-section.css",
+    "localizedSha256": "a48fc644ff89364874a2b736e136017c1edeac3a74eb70ec77b1204788b78738"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/fixed-cart-bar/fixed-cart-bar.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4aba5e35b3784208fbfe2660ab60712a7ef499c54a2e0b611b74ccd99fc53b71",
+    "bytes": 5650,
+    "file": "css/original/fixed-cart-bar.css",
+    "localizedSha256": "4aba5e35b3784208fbfe2660ab60712a7ef499c54a2e0b611b74ccd99fc53b71"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/gift-upsell/gift-upsell.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c7627e0cbf5d89e292460556b784db0beb561f2639d0dd0a27e1904028b0625c",
+    "bytes": 17016,
+    "file": "css/original/gift-upsell.css",
+    "localizedSha256": "c7627e0cbf5d89e292460556b784db0beb561f2639d0dd0a27e1904028b0625c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/image-annotator/image-annotator.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7b81d0b1b2fc936ad7ca2ae4ee9af5e089b6ada13812dc3d17d831ee9e70a52b",
+    "bytes": 3925,
+    "file": "css/original/image-annotator.css",
+    "localizedSha256": "7b81d0b1b2fc936ad7ca2ae4ee9af5e089b6ada13812dc3d17d831ee9e70a52b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/info-tabs/info-tabs.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "df1ae9032fb244eeee5edd31722f80de41715bda09bedf17fe52f59321831bb9",
+    "bytes": 6554,
+    "file": "css/original/info-tabs.css",
+    "localizedSha256": "df1ae9032fb244eeee5edd31722f80de41715bda09bedf17fe52f59321831bb9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/presupuesto-hero/presupuesto-hero.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "dffc7668df5199afdd55dd3f78e5e0d01776eca034c58f56577b8dc458500516",
+    "bytes": 9573,
+    "file": "css/original/presupuesto-hero.css",
+    "localizedSha256": "dffc7668df5199afdd55dd3f78e5e0d01776eca034c58f56577b8dc458500516"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/product-hero/product-hero.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "20fcd323d5303eb96397f0abec4c8f3354218950438277b6f8fbf53e44720c23",
+    "bytes": 11608,
+    "file": "css/original/product-hero.css",
+    "localizedSha256": "20fcd323d5303eb96397f0abec4c8f3354218950438277b6f8fbf53e44720c23"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/reviews-mini-slider/reviews-mini-slider.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7d8d5f5d2bf7e7a0857c4c49693f65b40c29e2b28b3d6ec037e10d3edaa02e00",
+    "bytes": 3832,
+    "file": "css/original/reviews-mini-slider.css",
+    "localizedSha256": "7d8d5f5d2bf7e7a0857c4c49693f65b40c29e2b28b3d6ec037e10d3edaa02e00"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/reviews-proof/reviews-proof.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "937f6970c73abe5b443571126c315da0a10871648710b26a69e18d81e4665d86",
+    "bytes": 1292,
+    "file": "css/original/reviews-proof.css",
+    "localizedSha256": "937f6970c73abe5b443571126c315da0a10871648710b26a69e18d81e4665d86"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/reviews-slider/reviews-slider.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d5650689735f6e406bff3a24727d1f1e87933e00f9190542380b9073260c693e",
+    "bytes": 10883,
+    "file": "css/original/reviews-slider.css",
+    "localizedSha256": "d5650689735f6e406bff3a24727d1f1e87933e00f9190542380b9073260c693e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/sales-features/sales-features.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8c22277da489fd2343794a02c08cad6d09585bb034628e28554a3d0877264029",
+    "bytes": 1268,
+    "file": "css/original/sales-features.css",
+    "localizedSha256": "8c22277da489fd2343794a02c08cad6d09585bb034628e28554a3d0877264029"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/sales-video/sales-video.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "3f8715e79ec7678ea763e15f8b6e5ecaeea68484f41846d0ba90a8ea4f90f775",
+    "bytes": 1633,
+    "file": "css/original/sales-video.css",
+    "localizedSha256": "3f8715e79ec7678ea763e15f8b6e5ecaeea68484f41846d0ba90a8ea4f90f775"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/showcase-gallery/showcase-gallery.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5062e90d1d789216d35a8742fa2867a7d51812872c65c63607c0e7cbcfdb1414",
+    "bytes": 3074,
+    "file": "css/original/showcase-gallery.css",
+    "localizedSha256": "5062e90d1d789216d35a8742fa2867a7d51812872c65c63607c0e7cbcfdb1414"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/sketch-cta/sketch-cta.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "1ebec7cc0aca5bf1916c0252faa1132394a26775e8e1bbba698a54a924498c5f",
+    "bytes": 3078,
+    "file": "css/original/sketch-cta.css",
+    "localizedSha256": "1ebec7cc0aca5bf1916c0252faa1132394a26775e8e1bbba698a54a924498c5f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/social-proof/social-proof.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "cfae98125405abc4086c440f0e071087c9bb3b25a2022277c1076adc320aaeeb",
+    "bytes": 2895,
+    "file": "css/original/social-proof.css",
+    "localizedSha256": "cfae98125405abc4086c440f0e071087c9bb3b25a2022277c1076adc320aaeeb"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/trust-section/trust-section.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d443486c8ab44c06f4738138521d325bb3b749230d36bc0d537f2f8334e0ee6d",
+    "bytes": 3702,
+    "file": "css/original/trust-section.css",
+    "localizedSha256": "d443486c8ab44c06f4738138521d325bb3b749230d36bc0d537f2f8334e0ee6d"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/video-modal/video-modal.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ed4dc053e2515b9f3a7bacb36214716f0eb758dd1c4d176e59905d953d137073",
+    "bytes": 1128,
+    "file": "css/original/video-modal.css",
+    "localizedSha256": "ed4dc053e2515b9f3a7bacb36214716f0eb758dd1c4d176e59905d953d137073"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/whatsapp-cta/whatsapp-cta.css?ver=3.6.36.1788504072",
+    "kind": "css",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c2ed9a372c293d820b873bb5f6fdeede20144896dda121047ba4fc354a5232de",
+    "bytes": 1843,
+    "file": "css/original/whatsapp-cta.css",
+    "localizedSha256": "c2ed9a372c293d820b873bb5f6fdeede20144896dda121047ba4fc354a5232de"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/plugins/gdpr-cookie-compliance/dist/images/gdpr-logo.png",
+    "kind": "branding",
+    "status": "excluded",
+    "reason": "Branding puro ou tracker, sem função visual comercial"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/PNFMIFUNKOPERSONALIZADO-1-1-1.png",
+    "kind": "image",
+    "status": "excluded",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5165500e03625e70c612a9f32d01b28533faa09ee11cef136b90686a4761a9ed",
+    "bytes": 31344,
+    "reason": "Branding puro ou tracker, sem função visual comercial"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "a80c07fef43131782034a57c6a57adb29928a90dcefc95b246ad17e2863ec901",
+    "bytes": 24808,
+    "file": "assets/hero/individual-principal-1.webp",
+    "localizedSha256": "a80c07fef43131782034a57c6a57adb29928a90dcefc95b246ad17e2863ec901"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-1-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "550c83d019b86bbe1bd19c5bdfbe2642e99caf08f8b359f4a0f0ce197f29a6a8",
+    "bytes": 5104,
+    "file": "assets/hero/individual-principal-1-150x150.webp",
+    "localizedSha256": "550c83d019b86bbe1bd19c5bdfbe2642e99caf08f8b359f4a0f0ce197f29a6a8"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-1-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d5ba495354d57c8f89cd585ae563170a52d1a0193a4b6cffc2fd6aa67183b843",
+    "bytes": 11574,
+    "file": "assets/hero/individual-principal-1-300x300.webp",
+    "localizedSha256": "d5ba495354d57c8f89cd585ae563170a52d1a0193a4b6cffc2fd6aa67183b843"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-1-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "16ac8229b1f5125db59b085ba4135693dadcd7d7ca742e3bea3d0efc306daeb3",
+    "bytes": 3160,
+    "file": "assets/hero/individual-principal-1-100x100.webp",
+    "localizedSha256": "16ac8229b1f5125db59b085ba4135693dadcd7d7ca742e3bea3d0efc306daeb3"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2-1024x1024.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e590d50f0bd6fc01c3599b06073041b146677fa32e6fa749822732a99fc2ba83",
+    "bytes": 57478,
+    "file": "assets/hero/individual-principal-2-1024x1024.webp",
+    "localizedSha256": "e590d50f0bd6fc01c3599b06073041b146677fa32e6fa749822732a99fc2ba83"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "976395d0ad26a6b05b5b33c40341f9828a7f4329d1d2735cc21e4e202506a909",
+    "bytes": 4648,
+    "file": "assets/hero/individual-principal-2-150x150.webp",
+    "localizedSha256": "976395d0ad26a6b05b5b33c40341f9828a7f4329d1d2735cc21e4e202506a909"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7c70a2143c5f421bddb6fa64a39c546f1ee97e0d109b5fa9590caf53dcd065e6",
+    "bytes": 10938,
+    "file": "assets/hero/individual-principal-2-300x300.webp",
+    "localizedSha256": "7c70a2143c5f421bddb6fa64a39c546f1ee97e0d109b5fa9590caf53dcd065e6"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2-768x768.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0edea17996f54f99ae13dbb86ae0ee489f8decb5a286a5065b07f45a26f2c5a6",
+    "bytes": 38304,
+    "file": "assets/hero/individual-principal-2-768x768.webp",
+    "localizedSha256": "0edea17996f54f99ae13dbb86ae0ee489f8decb5a286a5065b07f45a26f2c5a6"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2-600x600.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "32e8fdee52dc5d34b074c3a6508ea57f8c591554ae9fe89c4678aaacf3f9d546",
+    "bytes": 26968,
+    "file": "assets/hero/individual-principal-2-600x600.webp",
+    "localizedSha256": "32e8fdee52dc5d34b074c3a6508ea57f8c591554ae9fe89c4678aaacf3f9d546"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c986b1eb4248802fee992e2ce884c3615f60aca05f9366a34339a816ad49ac32",
+    "bytes": 2876,
+    "file": "assets/hero/individual-principal-2-100x100.webp",
+    "localizedSha256": "c986b1eb4248802fee992e2ce884c3615f60aca05f9366a34339a816ad49ac32"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4ca10e2432ad94cb58ff16fe2abb6119fda8d758cd0f686fba116b72b3fef344",
+    "bytes": 78100,
+    "file": "assets/hero/individual-principal-2.webp",
+    "localizedSha256": "4ca10e2432ad94cb58ff16fe2abb6119fda8d758cd0f686fba116b72b3fef344"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-3-1024x1024.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ed275b7ba010426cb54a849408ea84c20e382021d90034f9c9f23af228468abd",
+    "bytes": 74702,
+    "file": "assets/hero/individual-principal-3-1024x1024.webp",
+    "localizedSha256": "ed275b7ba010426cb54a849408ea84c20e382021d90034f9c9f23af228468abd"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-3-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9550fef18c246638e90b3eb47df139aa9aa13eaf2a55f1ef259b773d62a77dfe",
+    "bytes": 5216,
+    "file": "assets/hero/individual-principal-3-150x150.webp",
+    "localizedSha256": "9550fef18c246638e90b3eb47df139aa9aa13eaf2a55f1ef259b773d62a77dfe"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-3-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "603168ca9fee6e9e13ea5764350fe225ff81b5cc7b489942ab2a3c8340c308eb",
+    "bytes": 12740,
+    "file": "assets/hero/individual-principal-3-300x300.webp",
+    "localizedSha256": "603168ca9fee6e9e13ea5764350fe225ff81b5cc7b489942ab2a3c8340c308eb"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-3-768x768.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "1b740e4969643e7a6898b685570e3336b3a517513afdf7b2dffa38ab158ea857",
+    "bytes": 46990,
+    "file": "assets/hero/individual-principal-3-768x768.webp",
+    "localizedSha256": "1b740e4969643e7a6898b685570e3336b3a517513afdf7b2dffa38ab158ea857"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-3-600x600.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f8e521251a1d2e9dd73a1f891881fbb5b0a8091d0705208982e2441f9de0a0f0",
+    "bytes": 31642,
+    "file": "assets/hero/individual-principal-3-600x600.webp",
+    "localizedSha256": "f8e521251a1d2e9dd73a1f891881fbb5b0a8091d0705208982e2441f9de0a0f0"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-3-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "3c23be79300eef4b88cee03ea66b2f260a545396f4c917e7cf557008b477a965",
+    "bytes": 3152,
+    "file": "assets/hero/individual-principal-3-100x100.webp",
+    "localizedSha256": "3c23be79300eef4b88cee03ea66b2f260a545396f4c917e7cf557008b477a965"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-3.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "a3a62f54bb151f4b463f2b9d01a9fcaec4ce246ad121dd3c7dc660c2dd052d5f",
+    "bytes": 110804,
+    "file": "assets/hero/individual-principal-3.webp",
+    "localizedSha256": "a3a62f54bb151f4b463f2b9d01a9fcaec4ce246ad121dd3c7dc660c2dd052d5f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-4.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "05389970740d690864b019377a6a2397eb8eeceddf7590046bf001200c84f208",
+    "bytes": 31040,
+    "file": "assets/hero/individual-principal-4.webp",
+    "localizedSha256": "05389970740d690864b019377a6a2397eb8eeceddf7590046bf001200c84f208"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-4-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "be2d61f6ea046b2ba2a8b94ac1a07f789c772c546f7c80b06c27eb19b949494c",
+    "bytes": 5356,
+    "file": "assets/hero/individual-principal-4-150x150.webp",
+    "localizedSha256": "be2d61f6ea046b2ba2a8b94ac1a07f789c772c546f7c80b06c27eb19b949494c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-4-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "1f83f46c72d7270d104c553ac919a472a2bc18174c390812aa5b3e9f78ef34ca",
+    "bytes": 13006,
+    "file": "assets/hero/individual-principal-4-300x300.webp",
+    "localizedSha256": "1f83f46c72d7270d104c553ac919a472a2bc18174c390812aa5b3e9f78ef34ca"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-4-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "aa6573a0ec3899cb049237928626c597900beea968ccdeea485ae9aa25fd54d5",
+    "bytes": 3172,
+    "file": "assets/hero/individual-principal-4-100x100.webp",
+    "localizedSha256": "aa6573a0ec3899cb049237928626c597900beea968ccdeea485ae9aa25fd54d5"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-9-1024x1024.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "86a5ad39b8c4e6253c3d1294fb6f896e62bb47fc5f4f7e25a77f01001a569caa",
+    "bytes": 62026,
+    "file": "assets/hero/individual-principal-9-1024x1024.webp",
+    "localizedSha256": "86a5ad39b8c4e6253c3d1294fb6f896e62bb47fc5f4f7e25a77f01001a569caa"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-9-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ce743d4509a8d4e60ec9d1052ab972de573c1f1ba1c40421c4b695ebe5d9b1d6",
+    "bytes": 5194,
+    "file": "assets/hero/individual-principal-9-150x150.webp",
+    "localizedSha256": "ce743d4509a8d4e60ec9d1052ab972de573c1f1ba1c40421c4b695ebe5d9b1d6"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-9-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "22f507cce57665d41f2e35fae85c6f29c7bea5533153245b32ba8faa75f068aa",
+    "bytes": 12004,
+    "file": "assets/hero/individual-principal-9-300x300.webp",
+    "localizedSha256": "22f507cce57665d41f2e35fae85c6f29c7bea5533153245b32ba8faa75f068aa"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-9-768x768.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "2517e9cfc4d195650b3a712fc9fc985a9ae8e575fec1172e845e7f25aa2c5652",
+    "bytes": 41044,
+    "file": "assets/hero/individual-principal-9-768x768.webp",
+    "localizedSha256": "2517e9cfc4d195650b3a712fc9fc985a9ae8e575fec1172e845e7f25aa2c5652"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-9-600x600.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "16c6f8205904b06358bf2705a09dc0614170bccea648e8c97e7f232193d7ed48",
+    "bytes": 29764,
+    "file": "assets/hero/individual-principal-9-600x600.webp",
+    "localizedSha256": "16c6f8205904b06358bf2705a09dc0614170bccea648e8c97e7f232193d7ed48"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-9-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9d542e4f02b191679364fa2e9c1eb82f2210d7f8d9cbdff421ddfdf4dc77e94b",
+    "bytes": 3304,
+    "file": "assets/hero/individual-principal-9-100x100.webp",
+    "localizedSha256": "9d542e4f02b191679364fa2e9c1eb82f2210d7f8d9cbdff421ddfdf4dc77e94b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-9.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "2a5ca5aee4a79e393c0c080e8b72a84e16e57de8d98731bf79c974a25899b363",
+    "bytes": 83606,
+    "file": "assets/hero/individual-principal-9.webp",
+    "localizedSha256": "2a5ca5aee4a79e393c0c080e8b72a84e16e57de8d98731bf79c974a25899b363"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-11-1024x1024.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "afdd08ec8cd73e133003aac39bd928ed787bc79f08a97298f796f4ecd69c8170",
+    "bytes": 97274,
+    "file": "assets/hero/individual-principal-11-1024x1024.webp",
+    "localizedSha256": "afdd08ec8cd73e133003aac39bd928ed787bc79f08a97298f796f4ecd69c8170"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-11-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "1800447d5c43a54fa03824a642a8d03c585d7aa583309b983a63468985d75f7c",
+    "bytes": 5374,
+    "file": "assets/hero/individual-principal-11-150x150.webp",
+    "localizedSha256": "1800447d5c43a54fa03824a642a8d03c585d7aa583309b983a63468985d75f7c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-11-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "de54b7e01106c2dc708d2cb694d77f9dc6aaf17646ba232ecae79ce3f0ddaf4b",
+    "bytes": 13970,
+    "file": "assets/hero/individual-principal-11-300x300.webp",
+    "localizedSha256": "de54b7e01106c2dc708d2cb694d77f9dc6aaf17646ba232ecae79ce3f0ddaf4b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-11-768x768.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d8f281233b0920561abb6bbf6fa81411746f8197bfbd10bbd164366d79278096",
+    "bytes": 58012,
+    "file": "assets/hero/individual-principal-11-768x768.webp",
+    "localizedSha256": "d8f281233b0920561abb6bbf6fa81411746f8197bfbd10bbd164366d79278096"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-11-600x600.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ccdb9c4e315b6fe8473b261dfdd57fc41e71429f970a3af37f2612e8705c2b1f",
+    "bytes": 38804,
+    "file": "assets/hero/individual-principal-11-600x600.webp",
+    "localizedSha256": "ccdb9c4e315b6fe8473b261dfdd57fc41e71429f970a3af37f2612e8705c2b1f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-11-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4b4a73eb97092491daf327400464ffb2e4b654b433d4401ba589172e741512f6",
+    "bytes": 3224,
+    "file": "assets/hero/individual-principal-11-100x100.webp",
+    "localizedSha256": "4b4a73eb97092491daf327400464ffb2e4b654b433d4401ba589172e741512f6"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-11.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b63bfb3823ea3d5e111010a01a600c2f5b2ebe3b7479cfde543c4668f33dba2a",
+    "bytes": 148754,
+    "file": "assets/hero/individual-principal-11.webp",
+    "localizedSha256": "b63bfb3823ea3d5e111010a01a600c2f5b2ebe3b7479cfde543c4668f33dba2a"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-13-1024x1024.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "3b9f3faf096dbb8cbeda6c651c5a53e2eb09d838b924a717cdfbdb2f224a54b8",
+    "bytes": 64274,
+    "file": "assets/hero/individual-principal-13-1024x1024.webp",
+    "localizedSha256": "3b9f3faf096dbb8cbeda6c651c5a53e2eb09d838b924a717cdfbdb2f224a54b8"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-13-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "6e016c25cd9d77d5cffd56f510d9430562cd4ecf46d0887eaa9260dfb091339c",
+    "bytes": 4570,
+    "file": "assets/hero/individual-principal-13-150x150.webp",
+    "localizedSha256": "6e016c25cd9d77d5cffd56f510d9430562cd4ecf46d0887eaa9260dfb091339c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-13-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f4a7c87214cc975119b91b7908663645a18d74f967eb562e663c58c1da67b278",
+    "bytes": 11170,
+    "file": "assets/hero/individual-principal-13-300x300.webp",
+    "localizedSha256": "f4a7c87214cc975119b91b7908663645a18d74f967eb562e663c58c1da67b278"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-13-768x768.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4d081783deb3259a15c1e4c9ca902900ddc6ef32f05546831c6267c6cf7bce6c",
+    "bytes": 41266,
+    "file": "assets/hero/individual-principal-13-768x768.webp",
+    "localizedSha256": "4d081783deb3259a15c1e4c9ca902900ddc6ef32f05546831c6267c6cf7bce6c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-13-600x600.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "479ff3c51ce02f669bcf496d1fafa1d03bdf03a627646c80bcb387765c8e0634",
+    "bytes": 28866,
+    "file": "assets/hero/individual-principal-13-600x600.webp",
+    "localizedSha256": "479ff3c51ce02f669bcf496d1fafa1d03bdf03a627646c80bcb387765c8e0634"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-13-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5da7cbd6ee785f2c491235e4233e2e5b5c2238a388bbf92c2fdfebd1f77f1de1",
+    "bytes": 2816,
+    "file": "assets/hero/individual-principal-13-100x100.webp",
+    "localizedSha256": "5da7cbd6ee785f2c491235e4233e2e5b5c2238a388bbf92c2fdfebd1f77f1de1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-13.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f960f9fbbc690466fce98d65f88c7f1cb8eb0b12d45b100f09094202ff79dda9",
+    "bytes": 93772,
+    "file": "assets/hero/individual-principal-13.webp",
+    "localizedSha256": "f960f9fbbc690466fce98d65f88c7f1cb8eb0b12d45b100f09094202ff79dda9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5e81d6df908efc6b3d9cf8dac3b46bca698f36f733ac9c390452fb20a3658ca6",
+    "bytes": 29870,
+    "file": "assets/examples/ejemplo-parejas-1.webp",
+    "localizedSha256": "5e81d6df908efc6b3d9cf8dac3b46bca698f36f733ac9c390452fb20a3658ca6"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-1-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "82807158b9425759794180f8773f09a2eaa30ce66a0372fa7dd83a5fdb6e9056",
+    "bytes": 5382,
+    "file": "assets/examples/ejemplo-parejas-1-150x150.webp",
+    "localizedSha256": "82807158b9425759794180f8773f09a2eaa30ce66a0372fa7dd83a5fdb6e9056"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-1-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e971e3eb8d0c7c89314505cb7567acd8ee2e715c39b6f601b8eb3dcac9b1631c",
+    "bytes": 12720,
+    "file": "assets/examples/ejemplo-parejas-1-300x300.webp",
+    "localizedSha256": "e971e3eb8d0c7c89314505cb7567acd8ee2e715c39b6f601b8eb3dcac9b1631c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-1-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8c1907b8a1d607b0a18bcec41c2f96c6ddacaa445ff2abdd748f151917f481f7",
+    "bytes": 3256,
+    "file": "assets/examples/ejemplo-parejas-1-100x100.webp",
+    "localizedSha256": "8c1907b8a1d607b0a18bcec41c2f96c6ddacaa445ff2abdd748f151917f481f7"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ab3a9005ed46576b7e80ae838f6fd8fe57739468e5033771b8987f23c688466e",
+    "bytes": 30808,
+    "file": "assets/examples/ejemplo-parejas-2.webp",
+    "localizedSha256": "ab3a9005ed46576b7e80ae838f6fd8fe57739468e5033771b8987f23c688466e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-2-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4f3b11670478d0509866eeee3038bdd87158433e5d1537fbe6dd8379622baef3",
+    "bytes": 5516,
+    "file": "assets/examples/ejemplo-parejas-2-150x150.webp",
+    "localizedSha256": "4f3b11670478d0509866eeee3038bdd87158433e5d1537fbe6dd8379622baef3"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-2-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0b4402831e70bdac65b9f117edc1ab86d5212ba3a318968e788c8516e8f608c4",
+    "bytes": 13216,
+    "file": "assets/examples/ejemplo-parejas-2-300x300.webp",
+    "localizedSha256": "0b4402831e70bdac65b9f117edc1ab86d5212ba3a318968e788c8516e8f608c4"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-2-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ec78c0a85a6699cc3ffa7353540945231821ec1e1eb1c9772e6ec31745baac3e",
+    "bytes": 3338,
+    "file": "assets/examples/ejemplo-parejas-2-100x100.webp",
+    "localizedSha256": "ec78c0a85a6699cc3ffa7353540945231821ec1e1eb1c9772e6ec31745baac3e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-3.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e4d2fa47c3457fa35c65ce63d7a792675e191bc5c616efb3531c3b07c830c9c0",
+    "bytes": 30436,
+    "file": "assets/examples/ejemplo-parejas-3.webp",
+    "localizedSha256": "e4d2fa47c3457fa35c65ce63d7a792675e191bc5c616efb3531c3b07c830c9c0"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-3-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8b1782ce120398039a87830935cca2291144d86ba9500a95dc79f8cdc90761c9",
+    "bytes": 5680,
+    "file": "assets/examples/ejemplo-parejas-3-150x150.webp",
+    "localizedSha256": "8b1782ce120398039a87830935cca2291144d86ba9500a95dc79f8cdc90761c9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-3-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c355e5a0bff39057d80f40b8dc4f8687c1834f98e060b0ba0fa1dab4e6fae739",
+    "bytes": 13396,
+    "file": "assets/examples/ejemplo-parejas-3-300x300.webp",
+    "localizedSha256": "c355e5a0bff39057d80f40b8dc4f8687c1834f98e060b0ba0fa1dab4e6fae739"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-3-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "91343c618746c5dac8158b0bb31616c5f20c1ce8b9ec603a6f240f5dc5399d32",
+    "bytes": 3348,
+    "file": "assets/examples/ejemplo-parejas-3-100x100.webp",
+    "localizedSha256": "91343c618746c5dac8158b0bb31616c5f20c1ce8b9ec603a6f240f5dc5399d32"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-4.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "81aa709fd3d7a770fd5c90c41f1fa4558da91e561655c7b49ec5b483694bc719",
+    "bytes": 33686,
+    "file": "assets/examples/ejemplo-parejas-4.webp",
+    "localizedSha256": "81aa709fd3d7a770fd5c90c41f1fa4558da91e561655c7b49ec5b483694bc719"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-4-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "fdad816ad8bf8d622cdeb75be12ba4640b7e4491cec07ee388c9cac2a3a31928",
+    "bytes": 5154,
+    "file": "assets/examples/ejemplo-parejas-4-150x150.webp",
+    "localizedSha256": "fdad816ad8bf8d622cdeb75be12ba4640b7e4491cec07ee388c9cac2a3a31928"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-4-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d7e8d19799a932425d50087a53da77e9712dfc06c1054f8103ddc8340196e6f4",
+    "bytes": 12414,
+    "file": "assets/examples/ejemplo-parejas-4-300x300.webp",
+    "localizedSha256": "d7e8d19799a932425d50087a53da77e9712dfc06c1054f8103ddc8340196e6f4"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-4-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5a7e83ca196fca26aa8b66698999018f28ff7ed2cc80612b88eba3eb0d6cbd4d",
+    "bytes": 3102,
+    "file": "assets/examples/ejemplo-parejas-4-100x100.webp",
+    "localizedSha256": "5a7e83ca196fca26aa8b66698999018f28ff7ed2cc80612b88eba3eb0d6cbd4d"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "6394370b52b498c8d056e1e03ae7659368798b0f58e970a84ff59bd9a97a5894",
+    "bytes": 30276,
+    "file": "assets/examples/ejemplo-boda-1.webp",
+    "localizedSha256": "6394370b52b498c8d056e1e03ae7659368798b0f58e970a84ff59bd9a97a5894"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-1-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5dd5e8c4d2e816cb061959b50c2358779642d7ae4958e9b7236531bf7b5306f1",
+    "bytes": 5640,
+    "file": "assets/examples/ejemplo-boda-1-150x150.webp",
+    "localizedSha256": "5dd5e8c4d2e816cb061959b50c2358779642d7ae4958e9b7236531bf7b5306f1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-1-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "842da2570657f367265fd973b56a9ee079c78ee01530fec2abbef9d12a6fd9ec",
+    "bytes": 13516,
+    "file": "assets/examples/ejemplo-boda-1-300x300.webp",
+    "localizedSha256": "842da2570657f367265fd973b56a9ee079c78ee01530fec2abbef9d12a6fd9ec"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-1-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "80d8d309805e26e97412780b76abfa03a4ce4e2671aa60edd0d8c958892a70de",
+    "bytes": 3352,
+    "file": "assets/examples/ejemplo-boda-1-100x100.webp",
+    "localizedSha256": "80d8d309805e26e97412780b76abfa03a4ce4e2671aa60edd0d8c958892a70de"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9d795e158e08faf12567b0d4ec3d26f780d2b27c00df4e52ea1eee68c24041f0",
+    "bytes": 33982,
+    "file": "assets/examples/ejemplo-boda-2.webp",
+    "localizedSha256": "9d795e158e08faf12567b0d4ec3d26f780d2b27c00df4e52ea1eee68c24041f0"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-2-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d1b4521d4dade2662aea84f9cfc1b8a19474af37aabac4086587bbec84f406f5",
+    "bytes": 5718,
+    "file": "assets/examples/ejemplo-boda-2-150x150.webp",
+    "localizedSha256": "d1b4521d4dade2662aea84f9cfc1b8a19474af37aabac4086587bbec84f406f5"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-2-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4a062c5218fe2e1e295048109ab806dcb45b1e7d219098e90c9be2ed7a29aae5",
+    "bytes": 13704,
+    "file": "assets/examples/ejemplo-boda-2-300x300.webp",
+    "localizedSha256": "4a062c5218fe2e1e295048109ab806dcb45b1e7d219098e90c9be2ed7a29aae5"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-2-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8cf29e11d4875f61e15232873722cc108fe992dfaa9a2ae05fa47734096afff1",
+    "bytes": 3388,
+    "file": "assets/examples/ejemplo-boda-2-100x100.webp",
+    "localizedSha256": "8cf29e11d4875f61e15232873722cc108fe992dfaa9a2ae05fa47734096afff1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-3.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7b21e219627cc10860cb4ec8899e5c20693e8232ca19aece108b8f6e9e319fe1",
+    "bytes": 27870,
+    "file": "assets/examples/ejemplo-boda-3.webp",
+    "localizedSha256": "7b21e219627cc10860cb4ec8899e5c20693e8232ca19aece108b8f6e9e319fe1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-3-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "51ead9c79084772a10d02cd41b8dc9b36fa97fde5cca7b295b9223aa63029cfc",
+    "bytes": 5414,
+    "file": "assets/examples/ejemplo-boda-3-150x150.webp",
+    "localizedSha256": "51ead9c79084772a10d02cd41b8dc9b36fa97fde5cca7b295b9223aa63029cfc"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-3-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f41a59f2dee15270eb36a37734a5aea99a02bdf1c62ad54877c36693df031e8e",
+    "bytes": 12474,
+    "file": "assets/examples/ejemplo-boda-3-300x300.webp",
+    "localizedSha256": "f41a59f2dee15270eb36a37734a5aea99a02bdf1c62ad54877c36693df031e8e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-3-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "05861d5770f09e2630b71659fe04fb3ed63bdb895727973738cbf13889767954",
+    "bytes": 3240,
+    "file": "assets/examples/ejemplo-boda-3-100x100.webp",
+    "localizedSha256": "05861d5770f09e2630b71659fe04fb3ed63bdb895727973738cbf13889767954"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-4.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "35f02678691a10106924498e3e8a1548403f1f2d0cabf779278e4cc9fe1936be",
+    "bytes": 29184,
+    "file": "assets/examples/ejemplo-boda-4.webp",
+    "localizedSha256": "35f02678691a10106924498e3e8a1548403f1f2d0cabf779278e4cc9fe1936be"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-4-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "64e3cfecfb6b0984d207d591938e950e17b9fec1a56308901a1f9ca166876105",
+    "bytes": 5764,
+    "file": "assets/examples/ejemplo-boda-4-150x150.webp",
+    "localizedSha256": "64e3cfecfb6b0984d207d591938e950e17b9fec1a56308901a1f9ca166876105"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-4-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "3cd4bbdd58b4d574897f2791d6e6b594c74af47992af28c9f629dcccd160fdb5",
+    "bytes": 13666,
+    "file": "assets/examples/ejemplo-boda-4-300x300.webp",
+    "localizedSha256": "3cd4bbdd58b4d574897f2791d6e6b594c74af47992af28c9f629dcccd160fdb5"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-boda-4-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8eec2b40b2a0d5ee6fe9a48e3fc5df936fda2f93a847f6c34a530e0e087a6061",
+    "bytes": 3388,
+    "file": "assets/examples/ejemplo-boda-4-100x100.webp",
+    "localizedSha256": "8eec2b40b2a0d5ee6fe9a48e3fc5df936fda2f93a847f6c34a530e0e087a6061"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ee9b592778542ee641ddc3a05f74751572b50d8ea554691d9ab1a86b5ab700ae",
+    "bytes": 55052,
+    "file": "assets/examples/ejemplo-mascota-1.webp",
+    "localizedSha256": "ee9b592778542ee641ddc3a05f74751572b50d8ea554691d9ab1a86b5ab700ae"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-1-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e5ca7aed420450c9fcf5175fbc8fd61ef993b6c3e04d3eacb75916c73241afb7",
+    "bytes": 4476,
+    "file": "assets/examples/ejemplo-mascota-1-150x150.webp",
+    "localizedSha256": "e5ca7aed420450c9fcf5175fbc8fd61ef993b6c3e04d3eacb75916c73241afb7"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-1-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "66af7e1faec2cc2cc110e12354ef8553360cbac312b55a2a31b5bff3800c170c",
+    "bytes": 10406,
+    "file": "assets/examples/ejemplo-mascota-1-300x300.webp",
+    "localizedSha256": "66af7e1faec2cc2cc110e12354ef8553360cbac312b55a2a31b5bff3800c170c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-1-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "67764e7d8faa1b6d7df7b8a24419b04518d49fc05edb2afc2c291a9d0424f004",
+    "bytes": 2784,
+    "file": "assets/examples/ejemplo-mascota-1-100x100.webp",
+    "localizedSha256": "67764e7d8faa1b6d7df7b8a24419b04518d49fc05edb2afc2c291a9d0424f004"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0e05890ded052bba4a184bcdac247de778eb385daaf5f2338eabdc096c21b238",
+    "bytes": 32104,
+    "file": "assets/examples/ejemplo-mascota-2.webp",
+    "localizedSha256": "0e05890ded052bba4a184bcdac247de778eb385daaf5f2338eabdc096c21b238"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-2-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "61979697959461f4416924437d43bbc610e77065e054b89b54cb3784284f76fb",
+    "bytes": 5104,
+    "file": "assets/examples/ejemplo-mascota-2-150x150.webp",
+    "localizedSha256": "61979697959461f4416924437d43bbc610e77065e054b89b54cb3784284f76fb"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-2-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ceba30722bc4f4f47f2f1be6f6026a5673e83c94db50c409f82d7c99fe1658c1",
+    "bytes": 10362,
+    "file": "assets/examples/ejemplo-mascota-2-300x300.webp",
+    "localizedSha256": "ceba30722bc4f4f47f2f1be6f6026a5673e83c94db50c409f82d7c99fe1658c1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-2-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8968422fe7dab648fdd6947daf256fff4383334cc7e44725eee15e84d6790e07",
+    "bytes": 3498,
+    "file": "assets/examples/ejemplo-mascota-2-100x100.webp",
+    "localizedSha256": "8968422fe7dab648fdd6947daf256fff4383334cc7e44725eee15e84d6790e07"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-3.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7323452d7353ae77adf116ce33704f8769a769b8ada13648cc9096b4d1580512",
+    "bytes": 37214,
+    "file": "assets/examples/ejemplo-mascota-3.webp",
+    "localizedSha256": "7323452d7353ae77adf116ce33704f8769a769b8ada13648cc9096b4d1580512"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-3-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5a466e43b67ef7e40d3ea78da21ab00e62225c1396d7b2f7aca097a901a9523b",
+    "bytes": 4648,
+    "file": "assets/examples/ejemplo-mascota-3-150x150.webp",
+    "localizedSha256": "5a466e43b67ef7e40d3ea78da21ab00e62225c1396d7b2f7aca097a901a9523b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-3-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0d599cb702743404437328d500630a229ed4d9837a2d3703de899d743ac32cbc",
+    "bytes": 9936,
+    "file": "assets/examples/ejemplo-mascota-3-300x300.webp",
+    "localizedSha256": "0d599cb702743404437328d500630a229ed4d9837a2d3703de899d743ac32cbc"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-3-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "400d9401d590889cf7cc47a2224dafe5cda2f60e7281eb63291a7483a5d48b1e",
+    "bytes": 2954,
+    "file": "assets/examples/ejemplo-mascota-3-100x100.webp",
+    "localizedSha256": "400d9401d590889cf7cc47a2224dafe5cda2f60e7281eb63291a7483a5d48b1e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-4.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "238b35373fa951e609eb25aed0a7ccb4411f7d014e817e65969661ebb8c4f421",
+    "bytes": 48158,
+    "file": "assets/examples/ejemplo-mascota-4.webp",
+    "localizedSha256": "238b35373fa951e609eb25aed0a7ccb4411f7d014e817e65969661ebb8c4f421"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-4-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5c528bc2ef7efcc3f6a646a220056f1e453cec9dfcb720e7ad592d7c610724b0",
+    "bytes": 4596,
+    "file": "assets/examples/ejemplo-mascota-4-150x150.webp",
+    "localizedSha256": "5c528bc2ef7efcc3f6a646a220056f1e453cec9dfcb720e7ad592d7c610724b0"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-4-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b1753b94299c5bce3502d781cec975ceb091a46f4c3ab2592ecab05b4b97037c",
+    "bytes": 10120,
+    "file": "assets/examples/ejemplo-mascota-4-300x300.webp",
+    "localizedSha256": "b1753b94299c5bce3502d781cec975ceb091a46f4c3ab2592ecab05b4b97037c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-4-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5fd5f744f2a56cbebf493e18d08cc1b63bd74b5a7483e657a33b1663129651cd",
+    "bytes": 2962,
+    "file": "assets/examples/ejemplo-mascota-4-100x100.webp",
+    "localizedSha256": "5fd5f744f2a56cbebf493e18d08cc1b63bd74b5a7483e657a33b1663129651cd"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-5.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "75e4ab5238edee088b2e021159844c761534a59159f6874851061fff6e41dbde",
+    "bytes": 29704,
+    "file": "assets/examples/ejemplo-mascota-5.webp",
+    "localizedSha256": "75e4ab5238edee088b2e021159844c761534a59159f6874851061fff6e41dbde"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-5-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f74fe739dec3d0d0424f650442e216b1de1c1ef4528536db8054ec8ecefd65fd",
+    "bytes": 5014,
+    "file": "assets/examples/ejemplo-mascota-5-150x150.webp",
+    "localizedSha256": "f74fe739dec3d0d0424f650442e216b1de1c1ef4528536db8054ec8ecefd65fd"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-5-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "51b8727c2c4efce1008bf4fd5c4923b3dfc8a16491e2b4b66467e93a97f1ecad",
+    "bytes": 10272,
+    "file": "assets/examples/ejemplo-mascota-5-300x300.webp",
+    "localizedSha256": "51b8727c2c4efce1008bf4fd5c4923b3dfc8a16491e2b4b66467e93a97f1ecad"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-5-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "289fc1fe3e9266af55b91a89a9f266c0d5d2047c5714c0272e08f8e79987d175",
+    "bytes": 3434,
+    "file": "assets/examples/ejemplo-mascota-5-100x100.webp",
+    "localizedSha256": "289fc1fe3e9266af55b91a89a9f266c0d5d2047c5714c0272e08f8e79987d175"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-6.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8d28344da95d4723277bea146009067330468644d426696a486f215108ed1ee4",
+    "bytes": 39478,
+    "file": "assets/examples/ejemplo-mascota-6.webp",
+    "localizedSha256": "8d28344da95d4723277bea146009067330468644d426696a486f215108ed1ee4"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-6-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4bfa1cbc63380f42a8bd1dc2cbde703a0a6e4f07c54ecffc0c6e68010ecbb6fb",
+    "bytes": 6032,
+    "file": "assets/examples/ejemplo-mascota-6-150x150.webp",
+    "localizedSha256": "4bfa1cbc63380f42a8bd1dc2cbde703a0a6e4f07c54ecffc0c6e68010ecbb6fb"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-6-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "a5daee751a2676f636d47e8a577a414f98ce07b7d06d27ddc839efdd8193c5b9",
+    "bytes": 12572,
+    "file": "assets/examples/ejemplo-mascota-6-300x300.webp",
+    "localizedSha256": "a5daee751a2676f636d47e8a577a414f98ce07b7d06d27ddc839efdd8193c5b9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-6-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "cbab6900b6a738d8607655e67366f8cd04bcdc480ec6c0ce35d8d75484d1bc45",
+    "bytes": 4096,
+    "file": "assets/examples/ejemplo-mascota-6-100x100.webp",
+    "localizedSha256": "cbab6900b6a738d8607655e67366f8cd04bcdc480ec6c0ce35d8d75484d1bc45"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-7.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "62ecadfea971dbced75a342c5ca0c9f3be4143f580a575cd26cd92c09c29cabd",
+    "bytes": 51752,
+    "file": "assets/examples/ejemplo-mascota-7.webp",
+    "localizedSha256": "62ecadfea971dbced75a342c5ca0c9f3be4143f580a575cd26cd92c09c29cabd"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-7-150x150.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c7081bc6293e2823c63ba14160987f7309e12566b21b27df4063a9a8bee01f5d",
+    "bytes": 4632,
+    "file": "assets/examples/ejemplo-mascota-7-150x150.webp",
+    "localizedSha256": "c7081bc6293e2823c63ba14160987f7309e12566b21b27df4063a9a8bee01f5d"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-7-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "12a735e1b9a5b56d722660c62a6df7166893bdde37748786d89447a947f659ab",
+    "bytes": 10570,
+    "file": "assets/examples/ejemplo-mascota-7-300x300.webp",
+    "localizedSha256": "12a735e1b9a5b56d722660c62a6df7166893bdde37748786d89447a947f659ab"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-7-100x100.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5509f306debeaaacc38c990b5430889ff091c44e8882f541c9de87c55abeaad5",
+    "bytes": 2892,
+    "file": "assets/examples/ejemplo-mascota-7-100x100.webp",
+    "localizedSha256": "5509f306debeaaacc38c990b5430889ff091c44e8882f541c9de87c55abeaad5"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/otros-trabajos-realizados-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f0e472a0a22a29043de25e712c45c3db1ef6d037d5a0ecf542ace937c58318ad",
+    "bytes": 40584,
+    "file": "assets/configurator/otros-trabajos-realizados-1.webp",
+    "localizedSha256": "f0e472a0a22a29043de25e712c45c3db1ef6d037d5a0ecf542ace937c58318ad"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/otros-trabajos-realizados-7-300x300.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ae8b3ed6c126152b85ae9c8bcd356d5a48d1e9de0cda477c542efb535c00df71",
+    "bytes": 14884,
+    "file": "assets/configurator/otros-trabajos-realizados-7-300x300.webp",
+    "localizedSha256": "ae8b3ed6c126152b85ae9c8bcd356d5a48d1e9de0cda477c542efb535c00df71"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-individual-male-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "6157efbb43d618f1b3ba445cd83ccf12b86bf153260556c60b8749693e3e395d",
+    "bytes": 3740,
+    "file": "assets/products/funko-tipo-individual-male-1.webp",
+    "localizedSha256": "6157efbb43d618f1b3ba445cd83ccf12b86bf153260556c60b8749693e3e395d"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-mascota.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "cbea35a9e2769461d4466482192db9eead801f2cd51bf47a1a579513697fd9b6",
+    "bytes": 4350,
+    "file": "assets/products/funko-tipo-mascota.webp",
+    "localizedSha256": "cbea35a9e2769461d4466482192db9eead801f2cd51bf47a1a579513697fd9b6"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-parejas.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5b80cdeea292d4e28886ef7ba0b22348f801a53793a25e588f92d359e38a4d88",
+    "bytes": 6646,
+    "file": "assets/products/funko-tipo-parejas.webp",
+    "localizedSha256": "5b80cdeea292d4e28886ef7ba0b22348f801a53793a25e588f92d359e38a4d88"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-boda.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0d9b7cc888ebcbe0a406b46072b022c86cb13c54f4e123dc086d39744280d090",
+    "bytes": 6784,
+    "file": "assets/products/funko-tipo-boda.webp",
+    "localizedSha256": "0d9b7cc888ebcbe0a406b46072b022c86cb13c54f4e123dc086d39744280d090"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/review-4-150x150.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "1a75a70863ac7898550f09899184dcb6ed5bc89cf0bf15573107f4a41a42c493",
+    "bytes": 4568,
+    "file": "assets/configurator/review-4-150x150.jpg",
+    "localizedSha256": "1a75a70863ac7898550f09899184dcb6ed5bc89cf0bf15573107f4a41a42c493"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/review-3-150x150.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4bfcbdf27a5711c484da56d929311aa346d82266e5cecbf4841c0d938b04febc",
+    "bytes": 7608,
+    "file": "assets/configurator/review-3-150x150.jpg",
+    "localizedSha256": "4bfcbdf27a5711c484da56d929311aa346d82266e5cecbf4841c0d938b04febc"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/review-1-150x150.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8c44988f15210cef0a287230c89fdfbebd4cc6949a9159c20c9a1959685ae116",
+    "bytes": 5972,
+    "file": "assets/configurator/review-1-150x150.jpg",
+    "localizedSha256": "8c44988f15210cef0a287230c89fdfbebd4cc6949a9159c20c9a1959685ae116"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/review-2-150x150.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "df90c489966079b86db0de295af0f9ec57d5f20fd2411a79073a7586d32ccd5f",
+    "bytes": 6238,
+    "file": "assets/configurator/review-2-150x150.jpg",
+    "localizedSha256": "df90c489966079b86db0de295af0f9ec57d5f20fd2411a79073a7586d32ccd5f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-rostro-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "11df25bfcaf2f8b5fddd298b5d05b19ce46befaa97eab115532ef01b593a0a06",
+    "bytes": 1086,
+    "file": "assets/configurator/icono-rostro-1.webp",
+    "localizedSha256": "11df25bfcaf2f8b5fddd298b5d05b19ce46befaa97eab115532ef01b593a0a06"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/ojos-estandar-v2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0394d175c770cbec33bfd342a374b23745615a071aa5072f0c57df05f33bbfa7",
+    "bytes": 9446,
+    "file": "assets/configurator/ojos-estandar-v2.webp",
+    "localizedSha256": "0394d175c770cbec33bfd342a374b23745615a071aa5072f0c57df05f33bbfa7"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/ojos-verdes-v2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "12311a3476e5e8d630db18cc31eaa9635a2fdf7d3616af8b98325d8719cc870b",
+    "bytes": 10124,
+    "file": "assets/configurator/ojos-verdes-v2.webp",
+    "localizedSha256": "12311a3476e5e8d630db18cc31eaa9635a2fdf7d3616af8b98325d8719cc870b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/ojos-marrones-v2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "909408f3657c0860881068866726867d990c74c2c34712dc7d48eb597c675aa4",
+    "bytes": 9984,
+    "file": "assets/configurator/ojos-marrones-v2.webp",
+    "localizedSha256": "909408f3657c0860881068866726867d990c74c2c34712dc7d48eb597c675aa4"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/ojos-azules-v2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4efb1b4ed7412475225fe761a6656ce475ab38f4578d561acd9cd8ed2313142e",
+    "bytes": 10068,
+    "file": "assets/configurator/ojos-azules-v2.webp",
+    "localizedSha256": "4efb1b4ed7412475225fe761a6656ce475ab38f4578d561acd9cd8ed2313142e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-tono-piel.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e94d6cea9bd34d1c286b6b0ddc921e0818a2a222c89b572c8bfbb798b0ea7418",
+    "bytes": 942,
+    "file": "assets/configurator/icono-tono-piel.webp",
+    "localizedSha256": "e94d6cea9bd34d1c286b6b0ddc921e0818a2a222c89b572c8bfbb798b0ea7418"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/images/skin-tones/funko-tono_piel_palido.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9bc3833d9dc03e7c06365d02c4c136995ab61d790d1d4a86f7f98b4685646947",
+    "bytes": 4832,
+    "file": "assets/configurator/funko-tono_piel_palido.webp",
+    "localizedSha256": "9bc3833d9dc03e7c06365d02c4c136995ab61d790d1d4a86f7f98b4685646947"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/images/skin-tones/funko-tono_piel_estandar.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5bb539281964579b09c320b03288a456345eeaa30ce50c95c13adf874ca59537",
+    "bytes": 4802,
+    "file": "assets/configurator/funko-tono_piel_estandar.webp",
+    "localizedSha256": "5bb539281964579b09c320b03288a456345eeaa30ce50c95c13adf874ca59537"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/images/skin-tones/funko-tono_piel_moreno_claro.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "a08551591649a6ddc313438b1eae3dce22af506c0286933b25300c477735cbc1",
+    "bytes": 4742,
+    "file": "assets/configurator/funko-tono_piel_moreno_claro.webp",
+    "localizedSha256": "a08551591649a6ddc313438b1eae3dce22af506c0286933b25300c477735cbc1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/images/skin-tones/funko-tono_piel_moreno_oscuro.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "aa3c4a7cf0330cbfefb29e67ffc350fffb36b7df0f35f74fcf54a0138525c2cd",
+    "bytes": 5006,
+    "file": "assets/configurator/funko-tono_piel_moreno_oscuro.webp",
+    "localizedSha256": "aa3c4a7cf0330cbfefb29e67ffc350fffb36b7df0f35f74fcf54a0138525c2cd"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-vestimenta.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e32f7b70c23b519a5b8c6eddda80390a6e59c32fe74fe3d5ff59461e50a4d087",
+    "bytes": 1214,
+    "file": "assets/configurator/icono-vestimenta.webp",
+    "localizedSha256": "e32f7b70c23b519a5b8c6eddda80390a6e59c32fe74fe3d5ff59461e50a4d087"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-mascota.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "146c4876e11299719bf4af7caebe64a9acc26b4f69ba6bda743a3b2f9e613fdd",
+    "bytes": 1184,
+    "file": "assets/configurator/icono-mascota.webp",
+    "localizedSha256": "146c4876e11299719bf4af7caebe64a9acc26b4f69ba6bda743a3b2f9e613fdd"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-mascota-2.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "66e137eb7714f10f05d9ad80a700a3411666014c4f6ed88c6f0521d47092ffe9",
+    "bytes": 2250,
+    "file": "assets/configurator/icono-mascota-2.webp",
+    "localizedSha256": "66e137eb7714f10f05d9ad80a700a3411666014c4f6ed88c6f0521d47092ffe9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-gato-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "32ad8da32463410437986b50af6d2e27004bf9e07eef8bb7ab50d13b4e8949c1",
+    "bytes": 2326,
+    "file": "assets/configurator/icono-gato-1.webp",
+    "localizedSha256": "32ad8da32463410437986b50af6d2e27004bf9e07eef8bb7ab50d13b4e8949c1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-pajaro-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "cc9bbfe943c886b93f312af3fa68ec6b8361d2966307d4b3c5d6be8e8d4acd7d",
+    "bytes": 2112,
+    "file": "assets/configurator/icono-pajaro-1.webp",
+    "localizedSha256": "cc9bbfe943c886b93f312af3fa68ec6b8361d2966307d4b3c5d6be8e8d4acd7d"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-caballo.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "198e301ec1929f0d10045f3692bc89a6ed8b26403458ef04835e0093ab3d4860",
+    "bytes": 2196,
+    "file": "assets/configurator/icono-caballo.webp",
+    "localizedSha256": "198e301ec1929f0d10045f3692bc89a6ed8b26403458ef04835e0093ab3d4860"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-tortuga.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5f024246193a6d6ff552abfe2ad8104bc70bab66b5b113a58aea3a2690c4b8d3",
+    "bytes": 2136,
+    "file": "assets/configurator/icono-tortuga.webp",
+    "localizedSha256": "5f024246193a6d6ff552abfe2ad8104bc70bab66b5b113a58aea3a2690c4b8d3"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-conejo-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "6e9a8246fab7d472e6e651a8abb0ad7c0b9e9b8cfdfbe72075f27c3440ca0c40",
+    "bytes": 2212,
+    "file": "assets/configurator/icono-conejo-1.webp",
+    "localizedSha256": "6e9a8246fab7d472e6e651a8abb0ad7c0b9e9b8cfdfbe72075f27c3440ca0c40"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-hamster.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "6c4b18f4aa0d08921f629c108a779f5b5c2e20bc02ae119a2d5036a95eb4b802",
+    "bytes": 2152,
+    "file": "assets/configurator/icono-hamster.webp",
+    "localizedSha256": "6c4b18f4aa0d08921f629c108a779f5b5c2e20bc02ae119a2d5036a95eb4b802"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-lagarto.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "67c45482e335b9fc14a6758584e2ae884568220f30df3faa01d111d37723bd64",
+    "bytes": 2198,
+    "file": "assets/configurator/icono-lagarto.webp",
+    "localizedSha256": "67c45482e335b9fc14a6758584e2ae884568220f30df3faa01d111d37723bd64"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-cabra.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b9252815f1bb00b631d8d56db78cce978880812c7bd701d88b6a76db1c5d9f25",
+    "bytes": 2412,
+    "file": "assets/configurator/icono-cabra.webp",
+    "localizedSha256": "b9252815f1bb00b631d8d56db78cce978880812c7bd701d88b6a76db1c5d9f25"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-otra-mascota-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "44f65a41c4ddb88abf1fe21f6d018e004c18c721448cc05ca87fdcb26a98d59c",
+    "bytes": 2410,
+    "file": "assets/configurator/icono-otra-mascota-1.webp",
+    "localizedSha256": "44f65a41c4ddb88abf1fe21f6d018e004c18c721448cc05ca87fdcb26a98d59c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-accesorio.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "78fa920f8041b933a1d4612c06c6208f9a0d111fd463491abf7500bd02f82ce5",
+    "bytes": 936,
+    "file": "assets/configurator/icono-accesorio.webp",
+    "localizedSha256": "78fa920f8041b933a1d4612c06c6208f9a0d111fd463491abf7500bd02f82ce5"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-ramo-flores.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "cb0ef49e86e64c0ff1bae3926b47acdc556b55b6474df26af164b8acc24c33d0",
+    "bytes": 2140,
+    "file": "assets/configurator/icono-ramo-flores.webp",
+    "localizedSha256": "cb0ef49e86e64c0ff1bae3926b47acdc556b55b6474df26af164b8acc24c33d0"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-copas-champagne.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "137a05ddbb54303aeb02beb3c1bf3ec1968e15332b2be7c54038ddd0cb5b391b",
+    "bytes": 1838,
+    "file": "assets/configurator/icono-copas-champagne.webp",
+    "localizedSha256": "137a05ddbb54303aeb02beb3c1bf3ec1968e15332b2be7c54038ddd0cb5b391b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-altar-nupcial.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "19cec36f2b91cc4e9a17e9601f4d96e2dc19fa54736c21bc68c534f4975b80b2",
+    "bytes": 2404,
+    "file": "assets/configurator/icono-altar-nupcial.webp",
+    "localizedSha256": "19cec36f2b91cc4e9a17e9601f4d96e2dc19fa54736c21bc68c534f4975b80b2"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-cojin-portaalianzas.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "6292511cd505fcd203709259dcd2f4a7ae297b6f37d3bc677becc915ddac7f25",
+    "bytes": 1712,
+    "file": "assets/configurator/icono-cojin-portaalianzas.webp",
+    "localizedSha256": "6292511cd505fcd203709259dcd2f4a7ae297b6f37d3bc677becc915ddac7f25"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-corona-flores.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "651e220532e704da56f6b259151dd72f683a8afacbd1604bf9176bfa794ad011",
+    "bytes": 2118,
+    "file": "assets/configurator/icono-corona-flores.webp",
+    "localizedSha256": "651e220532e704da56f6b259151dd72f683a8afacbd1604bf9176bfa794ad011"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-tarta-novios.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c5ebb3b0947cb3754422a4d38a2435f7cde4ec45426975a26971c91e0b5fda5a",
+    "bytes": 1744,
+    "file": "assets/configurator/icono-tarta-novios.webp",
+    "localizedSha256": "c5ebb3b0947cb3754422a4d38a2435f7cde4ec45426975a26971c91e0b5fda5a"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-raqueta-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9fd03089b4dc6b031f4af3f432da94dfbbd33bc16b9d2fb6ef6ef622a83fab1f",
+    "bytes": 1350,
+    "file": "assets/configurator/icono-raqueta-1.webp",
+    "localizedSha256": "9fd03089b4dc6b031f4af3f432da94dfbbd33bc16b9d2fb6ef6ef622a83fab1f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-guitarra-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "3be1fe79613107b68876d962ff1d082dbc98bad7373165aa09c0a7f1a67404b2",
+    "bytes": 1220,
+    "file": "assets/configurator/icono-guitarra-1.webp",
+    "localizedSha256": "3be1fe79613107b68876d962ff1d082dbc98bad7373165aa09c0a7f1a67404b2"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-bicicleta-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c2b21acd35d0c5d4b2ddbb52f078010b988e69c65d2cce9c24626a8eca20bf6b",
+    "bytes": 2082,
+    "file": "assets/configurator/icono-bicicleta-1.webp",
+    "localizedSha256": "c2b21acd35d0c5d4b2ddbb52f078010b988e69c65d2cce9c24626a8eca20bf6b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-maleta.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d94b5eb3d1a4af545b4334c97e9b5784c4c5af345ef3d2bb0266c0b8623ed549",
+    "bytes": 1766,
+    "file": "assets/configurator/icono-maleta.webp",
+    "localizedSha256": "d94b5eb3d1a4af545b4334c97e9b5784c4c5af345ef3d2bb0266c0b8623ed549"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-patinete-electrico.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ac3ff1fdd772fc514161a5836d1921a2e13a0049cfa6509794a486ca26d23584",
+    "bytes": 1868,
+    "file": "assets/configurator/icono-patinete-electrico.webp",
+    "localizedSha256": "ac3ff1fdd772fc514161a5836d1921a2e13a0049cfa6509794a486ca26d23584"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-camara.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "618b84757243d53e19d47c0b4f98a2f3ef047b04a564cb4100b7888659c105e8",
+    "bytes": 1782,
+    "file": "assets/configurator/icono-camara.webp",
+    "localizedSha256": "618b84757243d53e19d47c0b4f98a2f3ef047b04a564cb4100b7888659c105e8"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-pizarra.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c01a8d6e7cbeeb847a3875e86875c1bbd1909dbbba9b89755080bc86c7136ea4",
+    "bytes": 1726,
+    "file": "assets/configurator/icono-pizarra.webp",
+    "localizedSha256": "c01a8d6e7cbeeb847a3875e86875c1bbd1909dbbba9b89755080bc86c7136ea4"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-moto-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "728e3000768638e87e10ab215a74227b997fe39c9287d5314a71275e645dfee4",
+    "bytes": 1794,
+    "file": "assets/configurator/icono-moto-1.webp",
+    "localizedSha256": "728e3000768638e87e10ab215a74227b997fe39c9287d5314a71275e645dfee4"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-portatil.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "de4fb6d5d1305ddc681b4d631df598c4ce9df60483ed5dc67129d481d7e03b9d",
+    "bytes": 1746,
+    "file": "assets/configurator/icono-portatil.webp",
+    "localizedSha256": "de4fb6d5d1305ddc681b4d631df598c4ce9df60483ed5dc67129d481d7e03b9d"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-cana-pesca.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "051a2e734481c2e04f776b59f781d2600aa6a1123095585f64e5219a4779f479",
+    "bytes": 1812,
+    "file": "assets/configurator/icono-cana-pesca.webp",
+    "localizedSha256": "051a2e734481c2e04f776b59f781d2600aa6a1123095585f64e5219a4779f479"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-esquis.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "751167417adde8d2acaa6d2e644e8670bb3da7aff0ab95c006b6251a4e223c89",
+    "bytes": 2026,
+    "file": "assets/configurator/icono-esquis.webp",
+    "localizedSha256": "751167417adde8d2acaa6d2e644e8670bb3da7aff0ab95c006b6251a4e223c89"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-mesa-dj-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e94753f7b9177305af1969c205f01cd29d62eabae9239a4748bd18319cf7c459",
+    "bytes": 1972,
+    "file": "assets/configurator/icono-mesa-dj-1.webp",
+    "localizedSha256": "e94753f7b9177305af1969c205f01cd29d62eabae9239a4748bd18319cf7c459"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-mochila.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "053814f1011b20b25c7d3e695aec5bffcd4bd6ff0ec5f9e8f78b934c0652d966",
+    "bytes": 2314,
+    "file": "assets/configurator/icono-mochila.webp",
+    "localizedSha256": "053814f1011b20b25c7d3e695aec5bffcd4bd6ff0ec5f9e8f78b934c0652d966"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-coche-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "6a9450e870e07a73904259f755159207ff5e7ccc126729c3afe41c4bfdb767d3",
+    "bytes": 1438,
+    "file": "assets/configurator/icono-coche-1.webp",
+    "localizedSha256": "6a9450e870e07a73904259f755159207ff5e7ccc126729c3afe41c4bfdb767d3"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-bateria-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8bdec9fc695bdf0c0cf5532b77fc71d24c63f4f2f6c3c64a2c8407799fad58de",
+    "bytes": 2142,
+    "file": "assets/configurator/icono-bateria-1.webp",
+    "localizedSha256": "8bdec9fc695bdf0c0cf5532b77fc71d24c63f4f2f6c3c64a2c8407799fad58de"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-piano-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0f12fca9bad805d23c4a72260a3323ba571206381768aa8f7e4cc8d15621a2c1",
+    "bytes": 1576,
+    "file": "assets/configurator/icono-piano-1.webp",
+    "localizedSha256": "0f12fca9bad805d23c4a72260a3323ba571206381768aa8f7e4cc8d15621a2c1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-bolso-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b7297e6ddf7569521c9ccb85c22619ec940443246900e41066615077c227c14e",
+    "bytes": 1472,
+    "file": "assets/configurator/icono-bolso-1.webp",
+    "localizedSha256": "b7297e6ddf7569521c9ccb85c22619ec940443246900e41066615077c227c14e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-collar-placa-perros-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "902f7f440ece4a9befda7b1f747a20aa5c1dca48f15e9247e311e4c9b8c9afef",
+    "bytes": 2082,
+    "file": "assets/configurator/icono-collar-placa-perros-1.webp",
+    "localizedSha256": "902f7f440ece4a9befda7b1f747a20aa5c1dca48f15e9247e311e4c9b8c9afef"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-bandana-perros-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "8df3b1d7baadc7c43e8a53325ffd84535ba65ff3e879ee93ad04ebb6a4aac704",
+    "bytes": 2014,
+    "file": "assets/configurator/icono-bandana-perros-1.webp",
+    "localizedSha256": "8df3b1d7baadc7c43e8a53325ffd84535ba65ff3e879ee93ad04ebb6a4aac704"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-caseta-madera-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "afd741fd452bac2fffe7ab723eef4fd4baf21bc95ee43d6411047b5965a27896",
+    "bytes": 1824,
+    "file": "assets/configurator/icono-caseta-madera-1.webp",
+    "localizedSha256": "afd741fd452bac2fffe7ab723eef4fd4baf21bc95ee43d6411047b5965a27896"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-cama-perros-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d03a37423a3b13a8c3917bce533c486b14fbb4b2aec33b85f91d1affa9a4df2c",
+    "bytes": 1906,
+    "file": "assets/configurator/icono-cama-perros-1.webp",
+    "localizedSha256": "d03a37423a3b13a8c3917bce533c486b14fbb4b2aec33b85f91d1affa9a4df2c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-hueso-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "cac8094e3ec5074be22886f372d2f1ee2f0059b2ac8890bdd47a92ee388f4bc3",
+    "bytes": 1550,
+    "file": "assets/configurator/icono-hueso-1.webp",
+    "localizedSha256": "cac8094e3ec5074be22886f372d2f1ee2f0059b2ac8890bdd47a92ee388f4bc3"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-pelota-kong-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0ae079dea88808fcbda86b550ea7651b408c13d090308a74a69035e82166787a",
+    "bytes": 1646,
+    "file": "assets/configurator/icono-pelota-kong-1.webp",
+    "localizedSha256": "0ae079dea88808fcbda86b550ea7651b408c13d090308a74a69035e82166787a"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-comedero-perros-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "2107455a16a1c6cfdeb032fae28b8037f40f4bc6238d740d3c306232cb50ceb3",
+    "bytes": 1722,
+    "file": "assets/configurator/icono-comedero-perros-1.webp",
+    "localizedSha256": "2107455a16a1c6cfdeb032fae28b8037f40f4bc6238d740d3c306232cb50ceb3"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-mordedor-cuerda-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "551ee6b5c3d06244e74ed63291d4351d6a40423aaa285a443754848847dac068",
+    "bytes": 1794,
+    "file": "assets/configurator/icono-mordedor-cuerda-1.webp",
+    "localizedSha256": "551ee6b5c3d06244e74ed63291d4351d6a40423aaa285a443754848847dac068"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-rascador-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b7fc50511fb14c24bf56dc7bead795652354f98de7fa60c14d274d74a45844ec",
+    "bytes": 1734,
+    "file": "assets/configurator/icono-rascador-1.webp",
+    "localizedSha256": "b7fc50511fb14c24bf56dc7bead795652354f98de7fa60c14d274d74a45844ec"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-arbol-gatos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7dfc97d2bec3a312ff06c7425ed5ac213f6a688cb0fdc46deba7f5e7c89a6c53",
+    "bytes": 1984,
+    "file": "assets/configurator/icono-arbol-gatos.webp",
+    "localizedSha256": "7dfc97d2bec3a312ff06c7425ed5ac213f6a688cb0fdc46deba7f5e7c89a6c53"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-comedero-gatos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0690ea4a9d782c5d32a278851147a756d3dbd4504809c07b16d93bd052221dc2",
+    "bytes": 1700,
+    "file": "assets/configurator/icono-comedero-gatos.webp",
+    "localizedSha256": "0690ea4a9d782c5d32a278851147a756d3dbd4504809c07b16d93bd052221dc2"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-arenero.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7888831e7fc7244a718b441379f17b927ece5e77e6a5ebb23a2dba6e4defcbfb",
+    "bytes": 1820,
+    "file": "assets/configurator/icono-arenero.webp",
+    "localizedSha256": "7888831e7fc7244a718b441379f17b927ece5e77e6a5ebb23a2dba6e4defcbfb"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-tamano-funko.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0dccc0c61e7860bb5d6dcd17785be7dbb39b2ecd0c909b62ff148fb8837b258e",
+    "bytes": 1630,
+    "file": "assets/configurator/icono-tamano-funko.webp",
+    "localizedSha256": "0dccc0c61e7860bb5d6dcd17785be7dbb39b2ecd0c909b62ff148fb8837b258e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/assets/images/size/comparativa-tamanos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "2f8628add9ef9ffa719772a2cff0d12d7909537f3e933f1a451fb81feecdceb3",
+    "bytes": 62392,
+    "file": "assets/configurator/comparativa-tamanos.webp",
+    "localizedSha256": "2f8628add9ef9ffa719772a2cff0d12d7909537f3e933f1a451fb81feecdceb3"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-paso-tamano-mascota.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c32590d9c6d5b3226c43013ed258fd3da1d1b00c290ffd35a9c52db40560b3bc",
+    "bytes": 1612,
+    "file": "assets/configurator/icono-paso-tamano-mascota.webp",
+    "localizedSha256": "c32590d9c6d5b3226c43013ed258fd3da1d1b00c290ffd35a9c52db40560b3bc"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-paso-tipo-mascota.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "a14f78da6c3c3b7cea36e2b675b6448fc18fc4cd9e5108ff074055753ac9bde9",
+    "bytes": 2288,
+    "file": "assets/products/icono-paso-tipo-mascota.webp",
+    "localizedSha256": "a14f78da6c3c3b7cea36e2b675b6448fc18fc4cd9e5108ff074055753ac9bde9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/icono-paso-ojos-mascota.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9618bf972c49435217e2fb187b2f60584bed8ae44391566434f2642ab73ea5dd",
+    "bytes": 1494,
+    "file": "assets/configurator/icono-paso-ojos-mascota.webp",
+    "localizedSha256": "9618bf972c49435217e2fb187b2f60584bed8ae44391566434f2642ab73ea5dd"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-arma-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4a672776113009d694f93695d7dfd84ccebacabd1be51c519350faf7fab59e4f",
+    "bytes": 768,
+    "file": "assets/configurator/icono-arma-1.webp",
+    "localizedSha256": "4a672776113009d694f93695d7dfd84ccebacabd1be51c519350faf7fab59e4f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/extra-peana-funko.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7a5383c51d20ad6aa1474d5651b2ee030aa50ee4352940dc30f20031fe6f7c78",
+    "bytes": 728,
+    "file": "assets/extras/extra-peana-funko.webp",
+    "localizedSha256": "7a5383c51d20ad6aa1474d5651b2ee030aa50ee4352940dc30f20031fe6f7c78"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/extra-funda-protectora-caja.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0f247faf7d3d985001aa2805f879ad5d4d73ddbf2f19472c13374f524bd252d3",
+    "bytes": 650,
+    "file": "assets/extras/extra-funda-protectora-caja.webp",
+    "localizedSha256": "0f247faf7d3d985001aa2805f879ad5d4d73ddbf2f19472c13374f524bd252d3"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/extra-imanes-estabilidad.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "fbbfff8ea58dd996b76c15a32fe54663bfca2c6dc7702f0ec4f402cc21e5aab6",
+    "bytes": 690,
+    "file": "assets/extras/extra-imanes-estabilidad.webp",
+    "localizedSha256": "fbbfff8ea58dd996b76c15a32fe54663bfca2c6dc7702f0ec4f402cc21e5aab6"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-funko-mini.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e9911ebccb5159274c31e98c9604dd9b21f5a5db9e47d2c03a395d9c45928414",
+    "bytes": 1292,
+    "file": "assets/configurator/icono-funko-mini.webp",
+    "localizedSha256": "e9911ebccb5159274c31e98c9604dd9b21f5a5db9e47d2c03a395d9c45928414"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-extras.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "788e0fe839552b80a1efdddf4eb65c358b5af759551fb6f627afa7c9737922e8",
+    "bytes": 1784,
+    "file": "assets/configurator/icono-extras.webp",
+    "localizedSha256": "788e0fe839552b80a1efdddf4eb65c358b5af759551fb6f627afa7c9737922e8"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/extra-peana-nombre.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9383f5b11d8e4bf3adced742683e5c2d7d7cea340d77ff57ec07aa431868cc04",
+    "bytes": 824,
+    "file": "assets/extras/extra-peana-nombre.webp",
+    "localizedSha256": "9383f5b11d8e4bf3adced742683e5c2d7d7cea340d77ff57ec07aa431868cc04"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/extra-peana-nombre-fecha.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9d3a5fc2c026089933dee021bb7fbd9492221843f6d6530922916048b7a85de9",
+    "bytes": 822,
+    "file": "assets/extras/extra-peana-nombre-fecha.webp",
+    "localizedSha256": "9d3a5fc2c026089933dee021bb7fbd9492221843f6d6530922916048b7a85de9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/extra-peana-cesped-futbolista.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f6fc49809e8fad24de1ea96dc6e3de23a030cbff21882b2c5b519a24c73682e7",
+    "bytes": 1638,
+    "file": "assets/extras/extra-peana-cesped-futbolista.webp",
+    "localizedSha256": "f6fc49809e8fad24de1ea96dc6e3de23a030cbff21882b2c5b519a24c73682e7"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-caja-individual-1.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "bc194a6dc34a2dd6883935f54fa1da0972cfd5c0a139f5f1f9425b20cd97ba2e",
+    "bytes": 1032,
+    "file": "assets/extras/icono-caja-individual-1.webp",
+    "localizedSha256": "bc194a6dc34a2dd6883935f54fa1da0972cfd5c0a139f5f1f9425b20cd97ba2e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icon-sin-caja-personalizada.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "06e24147831019b7b4aac647e1163c18b3546d31dc2d014b059d6ab6c7f7fc8b",
+    "bytes": 26398,
+    "file": "assets/extras/icon-sin-caja-personalizada.webp",
+    "localizedSha256": "06e24147831019b7b4aac647e1163c18b3546d31dc2d014b059d6ab6c7f7fc8b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icon-caja-individual.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "03740719ecdcfc0920311b7e41a40cff1ed25d6cec9bb2d0e5c78627659f59f8",
+    "bytes": 22422,
+    "file": "assets/extras/icon-caja-individual.webp",
+    "localizedSha256": "03740719ecdcfc0920311b7e41a40cff1ed25d6cec9bb2d0e5c78627659f59f8"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icon-caja-doble.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "29dcae88e66c739395257f49cd44bb8b180d8f022e5c63d939c0c04a63926475",
+    "bytes": 11706,
+    "file": "assets/extras/icon-caja-doble.webp",
+    "localizedSha256": "29dcae88e66c739395257f49cd44bb8b180d8f022e5c63d939c0c04a63926475"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/icono-entrega-transporte.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "70f123e810aec15684209b74fb5ec89ea59c7954a9f311b8af69593733aecd9b",
+    "bytes": 664,
+    "file": "assets/configurator/icono-entrega-transporte.webp",
+    "localizedSha256": "70f123e810aec15684209b74fb5ec89ea59c7954a9f311b8af69593733aecd9b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/regalo-extra-taza.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "63c4e2236f372591b25ffcadcc06b8c3a14cd0ca5abbbdb5965e85e11103f20f",
+    "bytes": 2476,
+    "file": "assets/extras/regalo-extra-taza.webp",
+    "localizedSha256": "63c4e2236f372591b25ffcadcc06b8c3a14cd0ca5abbbdb5965e85e11103f20f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/120-3.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "6395563b98ea459e93e4e6ec08a7057970a4fb360f1c2c19379a7e02efdea99e",
+    "bytes": 3933,
+    "file": "assets/configurator/120-3.jpg",
+    "localizedSha256": "6395563b98ea459e93e4e6ec08a7057970a4fb360f1c2c19379a7e02efdea99e"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/review-4.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ebc8a32a7ca68ae844c8e8ae82a6e60b2a04397dbe915bfef243e71e99c654e1",
+    "bytes": 66035,
+    "file": "assets/configurator/review-4.jpg",
+    "localizedSha256": "ebc8a32a7ca68ae844c8e8ae82a6e60b2a04397dbe915bfef243e71e99c654e1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/120-2.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "3e58349e202a8fd98acc5e96abec28d229bf95fa171574d0c09ffc9abdfd7bf4",
+    "bytes": 3588,
+    "file": "assets/configurator/120-2.jpg",
+    "localizedSha256": "3e58349e202a8fd98acc5e96abec28d229bf95fa171574d0c09ffc9abdfd7bf4"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/review-3.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b3a8095663416bd46754b7e708e3785c4b957861e5168e947e4bb549afb6f044",
+    "bytes": 96789,
+    "file": "assets/configurator/review-3.jpg",
+    "localizedSha256": "b3a8095663416bd46754b7e708e3785c4b957861e5168e947e4bb549afb6f044"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/120.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "89bbe351a9ddd50429ac0c7348ce5723c121ad12da94c0877d9328fb15138f5a",
+    "bytes": 4295,
+    "file": "assets/configurator/120.jpg",
+    "localizedSha256": "89bbe351a9ddd50429ac0c7348ce5723c121ad12da94c0877d9328fb15138f5a"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/review-1.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "bd21c6282dd5173c8c89bc01e78a0e20393ebef445cf15359ab6164b9927e762",
+    "bytes": 79766,
+    "file": "assets/configurator/review-1.jpg",
+    "localizedSha256": "bd21c6282dd5173c8c89bc01e78a0e20393ebef445cf15359ab6164b9927e762"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/120-1.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "851c2d11ac696cf6bd08e2d377db9de4abe3e1ce28552132e2650f120cce553f",
+    "bytes": 4625,
+    "file": "assets/configurator/120-1.jpg",
+    "localizedSha256": "851c2d11ac696cf6bd08e2d377db9de4abe3e1ce28552132e2650f120cce553f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/review-2.jpg",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "67a651b215a3014042b625b28bf9cc3039c88571a58ad10996d4ab2268a4a0d8",
+    "bytes": 106302,
+    "file": "assets/configurator/review-2.jpg",
+    "localizedSha256": "67a651b215a3014042b625b28bf9cc3039c88571a58ad10996d4ab2268a4a0d8"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso1-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e95957f4c8d97028617d27d0e96ee1b581f82f20eae3d4b5a4f810b50b695b10",
+    "bytes": 68634,
+    "file": "assets/process/paso1-proceso_funkos.webp",
+    "localizedSha256": "e95957f4c8d97028617d27d0e96ee1b581f82f20eae3d4b5a4f810b50b695b10"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso1-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "ef372c5f70bb80958e4a0791ce741b51b3d3edc2d0b1414fedf552bfc4ec7eaa",
+    "bytes": 14762,
+    "file": "assets/process/paso1-proceso_funkos-300x200.webp",
+    "localizedSha256": "ef372c5f70bb80958e4a0791ce741b51b3d3edc2d0b1414fedf552bfc4ec7eaa"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso1-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "3d28269217ed78294365844f71ff0a58e6cda74e8ad52f5efb76865cef803e74",
+    "bytes": 52538,
+    "file": "assets/process/paso1-proceso_funkos-768x512.webp",
+    "localizedSha256": "3d28269217ed78294365844f71ff0a58e6cda74e8ad52f5efb76865cef803e74"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso1-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "9899f5dc8326dffea0aa766d3f1d6145f4321969610c4344d64b2c698dd515b8",
+    "bytes": 37792,
+    "file": "assets/process/paso1-proceso_funkos-600x400.webp",
+    "localizedSha256": "9899f5dc8326dffea0aa766d3f1d6145f4321969610c4344d64b2c698dd515b8"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso2-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c6faeaa56a5dd1bbc86530f1218fac5eb5c2d6ed1c180e320f8339b7d707ff8b",
+    "bytes": 40086,
+    "file": "assets/process/paso2-proceso_funkos.webp",
+    "localizedSha256": "c6faeaa56a5dd1bbc86530f1218fac5eb5c2d6ed1c180e320f8339b7d707ff8b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso2-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f3f8dcbc3f8bca61291b0dbdc43ac270cab76be8397be32611c0c18780a9f20c",
+    "bytes": 9040,
+    "file": "assets/process/paso2-proceso_funkos-300x200.webp",
+    "localizedSha256": "f3f8dcbc3f8bca61291b0dbdc43ac270cab76be8397be32611c0c18780a9f20c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso2-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "3dfda8a68cb3a2aa1ada4c7fef7246c3c707c0cf3a07039afd7f85b63f79bf2a",
+    "bytes": 32082,
+    "file": "assets/process/paso2-proceso_funkos-768x512.webp",
+    "localizedSha256": "3dfda8a68cb3a2aa1ada4c7fef7246c3c707c0cf3a07039afd7f85b63f79bf2a"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso2-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "c019de79152378236b52f7a7c14fc5ecffb5e36d31d58b30ae161a76abdc79d1",
+    "bytes": 22348,
+    "file": "assets/process/paso2-proceso_funkos-600x400.webp",
+    "localizedSha256": "c019de79152378236b52f7a7c14fc5ecffb5e36d31d58b30ae161a76abdc79d1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso3-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e0144513b95dfc8e3fa846ed9a13fb975c8ccc8ebd419a623ce757ca3b5b6a1c",
+    "bytes": 42138,
+    "file": "assets/process/paso3-proceso_funkos.webp",
+    "localizedSha256": "e0144513b95dfc8e3fa846ed9a13fb975c8ccc8ebd419a623ce757ca3b5b6a1c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso3-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "dfaa6fab3d573196d9a8623fa5ac442ae28a4a9e7005744a5de6c39d9ee7a987",
+    "bytes": 10378,
+    "file": "assets/process/paso3-proceso_funkos-300x200.webp",
+    "localizedSha256": "dfaa6fab3d573196d9a8623fa5ac442ae28a4a9e7005744a5de6c39d9ee7a987"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso3-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "eb243a2c164f8300b798340fa29b1bf1cd5795aa76aaf3a1efc4a471bd85686d",
+    "bytes": 33064,
+    "file": "assets/process/paso3-proceso_funkos-768x512.webp",
+    "localizedSha256": "eb243a2c164f8300b798340fa29b1bf1cd5795aa76aaf3a1efc4a471bd85686d"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso3-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4d4679fe0a57e45d5f9838c85d99aa03f1a647eb6055d4eb917509adcdf56c09",
+    "bytes": 24404,
+    "file": "assets/process/paso3-proceso_funkos-600x400.webp",
+    "localizedSha256": "4d4679fe0a57e45d5f9838c85d99aa03f1a647eb6055d4eb917509adcdf56c09"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso4-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0acd362312714514aac88b3ad34b8935bd2cf09bc294d8a33c9e476d8d0cf135",
+    "bytes": 79250,
+    "file": "assets/process/paso4-proceso_funkos.webp",
+    "localizedSha256": "0acd362312714514aac88b3ad34b8935bd2cf09bc294d8a33c9e476d8d0cf135"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso4-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "0725e9e3300b4cb365353b0919f28aa95c3a1538548ba09ece02aa46efaa54f0",
+    "bytes": 12918,
+    "file": "assets/process/paso4-proceso_funkos-300x200.webp",
+    "localizedSha256": "0725e9e3300b4cb365353b0919f28aa95c3a1538548ba09ece02aa46efaa54f0"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso4-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "1332e32bdbd2eda1938667ae020d9b72c1efd98b811a477057b67a576be00780",
+    "bytes": 52946,
+    "file": "assets/process/paso4-proceso_funkos-768x512.webp",
+    "localizedSha256": "1332e32bdbd2eda1938667ae020d9b72c1efd98b811a477057b67a576be00780"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso4-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "43d50fe3b22636887e8ac845db08a4b3d7cd2707eee6af3ec6e5c6d794f36e8f",
+    "bytes": 38030,
+    "file": "assets/process/paso4-proceso_funkos-600x400.webp",
+    "localizedSha256": "43d50fe3b22636887e8ac845db08a4b3d7cd2707eee6af3ec6e5c6d794f36e8f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso5-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "dcc3c24e146ac9c5a66f66cb950fafc8da64245ff75bb675082d10b417aa0df1",
+    "bytes": 46652,
+    "file": "assets/process/paso5-proceso_funkos.webp",
+    "localizedSha256": "dcc3c24e146ac9c5a66f66cb950fafc8da64245ff75bb675082d10b417aa0df1"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso5-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "abd6c12fcca224060712fb32cad84c4a688075b79a3658c634a87ca489e20e0f",
+    "bytes": 9864,
+    "file": "assets/process/paso5-proceso_funkos-300x200.webp",
+    "localizedSha256": "abd6c12fcca224060712fb32cad84c4a688075b79a3658c634a87ca489e20e0f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso5-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "30fd5775f750a255305ab93c032c77684509f14d1f7fdb77969d64ac07dc6240",
+    "bytes": 34650,
+    "file": "assets/process/paso5-proceso_funkos-768x512.webp",
+    "localizedSha256": "30fd5775f750a255305ab93c032c77684509f14d1f7fdb77969d64ac07dc6240"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso5-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "4f19a5bcdb1375a3e08fcd98593c6e60702a3b6a83c83279caad0f1560923e4b",
+    "bytes": 24536,
+    "file": "assets/process/paso5-proceso_funkos-600x400.webp",
+    "localizedSha256": "4f19a5bcdb1375a3e08fcd98593c6e60702a3b6a83c83279caad0f1560923e4b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso6-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e99d67b5600f316f87e8465d3ab6501fc76c86b8784732784fd5545de232ab82",
+    "bytes": 66330,
+    "file": "assets/process/paso6-proceso_funkos.webp",
+    "localizedSha256": "e99d67b5600f316f87e8465d3ab6501fc76c86b8784732784fd5545de232ab82"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso6-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "81c5c867ebc7bc8fed00d05df5b0c50097e98c40c4d77827fd04fb71aa25cf5d",
+    "bytes": 12138,
+    "file": "assets/process/paso6-proceso_funkos-300x200.webp",
+    "localizedSha256": "81c5c867ebc7bc8fed00d05df5b0c50097e98c40c4d77827fd04fb71aa25cf5d"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso6-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "7a75368faa91d6267b2c6aaba4349e2c92bec3630be8650b7b33109081684b68",
+    "bytes": 45566,
+    "file": "assets/process/paso6-proceso_funkos-768x512.webp",
+    "localizedSha256": "7a75368faa91d6267b2c6aaba4349e2c92bec3630be8650b7b33109081684b68"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso6-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "347c017de76f33c108adaf71783d61ca65e130b4e882dd1cf737f3e5f98caee0",
+    "bytes": 32958,
+    "file": "assets/process/paso6-proceso_funkos-600x400.webp",
+    "localizedSha256": "347c017de76f33c108adaf71783d61ca65e130b4e882dd1cf737f3e5f98caee0"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso7-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "521249601b1e407431954a12dea1ea81f18fec1915f4be74d7be0bfade5eafbc",
+    "bytes": 59684,
+    "file": "assets/process/paso7-proceso_funkos.webp",
+    "localizedSha256": "521249601b1e407431954a12dea1ea81f18fec1915f4be74d7be0bfade5eafbc"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso7-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "1e7d164512503cde8c8cbf7b18d5904febca09b5f3db54b75349d3e63796b2ac",
+    "bytes": 13554,
+    "file": "assets/process/paso7-proceso_funkos-300x200.webp",
+    "localizedSha256": "1e7d164512503cde8c8cbf7b18d5904febca09b5f3db54b75349d3e63796b2ac"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso7-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "06e80a6916be4234ac5cc5c8d0067ca2fb4e702d4ccba608233554815809ab36",
+    "bytes": 47352,
+    "file": "assets/process/paso7-proceso_funkos-768x512.webp",
+    "localizedSha256": "06e80a6916be4234ac5cc5c8d0067ca2fb4e702d4ccba608233554815809ab36"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso7-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f57452036742381d6e30797e379825bdea037a94ff666cd613db4bd149c0be0c",
+    "bytes": 34494,
+    "file": "assets/process/paso7-proceso_funkos-600x400.webp",
+    "localizedSha256": "f57452036742381d6e30797e379825bdea037a94ff666cd613db4bd149c0be0c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso8-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b35bce11803f5d12a7333414275e86e1a1d641a12ba5c86b11e2e3601f8f6d7c",
+    "bytes": 52468,
+    "file": "assets/process/paso8-proceso_funkos.webp",
+    "localizedSha256": "b35bce11803f5d12a7333414275e86e1a1d641a12ba5c86b11e2e3601f8f6d7c"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso8-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "b92b2eec206aed3ec3455f038c21e19c04a6e83baa02c62b3437d92fda4c4e3f",
+    "bytes": 12084,
+    "file": "assets/process/paso8-proceso_funkos-300x200.webp",
+    "localizedSha256": "b92b2eec206aed3ec3455f038c21e19c04a6e83baa02c62b3437d92fda4c4e3f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso8-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "5364bb3096d2455a5be06ba2640f63770e38e547fafe1e0b7994c7e54cbe9bb9",
+    "bytes": 39778,
+    "file": "assets/process/paso8-proceso_funkos-768x512.webp",
+    "localizedSha256": "5364bb3096d2455a5be06ba2640f63770e38e547fafe1e0b7994c7e54cbe9bb9"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso8-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d051e6c2729e53cc25268356528b0adf891cfacc02cfe4e84dc090251b15117f",
+    "bytes": 29250,
+    "file": "assets/process/paso8-proceso_funkos-600x400.webp",
+    "localizedSha256": "d051e6c2729e53cc25268356528b0adf891cfacc02cfe4e84dc090251b15117f"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso9-proceso_funkos.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "f5f09dc5e93942cfa29cf8a5ff54511bd6e423c41cea7f6ec642c7e81956fb73",
+    "bytes": 63308,
+    "file": "assets/process/paso9-proceso_funkos.webp",
+    "localizedSha256": "f5f09dc5e93942cfa29cf8a5ff54511bd6e423c41cea7f6ec642c7e81956fb73"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso9-proceso_funkos-300x200.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "02e973441a12ae989414b1ef293e787b4aab5a3ad2f74c48d93fca1459fe2109",
+    "bytes": 11858,
+    "file": "assets/process/paso9-proceso_funkos-300x200.webp",
+    "localizedSha256": "02e973441a12ae989414b1ef293e787b4aab5a3ad2f74c48d93fca1459fe2109"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso9-proceso_funkos-768x512.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d1d5ffb2d2ac095665caa0aa5f329aed24d5177553a1910ca5846a8516ca428b",
+    "bytes": 45656,
+    "file": "assets/process/paso9-proceso_funkos-768x512.webp",
+    "localizedSha256": "d1d5ffb2d2ac095665caa0aa5f329aed24d5177553a1910ca5846a8516ca428b"
+  },
+  {
+    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/paso9-proceso_funkos-600x400.webp",
+    "kind": "image",
+    "status": "localized",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "d6c099366e179cfa11590e4ef0d85f3ea3d1a76fd193d3194e09b1832895903d",
+    "bytes": 31786,
+    "file": "assets/process/paso9-proceso_funkos-600x400.webp",
+    "localizedSha256": "d6c099366e179cfa11590e4ef0d85f3ea3d1a76fd193d3194e09b1832895903d"
+  },
+  {
+    "url": "https://www.facebook.com/tr?id=638669567512834&ev=PageView&noscript=1",
+    "kind": "image",
+    "status": "excluded",
+    "review": "ORIGIN_REVIEW_REQUIRED",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "reason": "Branding puro ou tracker, sem função visual comercial"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshRTM.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "9ecbdba35fa74f10a1a916c31649b802a12deb9e66c7b1fe4650afcfd4d16971",
+    "bytes": 125528,
+    "file": "assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshRTM.ttf",
+    "localizedSha256": "9ecbdba35fa74f10a1a916c31649b802a12deb9e66c7b1fe4650afcfd4d16971"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhRTM.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "ceb6eec0a584cae83e8f3ab868e2f03977b38ff6e78632bc8a7ec69dcf9f7c18",
+    "bytes": 125652,
+    "file": "assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhRTM.ttf",
+    "localizedSha256": "ceb6eec0a584cae83e8f3ab868e2f03977b38ff6e78632bc8a7ec69dcf9f7c18"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDGUmRTM.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "1506fc96971e84d1a4ca89f0d1157a881b9ce217bbfa05d2b3c9e3c8f6723091",
+    "bytes": 125536,
+    "file": "assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDGUmRTM.ttf",
+    "localizedSha256": "1506fc96971e84d1a4ca89f0d1157a881b9ce217bbfa05d2b3c9e3c8f6723091"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDFwmRTM.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "1a025dfce6e6e03bbe31ba82277ec5ed96df8b8dd58b3df6267269490b90b1dc",
+    "bytes": 125464,
+    "file": "assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDFwmRTM.ttf",
+    "localizedSha256": "1a025dfce6e6e03bbe31ba82277ec5ed96df8b8dd58b3df6267269490b90b1dc"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDDsmRTM.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "c5776505c7b3df3c3ca763477b795d6bbc6517760bede0462ab77d1fb44954a6",
+    "bytes": 125416,
+    "file": "assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDDsmRTM.ttf",
+    "localizedSha256": "c5776505c7b3df3c3ca763477b795d6bbc6517760bede0462ab77d1fb44954a6"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrFJA.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "cdedb1729acac414ed01744a11da7badb86adf13108e7bd3fa161b9323f7fe54",
+    "bytes": 154628,
+    "file": "assets/ui/fonts/pxiEyp8kv8JHgFVrFJA.ttf",
+    "localizedSha256": "cdedb1729acac414ed01744a11da7badb86adf13108e7bd3fa161b9323f7fe54"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9V1s.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "fcff04f4bec2b3636f05ed894dc1f9a752c4cb587ee49857ec7a82abaf6ca016",
+    "bytes": 152860,
+    "file": "assets/ui/fonts/pxiByp8kv8JHgFVrLGT9V1s.ttf",
+    "localizedSha256": "fcff04f4bec2b3636f05ed894dc1f9a752c4cb587ee49857ec7a82abaf6ca016"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLEj6V1s.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "dae40ca7b35fe7501bda2e4140a6860b1db47330be5d3c8ab6971fd83a70e9a5",
+    "bytes": 151516,
+    "file": "assets/ui/fonts/pxiByp8kv8JHgFVrLEj6V1s.ttf",
+    "localizedSha256": "dae40ca7b35fe7501bda2e4140a6860b1db47330be5d3c8ab6971fd83a70e9a5"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7V1s.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "1984efdda0fbe207d7ac20feac2ba7c2768c92a90094b02a206c9d58cc30ff2e",
+    "bytes": 150292,
+    "file": "assets/ui/fonts/pxiByp8kv8JHgFVrLCz7V1s.ttf",
+    "localizedSha256": "1984efdda0fbe207d7ac20feac2ba7c2768c92a90094b02a206c9d58cc30ff2e"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLDD4V1s.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "5e8a5c3c2a56c3bc1b135645ca9637b9b64dc3fed5fbf85cb5ed144e06bb6d48",
+    "bytes": 149072,
+    "file": "assets/ui/fonts/pxiByp8kv8JHgFVrLDD4V1s.ttf",
+    "localizedSha256": "5e8a5c3c2a56c3bc1b135645ca9637b9b64dc3fed5fbf85cb5ed144e06bb6d48"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap",
+    "kind": "css-fonts",
+    "file": "css/original/fonts.css",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "localizedSha256": "02b675c7b4e665bc2aae3ba00bb4b45d8976f821434f423e827e3427783e8ffd"
+  },
+  {
+    "url": "https://fonts.gstatic.com/s/materialicons/v145/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf",
+    "kind": "font",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "sha256": "ef149f08bdd2ff09a4e2c8573476b7b0f3fbb15b623954ade59899e7175bedda",
+    "bytes": 356840,
+    "file": "assets/ui/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf",
+    "localizedSha256": "ef149f08bdd2ff09a4e2c8573476b7b0f3fbb15b623954ade59899e7175bedda"
+  },
+  {
+    "url": "https://fonts.googleapis.com/icon?family=Material+Icons",
+    "kind": "css-fonts",
+    "file": "css/original/material-icons.css",
+    "status": "localized",
+    "review": "FONT_LICENSE_REVIEW",
+    "localizedSha256": "ac8882f1e42e8f8adf9c6bb617be3f6c8cf88c2d49b1ff1af1855a7c761e4455"
+  }
+]

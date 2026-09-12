@@ -1,0 +1,38 @@
+﻿
+/** START PET GROUPS TECH **/
+
+.mf-product-pets-groups {
+    display: grid;
+    gap: 18px;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.mf-product-pet-group {
+    width: 100%;
+    padding: 18px 18px 16px;
+    border: 1px solid #eadfce;
+    border-radius: 18px;
+    background: #f1eadf;
+}
+
+.mf-product-pet-group__title {
+    margin: 0 0 14px;
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.mf-product-pet-group__body {
+    display: grid;
+    gap: 14px;
+}
+
+.mf-product-pet-group__body .addon-header {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/** END PET GROUPS TECH **/

@@ -1,0 +1,70 @@
+﻿
+/** START REVIEWS PROOF **/
+
+.mf-product-sales__proof {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.mf-product-sales__stars {
+    color: #ffb020;
+    letter-spacing: 2px;
+}
+
+.mf-product-sales__score {
+    color: var(--color-text);
+}
+
+.mf-product-sales__review,
+.mf-product-sales__social {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.mf-product-sales__social {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mf-product-sales__social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: currentColor;
+}
+
+.mf-product-sales__social-icon svg {
+    width: 13px;
+    height: 13px;
+}
+
+.mf-product-sales__review strong,
+.mf-product-sales__social strong {
+    color: var(--color-text);
+}
+
+.mf-product-sales__separator {
+    color: var(--color-border);
+}
+
+@media (max-width: 380px) {
+    .mf-product-sales__proof {
+        gap: 5px;
+        flex-wrap: nowrap;
+        margin-top: 16px;
+    }
+}
+
+/** END REVIEWS PROOF **/

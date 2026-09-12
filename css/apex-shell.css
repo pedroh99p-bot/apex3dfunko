@@ -1,0 +1,122 @@
+/* Original layout lives in css/original. Apex overrides only branding, connected
+   form states, accessible dialogs and verified responsive defects. */
+:root { --apex-action: #c51e3c; --apex-action-hover: #a5102e; }
+[hidden], .apex-hidden { display: none !important; }
+.mf-cart-drawer[hidden], .mf-cart-drawer.apex-hidden { display: none !important; }
+.mf-added-drawer[hidden] { display: none !important; }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+body { margin: 0; }
+button, input, select, textarea { font: inherit; }
+button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:disabled, input:disabled, select:disabled { cursor: not-allowed; }
+:focus-visible { outline: 3px solid var(--apex-action); outline-offset: 4px; }
+.mf-header .custom-logo, .mf-footer .custom-logo { width: 116px; height: 62px; object-fit: contain; }
+.mf-header .custom-logo-link, .mf-footer .custom-logo-link { background: #251f1b; border-radius: 10px; padding: 0 9px; }
+.mf-product-config__cta { background: var(--apex-action) !important; color: #fff !important; }
+.mf-product-config__cta:hover { background: var(--apex-action-hover) !important; }
+.mf-product-sales__price .price .amount { white-space: nowrap; }
+.mf-funko-type-option__price b { display: block; color: #33281f; font-size: 15px; }
+.apex-origin-note { max-width: 1000px; margin: 20px auto; padding: 0 20px; color: #7b6654; text-align: center; font-size: 12px; }
+.mf-header__action--cart svg { color: var(--apex-action); }
+.mf-product-hero__cta, .mf-product-hero .single_add_to_cart_button,
+.review-button, .mf-fixed-cart-bar__button, .mf-extras-finish__btn,
+.mf-cart-drawer__checkout, .review-actions .button, #close-confirmation,
+.mf-step-nav__button, .apex-process-preview .button { background: var(--apex-action) !important; color: white !important; border-color: var(--apex-action) !important; }
+.review-button:hover, .mf-fixed-cart-bar__button:hover, .review-actions .button:hover { background: var(--apex-action-hover) !important; }
+.apex-note, .apex-staging-note { color: #675346; font-size: 12px; line-height: 1.6; margin: 10px 0; }
+.apex-note { padding: 9px 11px; border: 1px solid #ecdfcf; background: #fff9ef; border-radius: 9px; }
+.apex-field { display: grid; gap: 7px; margin: 12px 0; font-size: 13px; font-weight: 600; min-width: 0; }
+.apex-field input { width: 100%; min-width: 0; border: 1px solid #e3d9cc; border-radius: 10px; padding: 12px; background: white; }
+.apex-mode { border: 0; padding: 0; margin: 16px 0; min-width: 0; }
+.apex-mode legend { font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+.apex-mode > .mf-box-option { display: inline-flex; width: auto; min-width: 130px; padding: 12px; margin: 0 8px 8px 0; align-items: center; gap: 8px; }
+.apex-mode input { position: static; opacity: 1; width: 16px; height: 16px; appearance: auto; }
+.mf-person-divider { grid-column: 1 / -1; margin: 12px 0 0; padding: 14px 18px; border: 1px solid #e9d6b8; border-radius: 12px; font-size: 16px; background: #fff5e3; }
+.apex-people { padding: 18px; }
+.apex-people .mf-mini-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.apex-people .mf-mini-option { display: flex; gap: 6px; align-items: center; padding: 12px 7px; font-size: 12px; border: 1px solid #e6d6c4; border-radius: 10px; }
+.apex-people input { accent-color: var(--apex-action); }
+.apex-upload-state { display: grid; gap: 8px; margin: 8px 0; }
+.apex-upload-preview { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 8px; background: #faf6f1; border: 1px solid #e9ddcf; border-radius: 10px; }
+.apex-upload-preview img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; }
+.apex-upload-preview span { flex: 1; min-width: 80px; overflow-wrap: anywhere; font-size: 12px; }
+.apex-upload-state button { border: 1px solid #d9c8ba; padding: 7px 12px; border-radius: 8px; background: white; }
+.file-error { color: #a5102e; font-size: 13px; }
+.apex-object-detail { grid-column: 1 / -1; padding: 12px; border: 1px solid #e8d3b3; border-radius: 10px; background: #fffaf2; }
+.mf-accessories-specials__grid.is-collapsed > .apex-object-detail:not([hidden]) { display: block; }
+.apex-errors { border: 2px solid var(--apex-action); border-radius: 14px; padding: 18px; margin-bottom: 20px; background: #fff6f6; }
+.apex-errors h3 { margin-top: 0; font-size: 17px; }
+.apex-errors button { display: block; text-align: left; color: #97122a; background: none; border: 0; text-decoration: underline; padding: 8px 0; font-size: 13px; }
+.mf-product-delivery-date__native { position: static !important; opacity: 1 !important; width: 100% !important; height: auto !important; pointer-events: auto !important; border: 0; background: transparent; padding: 8px 0; }
+.mf-product-delivery-date__field { flex-wrap: wrap; }
+.mf-product-delivery-date__placeholder, .mf-product-delivery-date__value { display: none; }
+.mf-product-summary__breakdown-list li { display: flex; justify-content: space-between; gap: 15px; font-size: 13px; margin: 8px 0; }
+.mf-product-summary__breakdown-list strong { white-space: nowrap; }
+.mf-cart-drawer__loading, .mf-cart-drawer__shipping-track { display: none; }
+.mf-reviews-slider__track { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.mf-reviews-slider__track > * { scroll-snap-align: start; flex-shrink: 0; }
+.mf-video-modal__frame { display: none; }
+.apex-process-preview { padding: 35px; background: #fffaf3; border-radius: 20px; }
+.apex-process-preview .button { display: inline-block; padding: 12px 18px; border-radius: 10px; }
+dialog { color: #29211c; border: 1px solid #e1d3c2; background: #fffcf8; border-radius: 20px; padding: 26px; width: min(800px, calc(100% - 28px)); max-height: calc(100dvh - 32px); overflow: auto; box-shadow: 0 18px 80px #21170d55; }
+dialog::backdrop { background: #211912b3; }
+dialog h2 { font-size: 28px; margin: 0; }
+.review-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.close-review, [data-gallery-close] { border: 1px solid #dccdbd; border-radius: 50%; width: 40px; height: 40px; background: white; font-size: 24px; flex: 0 0 auto; }
+.eyebrow { font-size: 10px; letter-spacing: .13em; color: #806547; font-weight: 700; }
+.total-row { display: flex; justify-content: space-between; gap: 18px; padding: 20px 0; font-size: 18px; }
+.total-row strong { color: var(--apex-action); font-size: 25px; white-space: nowrap; }
+.review-section { border-top: 1px solid #e8dccd; padding: 16px 0; }
+.review-section h3 { font-size: 17px; margin: 0 0 12px; }
+.review-section dl { display: grid; grid-template-columns: minmax(110px, 1fr) minmax(0, 2fr); gap: 9px 15px; margin: 0; font-size: 13px; }
+.review-section dt { color: #7b6654; }
+.review-section dd { margin: 0; overflow-wrap: anywhere; }
+.review-photos { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.review-photos img { width: 90px; height: 90px; object-fit: cover; border-radius: 12px; }
+.review-warning { background: #fff0d7; padding: 14px; border-radius: 10px; font-size: 12px; line-height: 1.7; }
+.review-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.review-actions button, #close-confirmation { border: 0; border-radius: 10px; padding: 13px 18px; font-weight: 700; }
+.review-actions .secondary { background: #f0e4d3 !important; color: #37291c !important; }
+#gallery-lightbox { text-align: center; width: min(950px, calc(100% - 28px)); }
+#gallery-enlarged { display: block; max-width: 100%; max-height: 72dvh; object-fit: contain; margin: 10px auto; }
+#gallery-lightbox p { font-size: 12px; }
+#gallery-lightbox [data-gallery-close] { float: right; }
+.mf-product-hero, .mf-product-hero__summary { overflow-x: visible !important; }
+.mf-product-customizer-grid > *, .mf-product-extra-options__main, .mf-product-hero__summary { min-width: 0; }
+.mf-product-option-card__body, .mf-product-extras-section, .mf-accessories-builder,
+.mf-accessories-fields, .mf-accessories-field, .mf-accessories-builder__details,
+.mf-accessories-small__copy { min-width: 0; max-width: 100%; }
+.mf-accessories-builder, .mf-accessories-fields, .mf-accessories-field { grid-template-columns: minmax(0, 1fr); }
+.mf-accessories-builder > *, .mf-accessories-specials > *, .mf-accessories-builder__heading { min-width: 0; max-width: 100%; }
+.mf-accessories-specials, .mf-accessories-builder__heading { grid-template-columns: minmax(0, 1fr); }
+.mf-accessories-builder__title--with-icon { flex-wrap: wrap; }
+.mf-accessories-builder__meta { white-space: normal; }
+.mf-accessories-field input[type=file] { width: 100%; min-width: 0; }
+.apex-object-detail input[type=file] { width: 100%; min-width: 0; font-size: 12px; }
+.apex-object-detail .mf-outfit-step__upload { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; min-width: 0; }
+@media (max-width: 767px) {
+  .apex-people .mf-mini-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  dialog { padding: 18px; border-radius: 16px; }
+  dialog h2 { font-size: 23px; }
+  .review-section dl { grid-template-columns: minmax(80px, 1fr) minmax(0, 1.6fr); }
+  .review-actions button { flex: 1 1 100%; }
+  .mf-product-customizer-grid input, .mf-product-customizer-grid textarea { max-width: 100%; }
+}
+@media (max-width: 768px) {
+  .mf-product-gallery { min-width: 0; width: 100%; grid-template-columns: minmax(0, 1fr); }
+  .mf-reviews-mini-slider { padding-inline: 20px; }
+  .mf-product-gallery__stage { width: calc(100% - 10px); max-width: calc(100% - 10px); overflow: visible; }
+  .mf-product-gallery__slides { width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; transform: none !important; }
+  .mf-product-gallery__slide { min-width: 0; flex: 0 0 90%; scroll-snap-align: start; }
+  .mf-product-gallery__thumbs { max-width: 100%; overflow-x: auto; scrollbar-width: none; padding: 4px 0; }
+  .mf-product-gallery__arrow--next { right: 5px; }
+  .mf-product-sales__price .price ins .amount { font-size: 34px; }
+  .mf-product-sales__price-row { flex-wrap: wrap; }
+  .mf-product-sales__ship { max-width: 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

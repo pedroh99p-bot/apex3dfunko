@@ -1,0 +1,63 @@
+
+	svg:not([width]){max-width:48px;max-height:48px;}
+	.mf-header__cta-icon svg,.mf-product-whatsapp__icon svg{width:24px;height:24px;}
+	.woocommerce-product-gallery{display:none !important;}
+	.mf-product-config form.cart{display:flex;align-items:center;gap:12px;margin:0;}
+	.mf-product-config form.cart .quantity{display:none;}
+	
+.source-inline-0{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-1{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-2{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-3{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-4{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-5{display:none}
+.source-inline-6{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-7{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-8{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-9{border-radius:2px;display:inline-block;vertical-align:middle}
+.source-inline-10{--mf-face-color: #1a1a1a;}
+.source-inline-11{--mf-face-color: #3d2817;}
+.source-inline-12{--mf-face-color: #6b4423;}
+.source-inline-13{--mf-face-color: #a87b4a;}
+.source-inline-14{--mf-face-color: #d4a464;}
+.source-inline-15{--mf-face-color: #e8c98a;}
+.source-inline-16{--mf-face-color: #b5541f;}
+.source-inline-17{--mf-face-color: #cccccc;}
+.source-inline-18{--mf-custom-color: #cccccc;}
+.source-inline-19{--mf-eyes-color: #cccccc;}
+.source-inline-20{display:none}
+.source-inline-21{--mf-skin-color: #f3d9c6;}
+.source-inline-22{--mf-skin-color: #e9b78d;}
+.source-inline-23{--mf-skin-color: #b27a4d;}
+.source-inline-24{--mf-skin-color: #6f4a33;}
+.source-inline-25{background:#FFFFFF}
+.source-inline-26{background:#FFFFFF}
+.source-inline-27{background:#FFFFFF}
+.source-inline-28{display: none;}
+.source-inline-29{display: none;}
+.source-inline-30{display: none;}
+.source-inline-31{display: none;}
+.source-inline-32{display: none;}
+.source-inline-33{display: none;}
+.source-inline-34{display: none;}
+.source-inline-35{display: none;}
+.source-inline-36{display: none;}
+.source-inline-37{display: none;}
+.source-inline-38{display: none;}
+.source-inline-39{display: none;}
+.source-inline-40{--mf-eyes-color: #2f2f2f;}
+.source-inline-41{--mf-eyes-color: #3f8f5f;}
+.source-inline-42{--mf-eyes-color: #7a4a24;}
+.source-inline-43{--mf-eyes-color: #4a78d6;}
+.source-inline-44{--mf-eyes-color: #8b5e34;}
+.source-inline-45{--mf-custom-color: #8b5e34;}
+.source-inline-46{font-weight: 400}
+.source-inline-47{font-weight: 400}
+.source-inline-48{--mf-box-color:#f4c542;}
+.source-inline-49{--mf-box-color:#2f6b5f;}
+.source-inline-50{--mf-box-color:#d94b3d;}
+.source-inline-51{--mf-box-color:#4f7fd8;}
+.source-inline-52{--mf-box-color:#ef7bac;}
+.source-inline-53{--mf-box-color:#7a4b2f;}
+.source-inline-54{--mf-box-color:#111111;}
+.source-inline-55{--mf-box-color:#f7f1e8;}
