@@ -1,0 +1,329 @@
+{
+  "baseline": "175babe2df4ffa416f6feae680019600689c72a7",
+  "regions": [
+    {
+      "id": "header",
+      "selector": ".mf-header",
+      "purpose": "Marca e navegação",
+      "count": 1,
+      "heading": "",
+      "images": 1,
+      "svgs": 13
+    },
+    {
+      "id": "hero",
+      "selector": ".mf-product-hero",
+      "purpose": "Mídia à esquerda e oferta à direita",
+      "count": 1,
+      "heading": "Comprar Funko Pop personalizado",
+      "images": 54,
+      "svgs": 38
+    },
+    {
+      "id": "hero-gallery",
+      "selector": ".mf-product-gallery",
+      "purpose": "Carrossel, 23 slides e miniaturas",
+      "count": 1,
+      "heading": "",
+      "images": 46,
+      "svgs": 2
+    },
+    {
+      "id": "product-types",
+      "selector": ".mf-funko-type-selector",
+      "purpose": "Quatro modelos dentro da oferta",
+      "count": 1,
+      "heading": "Escolha o tipo de Funko *",
+      "images": 4,
+      "svgs": 4
+    },
+    {
+      "id": "sketch",
+      "selector": ".mf-product-sketch",
+      "purpose": "Convite para visualizar a criação",
+      "count": 1,
+      "heading": "Quer ver o esboço 3D do seu Funko antes de o encomendar?",
+      "images": 0,
+      "svgs": 1
+    },
+    {
+      "id": "business",
+      "selector": ".mf-product-b2b",
+      "purpose": "Oferta para grupos e empresas",
+      "count": 1,
+      "heading": "Precisa de 5 ou mais figurines?",
+      "images": 0,
+      "svgs": 1
+    },
+    {
+      "id": "mini-reviews",
+      "selector": "[data-mf-mini-slider]",
+      "purpose": "Carrossel compacto de prova social",
+      "count": 1,
+      "heading": "",
+      "images": 4,
+      "svgs": 22
+    },
+    {
+      "id": "configurator",
+      "selector": "#personalizar",
+      "purpose": "Configuração e resumo em duas colunas",
+      "count": 1,
+      "heading": "Comece a personalizar",
+      "images": 122,
+      "svgs": 157
+    },
+    {
+      "id": "face",
+      "selector": "[data-mf-face-step]",
+      "purpose": "Fotos e referência da aparência",
+      "count": 1,
+      "heading": "Rosto *",
+      "images": 5,
+      "svgs": 17
+    },
+    {
+      "id": "skin",
+      "selector": "[data-mf-skin-step]",
+      "purpose": "Referência visual de pele",
+      "count": 1,
+      "heading": "Tons de pele *",
+      "images": 5,
+      "svgs": 2
+    },
+    {
+      "id": "outfit",
+      "selector": "[data-mf-outfit-step]",
+      "purpose": "Roupa e pose",
+      "count": 1,
+      "heading": "Vestuário *",
+      "images": 1,
+      "svgs": 9
+    },
+    {
+      "id": "pets",
+      "selector": "[data-mf-pets-step]",
+      "purpose": "Pets adicionais",
+      "count": 1,
+      "heading": "Animais",
+      "images": 31,
+      "svgs": 11
+    },
+    {
+      "id": "accessories",
+      "selector": "[data-mf-card-kind=\"extras\"]",
+      "purpose": "Catálogo e acessórios",
+      "count": 1,
+      "heading": "Acessórios",
+      "images": 36,
+      "svgs": 86
+    },
+    {
+      "id": "human-size",
+      "selector": "[data-mf-size-step]",
+      "purpose": "Tamanhos humanos",
+      "count": 1,
+      "heading": "Tamanho *",
+      "images": 2,
+      "svgs": 4
+    },
+    {
+      "id": "pet-size",
+      "selector": "[data-mf-pet-size-step]",
+      "purpose": "Tamanhos do pet",
+      "count": 1,
+      "heading": "Tamanho *",
+      "images": 1,
+      "svgs": 2
+    },
+    {
+      "id": "pet-type",
+      "selector": "[data-mf-pet-step=\"pet_type\"]",
+      "purpose": "Espécie e referência do pet",
+      "count": 1,
+      "heading": "Tipo de animal *",
+      "images": 11,
+      "svgs": 3
+    },
+    {
+      "id": "pet-eyes",
+      "selector": "[data-mf-pet-step=\"pet_eyes\"]",
+      "purpose": "Aparência do pet",
+      "count": 1,
+      "heading": "Olhos *",
+      "images": 1,
+      "svgs": 4
+    },
+    {
+      "id": "pet-accessories",
+      "selector": "[data-mf-pet-step=\"pet_accessories\"]",
+      "purpose": "Referências de acessórios do pet",
+      "count": 1,
+      "heading": "Acessórios",
+      "images": 10,
+      "svgs": 2
+    },
+    {
+      "id": "pet-extras",
+      "selector": "[data-mf-pet-step=\"pet_extras\"]",
+      "purpose": "Referências extras do pet",
+      "count": 1,
+      "heading": "Extras",
+      "images": 3,
+      "svgs": 2
+    },
+    {
+      "id": "minis",
+      "selector": "[data-mf-mini-step]",
+      "purpose": "Miniaturas adicionais; homologação pendente",
+      "count": 1,
+      "heading": "Funko Mini",
+      "images": 1,
+      "svgs": 2
+    },
+    {
+      "id": "included",
+      "selector": "[data-mf-extra-step]",
+      "purpose": "Bases, inclusos e complementos",
+      "count": 1,
+      "heading": "Extras",
+      "images": 7,
+      "svgs": 3
+    },
+    {
+      "id": "box",
+      "selector": "[data-mf-box-step]",
+      "purpose": "Caixas ilustradas e personalização",
+      "count": 1,
+      "heading": "Quer adicionar uma caixa de coleção personalizada? *",
+      "images": 4,
+      "svgs": 3
+    },
+    {
+      "id": "delivery",
+      "selector": ".mf-product-delivery",
+      "purpose": "Modalidades, calendário e flexibilidade",
+      "count": 1,
+      "heading": "Quando quer receber a sua encomenda?",
+      "images": 1,
+      "svgs": 2
+    },
+    {
+      "id": "notes",
+      "selector": "[data-mf-instructions-step]",
+      "purpose": "Observações",
+      "count": 1,
+      "heading": "Algum comentário adicional sobre a sua encomenda?",
+      "images": 0,
+      "svgs": 0
+    },
+    {
+      "id": "gift",
+      "selector": ".mf-gift-upsell",
+      "purpose": "Caneca adicional; homologação pendente",
+      "count": 1,
+      "heading": "Quer adicionar outro presente?",
+      "images": 1,
+      "svgs": 0
+    },
+    {
+      "id": "summary",
+      "selector": ".mf-product-summary",
+      "purpose": "Preço grande, detalhamento e CTA",
+      "count": 1,
+      "heading": "Individual · 10 cm · a partir de 4 semanas",
+      "images": 0,
+      "svgs": 2
+    },
+    {
+      "id": "social-proof",
+      "selector": ".mf-product-social-proof",
+      "purpose": "Três blocos de confiança",
+      "count": 1,
+      "heading": "",
+      "images": 0,
+      "svgs": 0
+    },
+    {
+      "id": "reviews",
+      "selector": "#opiniones",
+      "purpose": "Carrossel de avaliações",
+      "count": 1,
+      "heading": "Mais de 1.000 clientes satisfeitos - avaliações reais",
+      "images": 8,
+      "svgs": 33
+    },
+    {
+      "id": "process",
+      "selector": "#como-lo-hacemos",
+      "purpose": "Nove cards originais do processo",
+      "count": 1,
+      "heading": "Descubra o nosso processo de criação",
+      "images": 9,
+      "svgs": 0
+    },
+    {
+      "id": "faq",
+      "selector": "#faqs",
+      "purpose": "Sete accordions de FAQ",
+      "count": 1,
+      "heading": "Perguntas frequentes",
+      "images": 0,
+      "svgs": 7
+    },
+    {
+      "id": "showcase",
+      "selector": "#trabajos",
+      "purpose": "Grade de trabalhos com 22 imagens",
+      "count": 1,
+      "heading": "Melhores trabalhos realizados",
+      "images": 22,
+      "svgs": 1
+    },
+    {
+      "id": "trust",
+      "selector": ".mf-product-trust",
+      "purpose": "Seis cards de confiança e CTA",
+      "count": 1,
+      "heading": "Compra com garantias",
+      "images": 0,
+      "svgs": 7
+    },
+    {
+      "id": "video",
+      "selector": "[data-mf-video-modal]",
+      "purpose": "Modal de apresentação",
+      "count": 1,
+      "heading": "",
+      "images": 0,
+      "svgs": 0
+    },
+    {
+      "id": "drawer",
+      "selector": "[data-mf-cart-drawer]",
+      "purpose": "Resumo lateral convertido para pedido local",
+      "count": 1,
+      "heading": "Carrinho",
+      "images": 0,
+      "svgs": 4
+    },
+    {
+      "id": "fixed-summary",
+      "selector": "[data-mf-fixed-cart-bar]",
+      "purpose": "Barra de resumo e CTA",
+      "count": 1,
+      "heading": "Funko Pop personalizado",
+      "images": 1,
+      "svgs": 2
+    },
+    {
+      "id": "footer",
+      "selector": ".mf-footer",
+      "purpose": "Marca, links e CTA final",
+      "count": 1,
+      "heading": "",
+      "images": 1,
+      "svgs": 6
+    }
+  ]
+}

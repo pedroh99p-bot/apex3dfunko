@@ -1,0 +1,146 @@
+[
+  {
+    "variant": "baseline",
+    "viewport": 390,
+    "measurements": {
+      ".mf-product-hero__grid": {
+        "width": 370,
+        "x": 10,
+        "columns": "370px",
+        "gap": "30px"
+      },
+      ".mf-product-hero__media": {
+        "width": 370,
+        "x": 10,
+        "columns": "none",
+        "gap": "normal"
+      },
+      ".mf-product-hero__summary": {
+        "width": 370,
+        "x": 10,
+        "columns": "none",
+        "gap": "normal"
+      },
+      ".mf-product-how-grid": {
+        "width": 370,
+        "x": 10,
+        "columns": "370px",
+        "gap": "18px"
+      },
+      ".mf-product-showcase__grid": {
+        "width": 370,
+        "x": 10,
+        "columns": "180px 180px",
+        "gap": "10px"
+      }
+    }
+  },
+  {
+    "variant": "apex",
+    "viewport": 390,
+    "measurements": {
+      ".mf-product-hero__grid": {
+        "width": 370,
+        "x": 10,
+        "columns": "370px",
+        "gap": "30px"
+      },
+      ".mf-product-hero__media": {
+        "width": 370,
+        "x": 10,
+        "columns": "none",
+        "gap": "normal"
+      },
+      ".mf-product-hero__summary": {
+        "width": 370,
+        "x": 10,
+        "columns": "none",
+        "gap": "normal"
+      },
+      ".mf-product-how-grid": {
+        "width": 370,
+        "x": 10,
+        "columns": "370px",
+        "gap": "18px"
+      },
+      ".mf-product-showcase__grid": {
+        "width": 370,
+        "x": 10,
+        "columns": "180px 180px",
+        "gap": "10px"
+      }
+    }
+  },
+  {
+    "variant": "baseline",
+    "viewport": 1440,
+    "measurements": {
+      ".mf-product-hero__grid": {
+        "width": 1320,
+        "x": 60,
+        "columns": "561px 714px",
+        "gap": "45px"
+      },
+      ".mf-product-hero__media": {
+        "width": 561,
+        "x": 60,
+        "columns": "none",
+        "gap": "normal"
+      },
+      ".mf-product-hero__summary": {
+        "width": 714,
+        "x": 666,
+        "columns": "none",
+        "gap": "normal"
+      },
+      ".mf-product-how-grid": {
+        "width": 1320,
+        "x": 60,
+        "columns": "428px 428px 428px",
+        "gap": "18px"
+      },
+      ".mf-product-showcase__grid": {
+        "width": 1320,
+        "x": 60,
+        "columns": "319.5px 319.5px 319.5px 319.5px",
+        "gap": "14px"
+      }
+    }
+  },
+  {
+    "variant": "apex",
+    "viewport": 1440,
+    "measurements": {
+      ".mf-product-hero__grid": {
+        "width": 1320,
+        "x": 60,
+        "columns": "561px 714px",
+        "gap": "45px"
+      },
+      ".mf-product-hero__media": {
+        "width": 561,
+        "x": 60,
+        "columns": "none",
+        "gap": "normal"
+      },
+      ".mf-product-hero__summary": {
+        "width": 714,
+        "x": 666,
+        "columns": "none",
+        "gap": "normal"
+      },
+      ".mf-product-how-grid": {
+        "width": 1320,
+        "x": 60,
+        "columns": "428px 428px 428px",
+        "gap": "18px"
+      },
+      ".mf-product-showcase__grid": {
+        "width": 1320,
+        "x": 60,
+        "columns": "319.5px 319.5px 319.5px 319.5px",
+        "gap": "14px"
+      }
+    }
+  }
+]

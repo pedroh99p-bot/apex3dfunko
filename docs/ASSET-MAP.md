@@ -1,108 +1,298 @@
-# Correção visual seletiva — estado atual
+# Mapa de assets — Original Shell V1
 
-Sete assets do baseline foram recuperados localmente para staging por solicitação explícita do proprietário. Todos estão marcados **ORIGIN_REVIEW_REQUIRED**. Consulte [VISUAL-RESTORATION](VISUAL-RESTORATION.md) para URLs exatas, hashes, tamanhos, usos e classificação RESTORE / KEEP REMOVED / REPLACE LATER de cada URL inventariada.
+Todos os recursos visuais úteis foram localizados sem recompressão. São 280 arquivos herdados/localizados: 235 imagens (incluindo variantes srcset), 32 CSS estruturais, 11 fontes e dois CSS de fontes. Há também a marca Apex fornecida e um avatar SVG próprio de staging.
 
-Hero: quatro comparações foto/modelo/miniatura, sem edição dos arquivos. Cards: Individual, Casal e Pet originais; Família usa composição HTML/CSS de Casal + Individual. Exemplos: três comparações reutilizadas, identificadas como referências e não como trabalhos Apex. A logo Apex não mudou. Não foram restaurados logos, badges ou scripts concorrentes. Nenhuma dependência remota em runtime.
+267 registros têm ORIGIN_REVIEW_REQUIRED (235 imagens e 32 estilos). Treze recursos de tipografia têm FONT_LICENSE_REVIEW. O staging foi autorizado com essas revisões pendentes. Os bytes originais de imagens/fontes são conferidos por SHA-256; estilos mantêm bytes salvo reescrita de URLs para arquivos locais. O manifesto armazena hash original e hash local. Atributos Git preservam os bytes no checkout.
 
-As descrições abaixo sobre placeholders e ausência de assets recuperados registram a fase anterior à correção e são superadas por esta seção.
+Exclusões: logo puro MiFunko PNFMIFUNKOPERSONALIZADO-1-1-1.png, logo do widget GDPR e pixel Facebook. Logos de plataformas de avaliações e bandeiras de outros idiomas foram removidos do markup. Não foi excluída mídia de processo, produto, comparação, caixa, extras ou galeria. Avatares originais permanecem no acervo, mas são substituídos na interface por placeholders para não simular depoimentos Apex.
 
-## Assets recuperados para staging
+As cenas de processo/embalagem preservam elementos de marcas no próprio bitmap. São referências de origem claramente sinalizadas e precisam de revisão/substituição antes da produção definitiva. Família ainda usa o card ilustrativo de casamento do acervo. Não se declara autoria Apex dessas imagens.
 
-| Arquivo local | Origem | Situação |
+A organização mantém os nomes originais para rastreabilidade. Galeria está em assets/examples; ícones de opções em assets/configurator; fontes em assets/ui/fonts. Arquivos iguais são deduplicados por hash, sem remover variantes de resolução distintas.
+
+| Arquivo local | Tipo | Origem / revisão |
 | --- | --- | --- |
-| assets/examples/pet.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-mascota-1.webp | ORIGIN_REVIEW_REQUIRED |
-| assets/products/casal.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-parejas.webp | ORIGIN_REVIEW_REQUIRED |
-| assets/products/pet.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-mascota.webp | ORIGIN_REVIEW_REQUIRED |
-| assets/examples/casal.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/06/ejemplo-parejas-1.webp | ORIGIN_REVIEW_REQUIRED |
-| assets/examples/individual-futebol.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-1.webp | ORIGIN_REVIEW_REQUIRED |
-| assets/examples/individual-profissao.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/06/individual-principal-2-1024x1024.webp | ORIGIN_REVIEW_REQUIRED |
-| assets/products/individual.webp | https://mifunko.com/personalizacion/wp-content/uploads/2026/05/funko-tipo-individual-male-1.webp | ORIGIN_REVIEW_REQUIRED |
+| css/original/variables.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/header.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/footer.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/styles.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/product-personalized.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/extra-step.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/mini-step.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/pet-groups-tech.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/step-nav.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/summary-card.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/type-selector.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/b2b-cta.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/cart-drawer.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/delivery-section.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/faq-section.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/fixed-cart-bar.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/gift-upsell.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/image-annotator.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/info-tabs.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/presupuesto-hero.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/product-hero.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/reviews-mini-slider.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/reviews-proof.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/reviews-slider.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/sales-features.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/sales-video.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/showcase-gallery.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/sketch-cta.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/social-proof.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/trust-section.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/video-modal.css | css | ORIGIN_REVIEW_REQUIRED |
+| css/original/whatsapp-cta.css | css | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-1-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-1-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-1-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-2-1024x1024.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-2-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-2-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-2-768x768.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-2-600x600.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-2-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-3-1024x1024.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-3-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-3-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-3-768x768.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-3-600x600.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-3-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-3.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-4.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-4-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-4-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-4-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-9-1024x1024.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-9-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-9-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-9-768x768.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-9-600x600.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-9-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-9.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-11-1024x1024.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-11-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-11-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-11-768x768.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-11-600x600.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-11-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-11.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-13-1024x1024.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-13-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-13-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-13-768x768.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-13-600x600.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-13-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/hero/individual-principal-13.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-1-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-1-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-1-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-2-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-2-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-2-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-3.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-3-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-3-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-3-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-4.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-4-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-4-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-parejas-4-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-1-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-1-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-1-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-2-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-2-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-2-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-3.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-3-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-3-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-3-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-4.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-4-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-4-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-boda-4-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-1-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-1-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-1-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-2-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-2-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-2-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-3.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-3-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-3-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-3-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-4.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-4-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-4-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-4-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-5.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-5-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-5-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-5-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-6.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-6-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-6-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-6-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-7.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-7-150x150.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-7-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/examples/ejemplo-mascota-7-100x100.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/otros-trabajos-realizados-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/otros-trabajos-realizados-7-300x300.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/products/funko-tipo-individual-male-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/products/funko-tipo-mascota.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/products/funko-tipo-parejas.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/products/funko-tipo-boda.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/review-4-150x150.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/review-3-150x150.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/review-1-150x150.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/review-2-150x150.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-rostro-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/ojos-estandar-v2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/ojos-verdes-v2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/ojos-marrones-v2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/ojos-azules-v2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-tono-piel.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/funko-tono_piel_palido.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/funko-tono_piel_estandar.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/funko-tono_piel_moreno_claro.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/funko-tono_piel_moreno_oscuro.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-vestimenta.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-mascota.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-mascota-2.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-gato-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-pajaro-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-caballo.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-tortuga.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-conejo-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-hamster.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-lagarto.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-cabra.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-otra-mascota-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-accesorio.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-ramo-flores.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-copas-champagne.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-altar-nupcial.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-cojin-portaalianzas.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-corona-flores.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-tarta-novios.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-raqueta-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-guitarra-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-bicicleta-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-maleta.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-patinete-electrico.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-camara.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-pizarra.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-moto-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-portatil.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-cana-pesca.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-esquis.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-mesa-dj-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-mochila.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-coche-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-bateria-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-piano-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-bolso-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-collar-placa-perros-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-bandana-perros-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-caseta-madera-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-cama-perros-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-hueso-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-pelota-kong-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-comedero-perros-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-mordedor-cuerda-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-rascador-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-arbol-gatos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-comedero-gatos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-arenero.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-tamano-funko.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/comparativa-tamanos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-paso-tamano-mascota.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/products/icono-paso-tipo-mascota.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-paso-ojos-mascota.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-arma-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/extra-peana-funko.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/extra-funda-protectora-caja.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/extra-imanes-estabilidad.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-funko-mini.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-extras.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/extra-peana-nombre.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/extra-peana-nombre-fecha.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/extra-peana-cesped-futbolista.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/icono-caja-individual-1.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/icon-sin-caja-personalizada.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/icon-caja-individual.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/icon-caja-doble.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/icono-entrega-transporte.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/extras/regalo-extra-taza.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/120-3.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/review-4.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/120-2.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/review-3.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/120.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/review-1.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/120-1.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/configurator/review-2.jpg | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso1-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso1-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso1-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso1-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso2-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso2-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso2-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso2-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso3-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso3-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso3-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso3-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso4-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso4-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso4-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso4-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso5-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso5-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso5-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso5-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso6-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso6-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso6-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso6-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso7-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso7-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso7-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso7-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso8-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso8-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso8-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso8-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso9-proceso_funkos.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso9-proceso_funkos-300x200.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso9-proceso_funkos-768x512.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/process/paso9-proceso_funkos-600x400.webp | image | ORIGIN_REVIEW_REQUIRED |
+| assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshRTM.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhRTM.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDGUmRTM.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDFwmRTM.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/XRXI3I6Li01BKofiOc5wtlZ2di8HDDsmRTM.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/pxiEyp8kv8JHgFVrFJA.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/pxiByp8kv8JHgFVrLGT9V1s.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/pxiByp8kv8JHgFVrLEj6V1s.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/pxiByp8kv8JHgFVrLCz7V1s.ttf | font | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/pxiByp8kv8JHgFVrLDD4V1s.ttf | font | FONT_LICENSE_REVIEW |
+| css/original/fonts.css | css-fonts | FONT_LICENSE_REVIEW |
+| assets/ui/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf | font | FONT_LICENSE_REVIEW |
+| css/original/material-icons.css | css-fonts | FONT_LICENSE_REVIEW |
 
----
+## Rastreabilidade
 
-# Assets atuais Apex3D V0.5
-
-- assets/brand/apex-logo.webp: logo fornecida e autorizada pelo proprietário no briefing. Download direto, sem edição; 1536 × 1024. Navbar, footer e OpenGraph.
-- Origem: https://res.cloudinary.com/dhbrxzt5a/image/upload/v1786751962/ChatGPT_Image_Aug_14_2026_08_39_25_PM_1_yz9ejr.webp.
-- SHA-256: d246a1f9b06a8b5d6d850c093acbcf13f1db2a3c070910cddb1c7dd30a1f7260.
-- Hero e cards: placeholders vetoriais simples feitos em CSS local próprio (css/apex.css), identificados como ilustrações; não fotografias nem produtos entregues.
-- Exemplos: slots HTML/CSS locais aguardam material Apex autorizado. Nenhum asset proprietário MiFunko foi baixado ou reutilizado na página comercial.
-- Fontes: sistema operacional. Favicon adiado. Nenhum recurso visual externo necessário em runtime.
-
-O inventário abaixo é histórico, relativo ao snapshot original preservado, e não descreve os assets ativos da V0.5.
-
----
-
-# Mapa de assets e procedência
-
-## Escopo e quantidade
-
-O projeto recebido contém **zero arquivos locais de imagem, vídeo ou fonte**: somente `index.html`. O inventário não baixou mídia para compor a identidade Apex.
-
-| Medida | Quantidade / definição |
-| --- | --- |
-| Elementos `<img>` no HTML | 220, incluindo repetição, placeholders e elementos em noscript |
-| Imagens src vazio | 2 (`data-mf-gift-upsell-modal-image`, `data-mf-added-drawer-image`); placeholders preenchidos por JS, não arquivos perdidos |
-| SVGs embutidos no HTML | 268 ocorrências, com repetição; cada localização em INLINE-ASSETS |
-| URLs de arquivos visuais/fontes | 276 únicas no HTML + CSS consultados + URLs literais do JS customizado; incluem variantes srcset, fontes e sprites de plugins |
-| Data URIs nos CSS externos consultados | 2 únicas: SVG de interface e GIF Base64; conteúdo não copiado para docs |
-| Linhas no inventário por URL | 278 (276 remotas + 2 inline); não são 278 fotos distintas |
-| Vídeo externo | 1 vídeo YouTube (`Be9Oh053xd8`), com link e embed; contado separadamente das URLs de arquivo acima |
-| Tags `<video>` / arquivos locais de vídeo | 0 / 0; há 1 iframe inicialmente vazio |
-| Fontes de texto/ícones | Nunito, Poppins, Material Icons; GDPR também traz Nunito e fonte própria de ícones; binários/variantes no inventário |
-| Materiais comprovadamente Apex fornecidos | 0; propriedade/licença dos visuais atuais não foi demonstrada |
-
-Contagem obtida por parser HTML e leitura de URLs em atributos, srcset, metadados/JSON, `url(...)` CSS e literais JS. A contagem inclui duplicatas visuais em URLs diferentes e variantes que podem nunca ser requisitadas neste viewport. SVGs gerados pelos templates JS são adicionais dinâmicos, não somados às 268 ocorrências estáticas.
-
-## Inventários completos
-
-- [ASSET-INVENTORY](ASSET-INVENTORY.md): arquivo/URL, linhas e uso, finalidade, remoto/inline, situação de referência, marca/licença, substituição e possibilidade de guardar localmente.
-- [INLINE-ASSETS](INLINE-ASSETS.md): cada um dos 268 SVGs e ocorrências de Material Icons com contexto e linha, sem copiar desenhos.
-- [RESOURCE-INVENTORY](RESOURCE-INVENTORY.md): loaders de fontes, scripts/CSS e versões; CSS pode carregar imagens/fontes transitivas.
-- `evidence/resource-check.json`: sondagem HEAD de 333 URLs de arquivos visuais + scripts; status, tipo e CORS, sem corpos de mídia. Ver VALIDATION para limites.
-
-“Referenciado” significa uso no código, inclusive condicional. Não é prova de visibilidade, licença ou download. Com nenhum diretório de assets local, não há arquivo local órfão a mover ou apagar; uso morto de todas as variantes do servidor externo não pode ser determinado a partir desta página.
-
-## Famílias e destino futuro
-
-| Família / localização | Finalidade e situação | Marca/origem | Destino sugerido |
-| --- | --- | --- | --- |
-| Header/footer e favicon, H754–757/768+/7560 | Logo MiFunko e variações do ícone; carregados por URL | MiFunko; licença não fornecida | `assets/brand` somente com logo Apex autorizado |
-| Galeria H914–1155 | Produtos individuais, casal, casamento e pets; muitas resoluções srcset | Portfólio MiFunko e pessoas fotografadas | `assets/products` / `assets/examples` após comprovar direitos ou substituir |
-| Seletor H1260–1342 | Quatro modelos ilustrados | MiFunko | `assets/products` com imagens próprias de cada modalidade |
-| Ícones de rosto/pele/roupa/pets/minis/bases/caixa | Ilustram campos e opções, alguns SVGs inline e imagens em URL | MiFunko/terceiros, incluindo referência à marca Funko | `assets/ui`/`assets/products`, com licença identificada |
-| Catálogo especial H3036–4498 | 35 acessórios e variantes/contextos por espécie/tipo | MiFunko/terceiros | `assets/products` após validar propriedade |
-| Comparativo de tamanho H4680+ | Imagem estática e lightbox, não simulação 3D | MiFunko | `assets/examples` ou `assets/ui`, recriar com catálogo real Apex na fase visual |
-| Avaliações H1442+/6800+ | Fotos/avatares, logotipos Revi/Trustpilot/Google e prova social | Clientes/serviços da marca de origem | Substituir por prova real autorizada; não transportar depoimentos como Apex |
-| Processo H7004–7108 | Nove etapas de fabricação e variantes de imagem | MiFunko | `assets/examples`, somente processo real/documentado Apex |
-| Trabalhos H7254–7325 | Galeria de exemplos | MiFunko | `assets/examples` com autorização ou portfólio próprio |
-| Backgrounds/sprites CSS | Texturas, símbolos e sprites de jQuery UI/GDPR; alguns data URIs | Bibliotecas/plugins; condições específicas não fornecidas no projeto | `assets/backgrounds`/`assets/ui` após verificar distribuição/licença |
-| Fontes | Google Fonts e fontes GDPR | Terceiros; licença precisa ser guardada por família/arquivo | `assets/ui/fonts` se houver licença que permita hospedar; nenhuma cópia nesta etapa |
-| Fotos do configurador | Conteúdo futuro enviado pelo cliente; não é asset estático de marca | Usuário/cliente | Armazenamento privado de uploads a definir com backend; **não colocar em assets públicos** |
-
-### Vídeo e recursos dinâmicos
-
-Vídeo V001: link [YouTube](https://youtu.be/Be9Oh053xd8), H7583/H7605; embed `https://www.youtube.com/embed/Be9Oh053xd8?autoplay=1&rel=0`, `video-modal.js:9`. Marca MiFunko, licença não comprovada, uso condicionado ao clique. Candidato a substituição por vídeo próprio; armazenamento local apenas com arquivo/autorização, não copiar automaticamente do YouTube.
-
-P5612 referencia `https://mifunko.com/new/wp-content/uploads/2026/05/icon-caja-individual.webp` para lembrete de caixa. Retornou **404** na sondagem e falhou por ORB no navegador ao abrir modal. Não está no HTML estático, mas integra ASSET-INVENTORY.
-
-Imagens de itens/edição do carrinho vêm de respostas do backend e URLs em `mf_edit_config`; sua quantidade/URLs não podem ser enumeradas sem uma sessão/pedido autorizado. Previews novos usam `blob:` efêmero; desenhos inline também são inseridos por `createMiniUnitBlock`, builders, modais e editor. Nenhuma foto de cliente foi persistida na documentação.
-
-## Situação de origem/licença
-
-Não foi fornecido LICENSE, contrato de cessão, comprovante de autoria ou material de marca Apex. Cada asset remoto está marcado como terceiro/MiFunko e **licença a verificar**. A presença de uma URL pública não autoriza reuso. Assets de Google Fonts/jQuery UI/GDPR precisam de identificação da versão/licença correspondente, sem presumir que todo o tema compartilha a mesma licença.
-
-Não mover os arquivos por “organização” nem substituir URLs indiscriminadamente. A única cópia versionada da marca original permanece no HTML do baseline solicitado; nenhum arquivo proprietário de mídia/tema foi acrescentado ao repositório. Cópias temporárias de JS/CSS serviram apenas para auditoria, fora do workspace; no Git entram só referências, hashes e documentação original.
-
-## Organização futura preparada
-
-```text
-assets/
-  brand/        # logo, favicon, marca Apex autorizados
-  products/     # catálogo próprio e opções ilustradas
-  examples/     # exemplos/processo com autorização
-  backgrounds/  # texturas e fundos próprios/licenciados
-  ui/           # ícones, fontes e licenças correspondentes
-```
-
-Pastas propostas, sem mover caminhos atuais ou preenchê-las com material MiFunko. Quando houver materiais do proprietário, registrar por arquivo: autor/origem, titular, licença/termo e localização do comprovante, autorização de imagem de pessoas quando pertinente, finalidade, substitui qual ID Axxx/V001 e onde é utilizado. O repositório não deve publicar comprovantes privados; registrar referência segura. Primeiro adicionar o asset autorizado e verificar dimensões/caminhos; depois trocar uma referência por vez com QA.
+URLs completas, bytes, status e hashes: [original-shell-assets.json](evidence/original-shell-assets.json). A página não consulta essas URLs em runtime; somente os arquivos locais entram no build.

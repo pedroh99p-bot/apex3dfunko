@@ -1,0 +1,67 @@
+﻿
+/** START SALES FEATURES **/
+
+.mf-product-sales__features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 22px;
+    margin-top: 16px;
+    padding: 18px;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.78);
+}
+
+.mf-product-sales__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.mf-product-sales__feature > span {
+    color: var(--color-primary);
+    font-size: 18px;
+    line-height: 1;
+}
+
+.mf-product-sales__feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+}
+
+.mf-product-sales__feature-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mf-product-sales__feature p {
+    margin: 0;
+}
+
+.mf-product-sales__feature strong {
+    color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+    .mf-product-sales__features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 16px;
+        padding: 14px;
+    }
+
+    .mf-product-sales__feature {
+        font-size: 12px;
+    }
+
+    .mf-feature-extra {
+        display: none;
+    }
+}
+
+/** END SALES FEATURES **/

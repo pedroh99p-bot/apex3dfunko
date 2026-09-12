@@ -1,0 +1,100 @@
+/* ===== Editor de imagen (recortar + anotar) del personalizador ===== */
+.mf-imgedit{
+	position:fixed; inset:0; z-index:99999;
+	display:flex; align-items:center; justify-content:center;
+	background:rgba(20,16,12,.6); padding:18px;
+	backdrop-filter:blur(2px);
+}
+body.mf-imgedit-open{ overflow:hidden; }
+
+.mf-imgedit__modal{
+	width:min(960px,100%); max-height:92vh;
+	display:flex; flex-direction:column;
+	background:#fff; border-radius:18px; overflow:hidden;
+	box-shadow:0 24px 70px rgba(0,0,0,.35);
+	font-family:Nunito,Arial,sans-serif;
+}
+
+.mf-imgedit__head{
+	display:flex; align-items:center; justify-content:space-between;
+	padding:14px 18px; border-bottom:1px solid #ece3d6;
+}
+.mf-imgedit__title{ font-family:Poppins,Arial,sans-serif; font-weight:800; font-size:16px; color:#1f1a16; }
+.mf-imgedit__x{ border:0; background:transparent; font-size:26px; line-height:1; color:#8a8078; cursor:pointer; padding:0 4px; }
+.mf-imgedit__x:hover{ color:#1f1a16; }
+
+.mf-imgedit__tools{
+	display:flex; align-items:center; gap:6px;
+	padding:10px 14px; border-bottom:1px solid #ece3d6; background:#faf6f1;
+}
+.mf-imgedit__tool{
+	display:inline-flex; align-items:center; gap:5px;
+	padding:7px 13px; border:1.5px solid #e0d6c6; border-radius:10px;
+	background:#fff; color:#1f1a16; font-weight:700; font-size:13px; cursor:pointer;
+	transition:border-color .12s, background .12s, box-shadow .12s;
+	white-space:nowrap;
+}
+.mf-imgedit__tool:hover{ border-color:#F3B805; }
+.mf-imgedit__tool.is-active{ background:#fff4cc; border-color:#F3B805; box-shadow:0 0 0 2px rgba(243,184,5,.25) inset; }
+.mf-imgedit__ico{ font-size:15px; line-height:1; }
+.mf-imgedit__sep{ width:1px; height:22px; background:#e0d6c6; margin:0 1px; flex-shrink:0; }
+
+/* Color: solo el swatch, sin texto */
+.mf-imgedit__color{
+	display:inline-flex; align-items:center; cursor:pointer;
+}
+.mf-imgedit__color input{
+	width:32px; height:32px; border:1.5px solid #e0d6c6; border-radius:8px;
+	padding:2px; background:#fff; cursor:pointer;
+}
+.mf-imgedit__color input:hover{ border-color:#F3B805; }
+
+/* Grosor: slider */
+.mf-imgedit__thickness{
+	display:inline-flex; align-items:center; cursor:pointer; padding:0 4px;
+}
+.mf-imgedit__thickness input[type="range"]{
+	width:70px; height:6px; cursor:pointer;
+	accent-color:#F3B805;
+}
+
+/* Deshacer: solo icono */
+[data-act="undo"]{
+	font-size:18px; padding:6px 10px;
+	margin-left:auto; /* empuja undo al extremo derecho */
+}
+
+.mf-imgedit__stage{
+	position:relative; flex:1; min-height:240px;
+	display:flex; align-items:center; justify-content:center;
+	padding:14px; background:#2a2520; overflow:hidden;
+}
+.mf-imgedit__canvas{
+	display:block; touch-action:none; cursor:crosshair;
+	border-radius:6px; box-shadow:0 6px 24px rgba(0,0,0,.4);
+	max-width:100%; max-height:100%;
+}
+.mf-imgedit__stage.is-cropping .mf-imgedit__canvas{ cursor:cell; }
+
+.mf-imgedit__foot{
+	display:flex; align-items:center; justify-content:flex-end; gap:10px;
+	padding:14px 18px; border-top:1px solid #ece3d6;
+}
+.mf-imgedit__btn{
+	padding:11px 18px; border-radius:11px; font-family:Poppins,Arial,sans-serif;
+	font-weight:800; font-size:14px; cursor:pointer; border:1px solid transparent;
+}
+.mf-imgedit__btn--link{ background:none; border:none; color:#7e746c; text-decoration:underline; padding:11px 8px; margin-right:auto; }
+.mf-imgedit__btn--link:hover{ color:#1f1a16; }
+.mf-imgedit__btn--ghost{ background:#fff; border-color:#d6cbba; color:#574f47; }
+.mf-imgedit__btn--ghost:hover{ border-color:#1f1a16; color:#1f1a16; }
+.mf-imgedit__btn--primary{ background:#F3B805; color:#3d2e00; box-shadow:0 10px 22px rgba(243,184,5,.28); }
+.mf-imgedit__btn--primary:hover{ background:#d9a402; }
+
+@media (max-width:560px){
+	.mf-imgedit{ padding:0; }
+	.mf-imgedit__modal{ width:100%; max-height:100vh; height:100vh; border-radius:0; }
+	.mf-imgedit__tool{ padding:7px 9px; font-size:12px; }
+	.mf-imgedit__foot{ flex-direction:column-reverse; }
+	.mf-imgedit__btn{ width:100%; }
+}

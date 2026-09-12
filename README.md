@@ -1,37 +1,45 @@
-# Apex3D · Frontend comercial V0.5
+# Apex3D — Original Shell V1
 
-Implementação standalone em HTML, CSS e JavaScript local. Oferta em BRL, personalização guiada por fotos, adicionais progressivos, revisão e pedido de teste. Sem backend, pagamento, envio externo ou persistência das fotos.
+Port do HTML, CSS e experiência comercial originais para o motor standalone Apex. A página mantém a composição do hero, os painéis do configurador, tamanhos, acessórios, processo, galerias, depoimentos e FAQ. Esta versão gera somente pedidos de teste locais.
 
-A entrada comercial é **dev.html**. O **index.html da raiz é um snapshot histórico preservado** e não deve ser publicado como a página Apex.
+O arquivo `index.html` é o baseline histórico imutável. **O site em desenvolvimento é `dev.html`; o deploy publica `dist/index.html`, gerado a partir dele.** Não servir o baseline como aplicação atual.
 
-## Executar e homologar
+## Executar
 
-- **npm run dev**: página comercial em http://127.0.0.1:4173/.
-- **npm test**: testes de cálculo, uploads e contrato de produção.
-- **npm run test:smoke**: Playwright com Edge; evidências em test-results/ (ignorado).
-- **npm run build**: cria **dist/** com a página Apex como index e somente arquivos públicos autorizados. Configure a hospedagem de staging para publicar **dist**, nunca a raiz.
+Requer Node.js 20 ou superior.
 
-Node.js é suficiente para executar e gerar o site. Para os testes de navegador, disponibilize Playwright e Edge. O runner aceita APEX_PLAYWRIGHT_PATH apontando ao módulo playwright/index.mjs e APEX_BROWSER para selecionar outro canal Chromium instalado.
+```sh
+npm run dev
+npm test
+npm run test:structure
+npm run test:smoke
+npm run test:smoke:build
+```
 
-### Deploy na Vercel
+Prévia: `http://127.0.0.1:4173/`. Os testes de navegador usam Playwright e Microsoft Edge. Podem usar o runtime local do Codex ou um Playwright instalado, com `APEX_PLAYWRIGHT_PATH` para indicar seu módulo e `APEX_BROWSER` para escolher um canal compatível.
 
-O arquivo vercel.json define o projeto como estático, executa **npm run build** e publica **dist**. Não use public como Output Directory. Mantenha Root Directory na raiz deste repositório e faça o deploy de um commit que contenha essa configuração, na branch feat/apex-frontend-v05. Os cabeçalhos de homologação também estão configurados para a Vercel.
+## Build / Vercel
 
-## Contrato atual
+```sh
+npm run build
+```
 
-Consulte [APEX-FRONTEND-V05](docs/APEX-FRONTEND-V05.md) para identidade, oferta, preços de homologação, limites e resultado dos testes; [dependências atuais](docs/APEX-DEPENDENCIES.md) e [procedência dos assets](docs/ASSET-MAP.md).
+`vercel.json` configura `buildCommand: npm run build` e `outputDirectory: dist`. O build usa uma lista explícita de arquivos públicos. Não inclui baseline, documentos, scripts de auditoria, fotos enviadas ou credenciais.
 
-Individual R$197; Pet R$157; Casal R$347; Família (3 pessoas) R$477. Preços centralizados em config/pricing.js, sujeitos a revisão antes da produção. Frete não incluído.
+## Estado comercial
 
-Fotos permanecem em memória com validação e recibos internos por pessoa/pet/adicional. O CTA “Gerar pedido de teste” gera um rascunho local: não faz cobrança, não envia pedido e não inicia produção. Recarregar encerra a configuração. A inspeção em window.apexDevelopment omite textos livres e nomes dos arquivos.
+Preços provisórios em reais, centralizados em `config/commercial.js`, `config/pricing.js` e `config/special-objects.js`. A simulação por miniatura usa 6/10/15/20 cm a R$100/150/170/200. As composições multiplicam o valor por pessoa; adicionais usam a tabela documentada. A divergência com a tabela anterior do briefing está registrada para confirmação.
 
-## Baseline preservado
+Fotos permanecem em memória até recarregar ou descartar a criação. Não há envio, armazenamento remoto, cobrança, backend, banco ou checkout. `productionReady` permanece falso mesmo após validação de um pedido de teste.
 
-- Tag: baseline-original-2026-09-11.
-- Commit: 175babe2df4ffa416f6feae680019600689c72a7.
-- index.html: 560.040 bytes; SHA-256 327d2941518821d6dc60e22ba842e43086557c90bfa5c21ee9bcfa3f3c7a65bb.
-- Fundação anterior: branch refactor/apex-foundation.
-- V0.5: branch feat/apex-frontend-v05.
-- Origin: https://github.com/pedroh99p-bot/apex3dpersonalizados.
+Mídias herdadas são referências visuais, sujeitas à revisão de origem. Depoimentos são placeholders explícitos. Minis, caneca, inclusos não confirmados, caixa dupla e envio expresso não estão disponíveis para contratação.
 
-Os inventários TECHNICAL-MAP, USER-FLOW, PRICING, LOCAL-REIMPLEMENTATION, DEPENDENCY-CLASSIFICATION e APEX-MVP-CONTRACT documentam fases anteriores. As decisões comerciais V0.5 prevalecem sobre regras e preços herdados. A correção visual recupera sete imagens do baseline para staging, por solicitação do proprietário; estão locais e marcadas ORIGIN_REVIEW_REQUIRED. Consulte docs/VISUAL-RESTORATION.md.
+## Documentação
+
+- [Entrega e decisões da V1](docs/APEX-ORIGINAL-SHELL-V1.md)
+- [Mapa das 36 regiões antes do port](docs/ORIGINAL-1TO1-MAP.md)
+- [Mapa completo de assets](docs/ASSET-MAP.md)
+- [Manifesto de arquivos e hashes](docs/evidence/original-shell-assets.json)
+- [Comparação de geometria com o baseline](docs/evidence/original-shell-geometry.json)
+
+Relatórios e screenshots dos testes ficam em `test-results/`, fora do deploy e do Git. Os demais inventários técnicos preservados em `docs/` registram a origem e o contrato das etapas anteriores; o documento da V1 descreve a implementação atual.

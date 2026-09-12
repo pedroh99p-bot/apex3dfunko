@@ -1,0 +1,65 @@
+﻿
+/** START VIDEO MODAL **/
+
+body.mf-video-modal-open {
+    overflow: hidden;
+}
+
+.mf-video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.mf-video-modal[hidden] {
+    display: none !important;
+}
+
+.mf-video-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 12, 0.78);
+    backdrop-filter: blur(4px);
+}
+
+.mf-video-modal__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(960px, 100%);
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.mf-video-modal__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1f1a16;
+    cursor: pointer;
+}
+
+.mf-video-modal__frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000000;
+}
+
+.mf-video-modal__frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/** END VIDEO MODAL **/

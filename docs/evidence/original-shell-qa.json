@@ -1,0 +1,860 @@
+{
+  "unitTests": 24,
+  "source": {
+    "mvp": {
+      "results": [
+        {
+          "name": "Configuração incompleta bloqueia revisão e permite focar o erro",
+          "passed": true
+        },
+        {
+          "name": "Fluxo válido até orderDraft em BRL: individual",
+          "passed": true
+        },
+        {
+          "name": "Fluxo válido até orderDraft em BRL: pet",
+          "passed": true
+        },
+        {
+          "name": "Fluxo válido até orderDraft em BRL: casal",
+          "passed": true
+        },
+        {
+          "name": "Fluxo válido até orderDraft em BRL: familia",
+          "passed": true
+        },
+        {
+          "name": "Data passada bloqueia; hoje não acrescenta urgência",
+          "passed": true
+        },
+        {
+          "name": "Roupa e pose personalizadas exigem descrição e aceitam foto opcional",
+          "passed": true
+        },
+        {
+          "name": "Seleção inválida bloqueia sem perder foto válida; descarte recupera",
+          "passed": true
+        },
+        {
+          "name": "PNG danificado rejeitado pelo decodificador real",
+          "passed": true
+        },
+        {
+          "name": "Homônimos têm recibos próprios, remoção não afeta outras fotos",
+          "passed": true
+        },
+        {
+          "name": "Combinação: pessoa, pet, acessórios, objeto, base e caixa",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 1440px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 1024px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 768px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 430px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 390px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 360px",
+          "passed": true
+        },
+        {
+          "name": "Remover adicionais limpa fotos incompatíveis e invalida draft",
+          "passed": true
+        },
+        {
+          "name": "Trocar produto limpa configuração, data, notas e todos os anexos",
+          "passed": true
+        },
+        {
+          "name": "Alteração durante revisão bloqueia geração até revisar novamente",
+          "passed": true
+        },
+        {
+          "name": "Conteúdo do usuário permanece texto na revisão",
+          "passed": true
+        },
+        {
+          "name": "Sem exceções JS, recursos externos ou chamadas transacionais",
+          "passed": true
+        }
+      ],
+      "jsErrors": [],
+      "unsafeRequests": [],
+      "resourceFailures": []
+    },
+    "shell": {
+      "results": [
+        {
+          "name": "Hero original com 23 slides, 23 miniaturas e navegação por botão/teclado",
+          "passed": true
+        },
+        {
+          "name": "Mini depoimentos preservam quatro slides e navegam",
+          "passed": true
+        },
+        {
+          "name": "Processo com nove cards, galeria com 22 imagens e FAQ com sete itens",
+          "passed": true
+        },
+        {
+          "name": "individual · tamanho 6 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "individual · tamanho 10 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "individual · tamanho 15 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "individual · tamanho 20 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "pet · tamanho 6 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "pet · tamanho 10 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "pet · tamanho 15 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "pet · tamanho 20 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "casal · tamanho 6 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "casal · tamanho 10 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "casal · tamanho 15 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "casal · tamanho 20 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "familia · tamanho 6 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "familia · tamanho 10 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "familia · tamanho 15 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "familia · tamanho 20 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "Catálogo preserva os 35 objetos originais com imagens e preço provisório",
+          "passed": true
+        },
+        {
+          "name": "Caixa e dedicatória mantêm foto própria e limpam anexo ao desativar",
+          "passed": true
+        },
+        {
+          "name": "Flexibilidade de data chega à revisão e ao rascunho sem custo de urgência",
+          "passed": true
+        },
+        {
+          "name": "Minis, caneca, caixa dupla e prazos não homologados ficam indisponíveis",
+          "passed": true
+        },
+        {
+          "name": "Drawer original revisa e descarta apenas a criação local",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 360px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 360px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 360px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 360px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 390px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 390px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 390px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 390px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 430px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 430px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 430px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 430px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 768px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 768px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 768px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 768px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 1024px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 1024px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 1024px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 1024px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 1440px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 1440px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 1440px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 1440px",
+          "passed": true
+        },
+        {
+          "name": "Fotos originais e variantes locais carregam sem imagens quebradas",
+          "passed": true
+        },
+        {
+          "name": "Galeria mobile, menu e ampliação continuam operacionais",
+          "passed": true
+        },
+        {
+          "name": "Sem exceções JS, recursos externos ou chamadas transacionais",
+          "passed": true
+        }
+      ],
+      "jsErrors": [],
+      "unsafeRequests": [],
+      "resourceFailures": []
+    }
+  },
+  "build": {
+    "mvp": {
+      "results": [
+        {
+          "name": "Configuração incompleta bloqueia revisão e permite focar o erro",
+          "passed": true
+        },
+        {
+          "name": "Fluxo válido até orderDraft em BRL: individual",
+          "passed": true
+        },
+        {
+          "name": "Fluxo válido até orderDraft em BRL: pet",
+          "passed": true
+        },
+        {
+          "name": "Fluxo válido até orderDraft em BRL: casal",
+          "passed": true
+        },
+        {
+          "name": "Fluxo válido até orderDraft em BRL: familia",
+          "passed": true
+        },
+        {
+          "name": "Data passada bloqueia; hoje não acrescenta urgência",
+          "passed": true
+        },
+        {
+          "name": "Roupa e pose personalizadas exigem descrição e aceitam foto opcional",
+          "passed": true
+        },
+        {
+          "name": "Seleção inválida bloqueia sem perder foto válida; descarte recupera",
+          "passed": true
+        },
+        {
+          "name": "PNG danificado rejeitado pelo decodificador real",
+          "passed": true
+        },
+        {
+          "name": "Homônimos têm recibos próprios, remoção não afeta outras fotos",
+          "passed": true
+        },
+        {
+          "name": "Combinação: pessoa, pet, acessórios, objeto, base e caixa",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 1440px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 1024px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 768px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 430px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 390px",
+          "passed": true
+        },
+        {
+          "name": "Upsells e revisão responsivos em 360px",
+          "passed": true
+        },
+        {
+          "name": "Remover adicionais limpa fotos incompatíveis e invalida draft",
+          "passed": true
+        },
+        {
+          "name": "Trocar produto limpa configuração, data, notas e todos os anexos",
+          "passed": true
+        },
+        {
+          "name": "Alteração durante revisão bloqueia geração até revisar novamente",
+          "passed": true
+        },
+        {
+          "name": "Conteúdo do usuário permanece texto na revisão",
+          "passed": true
+        },
+        {
+          "name": "Sem exceções JS, recursos externos ou chamadas transacionais",
+          "passed": true
+        }
+      ],
+      "jsErrors": [],
+      "unsafeRequests": [],
+      "resourceFailures": []
+    },
+    "shell": {
+      "results": [
+        {
+          "name": "Hero original com 23 slides, 23 miniaturas e navegação por botão/teclado",
+          "passed": true
+        },
+        {
+          "name": "Mini depoimentos preservam quatro slides e navegam",
+          "passed": true
+        },
+        {
+          "name": "Processo com nove cards, galeria com 22 imagens e FAQ com sete itens",
+          "passed": true
+        },
+        {
+          "name": "individual · tamanho 6 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "individual · tamanho 10 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "individual · tamanho 15 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "individual · tamanho 20 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "pet · tamanho 6 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "pet · tamanho 10 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "pet · tamanho 15 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "pet · tamanho 20 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "casal · tamanho 6 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "casal · tamanho 10 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "casal · tamanho 15 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "casal · tamanho 20 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "familia · tamanho 6 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "familia · tamanho 10 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "familia · tamanho 15 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "familia · tamanho 20 cm usa a tabela central",
+          "passed": true
+        },
+        {
+          "name": "Catálogo preserva os 35 objetos originais com imagens e preço provisório",
+          "passed": true
+        },
+        {
+          "name": "Caixa e dedicatória mantêm foto própria e limpam anexo ao desativar",
+          "passed": true
+        },
+        {
+          "name": "Flexibilidade de data chega à revisão e ao rascunho sem custo de urgência",
+          "passed": true
+        },
+        {
+          "name": "Minis, caneca, caixa dupla e prazos não homologados ficam indisponíveis",
+          "passed": true
+        },
+        {
+          "name": "Drawer original revisa e descarta apenas a criação local",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 360px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 360px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 360px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 360px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 390px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 390px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 390px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 390px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 430px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 430px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 430px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 430px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 768px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 768px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 768px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 768px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 1024px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 1024px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 1024px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 1024px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · individual · 1440px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · pet · 1440px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · casal · 1440px",
+          "passed": true
+        },
+        {
+          "name": "Sem overflow com todos os painéis abertos · familia · 1440px",
+          "passed": true
+        },
+        {
+          "name": "Fotos originais e variantes locais carregam sem imagens quebradas",
+          "passed": true
+        },
+        {
+          "name": "Galeria mobile, menu e ampliação continuam operacionais",
+          "passed": true
+        },
+        {
+          "name": "Sem exceções JS, recursos externos ou chamadas transacionais",
+          "passed": true
+        }
+      ],
+      "jsErrors": [],
+      "unsafeRequests": [],
+      "resourceFailures": []
+    }
+  },
+  "structure": {
+    "passed": true,
+    "baseline": "175babe2df4ffa416f6feae680019600689c72a7",
+    "regions": [
+      {
+        "id": "header",
+        "count": 1,
+        "images": 1,
+        "svgs": 4
+      },
+      {
+        "id": "hero",
+        "count": 1,
+        "images": 54,
+        "svgs": 38
+      },
+      {
+        "id": "hero-gallery",
+        "count": 1,
+        "images": 46,
+        "svgs": 2
+      },
+      {
+        "id": "product-types",
+        "count": 1,
+        "images": 4,
+        "svgs": 4
+      },
+      {
+        "id": "sketch",
+        "count": 1,
+        "images": 0,
+        "svgs": 1
+      },
+      {
+        "id": "business",
+        "count": 1,
+        "images": 0,
+        "svgs": 1
+      },
+      {
+        "id": "mini-reviews",
+        "count": 1,
+        "images": 4,
+        "svgs": 22
+      },
+      {
+        "id": "configurator",
+        "count": 1,
+        "images": 122,
+        "svgs": 157
+      },
+      {
+        "id": "face",
+        "count": 1,
+        "images": 5,
+        "svgs": 17
+      },
+      {
+        "id": "skin",
+        "count": 1,
+        "images": 5,
+        "svgs": 2
+      },
+      {
+        "id": "outfit",
+        "count": 1,
+        "images": 1,
+        "svgs": 9
+      },
+      {
+        "id": "pets",
+        "count": 1,
+        "images": 31,
+        "svgs": 11
+      },
+      {
+        "id": "accessories",
+        "count": 1,
+        "images": 36,
+        "svgs": 86
+      },
+      {
+        "id": "human-size",
+        "count": 1,
+        "images": 2,
+        "svgs": 4
+      },
+      {
+        "id": "pet-size",
+        "count": 1,
+        "images": 1,
+        "svgs": 2
+      },
+      {
+        "id": "pet-type",
+        "count": 1,
+        "images": 11,
+        "svgs": 3
+      },
+      {
+        "id": "pet-eyes",
+        "count": 1,
+        "images": 1,
+        "svgs": 4
+      },
+      {
+        "id": "pet-accessories",
+        "count": 1,
+        "images": 10,
+        "svgs": 2
+      },
+      {
+        "id": "pet-extras",
+        "count": 1,
+        "images": 3,
+        "svgs": 2
+      },
+      {
+        "id": "minis",
+        "count": 1,
+        "images": 1,
+        "svgs": 2
+      },
+      {
+        "id": "included",
+        "count": 1,
+        "images": 7,
+        "svgs": 3
+      },
+      {
+        "id": "box",
+        "count": 1,
+        "images": 4,
+        "svgs": 3
+      },
+      {
+        "id": "delivery",
+        "count": 1,
+        "images": 1,
+        "svgs": 2
+      },
+      {
+        "id": "notes",
+        "count": 1,
+        "images": 0,
+        "svgs": 0
+      },
+      {
+        "id": "gift",
+        "count": 1,
+        "images": 1,
+        "svgs": 0
+      },
+      {
+        "id": "summary",
+        "count": 1,
+        "images": 0,
+        "svgs": 2
+      },
+      {
+        "id": "social-proof",
+        "count": 1,
+        "images": 0,
+        "svgs": 0
+      },
+      {
+        "id": "reviews",
+        "count": 1,
+        "images": 8,
+        "svgs": 31
+      },
+      {
+        "id": "process",
+        "count": 1,
+        "images": 9,
+        "svgs": 0
+      },
+      {
+        "id": "faq",
+        "count": 1,
+        "images": 0,
+        "svgs": 7
+      },
+      {
+        "id": "showcase",
+        "count": 1,
+        "images": 22,
+        "svgs": 1
+      },
+      {
+        "id": "trust",
+        "count": 1,
+        "images": 0,
+        "svgs": 7
+      },
+      {
+        "id": "video",
+        "count": 1,
+        "images": 0,
+        "svgs": 0
+      },
+      {
+        "id": "drawer",
+        "count": 1,
+        "images": 0,
+        "svgs": 4
+      },
+      {
+        "id": "fixed-summary",
+        "count": 1,
+        "images": 1,
+        "svgs": 2
+      },
+      {
+        "id": "footer",
+        "count": 1,
+        "images": 1,
+        "svgs": 6
+      }
+    ],
+    "counts": {
+      "hero": 23,
+      "thumbs": 23,
+      "products": 4,
+      "process": 9,
+      "gallery": 22,
+      "faq": 7,
+      "miniReviews": 4,
+      "reviews": 4,
+      "specialObjects": 35
+    },
+    "svgExceptions": {
+      "header": -9,
+      "reviews": -2
+    },
+    "localizedFiles": 280,
+    "assetsVerified": true,
+    "orderVerified": true,
+    "localResourcesOnly": true
+  }
+}
