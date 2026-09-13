@@ -27,8 +27,8 @@ try{
    }
    if(n.hasAttribute('style')){let css=n.getAttribute('style');for(const [url,file] of map)css=css.replaceAll(url,file);const cls='source-inline-'+inline.length;inline.push('.'+cls+'{'+css+'}');n.classList.add(cls);n.removeAttribute('style');}
   }
-  all('img[src=""]').forEach(img=>{img.src='/assets/brand/apex-logo.webp';img.alt='Apex3D';});
-  all('.custom-logo').forEach(img=>{img.src='/assets/brand/apex-logo.webp';img.alt='Apex3D';img.width=1536;img.height=1024;});
+  all('img[src=""]').forEach(img=>{img.src='/assets/brand/apex-logo.png';img.alt='Apex3D';});
+  all('.custom-logo').forEach(img=>{img.src='/assets/brand/apex-logo.png';img.alt='Apex3D';img.width=1060;img.height=276;});
   // Fix four malformed star paths from the captured source, retaining the same icon.
   all('svg path').filter(n=>/\.{3}|…/.test(n.getAttribute('d')||'')).forEach(n=>n.setAttribute('d','M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'));
   for(const [id,sel] of regions)all(sel).forEach(n=>n.dataset.originalRegion=id);
@@ -38,7 +38,7 @@ try{
   d.documentElement.lang='pt-BR';d.documentElement.dataset.apexShell='original-v1';
   d.title='Apex3D | Miniatura 3D Personalizada';
   for(const [name,content] of [['description','Transforme sua foto em uma miniatura 3D feita especialmente para você. Você aprova o modelo antes da produção.'],['robots','noindex,nofollow'],['referrer','no-referrer'],['theme-color','#cc1233']]){const n=d.createElement('meta');n.name=name;n.content=content;d.head.append(n);}
-  for(const [property,content] of [['og:title',d.title],['og:description','Sua história em uma miniatura 3D personalizada. Prévia Apex3D.'],['og:image','/assets/brand/apex-logo.webp'],['og:type','website']]){const n=d.createElement('meta');n.setAttribute('property',property);n.content=content;d.head.append(n);}
+  for(const [property,content] of [['og:title',d.title],['og:description','Sua história em uma miniatura 3D personalizada. Prévia Apex3D.'],['og:image','/assets/brand/apex-share.webp'],['og:type','website']]){const n=d.createElement('meta');n.setAttribute('property',property);n.content=content;d.head.append(n);}
   for(const href of ['/css/shell-inline.css','/css/apex-shell.css']){const n=d.createElement('link');n.rel='stylesheet';n.href=href;d.head.append(n);}
   const script=d.createElement('script');script.type='module';script.src='/js/main.js';d.head.append(script);
   const walker=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT);let text;
@@ -131,8 +131,8 @@ try{
   all('.mf-footer a').forEach(a=>{if(/privacidade|dados|condições/i.test(a.textContent))a.href='#faqs';});
   const dialog=d.createElement('dialog');dialog.id='order-review';dialog.setAttribute('aria-labelledby','review-title');dialog.innerHTML='<div id="review-content"></div>';d.body.append(dialog);
   const confirmation=d.createElement('dialog');confirmation.id='order-confirmation';confirmation.innerHTML='<h2 id="confirmation-title" tabindex="-1">Seu pedido de teste está pronto.</h2><p>Nenhum pedido foi enviado e nenhum pagamento foi realizado. O rascunho permanece apenas nesta sessão.</p><button type="button" id="close-confirmation">Voltar à criação</button>';d.body.append(confirmation);
-  const favicon=d.createElement('link');favicon.rel='icon';favicon.href='/assets/brand/apex-logo.webp';d.head.append(favicon);
-  const lightbox=d.createElement('dialog');lightbox.id='gallery-lightbox';lightbox.innerHTML='<button type="button" aria-label="Fechar imagem" data-gallery-close>×</button><img src="/assets/brand/apex-logo.webp" alt="Referência de estilo" id="gallery-enlarged"><p>Referência visual · ORIGIN_REVIEW_REQUIRED</p>';d.body.append(lightbox);
+  const favicon=d.createElement('link');favicon.rel='icon';favicon.href='/assets/brand/apex-logo.png';d.head.append(favicon);
+  const lightbox=d.createElement('dialog');lightbox.id='gallery-lightbox';lightbox.innerHTML='<button type="button" aria-label="Fechar imagem" data-gallery-close>×</button><img src="/assets/brand/apex-logo.png" alt="Referência de estilo" id="gallery-enlarged"><p>Referência visual · ORIGIN_REVIEW_REQUIRED</p>';d.body.append(lightbox);
   return {html:'<!doctype html>\n'+d.documentElement.outerHTML,baseline:'<!doctype html>\n'+baseDocument,inline:critical+'\n'+inline.join('\n')};
  },{html:fs.readFileSync('index.html','utf8'),manifest,regions:originalRegions});
  fs.mkdirSync('css',{recursive:true});fs.mkdirSync('assets/ui',{recursive:true});

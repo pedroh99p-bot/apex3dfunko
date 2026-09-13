@@ -7,9 +7,13 @@ const html = (tag, className, content) => { const node = document.createElement(
 
 function brandLockup() {
   all('.custom-logo-link').forEach(link => {
-    q('img', link).alt = 'Apex3D Personalizados';
+    const logo = q('img', link);
+    logo.src = '/assets/brand/apex-logo.png';
+    logo.width = 1060;
+    logo.height = 276;
+    logo.alt = 'Apex3D Personalizados';
     link.setAttribute('aria-label', 'Apex3D Personalizados');
-    if (!q('.apex-brand-label', link)) link.append(html('span', 'apex-brand-label', '<strong>APEX3D</strong><small>PERSONALIZADOS</small>'));
+    q('.apex-brand-label', link)?.remove();
   });
   const footerBrand = q('.mf-footer__logo-link');
   if (footerBrand) { const phone = html('a', 'apex-phone', '(21) 92367-9482'); phone.href = '#'; phone.dataset.apexWhatsapp = ''; phone.dataset.placement = 'faq'; footerBrand.append(phone); }
@@ -77,14 +81,70 @@ function simplifyConfigurator() {
 }
 
 function progressNavigation() {
-  const progress = q('.apex-progress') || html('nav', 'apex-progress', '<span class="apex-progress-label" aria-live="polite">Você está em: <strong>INÍCIO</strong></span><ol><li><a href="#inicio">INÍCIO</a></li><li><a href="#tipo">MODELOS</a></li><li><a href="#personalizar">TAMANHO</a></li><li><a href="#personalizar">DETALHES</a></li><li><a href="#personalizar">EXTRAS</a></li><li><a href="#needed-date">ENTREGA</a></li><li><button type="button" data-apex-progress-review>PEDIDO</button></li></ol>');
+  const progress = q('.apex-progress') || html('nav', 'apex-progress', '<span class="apex-progress-label" aria-live="polite">Você está em: <strong>INÍCIO</strong></span><ol><li><a href="#inicio">INÍCIO</a></li><li><a href="#tipo">MODELOS</a></li><li><a href="#tamanho">TAMANHO</a></li><li><a href="#detalhes">DETALHES</a></li><li><a href="#extras">EXTRAS</a></li><li><a href="#entrega">ENTREGA</a></li><li><button type="button" data-apex-progress-review>PEDIDO</button></li></ol>');
   progress.setAttribute('aria-label', 'Etapas da sua criação'); if (!progress.isConnected) q('.mf-header')?.after(progress);
   const selector = q('[data-mf-funko-type-selector]'); if (selector) selector.id = 'tipo';
   q('[data-apex-progress-review]')?.addEventListener('click', () => document.dispatchEvent(new Event('apex:review')));
-  const milestones = [q('#inicio'), selector, q('#personalizar'), q('[data-mf-box-step]'), q('[data-original-region="delivery"]')].filter(Boolean);
+  let orderMarker = q('#pedido');
+  if (!orderMarker) {
+    orderMarker = html('span', 'apex-progress-marker');
+    orderMarker.id = 'pedido';
+    orderMarker.setAttribute('aria-hidden', 'true');
+    q('#personalizar')?.after(orderMarker);
+  }
   const links = all('li', progress);
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (!entry.isIntersecting) return; const index = Math.min(milestones.indexOf(entry.target) + (milestones.indexOf(entry.target) > 1 ? 1 : 0), links.length - 1); links.forEach((item, itemIndex) => item.classList.toggle('is-current', itemIndex === index)); q('.apex-progress-label strong', progress).textContent = links[index].innerText.trim(); progress.dataset.step = `${index + 1}/7`; }), { rootMargin: '-25% 0px -60%' });
-  milestones.forEach(node => observer.observe(node));
+  let milestones = [];
+  let observer;
+  let frame;
+  const setActive = index => {
+    const safeIndex = Math.max(0, Math.min(index, links.length - 1));
+    links.forEach((item, itemIndex) => {
+      item.classList.toggle('is-current', itemIndex === safeIndex);
+      item.classList.toggle('is-complete', itemIndex < safeIndex);
+    });
+    q('.apex-progress-label strong', progress).textContent = links[safeIndex].innerText.trim();
+    progress.dataset.step = `${safeIndex + 1}/7`;
+    progress.style.setProperty('--apex-progress-value', `${safeIndex / (links.length - 1) * 100}%`);
+  };
+  const update = () => {
+    frame = 0;
+    const anchor = Math.min(innerHeight * .28, progress.getBoundingClientRect().bottom + 80);
+    let active = 0;
+    milestones.forEach((node, index) => { if (node.getBoundingClientRect().top <= anchor) active = index; });
+    setActive(active);
+  };
+  const scheduleUpdate = () => { if (!frame) frame = requestAnimationFrame(update); };
+  const findMilestones = () => {
+    const grid = q('.mf-product-customizer-grid');
+    const size = q('[data-mf-size-step], [data-mf-pet-size-step]', grid);
+    const details = q('[data-mf-face-step], [data-mf-pet-step="pet_eyes"]', grid);
+    const extras = q('[data-mf-card-kind="extras"]', grid);
+    const delivery = q('[data-original-region="delivery"]');
+    if (size) size.id = 'tamanho';
+    if (details) details.id = 'detalhes';
+    if (extras) extras.id = 'extras';
+    if (delivery) {
+      delivery.id = 'entrega';
+      if (orderMarker.previousElementSibling !== delivery) delivery.after(orderMarker);
+    }
+    return [q('#inicio'), selector, size, details, extras, delivery, orderMarker].filter(Boolean);
+  };
+  const refresh = () => {
+    const next = findMilestones();
+    if (next.length !== links.length) return;
+    const unchanged = next.every((node, index) => node === milestones[index]);
+    milestones = next;
+    if (!unchanged) {
+      observer?.disconnect();
+      observer = new IntersectionObserver(scheduleUpdate, { rootMargin: '-20% 0px -65%', threshold: [0, .5, 1] });
+      milestones.forEach(node => observer.observe(node));
+    }
+    scheduleUpdate();
+  };
+  addEventListener('scroll', scheduleUpdate, { passive: true });
+  addEventListener('resize', scheduleUpdate, { passive: true });
+  document.addEventListener('apex:change', () => requestAnimationFrame(refresh));
+  requestAnimationFrame(refresh);
 }
 
 const localAssistantProvider = Object.freeze({

@@ -23,8 +23,20 @@ await suite('original-shell-smoke', 4176, async ({ page, run, open, field, inspe
     await page.setViewportSize({width:390,height:844}); await open();
     assert.match(await page.locator('.apex-hero-brand').innerText(), /APEX3D\s+PERSONALIZADOS\s+Sua história em miniatura/i);
     assert.equal(await page.locator('.apex-marquee').count(), 1); assert.equal(await page.locator('.apex-progress li').count(), 7);
-    const cta = page.locator('.apex-hero-actions').getByRole('link',{name:'Criar minha miniatura',exact:true}); assert.ok((await cta.boundingBox()).y < 844);
+    assert.equal(await page.locator('.custom-logo').first().getAttribute('src'), '/assets/brand/apex-logo.png');
+    const media = await page.locator('.mf-product-hero__media').boundingBox(), summary = await page.locator('.mf-product-hero__summary').boundingBox();
+    assert.ok(media.y < summary.y, 'O carrossel precisa vir antes do texto do hero');
     assert.equal(await page.locator('.apex-progress').evaluate(n=>getComputedStyle(n).position), 'sticky');
+    await page.setViewportSize({width:1440,height:1000});
+  });
+  await run('Indicador percorre as sete posições reais sem pular o passo 3', async () => {
+    await page.setViewportSize({width:390,height:844}); await open();
+    const steps = ['inicio','tipo','tamanho','detalhes','extras','entrega','pedido'];
+    for (let index = 0; index < steps.length; index++) {
+      await page.locator('#' + steps[index]).evaluate(node => node.scrollIntoView({block:'start'}));
+      await page.waitForTimeout(120);
+      assert.equal(await page.locator('.apex-progress').getAttribute('data-step'), `${index + 1}/7`, steps[index]);
+    }
     await page.setViewportSize({width:1440,height:1000});
   });
   await run('Mobile mantém alvos principais de 44 px e CLS dentro da meta', async () => {

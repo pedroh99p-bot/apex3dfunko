@@ -1,20 +1,28 @@
 :root { --apex-red: #c20d32; --apex-red-dark: #940522; --apex-ink: #24181b; --apex-cream: #fff8f4; --apex-green: #16865c; }
 html { scroll-behavior: smooth; scroll-padding-top: 118px; }
-.custom-logo-link { display: inline-flex !important; align-items: center; gap: 9px; text-decoration: none; }
-.custom-logo-link .custom-logo { width: 64px !important; height: 44px !important; object-fit: cover; object-position: center; border-radius: 8px; }
-.apex-brand-label { display: grid; line-height: .9; color: #111; letter-spacing: .02em; }
-.apex-brand-label strong { font-size: 19px; font-weight: 900; }
-.apex-brand-label small { margin-top: 5px; font-size: 8px; font-weight: 800; letter-spacing: .2em; }
+.custom-logo-link { display: inline-flex !important; align-items: center; text-decoration: none; }
+.mf-header .custom-logo-link,.mf-footer .custom-logo-link { padding: 0 !important; overflow: visible; background: transparent !important; }
+.mf-header .custom-logo-link .custom-logo { width: 184px !important; height: auto !important; aspect-ratio: 1060/276; object-fit: contain; border-radius: 0; }
+.mf-footer .custom-logo-link { padding: 10px 16px !important; border-radius: 12px; background: #fff !important; }
+.mf-footer .custom-logo-link .custom-logo { width: min(260px,100%) !important; height: auto !important; aspect-ratio: 1060/276; object-fit: contain; border-radius: 0; }
 .apex-phone { display: block; margin-top: 8px; color: var(--apex-red); font-size: 13px; font-weight: 800; text-decoration: none; }
 .apex-progress { position: sticky; top: 0; z-index: 80; overflow-x: auto; background: rgba(255,255,255,.96); border-bottom: 1px solid #f0d9df; backdrop-filter: blur(12px); }
 .apex-progress-label { display: block; max-width: 1180px; margin: 0 auto; padding: 6px 20px 0; color: #735e63; font-size: 10px; letter-spacing: .06em; }
 .apex-progress ol { max-width: 1180px; min-width: 650px; margin: 0 auto; padding: 8px 20px; display: grid; grid-template-columns: repeat(7,1fr); list-style: none; counter-reset: step; }
 .apex-progress li { position: relative; text-align: center; }
-.apex-progress li:not(:last-child)::after { content: ''; position: absolute; top: 10px; left: 60%; width: 80%; height: 2px; background: #ead7db; }
-.apex-progress a,.apex-progress button { position: relative; z-index: 1; display: block; min-height: 0; border: 0; background: transparent; color: #705c61; font: 700 11px/1.2 inherit; text-decoration: none; cursor: pointer; }
-.apex-progress a::before,.apex-progress button::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 20px; height: 20px; margin: 0 auto 3px; border-radius: 50%; background: #f1e6e8; color: #684d54; }
-.apex-progress .is-current a::before,.apex-progress .is-current button::before { background: var(--apex-red); color: white; }
+.apex-progress li:not(:last-child)::after { content: ''; position: absolute; top: 10px; left: 60%; width: 80%; height: 2px; background: #ead7db; transition: background-color .28s ease, transform .28s ease; transform-origin: left; }
+.apex-progress a,.apex-progress button { position: relative; z-index: 1; display: block; min-height: 0; border: 0; background: transparent; color: #705c61; font: 700 11px/1.2 inherit; text-decoration: none; cursor: pointer; transition: color .24s ease; }
+.apex-progress a::before,.apex-progress button::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 20px; height: 20px; margin: 0 auto 3px; border-radius: 50%; background: #f1e6e8; color: #684d54; transition: color .24s ease, background-color .24s ease, transform .24s ease, box-shadow .24s ease; }
+.apex-progress .is-complete::after { background: #d85b73; }
+.apex-progress .is-complete a::before,.apex-progress .is-complete button::before { background: #d85b73; color: white; }
+.apex-progress .is-current a,.apex-progress .is-current button { color: var(--apex-red-dark); }
+.apex-progress .is-current a::before,.apex-progress .is-current button::before { background: var(--apex-red); color: white; transform: scale(1.12); box-shadow: 0 0 0 4px rgba(194,13,50,.12); }
 .mf-product-hero__summary { min-width: 0; }
+.mf-product-hero { padding-top: 18px; }
+.mf-product-hero__grid { display: flex !important; flex-direction: column; gap: 28px !important; }
+.mf-product-hero__media { position: static !important; top: auto !important; order: 0; width: min(100%,680px); margin-inline: auto; }
+.mf-product-hero__summary { order: 1; width: min(100%,1040px); margin-inline: auto; }
+.apex-progress-marker { display: block; width: 1px; height: 1px; }
 .mf-product-hero { animation: apex-hero-in .75s ease-out both; }
 .mf-product-hero__media { animation: apex-media-in .85s .08s ease-out both; }
 @keyframes apex-hero-in { from { opacity: 0; transform: translateY(10px); } }
@@ -82,8 +90,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 118px; }
   .apex-progress-label { font-size: 0; }
   .apex-progress-label strong { font-size: 10px; }
   .apex-progress[data-step] .apex-progress-label::after { content: ' · progresso ' attr(data-step); font-size: 10px; }
-  .mf-product-hero__grid { display: flex !important; flex-direction: column; }
-  .mf-product-hero__summary { order: -1; }
+  .mf-product-hero__grid { gap: 22px !important; }
+  .mf-product-hero__media { width: 100%; }
   .mf-product-sales__features,.mf-product-sales__video,.mf-product-sketch,.mf-product-b2b-wrap,.mf-product-config__cta,.mf-product-whatsapp,.mf-product-hero__badges { display: none !important; }
   .mf-product-gallery__thumbs { display: none !important; }
   .mf-product-gallery__arrow { min-width: 44px; width: 44px !important; }
@@ -101,8 +109,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 118px; }
 @media (max-width: 430px) {
   .apex-proof-strip > div,.apex-why-grid,.apex-trust-principles { grid-template-columns: 1fr; }
   .apex-proof-strip article { padding: 5px 0; }
-  .apex-brand-label strong { font-size: 16px; }
-  .apex-brand-label small { font-size: 7px; }
+  .mf-header .custom-logo-link .custom-logo { width: 150px !important; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .apex-marquee div { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .mf-product-hero,.mf-product-hero__media { animation: none; } }
