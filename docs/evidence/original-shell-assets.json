@@ -160,16 +160,6 @@
     "localizedSha256": "4aba5e35b3784208fbfe2660ab60712a7ef499c54a2e0b611b74ccd99fc53b71"
   },
   {
-    "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/gift-upsell/gift-upsell.css?ver=3.6.36.1788504072",
-    "kind": "css",
-    "status": "localized",
-    "review": "ORIGIN_REVIEW_REQUIRED",
-    "sha256": "c7627e0cbf5d89e292460556b784db0beb561f2639d0dd0a27e1904028b0625c",
-    "bytes": 17016,
-    "file": "css/original/gift-upsell.css",
-    "localizedSha256": "c7627e0cbf5d89e292460556b784db0beb561f2639d0dd0a27e1904028b0625c"
-  },
-  {
     "url": "https://mifunko.com/personalizacion/wp-content/themes/mifunko/components/product/image-annotator/image-annotator.css?ver=3.6.36.1788504072",
     "kind": "css",
     "status": "localized",
@@ -2233,16 +2223,6 @@
     "bytes": 664,
     "file": "assets/configurator/icono-entrega-transporte.webp",
     "localizedSha256": "70f123e810aec15684209b74fb5ec89ea59c7954a9f311b8af69593733aecd9b"
-  },
-  {
-    "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/06/regalo-extra-taza.webp",
-    "kind": "image",
-    "status": "localized",
-    "review": "ORIGIN_REVIEW_REQUIRED",
-    "sha256": "63c4e2236f372591b25ffcadcc06b8c3a14cd0ca5abbbdb5965e85e11103f20f",
-    "bytes": 2476,
-    "file": "assets/extras/regalo-extra-taza.webp",
-    "localizedSha256": "63c4e2236f372591b25ffcadcc06b8c3a14cd0ca5abbbdb5965e85e11103f20f"
   },
   {
     "url": "https://mifunko.com/personalizacion/wp-content/uploads/2026/05/120-3.jpg",

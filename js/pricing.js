@@ -2,6 +2,7 @@ import { pricing as p, specialObjectCategories } from '../config/pricing.js';
 import { products } from '../config/products.js';
 
 export const formatMoney = cents => new Intl.NumberFormat(p.locale, { style: 'currency', currency: p.currency }).format(cents / 100);
+export const additionalPersonPrice = size => value(value(p.productSize, size), 'individual');
 const value = (map, key) => {
   if (!Object.hasOwn(map, key)) throw new Error('Opção de preço desconhecida.');
   return map[key];
@@ -14,15 +15,15 @@ export function expectedFigureCount(state) {
 export function calculatePrice(state) {
   const product = value(products, state.product), c = state.customizations;
   if (!Number.isSafeInteger(state.quantity) || state.quantity < 1) throw new Error('Quantidade inválida.');
+  if (!state.promotion || typeof state.promotion.claimed !== 'boolean' || (state.promotion.claimed && state.promotion.code !== p.promotion.code)) throw new Error('Promoção inválida.');
   if (c.figures.length !== expectedFigureCount(state)) throw new Error('Quantidade de pessoas incompatível.');
   const lines = [];
   const add = (code, label, cents) => {
-    if (!Number.isSafeInteger(cents) || cents < 0) throw new Error('Preço indisponível.');
+    if (!Number.isSafeInteger(cents) || cents < 0) throw new Error('Preço não cadastrado.');
     if (cents || code === 'base') lines.push({ code, label, cents });
   };
-  add('base', product.label, value(p.base, state.product));
-  add('size', 'Tamanho', value(product.kind === 'pet' ? p.petSize : p.humanSize, state.size) * (c.figures.length || 1));
-  add('people', 'Pessoa adicional', c.additionalPeople * p.additionalPerson);
+  add('base', product.label + ' · ' + state.size + ' cm', value(value(p.productSize, state.size), state.product));
+  add('people', 'Pessoa adicional · ' + state.size + ' cm', c.additionalPeople * additionalPersonPrice(state.size));
   const accessories = product.kind === 'pet' ? [c.pet] : c.figures;
   c.figures.forEach(f => {
     value(p.eyes, f.eyes); value(p.mouth, f.mouth);
@@ -39,15 +40,15 @@ export function calculatePrice(state) {
   });
   add('pets', 'Pet adicional', value(p.additionalPets, c.pets.length));
   c.pets.forEach(pet => value(p.additionalPetSize, pet.size));
-  add('minis', 'Mini', value(p.minis, c.minis.quantity));
-  value(p.miniSize, c.minis.size);
   const baseLabels = { 'base-com-nome': 'Nome na base', 'base-com-nome-data': 'Nome + data na base' };
   for (const extra of c.extras) add(extra, baseLabels[extra], value(p.extras, extra));
   add('box', 'Caixa personalizada', value(value(p.box, c.box.type), state.size));
   value(p.shipping, state.shipping.option);
-  if (state.gift.enabled) throw new Error('Caneca ainda sem preço aprovado.');
-  const unitTotalCents = lines.reduce((sum, line) => sum + line.cents, 0);
-  const mainTotalCents = unitTotalCents * state.quantity;
-  if (!Number.isSafeInteger(mainTotalCents)) throw new Error('Total fora do limite numérico.');
-  return { currency: p.currency, status: p.status, lines, unitTotalCents, mainTotalCents, giftTotalCents: 0, totalCents: mainTotalCents, freightCents: null, finalCheckout: false };
+  const unitSubtotalCents = lines.reduce((sum, line) => sum + line.cents, 0);
+  const subtotalCents = unitSubtotalCents * state.quantity;
+  const eligiblePromotion = state.promotion?.claimed && state.promotion.code === p.promotion.code;
+  const discountCents = eligiblePromotion ? Math.round(subtotalCents * p.promotion.percent / 100) : 0;
+  const totalCents = subtotalCents - discountCents;
+  if (![subtotalCents, discountCents, totalCents].every(Number.isSafeInteger)) throw new Error('Total fora do limite numérico.');
+  return { currency: p.currency, lines, unitSubtotalCents, subtotalCents, discountCents, mainTotalCents: totalCents, totalCents, freightCents: null, finalCheckout: false, promotionCode: eligiblePromotion ? p.promotion.code : null };
 }

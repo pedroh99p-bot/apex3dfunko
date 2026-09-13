@@ -27,6 +27,10 @@ export async function suite(name, port, execute) {
     });
     const run = async (title, task) => { await task(); results.push({ name: title, passed: true }); console.log('PASS ' + title); };
     const open = async (product = 'individual') => { await page.goto(origin + '/?tipo=' + product); await page.waitForSelector('html[data-apex-ready="true"]'); };
+    const dismissPromo = async () => {
+      const promo = page.locator('.apex-promo[open]');
+      if (await promo.count()) await promo.getByRole('button', { name: 'Agora não' }).click();
+    };
     const reveal = async locator => {
       await locator.first().evaluate(n => { let p=n.parentElement; while(p){if(p.matches('[data-apex-accordion]')&&!p.classList.contains('is-open'))p.querySelector(':scope > button').click();p=p.parentElement;} const section=n.closest('[data-mf-extras-section]'); if(section?.hidden)n.closest('[data-mf-card-kind="extras"]').querySelector('[data-mf-extras-tab="'+section.dataset.mfExtrasSection+'"]').click(); });
     };
@@ -75,15 +79,19 @@ export async function suite(name, port, execute) {
       await field('mf_shipping_date').fill(await page.locator('#needed-date').getAttribute('min'));
     };
     const review = async () => {
-      await go('review'); await page.locator('.review-button').click();
+      await dismissPromo();
+      await go('review');
+      await dismissPromo();
+      await page.locator('.review-button').click();
+      await dismissPromo();
       await page.waitForSelector('#order-review[open]');
     };
     const generate = async () => {
-      await page.getByRole('button', { name: 'Gerar pedido de teste', exact: true }).click();
+      await page.getByRole('button', { name: 'Preparar pedido', exact: true }).click();
       await page.waitForSelector('#order-confirmation[open]');
       assert.equal((await page.evaluate(() => window.apexDevelopment.inspectDraft())).productionValidation, 'passed');
     };
-    const extras = async () => { await go('extras'); const toggle=page.locator('[data-mf-card-kind="extras"] > button').first(); if(await toggle.getAttribute('aria-expanded')!=='true')await toggle.click(); };
+    const extras = async () => { await go('extras'); await dismissPromo(); const toggle=page.locator('[data-mf-card-kind="extras"] > button').first(); if(await toggle.getAttribute('aria-expanded')!=='true')await toggle.click(); };
     await mkdir('test-results', { recursive: true });
     await execute({ page, run, open, field, inspect, total, upload, fixture, complete, review, generate, extras, go, origin });
     assert.deepEqual(errors, []); assert.deepEqual(unsafe, []); assert.deepEqual(resourceFailures, []);

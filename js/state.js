@@ -15,13 +15,12 @@ export function createOrderState(product = 'individual') {
     customizations: {
       additionalPeople: 0, figures: Array.from({ length: products[product].figures }, (_, i) => createFigure(i)),
       pet: { eyes: 'estandar', accessories: 0, logos: 0, specialAccessories: [], fields: {} }, pets: [],
-      minis: { quantity: 0, size: 4, fields: {} },
       box: { type: 'caja_standard', dedication: false, fields: {} },
       extras: [], fields: {},
     },
     uploads: [],
     shipping: { option: 'envio_estandard', date: '', flexible: false },
-    gift: { enabled: false, imageSource: 'sketch', text: '' },
+    promotion: { code: null, claimed: false },
     pricing: null, notes: '',
   };
 }

@@ -23,7 +23,6 @@ export const originalRegions = [
  ['box','[data-mf-box-step]','Caixas ilustradas e personalização'],
  ['delivery','.mf-product-delivery','Modalidades, calendário e flexibilidade'],
  ['notes','[data-mf-instructions-step]','Observações'],
- ['gift','.mf-gift-upsell','Caneca adicional; homologação pendente'],
  ['summary','.mf-product-summary','Preço grande, detalhamento e CTA'],
  ['social-proof','.mf-product-social-proof','Três blocos de confiança'],
  ['reviews','#opiniones','Carrossel de avaliações'],

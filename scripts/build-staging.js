@@ -12,10 +12,10 @@ const manifest = JSON.parse(await readFile(resolve(root, 'docs/evidence/original
 const publicFiles = [...new Set([
   ...manifest.filter(entry => entry.file && entry.status !== 'excluded').map(entry => entry.file),
   'assets/brand/apex-logo.webp','assets/brand/apex-share.webp','assets/process/apex-impressao-3d.webp','assets/ui/review-placeholder.svg',
-  'css/apex-shell.css','css/apex-theme.css','css/shell-inline.css',
-  'js/main.js','js/shell-dom.js','js/shell-controller.js','js/shell-interactions.js',
+  'css/apex-shell.css','css/apex-theme.css','css/shell-inline.css','css/commercial-v1.css',
+  'js/main.js','js/shell-dom.js','js/shell-controller.js','js/shell-interactions.js','js/commercial-ui.js','js/analytics.js','js/whatsapp.js',
   'js/state.js','js/pricing.js','js/uploads.js','js/date.js','js/validation.js','js/order.js','js/review.js',
-  'config/products.js','config/pricing.js','config/special-objects.js','config/commercial.js','config/uploads.js','config/mvp.js',
+  'config/products.js','config/pricing.js','config/special-objects.js','config/commercial.js','config/uploads.js','config/mvp.js','config/analytics.js','config/brand.js',
 ])];
 for (const file of publicFiles) {
   const target = resolve(output, file); await mkdir(dirname(target), { recursive: true }); await cp(resolve(root, file), target);

@@ -15,13 +15,13 @@ await suite('mvp-smoke', 4175, async ({ page, run, open, field, inspect, total, 
       assert.doesNotMatch(await page.locator('#review-content').innerText(), /mf_|€|schemaVersion/);
       assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
       await generate();
-      assert.match(await page.locator('#order-confirmation').innerText(), /Nenhum pedido foi enviado/);
+      assert.match(await page.locator('#order-confirmation').innerText(), /salvo somente nesta sessão/);
     });
   }
   await run('Data passada bloqueia; hoje não acrescenta urgência', async () => {
     await complete(); await field('mf_shipping_date').fill('2000-01-01');
     await go('review'); await page.locator('.review-button').click(); assert.match(await page.locator('#validation-errors').innerText(), /passado/);
-    await total(10000);
+    await total(9990);
     await field('mf_shipping_date').fill(await page.locator('#needed-date').getAttribute('min'));
     assert.equal((await page.evaluate(() => window.apexDevelopment.validate())).valid, true);
   });
@@ -66,12 +66,12 @@ await suite('mvp-smoke', 4175, async ({ page, run, open, field, inspect, total, 
     await field('figure-1.object_detalhado').fill('Instrumento musical');
     await field('mf_extra_option[]').selectOption('base-com-nome-data'); await field('mf_extra_text_data').fill('Ana'); await field('baseDate').fill('2020-01-01');
     await field('mf_box_option').selectOption('caja_personalizada'); await field('mf_box_character_name').fill('Memórias');
-    await total(40200); await review(); await generate();
+    await total(44920); await review(); await generate();
     const result = await page.evaluate(() => window.apexDevelopment.inspectDraft());
-    assert.equal(result.pricing.totalCents, 40200); assert.equal(result.uploads.length, 3);
+    assert.equal(result.pricing.totalCents, 44920); assert.equal(result.uploads.length, 3);
     assert.deepEqual(result.uploads.map(u => u.owner.field), ['figure-1.mf_face_photo_upload[]','figure-2.mf_face_photo_upload[]','mf_pet_1_photo[]']);
   });
-  for (const width of [1440,1024,768,430,390,360]) {
+  for (const width of [1440,1024,768,430,390,375,360]) {
     await run('Upsells e revisão responsivos em ' + width + 'px', async () => {
       if (await page.locator('#order-confirmation').evaluate(n => n.open)) await page.locator('#close-confirmation').click();
       await page.setViewportSize({ width, height: 1000 });
@@ -92,7 +92,7 @@ await suite('mvp-smoke', 4175, async ({ page, run, open, field, inspect, total, 
   await run('Trocar produto limpa configuração, data, notas e todos os anexos', async () => {
     await field('notes').fill('Uma observação');
     await go('product'); await page.locator('[data-product="pet"]').click();
-    assert.equal((await inspect()).uploads.length, 0); await total(10000);
+    assert.equal((await inspect()).uploads.length, 0); await total(9990);
     assert.equal(await page.locator('#notes').inputValue(), ''); assert.equal(await page.locator('#needed-date').inputValue(), '');
   });
   await run('Alteração durante revisão bloqueia geração até revisar novamente', async () => {
@@ -101,7 +101,7 @@ await suite('mvp-smoke', 4175, async ({ page, run, open, field, inspect, total, 
       const notes = document.querySelector('#notes'); notes.value = 'Mudou';
       notes.dispatchEvent(new Event('input', { bubbles: true }));
     });
-    await page.getByRole('button', { name: 'Gerar pedido de teste', exact: true }).click();
+    await page.getByRole('button', { name: 'Preparar pedido', exact: true }).click();
     assert.match(await page.locator('#validation-errors').innerText(), /configuração mudou/);
     assert.equal(await page.evaluate(() => window.apexDevelopment.inspectDraft()), null);
   });

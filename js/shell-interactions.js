@@ -9,6 +9,7 @@ export function startShellInteractions() {
     });
   }
   function slider(root, slideSelector, previous, next, bulletSelector) {
+    if (!root) return;
     const slides = all(slideSelector, root), bullets = bulletSelector ? all(bulletSelector, root) : [];
     if (!slides.length) return;
     let index = 0;
@@ -26,6 +27,20 @@ export function startShellInteractions() {
     root.addEventListener('pointerdown', e => { start = { x: e.clientX, y: e.clientY }; });
     root.addEventListener('pointerup', e => { if (start && Math.abs(e.clientX - start.x) > 45 && Math.abs(e.clientY - start.y) < 65) select(index + (e.clientX < start.x ? 1 : -1)); start = null; });
     select(0);
+    const interval = Number(root.dataset.apexAutoplay);
+    if (interval && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let timer = null, visible = false, paused = false;
+      const updateTimer = () => {
+        if (timer) clearInterval(timer);
+        timer = visible && !paused && !document.hidden ? setInterval(() => select(index + 1), interval) : null;
+      };
+      new IntersectionObserver(entries => { visible = entries[0].isIntersecting; updateTimer(); }, { threshold: .35 }).observe(root);
+      root.addEventListener('pointerenter', () => { paused = true; updateTimer(); });
+      root.addEventListener('pointerleave', () => { paused = false; updateTimer(); });
+      root.addEventListener('focusin', () => { paused = true; updateTimer(); });
+      root.addEventListener('focusout', () => { paused = false; updateTimer(); });
+      document.addEventListener('visibilitychange', updateTimer);
+    }
   }
   slider(q('.mf-product-gallery'), '[data-mf-product-slide]', '[data-mf-product-prev]', '[data-mf-product-next]', '[data-mf-product-thumb]');
   slider(q('[data-mf-mini-slider]'), '[data-mf-mini-slide]', '[data-mf-mini-prev]', '[data-mf-mini-next]', '[data-mf-mini-bullet]');
@@ -68,7 +83,7 @@ export function startShellInteractions() {
   q('.mf-cart-drawer__title').textContent = 'Sua criação';
   show(q('[data-mf-cart-drawer-loading]'), false); show(q('[data-mf-cart-drawer-items]'), true); show(q('[data-mf-cart-drawer-footer]'), true);
   q('[data-mf-cart-drawer-items]').replaceChildren(el('li', 'Configure sua miniatura para revisar os detalhes. As fotos permanecem nesta sessão.', 'apex-note'));
-  q('[data-mf-cart-drawer-shipping-text]').textContent = 'Sem envio de dados ou pagamento nesta prévia.';
+  q('[data-mf-cart-drawer-shipping-text]').textContent = 'Frete e prazo serão confirmados no atendimento.';
   const checkout = q('[data-mf-cart-drawer-checkout]'); checkout.textContent = 'Revisar criação';
   const closeDrawer = () => { show(drawer, false); drawer.classList.remove('is-visible'); };
   checkout.addEventListener('click', e => { e.preventDefault(); closeDrawer(); document.dispatchEvent(new Event('apex:review')); });
@@ -78,7 +93,7 @@ export function startShellInteractions() {
   discard.addEventListener('click', () => { document.dispatchEvent(new Event('apex:discard')); closeDrawer(); });
   document.addEventListener('apex:change', e => {
     const { product, size, total, hasDraft } = e.detail;
-    q('[data-mf-cart-drawer-items]').replaceChildren(el('li', product + ' · ' + size + ' cm · ' + total, 'apex-note'), el('li', hasDraft ? 'Pedido de teste gerado nesta sessão.' : 'Criação em andamento. Revise para gerar o pedido de teste.', 'apex-note'));
+    q('[data-mf-cart-drawer-items]').replaceChildren(el('li', product + ' · ' + size + ' cm · ' + total, 'apex-note'), el('li', hasDraft ? 'Resumo preparado nesta sessão.' : 'Criação em andamento. Revise quando estiver pronta.', 'apex-note'));
     q('[data-mf-cart-drawer-count]').textContent = hasDraft ? '1' : '0';
   });
   const video = q('[data-mf-video-modal]'), videoPanel = q('.mf-video-modal__dialog') || q('.mf-video-modal__content') || video.children[1];

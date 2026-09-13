@@ -1,10 +1,10 @@
 # Mapa de assets — Original Shell V1
 
-Todos os recursos visuais úteis foram localizados sem recompressão. São 280 arquivos herdados/localizados: 235 imagens (incluindo variantes srcset), 32 CSS estruturais, 11 fontes e dois CSS de fontes. Há também a marca Apex fornecida e um avatar SVG próprio de staging.
+O manifesto histórico mantém 281 registros localizados após o hardening: 236 imagens, 31 CSS estruturais, 11 fontes, dois CSS de fontes e a marca Apex. A folha e a imagem exclusivas da caneca foram removidas do repositório e do manifesto ativo.
 
-267 registros têm ORIGIN_REVIEW_REQUIRED (235 imagens e 32 estilos). Treze recursos de tipografia têm FONT_LICENSE_REVIEW. O staging foi autorizado com essas revisões pendentes. Os bytes originais de imagens/fontes são conferidos por SHA-256; estilos mantêm bytes salvo reescrita de URLs para arquivos locais. O manifesto armazena hash original e hash local. Atributos Git preservam os bytes no checkout.
+267 registros têm `ORIGIN_REVIEW_REQUIRED`; treze recursos de tipografia têm `FONT_LICENSE_REVIEW`. A revisão de origem continua pendente antes da publicação definitiva. Os bytes originais de imagens/fontes são conferidos por SHA-256; estilos mantêm bytes salvo reescrita de URLs para arquivos locais.
 
-Exclusões: logo puro MiFunko PNFMIFUNKOPERSONALIZADO-1-1-1.png, logo do widget GDPR e pixel Facebook. Logos de plataformas de avaliações e bandeiras de outros idiomas foram removidos do markup. Não foi excluída mídia de processo, produto, comparação, caixa, extras ou galeria. Avatares originais permanecem no acervo, mas são substituídos na interface por placeholders para não simular depoimentos Apex.
+Exclusões: logo puro MiFunko, logo do widget GDPR, pixel Facebook e todos os elementos ativos da caneca. Logos de plataformas de avaliações, bandeiras de outros idiomas, avatares e imagens de depoimentos simulados foram retirados do markup comercial. A mídia de processo, produto, comparação, caixa, extras e galeria continua inventariada.
 
 As cenas de processo/embalagem preservam elementos de marcas no próprio bitmap. São referências de origem claramente sinalizadas e precisam de revisão/substituição antes da produção definitiva. Família ainda usa o card ilustrativo de casamento do acervo. Não se declara autoria Apex dessas imagens.
 
@@ -28,7 +28,6 @@ A organização mantém os nomes originais para rastreabilidade. Galeria está e
 | css/original/delivery-section.css | css | ORIGIN_REVIEW_REQUIRED |
 | css/original/faq-section.css | css | ORIGIN_REVIEW_REQUIRED |
 | css/original/fixed-cart-bar.css | css | ORIGIN_REVIEW_REQUIRED |
-| css/original/gift-upsell.css | css | ORIGIN_REVIEW_REQUIRED |
 | css/original/image-annotator.css | css | ORIGIN_REVIEW_REQUIRED |
 | css/original/info-tabs.css | css | ORIGIN_REVIEW_REQUIRED |
 | css/original/presupuesto-hero.css | css | ORIGIN_REVIEW_REQUIRED |
@@ -234,7 +233,6 @@ A organização mantém os nomes originais para rastreabilidade. Galeria está e
 | assets/extras/icon-caja-individual.webp | image | ORIGIN_REVIEW_REQUIRED |
 | assets/extras/icon-caja-doble.webp | image | ORIGIN_REVIEW_REQUIRED |
 | assets/configurator/icono-entrega-transporte.webp | image | ORIGIN_REVIEW_REQUIRED |
-| assets/extras/regalo-extra-taza.webp | image | ORIGIN_REVIEW_REQUIRED |
 | assets/configurator/120-3.jpg | image | ORIGIN_REVIEW_REQUIRED |
 | assets/configurator/review-4.jpg | image | ORIGIN_REVIEW_REQUIRED |
 | assets/configurator/120-2.jpg | image | ORIGIN_REVIEW_REQUIRED |

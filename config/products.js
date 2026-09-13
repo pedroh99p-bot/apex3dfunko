@@ -4,4 +4,3 @@ export const products = Object.freeze({
   familia: { label: 'Família', figures: 3, kind: 'human', description: 'Três pessoas. Um vínculo especial.' },
   pet: { label: 'Pet', figures: 0, kind: 'pet', description: 'Seu melhor amigo, em miniatura.' },
 });
-export const giftProduct = Object.freeze({ id: 'gift-mug', label: 'Caneca personalizada', available: false });

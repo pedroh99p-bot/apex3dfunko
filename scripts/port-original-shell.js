@@ -103,7 +103,8 @@ try{
   set('.mf-footer__cta-title','Sua história pode ganhar forma.');set('.mf-footer__cta-text','Personalize uma miniatura 3D a partir das suas fotos.');set('.mf-footer__cta-btn','Criar minha miniatura');set('.mf-footer__text','Apex3D · Miniatura 3D Personalizada. Prévia de homologação: sem envio de pedidos ou pagamentos.');set('.mf-footer__wa','Como funciona');set('.mf-footer__video','Conhecer o processo');
   all('.mf-fixed-cart-bar__name').forEach(n=>n.textContent='Miniatura 3D Personalizada');
   // Preserve unavailable offers visually and route their actions to an explanation.
-  for(const selector of ['.mf-gift-upsell','[data-mf-mini-step]']){const node=q(selector);node.dataset.apexPending='true';const p=d.createElement('p');p.className='apex-staging-note';p.textContent='EM HOMOLOGAÇÃO · opção visual preservada, ainda indisponível para adicionar ao pedido.';node.append(p);}
+  q('.mf-gift-upsell')?.remove();
+  q('[data-mf-mini-step]')?.remove();
   all('input,select,textarea').forEach(n=>n.removeAttribute('required'));
   all('.mf-size-option__badge').forEach(n=>n.textContent='Em destaque');
   const faq=[['Quais fotos devo enviar?','Use imagens nítidas, bem iluminadas, sem filtros, com rosto ou focinho visível. Cada pessoa e pet precisa da própria referência.'],['Como funciona a aprovação?','Você aprova o modelo antes da produção. As condições de ajustes serão combinadas antes do pedido.'],['Posso escolher roupa, pose e acessórios?','Sim. Siga as fotos ou descreva sua ideia. Acessórios selecionados precisam de descrição ou referência própria.'],['Quais tamanhos e composições existem?','Explore os tamanhos de 6, 10, 15 e 20 cm e os modelos Individual, Casal, Família e Pet. Preços e compatibilidade ainda são provisórios.'],['Como são prazo e entrega?','Informe quando precisa receber. Produção, disponibilidade, frete e entrega serão confirmados; a data selecionada não é uma promessa.'],['Quando começa a produção?','Após confirmação das condições e aprovação do modelo. Os pedidos de teste desta prévia não entram em produção.'],['Posso pagar por aqui?','Ainda não. Esta versão gera um rascunho local, sem cobrança, sem backend e sem envio do pedido. As fotos são perdidas ao sair ou recarregar.']];
@@ -121,9 +122,8 @@ try{
   all('.mf-extra-option__price').filter(n=>/Grátis/.test(n.textContent)).forEach(n=>n.textContent='A confirmar');
   all('[data-mf-extra-step] i').forEach(n=>n.textContent='Compatibilidade em revisão');
   set('.mf-size-compare__title','Compare os tamanhos');set('.mf-size-compare__note','Referência de escala. Medidas, detalhes e embalagem sujeitos à confirmação.');
-  set('.mf-gift-upsell__price','Preço a confirmar');set('.mf-gift-upsell__card-badge','Em homologação');set('.mf-gift-upsell-modal__badge','Em homologação');
-  all('[data-mf-gift-upsell-open]').forEach(n=>{n.disabled=true;n.querySelector('.mf-gift-upsell__add-label--default').textContent='Indisponível nesta prévia';});
-  all('.mf-gift-upsell-modal input,.mf-gift-upsell-modal textarea,.mf-gift-upsell-modal select').forEach(n=>n.disabled=true);
+  q('[data-mf-gift-upsell-modal]')?.remove();
+  q('[data-mf-added-drawer]')?.remove();
   const wording=new Map([['Contacto','Contato'],['*Balón no incluido','Objeto esportivo não incluído'],['Tu escolhes quais e onde vão.','Você escolhe quais e onde vão.'],['telemóvel','celular'],['auscultadores','fones de ouvido'],['Esboço 3D grátis','Conheça a modelagem'],['Devoluções','Condições em definição'],['Aviso legal y política de privacidad','Privacidade das fotos'],['Política de cookies','Dados nesta sessão'],['Ver carrinho','Revisar criação'],['Continuar a comprar','Continuar personalizando'],['Impostos incluídos','Valores provisórios'],['* Apenas península','Frete a confirmar'],['Foto do cliente','Referência visual'],['Tamanho Grande (sem caixa miniatura)','Grande formato · caixa a confirmar'],['¿No sabes qué tamaño elegir? Compara los 4 tamaños','Compare os quatro tamanhos']]);
   const texts=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT);let piece;while(piece=texts.nextNode()){for(const [from,to] of wording)piece.nodeValue=piece.nodeValue.replaceAll(from,to);}
   all('.mf-pets-step__title-badge, .mf-pets-step__discount').forEach(n=>n.textContent='Opcional');

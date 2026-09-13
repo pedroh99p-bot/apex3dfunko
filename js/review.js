@@ -30,8 +30,8 @@ export function renderOrderReview(container, state, { uploads = [], onEdit, onGe
   };
   const photos = field => uploads.filter(u => u.owner.itemId === 'main-1' && u.owner.field === field);
   const c = state.customizations, product = products[state.product], price = calculatePrice(state);
-  const total = node('div', undefined, 'total-row'); total.append(node('span', 'Total estimado'), node('strong', formatMoney(price.totalCents))); container.append(total);
-  container.append(node('p', 'Simulação com preços provisórios. Valores, tamanhos e embalagem serão confirmados antes de qualquer produção ou cobrança.', 'review-warning'));
+  const total = node('div', undefined, 'total-row'); total.append(node('span', 'Total parcial'), node('strong', formatMoney(price.totalCents))); container.append(total);
+  container.append(node('p', 'Confira cada escolha. O frete é confirmado no atendimento antes da produção.', 'review-warning'));
   section('Sua miniatura', [['Produto', product.label + ' · ' + state.size + ' cm'], ['Composição', product.kind === 'pet' ? 'Pet principal' : c.figures.length + ' pessoa(s), incluindo ' + c.additionalPeople + ' adicional(is)'], ['Fotos anexadas', state.uploads.length]]);
   c.figures.forEach((f, i) => {
     const reference = photos(f.id + '.mf_face_photo_upload[]');
@@ -67,9 +67,9 @@ export function renderOrderReview(container, state, { uploads = [], onEdit, onGe
   section('Base e embalagem', packRows, photos('mf_box_dedication_image'));
   section('Últimos detalhes', [['Data desejada', displayDate(state.shipping.date)], ['Data flexível', state.shipping.flexible ? 'Sim' : 'Não'], ['Observações', state.notes || 'Nenhuma observação']]);
   const base = price.lines.find(l => l.code === 'base').cents;
-  section('Valores de homologação', [['Preço base', formatMoney(base)], ...price.lines.filter(l => l.code !== 'base').map(l => [l.label, formatMoney(l.cents)]), ['Adicionais', formatMoney(price.unitTotalCents - base)], ['Total estimado', formatMoney(price.totalCents)], ['Frete', 'A confirmar']]);
-  container.append(node('p', 'Confirmaremos a disponibilidade da data após o pedido. Você aprova o modelo antes da produção. Nesta homologação, gerar o pedido de teste não envia dados nem realiza pagamento.', 'review-warning'));
-  const actions = node('div', undefined, 'review-actions'), edit = node('button', 'Editar criação', 'button secondary'), generate = node('button', 'Gerar pedido de teste', 'button');
+  section('Resumo de valores', [['Preço da peça', formatMoney(base)], ...price.lines.filter(l => l.code !== 'base').map(l => [l.label, formatMoney(l.cents)]), ['Subtotal', formatMoney(price.subtotalCents)], ...(price.discountCents ? [['Desconto primeira compra −10%', '− ' + formatMoney(price.discountCents)]] : []), ['Frete', 'A confirmar'], ['Total parcial', formatMoney(price.totalCents)]]);
+  container.append(node('p', 'Confirmaremos a disponibilidade da data e o frete no atendimento. Você aprova o modelo antes da produção. Nenhum pagamento é realizado nesta etapa.', 'review-warning'));
+  const actions = node('div', undefined, 'review-actions'), edit = node('button', 'Editar criação', 'button secondary'), generate = node('button', 'Preparar pedido');
   edit.type = generate.type = 'button'; edit.addEventListener('click', onEdit); generate.addEventListener('click', onGenerate);
   actions.append(edit, generate); container.append(actions);
 }

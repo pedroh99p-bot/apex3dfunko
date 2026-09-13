@@ -1,38 +1,45 @@
 import { createOrderState, createFigure } from './state.js';
-import { calculatePrice, formatMoney } from './pricing.js';
+import { additionalPersonPrice, calculatePrice, formatMoney } from './pricing.js';
 import { products } from '../config/products.js';
 import { pricing, specialObjectCategories } from '../config/pricing.js';
+import { sizes as sizeOptions } from '../config/commercial.js';
 import { UploadStore } from './uploads.js';
 import { minimumDesiredDate, displayDate } from './date.js';
 import { validateOrderForProduction } from './validation.js';
 import { renderOrderReview } from './review.js';
 import { createOrderDraft, safeOrderSummary } from './order.js';
 import { q, all, el, note, show, accordion, reveal } from './shell-dom.js';
+import { track } from './analytics.js';
 
 export function startConfigurator() {
   const requested = new URLSearchParams(location.search).get('tipo');
   let state = createOrderState(Object.hasOwn(products, requested) ? requested : 'individual');
+  try { const savedPromotion = JSON.parse(localStorage.getItem(pricing.promotion.storageKey) || 'null'); if (savedPromotion?.claimed) state.promotion = { code: pricing.promotion.code, claimed: true }; } catch { localStorage.removeItem(pricing.promotion.storageKey); }
   const uploads = new UploadStore(), uploadErrors = new Map(), pending = new Set();
   let revision = 0, draft = null;
   const grid = q('.mf-product-customizer-grid'), initialGrid = grid.cloneNode(true);
   const box = q('[data-mf-box-step]'), boxTemplate = box.cloneNode(true);
   const errors = q('#validation-errors');
-  const roots = ['[data-mf-pets-step]', '[data-mf-extra-step]', '[data-mf-mini-step]'];
+  const roots = ['[data-mf-pets-step]', '[data-mf-extra-step]'];
   const shared = new Map(roots.map(s => [s, q(s, initialGrid)]));
   const uploadViews = new Map();
   const fieldNode = key => all('[data-field]').find(n => n.dataset.field === key && !n.disabled);
   const sync = () => {
     state.uploads = uploads.metadata(); state.pricing = calculatePrice(state);
     const price = formatMoney(state.pricing.totalCents), label = products[state.product].label + ' · ' + state.size + ' cm';
-    all('[data-mf-summary-price], [data-mf-fixed-bar-price], [data-mf-cart-drawer-subtotal]').forEach(n => n.textContent = price);
+    all('[data-mf-summary-price], [data-mf-fixed-bar-price], [data-mf-cart-drawer-subtotal]').forEach(n => { n.textContent = price; n.setAttribute('aria-live', 'polite'); });
     all('[data-mf-summary-selection], [data-mf-fixed-bar-meta]').forEach(n => n.textContent = label);
     all('[data-mf-fixed-bar-price-lead]').forEach(n => n.textContent = price);
     all('[data-mf-fixed-bar-shipping]').forEach(n => n.textContent = 'Frete a confirmar');
     all('[data-apex-product-price]').forEach(n => n.textContent = formatMoney(pricing.base[n.dataset.apexProductPrice || n.closest('[data-product]')?.dataset.product]));
     all('[data-apex-starting-price]').forEach(n => n.textContent = formatMoney(pricing.base[state.product]));
     const list = q('[data-mf-breakdown-list]');
-    if (list) list.replaceChildren(...state.pricing.lines.map(line => { const row = el('li'); row.append(el('span', line.label), el('strong', formatMoney(line.cents))); return row; }));
-    all('[data-product]').forEach(n => { const active = n.dataset.product === state.product; n.classList.toggle('is-active', active); n.setAttribute('aria-pressed', String(active)); });
+    if (list) {
+      const rows = state.pricing.lines.map(line => { const row = el('li'); row.append(el('span', line.label), el('strong', formatMoney(line.cents))); return row; });
+      if (state.pricing.discountCents) { const row = el('li'); row.className = 'apex-discount-line'; row.append(el('span', 'Desconto primeira compra −10%'), el('strong', '− ' + formatMoney(state.pricing.discountCents))); rows.push(row); }
+      list.replaceChildren(...rows);
+    }
+    all('[data-product]').forEach(n => { const active = n.dataset.product === state.product; n.classList.toggle('is-active', active); n.classList.toggle('is-selected', active); n.setAttribute('aria-pressed', String(active)); });
     for (const card of all('[data-apex-figure]', grid)) {
       const prefix = card.dataset.apexFigure, figure = state.customizations.figures.find(f => f.id === prefix);
       const photoCount = state.uploads.filter(u => u.owner.field === prefix + '.mf_face_photo_upload[]').length;
@@ -44,16 +51,24 @@ export function startConfigurator() {
       if(face)card.classList.toggle('is-complete', photoCount > 0);
     }
     all('[data-mf-size-summary], [data-mf-pet-size-summary]').forEach(n => n.textContent = state.size + ' cm');
-    document.dispatchEvent(new CustomEvent('apex:change', { detail: { product: state.product, size: state.size, total: price, hasDraft: Boolean(draft) } }));
+    document.dispatchEvent(new CustomEvent('apex:change', { detail: { product: state.product, size: state.size, total: price, totalCents: state.pricing.totalCents, subtotalCents: state.pricing.subtotalCents, promotionCode: state.pricing.promotionCode, hasDraft: Boolean(draft) } }));
   };
   const changed = () => { revision++; draft = null; sync(); show(errors, false); };
+  const trackField = key => {
+    if (key === 'size') track('select_size', { size: state.size, product: state.product });
+    else if (key.includes('.outfit')) track('customize_outfit', { product: state.product });
+    else if (key === 'mf_pets_option') track('add_pet', { quantity: state.customizations.pets.length });
+    else if (key.includes('accessories') || key.includes('.logos')) track('add_accessory', { product: state.product });
+    else if (key === 'mf_box_option') track('add_box', { type: state.customizations.box.type });
+    else if (key.startsWith('mf_shipping')) track('select_delivery', { flexible: state.shipping.flexible });
+  };
   function bind(input, key, value, update, event = 'change') {
     if (!input) return;
     input.disabled = false; input.dataset.field = key;
     if (input.type === 'checkbox' || input.type === 'radio') input.checked = Boolean(value); else input.value = value ?? '';
     const paint = () => { if (!['radio', 'checkbox'].includes(input.type)) return; all('input', input.closest('article') || input.parentElement).filter(n => n.name === input.name).forEach(n => n.closest('label')?.classList.toggle('is-active', n.checked)); };
     paint();
-    input.addEventListener(event, () => { update(input.type === 'checkbox' ? input.checked : input.value); paint(); changed(); });
+    input.addEventListener(event, () => { update(input.type === 'checkbox' ? input.checked : input.value); paint(); changed(); trackField(key); });
   }
   function removeFields(predicate) {
     uploads.cancelPending();
@@ -86,7 +101,7 @@ export function startConfigurator() {
     input.addEventListener('change', async () => {
       if (!input.files.length) return;
       const currentInput = input; pending.add(key); changed(); render();
-      try { await uploads.add({ itemId: 'main-1', field: key }, input.files, { multiple }); if (currentInput.isConnected) uploadErrors.delete(key); }
+      try { await uploads.add({ itemId: 'main-1', field: key }, input.files, { multiple }); if (currentInput.isConnected) { uploadErrors.delete(key); track('upload_reference', { product: state.product, fieldType: key.includes('face') || key.includes('pet') ? 'subject' : 'detail' }); } }
       catch (error) { if (currentInput.isConnected) uploadErrors.set(key, error.message); }
       finally { if (currentInput.isConnected) { pending.delete(key); input.value = ''; changed(); render(); } }
     });
@@ -204,15 +219,19 @@ export function startConfigurator() {
       }); show(detail, input.checked);
     }
     expandCatalog(false);
-    note(q('[data-mf-special-other-card]', card), 'Sob consulta · indisponível nesta prévia');
-    note(q('[data-mf-option-panel]', card), 'Adicionais com preços provisórios. Disponibilidade e execução sujeitas à confirmação.');
+    note(q('[data-mf-special-other-card]', card), 'Sob consulta');
+    note(q('[data-mf-option-panel]', card), 'Escolha apenas os detalhes que fazem sentido para a sua história.');
   }
-  function sizes(card, isPet = false) {
+  function sizes(card) {
     accordion(card, true);
     all('input[type=radio]', card).forEach(input => {
-      const cm = Number(input.value.match(/\d+/)?.[0]); if (!Object.hasOwn(pricing.humanSize, cm)) return;
+      const cm = Number(input.value.match(/\d+/)?.[0]); if (!Object.hasOwn(pricing.productSize, cm)) return;
       input.name = 'apex-size'; input.dataset.value = cm;
-      const price = q('[class*=price]', input.closest('label')); if (price) price.textContent = formatMoney(pricing.base[state.product] + (isPet ? pricing.petSize[cm] : pricing.humanSize[cm]) * (state.customizations.figures.length || 1) + state.customizations.additionalPeople * pricing.additionalPerson);
+      const option = sizeOptions.find(item => item.cm === cm), label = input.closest('label');
+      const subtitle = q('.mf-size-option__subtitle', label); if (subtitle) subtitle.textContent = option.label;
+      const badge = q('.mf-size-option__badge', label); if (badge) badge.textContent = 'Recomendado';
+      label.classList.toggle('mf-size-option--featured', cm === 10);
+      const price = q('[class*=price]', input.closest('label')); if (price) price.textContent = formatMoney(pricing.productSize[cm][state.product] + state.customizations.additionalPeople * additionalPersonPrice(cm));
       bind(input, 'size', state.size === cm, () => { state.size = cm; });
     });
   }
@@ -240,7 +259,7 @@ export function startConfigurator() {
       const text = named(slot, 'mf_pet_' + i + '_detail');
       bind(text, 'mf_pet_' + i + '_detail', state.customizations.pets[i - 1]?.fields.details, v => { if (state.customizations.pets[i - 1]) state.customizations.pets[i - 1].fields.details = v; }, 'input');
     }); render();
-    note(q('[class*="__body"]', card), 'Cada pet adicional tem 4 cm e preço provisório de ' + formatMoney(pricing.additionalPets[1]) + '.');
+    note(q('[class*="__body"]', card), 'Cada pet adicional tem 4 cm e custa ' + formatMoney(pricing.additionalPets[1]) + '.');
   }
   function included(card) {
     accordion(card); const c = state.customizations;
@@ -252,7 +271,7 @@ export function startConfigurator() {
       all('input[name="mf_extra_option[]"]', card).forEach(input => { if (Object.hasOwn(pricing.extras, input.value)) input.checked = c.extras.includes(input.value); });
     };
     all('input[name="mf_extra_option[]"]', card).forEach(input => {
-      if (!Object.hasOwn(pricing.extras, input.value)) { const label = input.closest('label'); note(label, input.value === 'base-de-suporte' ? 'Base padrão · referência de composição' : 'A confirmar · indisponível nesta prévia'); return; }
+      if (!Object.hasOwn(pricing.extras, input.value)) { const label = input.closest('label'); note(label, input.value === 'base-de-suporte' ? 'Base padrão · referência de composição' : 'Disponível sob consulta'); return; }
       const cost = q('[class*=price]', input.closest('label')); if (cost) cost.textContent = '+' + formatMoney(pricing.extras[input.value]);
       bind(input, 'mf_extra_option[]', c.extras.includes(input.value), checked => { c.extras = checked ? [input.value] : []; if (!checked) c.fields = {}; render(); });
     }); render();
@@ -263,7 +282,7 @@ export function startConfigurator() {
     all('input,select,textarea', box).forEach(n => n.disabled = true);
     const render = () => { show(q('[data-mf-box-customization]', box), c.type !== 'caja_standard'); show(q('[data-mf-box-dedication-text-wrap]', box), c.dedication); };
     all('[data-mf-box-option-input]', box).forEach(input => {
-      if (!Object.hasOwn(pricing.box, input.value)) { note(input.closest('label'), 'A confirmar · indisponível'); return; }
+      if (!Object.hasOwn(pricing.box, input.value)) { note(input.closest('label'), 'Disponível sob consulta'); return; }
       const cost = q('[class*=price]', input.closest('label')); if (cost) cost.textContent = input.value === 'caja_standard' ? 'Padrão' : '+' + formatMoney(pricing.box[input.value][state.size]);
       bind(input, 'mf_box_option', c.type === input.value, v => { c.type = v; if (v === 'caja_standard') { c.dedication = false; c.fields = {}; removeFields(k => k === 'mf_box_dedication_image'); named(box, 'mf_box_dedication_enabled').checked = false; all('input[type=text],textarea', box).forEach(n => n.value = ''); } render(); });
     });
@@ -272,13 +291,13 @@ export function startConfigurator() {
     bind(named(box, 'mf_box_color_custom'), 'mf_box_color_custom', c.fields.mf_box_color_custom || '#cc1233', v => c.fields.mf_box_color_custom = v, 'input');
     bind(named(box, 'mf_box_dedication_enabled'), 'mf_box_dedication_enabled', c.dedication, v => { c.dedication = v; if (!v) { delete c.fields.mf_box_dedication_text; removeFields(k => k === 'mf_box_dedication_image'); } render(); });
     upload(named(box, 'mf_box_dedication_image'), 'mf_box_dedication_image', 'Dedicatória da caixa');
-    all('[data-mf-box-size-notice], [data-mf-box-size-notice-6cm], [data-mf-box-zero-notice]', box).forEach(n => { const title = q('.mf-box-step__size-notice-title', n), text = q('.mf-box-step__size-notice-text', n); if(title) title.textContent = 'Embalagem em homologação'; if(text) text.textContent = 'Compatibilidade e preço serão confirmados antes da produção.'; show(n, n.hasAttribute('data-mf-box-size-notice')); });
+    all('[data-mf-box-size-notice], [data-mf-box-size-notice-6cm], [data-mf-box-zero-notice]', box).forEach(n => { const title = q('.mf-box-step__size-notice-title', n), text = q('.mf-box-step__size-notice-text', n); if(title) title.textContent = 'Embalagem feita para proteger'; if(text) text.textContent = 'A opção escolhida acompanha o tamanho da sua miniatura.'; show(n, n.hasAttribute('data-mf-box-size-notice')); });
     q('[data-mf-box-to-delivery]', box)?.addEventListener('click', () => reveal(q('#needed-date'))); render();
   }
   function render() {
     uploads.cancelPending(); pending.clear(); uploadViews.clear(); grid.replaceChildren();
     const petMode = state.product === 'pet';
-    const size = q(petMode ? '[data-mf-pet-size-step]' : '[data-mf-size-step]', initialGrid).cloneNode(true); grid.append(size); sizes(size, petMode);
+    const size = q(petMode ? '[data-mf-pet-size-step]' : '[data-mf-size-step]', initialGrid).cloneNode(true); grid.append(size); sizes(size);
     if (petMode) {
       const type = decorate(q('[data-mf-pet-step="pet_type"]', initialGrid), 'main-pet'); grid.prepend(type);
       all('input[name=mf_pet_type]', type).forEach(input => bind(input, 'mf_pet_type', input.value === state.customizations.pet.fields.mf_pet_type, v => state.customizations.pet.fields.mf_pet_type = v));
@@ -293,7 +312,8 @@ export function startConfigurator() {
     const choices = el('div', undefined, 'mf-mini-options');
     for (let n = 0; n <= pricing.maxAdditionalPeople; n++) {
       const label = el('label', undefined, 'mf-mini-option'), input = el('input'); input.type = 'radio'; input.name = 'additional-people'; input.value = n;
-      label.append(input, el('span', n ? '+' + n + ' pessoa(s)' : 'Sem pessoas adicionais', 'mf-mini-option__label')); choices.append(label);
+      const choice = n ? `+${n} pessoa(s) · +${formatMoney(n * additionalPersonPrice(state.size))}` : 'Sem pessoas adicionais';
+      label.append(input, el('span', choice, 'mf-mini-option__label')); choices.append(label);
       bind(input, 'figures', n === state.customizations.additionalPeople, value => {
         state.customizations.additionalPeople = Number(value); const count = products[state.product].figures + Number(value);
         state.customizations.figures = Array.from({ length: count }, (_, i) => state.customizations.figures[i] || createFigure(i));
@@ -305,7 +325,6 @@ export function startConfigurator() {
       const card = template.cloneNode(true); all('input,select,textarea', card).forEach(n => n.disabled = true); grid.append(card);
       if (selector.includes('pets')) pets(card);
       else if (selector.includes('extra')) included(card);
-      else { accordion(card); note(q('[class*="__body"]', card), 'Minis: oferta e preços em revisão. Indisponíveis nesta prévia.'); }
     }
     // Preserve alternate original regions as templates, without inactive form controls in the active order.
     const alternate = document.createElement('template'); alternate.id = 'apex-alternate-original-regions';
@@ -326,9 +345,11 @@ export function startConfigurator() {
   }
   function review() {
     const result = validation(); if (!result.valid) return report(result);
+    track('review_order', { product: state.product, value: state.pricing.totalCents / 100, currency: state.pricing.currency });
+    track('begin_checkout', { product: state.product, value: state.pricing.totalCents / 100, currency: state.pricing.currency });
     const reviewedRevision = revision, dialog = q('#order-review');
     renderOrderReview(q('#review-content'), structuredClone(state), { uploads: uploads.list(), onEdit: () => dialog.close(), onGenerate: () => {
-      if (revision !== reviewedRevision) { dialog.close(); return report({ errors: [{ field: 'notes', message: 'A configuração mudou. Revise novamente antes de gerar o pedido de teste.' }] }); }
+      if (revision !== reviewedRevision) { dialog.close(); return report({ errors: [{ field: 'notes', message: 'A configuração mudou. Revise novamente antes de preparar o pedido.' }] }); }
       const checked = validation(); if (!checked.valid) { dialog.close(); return report(checked); }
       const result = createOrderDraft(state); if (!result.valid) { dialog.close(); return report(result); }
       draft = result.orderDraft; sync(); dialog.close(); q('#order-confirmation').showModal(); q('#confirmation-title').focus();
@@ -347,8 +368,9 @@ export function startConfigurator() {
   const shipping = all('input[name=mf_shipping_option]'); shipping.forEach(n => { n.disabled = n.value !== 'envio_estandard'; n.checked = !n.disabled; });
   all('[data-product]').forEach(b => b.addEventListener('click', () => {
     if (!Object.hasOwn(products, b.dataset.product) || b.dataset.product === state.product) return;
-    uploads.clear(); uploadErrors.clear(); state = createOrderState(b.dataset.product); date.value = notes.value = ''; const flexible = named(document, 'mf_shipping_flexible_date'); if (flexible) flexible.checked = false;
+    const promotion = structuredClone(state.promotion); uploads.clear(); uploadErrors.clear(); state = createOrderState(b.dataset.product); state.promotion = promotion; date.value = notes.value = ''; const flexible = named(document, 'mf_shipping_flexible_date'); if (flexible) flexible.checked = false;
     history.replaceState(null, '', '?tipo=' + state.product); render(); changed();
+    track('select_product', { product: state.product });
   }));
   all('form').forEach(form => form.addEventListener('submit', e => { e.preventDefault(); review(); }));
   q('.review-button').addEventListener('click', e => { e.preventDefault(); review(); });
@@ -361,10 +383,11 @@ export function startConfigurator() {
   });
   // Only sanitized inspection data is exposed; Files and free text remain private in this closure.
   window.apexDevelopment = Object.freeze({
-    inspect: () => ({ product: state.product, size: state.size, figures: state.customizations.figures.length, additionalPeople: state.customizations.additionalPeople, pets: state.customizations.pets.length, pricing: structuredClone(state.pricing), uploads: uploads.metadata().map(({ name, ...u }) => u) }),
+    inspect: () => ({ product: state.product, size: state.size, figures: state.customizations.figures.length, additionalPeople: state.customizations.additionalPeople, pets: state.customizations.pets.length, promotion: structuredClone(state.promotion), pricing: structuredClone(state.pricing), uploads: uploads.metadata().map(({ name, ...u }) => u) }),
     inspectDraft: () => draft ? safeOrderSummary(draft) : null, validate: validation,
   });
   document.addEventListener('apex:review', review);
+  document.addEventListener('apex:claim-promo', () => { if (state.promotion.claimed) return; state.promotion = { code: pricing.promotion.code, claimed: true }; changed(); track('promo_claim', { code: pricing.promotion.code }); });
   document.addEventListener('apex:discard', () => { uploads.clear(); uploadErrors.clear(); state = createOrderState(state.product); date.value = notes.value = ''; render(); changed(); });
   document.documentElement.dataset.apexReady = 'true';
 }

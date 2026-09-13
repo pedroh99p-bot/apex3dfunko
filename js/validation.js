@@ -18,18 +18,17 @@ export function validateOrderForProduction(state, options = {}) {
   if (!own(products, state.product)) add('product', 'PRODUCT_REQUIRED', 'Selecione um produto válido.');
   const c = state.customizations;
   if (!record(c) || !Array.isArray(c.figures) || !Array.isArray(c.pets) || !Array.isArray(c.extras)
-    || !record(c.pet) || !record(c.pet.fields) || !record(c.minis) || !record(c.minis.fields)
-    || !record(c.box) || !record(c.box.fields) || !record(c.fields) || !record(state.gift)
+    || !record(c.pet) || !record(c.pet.fields)
+    || !record(c.box) || !record(c.box.fields) || !record(c.fields) || !record(state.promotion)
     || !record(state.shipping) || !Array.isArray(state.uploads)) {
     add('order', 'STATE_INVALID', 'A configuração está incompleta. Selecione novamente o produto.'); return result();
   }
   const product = products[state.product];
   if (!Number.isSafeInteger(state.quantity) || state.quantity < 1) add('quantity', 'QUANTITY_INVALID', 'Informe uma quantidade inteira maior que zero.');
-  if (!product || !own(product.kind === 'pet' ? pricing.petSize : pricing.humanSize, state.size) || typeof state.size !== 'number') add('size', 'SIZE_REQUIRED', 'Escolha um tamanho válido.');
+  if (!product || !own(pricing.productSize, state.size) || !own(pricing.productSize[state.size], state.product) || typeof state.size !== 'number') add('size', 'SIZE_REQUIRED', 'Escolha um tamanho válido.');
   try { if (c.figures.length !== expectedFigureCount(state)) throw new Error(); }
   catch { add('figures', 'FIGURE_COUNT', 'A quantidade de pessoas não corresponde ao produto e aos adicionais.'); }
   if (!own(pricing.additionalPets, c.pets.length)) add('mf_pets_option', 'PET_COUNT', 'Selecione de zero a três animais adicionais.');
-  if (!Number.isInteger(c.minis.quantity) || !own(pricing.minis, c.minis.quantity) || !own(pricing.miniSize, c.minis.size)) add('mf_mini_option', 'MINI_CONFIGURATION', 'Confira a quantidade e o tamanho das minis.');
   const uploads = state.uploads;
   const validUploads = uploads.filter(isValidatedUpload);
   const photo = field => validUploads.some(u => u.owner.itemId === 'main-1' && u.owner.field === field);
@@ -81,11 +80,6 @@ export function validateOrderForProduction(state, options = {}) {
     if (!mvpRules.additionalPetTypes.includes(pet.type) || !own(pricing.additionalPetSize, pet.size)) add(`mf_pet_${i + 1}_type`, 'PET_CONFIGURATION', `Escolha o tipo e tamanho do animal adicional ${i + 1}.`);
     requiredPhoto(`mf_pet_${i + 1}_photo[]`, `do animal adicional ${i + 1}`);
   });
-  for (let i = 1; i <= Math.min(c.minis.quantity, 3); i++) {
-    const field = `mf_mini_unit_detail_${i}`;
-    if (!filled(c.minis.fields[field])) add(field, 'MINI_DETAIL', `Descreva a aparência e roupa da mini ${i}.`);
-    requiredPhoto(`mf_mini_unit_upload_${i}`, `da mini ${i}`);
-  }
   const b = c.box;
   if (!own(pricing.box, b.type)) add('mf_box_option', 'BOX_REQUIRED', 'Escolha uma opção de caixa.');
   if (b.type !== 'caja_standard') {
@@ -103,12 +97,7 @@ export function validateOrderForProduction(state, options = {}) {
   const dateError = validateDesiredDate(state.shipping.date, options);
   if (typeof state.shipping.flexible !== 'boolean') add('mf_shipping_flexible', 'FLEXIBILITY_INVALID', 'Confira a flexibilidade de data.');
   if (dateError) add('mf_shipping_date', dateError.code, dateError.message);
-  if (typeof state.gift.enabled !== 'boolean' || !['sketch', 'upload'].includes(state.gift.imageSource)) add('gift', 'GIFT_INVALID', 'Confira a personalização da caneca.');
-  if (state.gift.enabled) add('gift', 'OPTION_UNAVAILABLE', 'A caneca ainda não está disponível nesta oferta.');
-  if (state.gift.enabled && state.gift.imageSource === 'upload') {
-    allowed.add('gift-1:gift_image');
-    if (!validUploads.some(u => u.owner.itemId === 'gift-1' && u.owner.field === 'gift_image')) add('gift_image', 'GIFT_PHOTO_REQUIRED', 'Envie a imagem da caneca ou escolha o esboço.');
-  }
+  if (typeof state.promotion.claimed !== 'boolean' || (state.promotion.claimed && state.promotion.code !== pricing.promotion.code)) add('promotion', 'PROMOTION_INVALID', 'O cupom aplicado não é válido.');
   const ids = new Set();
   for (const u of uploads) {
     if (!record(u) || !record(u.owner)) { add('uploads', 'UPLOAD_INVALID', 'Um anexo está inválido.'); continue; }
@@ -118,7 +107,7 @@ export function validateOrderForProduction(state, options = {}) {
   }
   try {
     const price = calculatePrice(state);
-    if (state.pricing && ['currency', 'totalCents', 'unitTotalCents', 'mainTotalCents', 'giftTotalCents'].some(key => state.pricing[key] !== price[key])) add('pricing', 'PRICE_STALE', 'O preço está desatualizado. Revise a configuração.');
+    if (state.pricing && ['currency', 'totalCents', 'unitSubtotalCents', 'subtotalCents', 'discountCents', 'mainTotalCents'].some(key => state.pricing[key] !== price[key])) add('pricing', 'PRICE_STALE', 'O preço está desatualizado. Revise a configuração.');
   } catch { add('pricing', 'PRICE_INVALID', 'Não foi possível calcular o preço. Confira as opções selecionadas.'); }
   return result();
 }

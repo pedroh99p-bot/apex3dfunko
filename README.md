@@ -1,6 +1,6 @@
-# Apex3D — Original Shell V1
+# Apex3D — Comercial V1
 
-Port do HTML, CSS e experiência comercial originais para o motor standalone Apex. A página mantém a composição do hero, os painéis do configurador, tamanhos, acessórios, processo, galerias, depoimentos e FAQ. Esta versão gera somente pedidos de teste locais.
+Frontend standalone da Apex3D Personalizados. A página combina uma jornada comercial curta com configurador, pricing em BRL, uploads locais, promoção FIRST10, atendimento por WhatsApp, revisão do pedido e tracking preparado para ativação futura.
 
 O arquivo `index.html` é o baseline histórico imutável. **O site em desenvolvimento é `dev.html`; o deploy publica `dist/index.html`, gerado a partir dele.** Não servir o baseline como aplicação atual.
 
@@ -28,15 +28,19 @@ npm run build
 
 ## Estado comercial
 
-Preços provisórios em reais, centralizados em `config/commercial.js`, `config/pricing.js` e `config/special-objects.js`. A simulação por miniatura usa 6/10/15/20 cm a R$100/150/170/200. As composições multiplicam o valor por pessoa; adicionais usam a tabela documentada. A divergência com a tabela anterior do briefing está registrada para confirmação.
+Preços homologados em reais e centavos inteiros ficam centralizados em `config/commercial.js` e `config/pricing.js`. A matriz cobre Individual, Pet, Casal e Família em 6, 10, 15 e 20 cm. Pessoa adicional usa o preço Individual do tamanho atual; pet, acessórios, objetos, bases e caixa usam a tabela central. Cards, configurador, sticky, revisão e `orderDraft` derivam do mesmo cálculo.
 
-Fotos permanecem em memória até recarregar ou descartar a criação. Não há envio, armazenamento remoto, cobrança, backend, banco ou checkout. `productionReady` permanece falso mesmo após validação de um pedido de teste.
+FIRST10 concede 10% sobre o subtotal elegível e nunca sobre frete. A sinalização de primeira compra no `localStorage` serve apenas à experiência frontend; não é antifraude nem autoridade de elegibilidade. Fotos permanecem em memória até recarregar ou descartar. Não há envio remoto, cobrança, backend, banco, checkout ou Asaas; `productionReady` permanece falso.
 
-Mídias herdadas são referências visuais, sujeitas à revisão de origem. Depoimentos são placeholders explícitos. Minis, caneca, inclusos não confirmados, caixa dupla e envio expresso não estão disponíveis para contratação.
+O WhatsApp oficial é `(21) 92367-9482`. Os CTAs usam `wa.me` e podem incluir somente produto, tamanho e subtotal, nunca fotos, URLs blob, observações ou dados pessoais. Depoimentos simulados e caneca foram removidos do MVP. Modalidades de entrega sem SLA ficam fora da interface.
+
+Tracking tem um helper único em `js/analytics.js` e IDs placeholder em `config/analytics.js`. Enquanto qualquer ID contiver `PLACEHOLDER`, nenhuma tag externa é carregada e nenhum request de analytics é enviado, mesmo com consentimento. O evento `purchase` está reservado para confirmação futura do backend/Asaas e não é disparado pelo frontend.
 
 ## Documentação
 
 - [Entrega e decisões da V1](docs/APEX-ORIGINAL-SHELL-V1.md)
+- [Hardening Comercial V1](docs/APEX-COMMERCIAL-V1.md)
+- [Auditoria que originou o hardening](docs/APEX-AUDIT-V1.md)
 - [Mapa das 36 regiões antes do port](docs/ORIGINAL-1TO1-MAP.md)
 - [Mapa completo de assets](docs/ASSET-MAP.md)
 - [Manifesto de arquivos e hashes](docs/evidence/original-shell-assets.json)
